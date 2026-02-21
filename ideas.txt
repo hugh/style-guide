@@ -1,0 +1,50 @@
+Style Guide Theme Ideas
+=======================
+
+Cartographer
+  Aged parchment background, sepia and burnt umber tones, topographic
+  contour-line patterns as decorative elements, coordinate grids, legend
+  boxes, compass-rose section markers. Fonts: something old-map like
+  Cormorant Garamond + a clean body serif.
+
+Terminal
+  Pure CRT aesthetic. Black background, phosphor green (or amber) monospace
+  text for everything. Scanline overlay texture, command-prompt style section
+  headers ($ section --name "Colors"), blinking cursor accents, ASCII
+  box-drawing characters for borders instead of CSS borders.
+
+Noir
+  Film noir / case file. High-contrast black and white, single red accent.
+  Typewriter font (Courier Prime), manila folder card backgrounds, evidence
+  tag components, redacted text blocks (black bars over text), crime board
+  string-connection diagrams, stamped "CLASSIFIED" labels.
+
+Journalist
+  Newspaper broadsheet. Cream newsprint background, multi-column layouts,
+  large drop caps, serif-heavy (like a front page), dateline headers, pull
+  quote components, byline blocks, "BREAKING" callout banners, thin column
+  rules.
+
+Botanist
+  Field journal. Warm cream/linen background, earthy greens and warm browns,
+  specimen card components (bordered cards with taxonomy labels), pressed-
+  flower muted palette, field note callouts with date/location stamps,
+  classification tables.
+
+Librarian
+  Card catalog warmth. Rich cream, dark walnut brown, gold accents, card-
+  catalog-style index cards as components, Dewey decimal section numbering
+  (025.4 — Reference), bookplate-style headers, library stamp marks,
+  due-date grid tables.
+
+Alchemist
+  Medieval manuscript meets mystical. Dark parchment (#1a1510), gold leaf
+  accents, ornamental drop caps, ingredient/recipe cards, transmutation
+  pipeline (lead → ... → gold), symbol-heavy labels, illuminated manuscript-
+  style section openers.
+
+Musician
+  Score-inspired. Cream paper, staff lines as horizontal rules, dynamic
+  markings as emphasis levels (pp, mp, f, ff), measure/bar components, tempo
+  annotations on sections (Allegro — §3), rehearsal-mark section numbering
+  (boxed letters), fermata pause symbols for callouts.

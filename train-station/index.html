@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Train Station — Vintage Railway Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .swatch {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color { height: 48px; }
+  .swatch-info { padding: 0.5rem 0.65rem; background: var(--surface); }
+  .swatch-info .swatch-name {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.6rem;
+    color: var(--cream);
+    margin-bottom: 0.1rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.55rem;
+    color: var(--cream-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Stint Ultra Expanded', serif;
+    font-size: 1.6rem;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+  .font-sample-body {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1rem;
+    color: var(--cream-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .file-link:hover { border-color: var(--brass-dim); }
+  .file-link .file-icon {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.6rem;
+    color: var(--brass);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.85rem; }
+
+  .inline-code {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.82rem;
+    background: var(--surface-2);
+    padding: 0.15em 0.4em;
+    color: var(--brass);
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--border); }
+  .text-tier-demo .tier-label {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.55rem;
+    color: var(--cream-faint);
+    width: 5.5rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Train <span>Station</span></h1>
+  <p>A vintage railway design system with warm dark surfaces, brass and iron accents, departures boards, ticket stubs, and the timeless elegance of a grand terminus.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--cream-faint); text-decoration: underline; text-underline-offset: 3px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">Platform 00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+
+  <div class="card-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">[HTML]</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">[CSS]</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Variables, reset, and all component styles</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">Platform 01 &mdash; Colour Palette</div>
+  <h2>Station Surfaces</h2>
+  <p>Warm dark backgrounds inspired by <strong>aged wood panelling and cast iron</strong> &mdash; brown-black undertone rather than the blue-black of Physicist or purple of Vesper.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #1c1a17;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#1c1a17</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #262320;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#262320</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #302c28;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#302c28</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #3d3830;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#3d3830</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--cream</div>
+      <div style="color: var(--cream); font-weight: 500;">Primary &mdash; headings, station names, emphasis</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--cream-dim</div>
+      <div style="color: var(--cream-dim);">Dim &mdash; body paragraphs, descriptions</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--cream-faint</div>
+      <div style="color: var(--cream-faint);">Faint &mdash; labels, metadata, platform numbers</div>
+    </div>
+  </div>
+
+  <h3>Brass &amp; Iron</h3>
+  <p>The two primary material accents &mdash; warm polished brass for primary emphasis, cool iron for secondary and structural elements.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #c8a84c;"></div><div class="swatch-info"><div class="swatch-name">--brass</div><div class="swatch-hex">#c8a84c</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #8a7430;"></div><div class="swatch-info"><div class="swatch-name">--brass-dim</div><div class="swatch-hex">#8a7430</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #8a9098;"></div><div class="swatch-info"><div class="swatch-name">--iron</div><div class="swatch-hex">#8a9098</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #58606a;"></div><div class="swatch-info"><div class="swatch-name">--iron-dim</div><div class="swatch-hex">#58606a</div></div></div>
+  </div>
+
+  <h3>Signal Colours</h3>
+  <p>Taken from railway signal lamps &mdash; red, green, and amber for status indication. Plus midnight blue for night services.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #c84040;"></div><div class="swatch-info"><div class="swatch-name">--signal-red</div><div class="swatch-hex">#c84040</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #4a9858;"></div><div class="swatch-info"><div class="swatch-name">--signal-green</div><div class="swatch-hex">#4a9858</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #d0982c;"></div><div class="swatch-info"><div class="swatch-name">--signal-amber</div><div class="swatch-hex">#d0982c</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #4878a8;"></div><div class="swatch-info"><div class="swatch-name">--midnight</div><div class="swatch-hex">#4878a8</div></div></div>
+  </div>
+
+  <p>Tags across the palette:
+    <span class="tag t-brass">Brass</span>
+    <span class="tag t-iron">Iron</span>
+    <span class="tag t-signal-red">Cancelled</span>
+    <span class="tag t-signal-green">On Time</span>
+    <span class="tag t-signal-amber">Delayed</span>
+    <span class="tag t-midnight">Night</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">Platform 02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Stint Ultra Expanded for headings</strong> (wide, stately, station-sign feel), <strong>Libre Franklin for body</strong> (clean, legible), <strong>Inconsolata for data</strong> (timetable readouts and labels).</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Stint Ultra Expanded &mdash; Headings, platform numbers (400)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Libre Franklin &mdash; Body text, descriptions, card content (300&ndash;700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the cream color.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Inconsolata &mdash; Labels, tags, timetables, section numbers</div>
+    <div class="font-sample-mono">Platform 01 &mdash; Departures &middot; 14:32 &middot; On Time &middot; Plt. 3</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Stint Ultra Expanded</td><td>clamp(2.4rem, 6.5vw, 4.2rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Stint Ultra Expanded</td><td>1.6rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Libre Franklin</td><td>1.05rem</td><td>600</td></tr>
+      <tr><td>Card title h4</td><td>Libre Franklin</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body</td><td>Libre Franklin</td><td>0.92rem</td><td>400</td></tr>
+      <tr><td>Platform num</td><td>Stint Ultra Expanded</td><td>1.4rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>Inconsolata</td><td>0.65rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Inconsolata</td><td>0.6rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>Note:</strong> Stint Ultra Expanded has a naturally wide letterform &mdash; no extra letter-spacing needed. H3 subsection headings use Libre Franklin in uppercase with 0.1em tracking for a brass-engraved feel.</p>
+  </div>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">Platform 03 &mdash; Layout</div>
+  <h2>Structure</h2>
+
+  <div class="card-grid">
+    <div class="platform-card brass">
+      <div class="card-platform">A</div>
+      <h4>Container</h4>
+      <p>Max-width 880px, centered, 2rem horizontal padding.</p>
+    </div>
+    <div class="platform-card iron">
+      <div class="card-platform">B</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Solid 1px border-top dividers.</p>
+    </div>
+    <div class="platform-card midnight">
+      <div class="card-platform">C</div>
+      <h4>Border Radius</h4>
+      <p>Zero. All corners are sharp &mdash; industrial and architectural.</p>
+    </div>
+    <div class="platform-card signal-green">
+      <div class="card-platform">D</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type. Cards and departures boards reflow at 640px.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">Platform 04 &mdash; Components</div>
+  <h2>Departures Board</h2>
+  <p>The signature component &mdash; a split-flap style display with time, destination, status, and platform columns. Status colours use signal-green, signal-amber, signal-red, and brass.</p>
+
+  <div class="departures">
+    <div class="departures-header">
+      Departures
+      <span class="board-clock">14:32</span>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">14:45</div>
+      <div class="dep-dest">Kings Cross</div>
+      <div class="dep-status on-time">On Time</div>
+      <div class="dep-platform">Plt. 1</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">15:10</div>
+      <div class="dep-dest">Edinburgh Waverley</div>
+      <div class="dep-status delayed">Exp. 15:25</div>
+      <div class="dep-platform">Plt. 3</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">15:30</div>
+      <div class="dep-dest">Bristol Temple Meads</div>
+      <div class="dep-status cancelled">Cancelled</div>
+      <div class="dep-platform">&mdash;</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">16:00</div>
+      <div class="dep-dest">Manchester Piccadilly</div>
+      <div class="dep-status boarding">Boarding</div>
+      <div class="dep-platform">Plt. 5</div>
+    </div>
+  </div>
+
+  <h2>Route Stops</h2>
+  <p>A linear journey component with station dots at each connection point. Brass top-rail with connected stops.</p>
+
+  <div class="route">
+    <div class="route-stop">
+      <div class="stop-time">08:00</div>
+      <div class="stop-name">London</div>
+      <div class="stop-note">Departs</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">09:15</div>
+      <div class="stop-name">Reading</div>
+      <div class="stop-note">2 min</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">10:40</div>
+      <div class="stop-name">Bristol</div>
+      <div class="stop-note">5 min</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">12:00</div>
+      <div class="stop-name">Cardiff</div>
+      <div class="stop-note">Arrives</div>
+    </div>
+  </div>
+
+  <h2>Ticket Stub</h2>
+  <p>Inline ticket with punched-hole edges, from/to stations, and class indicator.</p>
+
+  <div class="ticket">
+    <div class="ticket-from">
+      <div class="ticket-label">From</div>
+      <div class="ticket-station">London</div>
+    </div>
+    <div class="ticket-arrow">&rarr;</div>
+    <div class="ticket-to">
+      <div class="ticket-label">To</div>
+      <div class="ticket-station">Edinburgh</div>
+    </div>
+    <div class="ticket-class">1st</div>
+  </div>
+
+  <h2>Platform Cards</h2>
+  <p>Two-column grid of cards with a coloured top accent bar and large platform number. Six colour variants.</p>
+
+  <div class="card-grid">
+    <div class="platform-card brass">
+      <div class="card-platform">1</div>
+      <h4>.platform-card.brass</h4>
+      <p>Primary brass accent.</p>
+    </div>
+    <div class="platform-card iron">
+      <div class="card-platform">2</div>
+      <h4>.platform-card.iron</h4>
+      <p>Secondary iron accent.</p>
+    </div>
+    <div class="platform-card signal-green">
+      <div class="card-platform">3</div>
+      <h4>.platform-card.signal-green</h4>
+      <p>Green signal. Good service.</p>
+    </div>
+    <div class="platform-card signal-red">
+      <div class="card-platform">4</div>
+      <h4>.platform-card.signal-red</h4>
+      <p>Red signal. Disruptions.</p>
+    </div>
+    <div class="platform-card signal-amber">
+      <div class="card-platform">5</div>
+      <h4>.platform-card.signal-amber</h4>
+      <p>Amber signal. Caution.</p>
+    </div>
+    <div class="platform-card midnight">
+      <div class="card-platform">6</div>
+      <h4>.platform-card.midnight</h4>
+      <p>Night service blue.</p>
+    </div>
+  </div>
+
+  <h2>Callout Variants</h2>
+  <div class="callout">
+    <p><strong>Announcement:</strong> Default callout. Brass accent, warm fill background.</p>
+  </div>
+  <div class="callout service">
+    <p><strong>Service update:</strong> Amber variant for planned engineering works and changes.</p>
+  </div>
+  <div class="callout disruption">
+    <p><strong>Disruption:</strong> Red variant for cancellations and service interruptions.</p>
+  </div>
+  <div class="callout running">
+    <p><strong>Good service:</strong> Green variant for running-normally confirmations.</p>
+  </div>
+
+  <h2>Numbered List</h2>
+  <div class="num-list">
+    <div class="num-item">
+      <div class="item-num">1</div>
+      <div>
+        <h4>Platform Numbers</h4>
+        <p>Large Stint Ultra Expanded numerals in brass-dim, left-aligned.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">2</div>
+      <div>
+        <h4>Stacked Layout</h4>
+        <p>Zero-gap vertical stack with shared borders between items.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">3</div>
+      <div>
+        <h4>No Border Radius</h4>
+        <p>Sharp corners throughout. Industrial and architectural precision.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>.departures</td><td>.dep-row .on-time .delayed .cancelled .boarding</td><td>Timetable board</td></tr>
+      <tr><td>.route</td><td>.route-stop</td><td>Linear journey with station dots</td></tr>
+      <tr><td>.ticket</td><td>.ticket-from .ticket-to .ticket-class</td><td>Punched-hole stub</td></tr>
+      <tr><td>.platform-card</td><td>.brass .iron .signal-red .signal-green .signal-amber .midnight</td><td>Coloured top bar</td></tr>
+      <tr><td>.callout</td><td>.service .disruption .running</td><td>Announcement banners</td></tr>
+      <tr><td>.tag</td><td>.t-brass .t-iron .t-signal-red etc.</td><td>Bordered monospace labels</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">Platform 05 &mdash; Design Principles</div>
+  <h2>Key Patterns</h2>
+
+  <div class="num-list">
+    <div class="num-item">
+      <div class="item-num">1</div>
+      <div>
+        <h4>Warm Dark Surfaces</h4>
+        <p>Brown-black backgrounds (#1c1a17) with a warm undertone &mdash; like aged wood panelling in a grand terminus waiting room.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">2</div>
+      <div>
+        <h4>Brass &amp; Iron</h4>
+        <p>Two material accents instead of a single primary colour. Warm brass for headings, platform numbers, and primary emphasis. Cool iron for secondary and structural elements.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">3</div>
+      <div>
+        <h4>Railway Signal Colours</h4>
+        <p>Red, green, and amber taken directly from signal lamp colours. Used semantically: green for on-time/good, amber for delays/caution, red for cancellations/disruption.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">4</div>
+      <div>
+        <h4>Expanded Station-Sign Type</h4>
+        <p>Stint Ultra Expanded has a naturally wide letterform that evokes cast-metal station signs and engraved brass plates. Body text uses the clean Libre Franklin.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">5</div>
+      <div>
+        <h4>Departures Board</h4>
+        <p>The signature unique component. Grid-based timetable display with time, destination, status, and platform columns &mdash; like a split-flap arrivals/departures indicator.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">6</div>
+      <div>
+        <h4>Zero Radius, Sharp Corners</h4>
+        <p>No border-radius anywhere. Strictly rectilinear &mdash; like cast iron, riveted steel, and platform edge tiles. Ornamental dividers provide the softness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">&mdash; &#9670; &mdash;</div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Train Station &middot; v0.1 &middot; All Platforms</p>
+  </div>
+</footer>
+
+</body>
+</html>

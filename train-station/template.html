@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">Platform 1 &middot; Draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">Platform 01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> for emphasis. Body text renders in the dim cream color by default.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsections use brass-colored uppercase headings with letter-spacing.</p>
+
+  <!-- Departures Board -->
+  <div class="departures">
+    <div class="departures-header">
+      Departures
+      <span class="board-clock">14:32</span>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">14:45</div>
+      <div class="dep-dest">Destination Name</div>
+      <div class="dep-status on-time">On Time</div>
+      <div class="dep-platform">Plt. 1</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">15:10</div>
+      <div class="dep-dest">Destination Name</div>
+      <div class="dep-status delayed">Exp. 15:25</div>
+      <div class="dep-platform">Plt. 3</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">15:30</div>
+      <div class="dep-dest">Destination Name</div>
+      <div class="dep-status cancelled">Cancelled</div>
+      <div class="dep-platform">&mdash;</div>
+    </div>
+    <div class="dep-row">
+      <div class="dep-time">16:00</div>
+      <div class="dep-dest">Destination Name</div>
+      <div class="dep-status boarding">Boarding</div>
+      <div class="dep-platform">Plt. 5</div>
+    </div>
+  </div>
+
+  <!-- Callout variants -->
+  <div class="callout">
+    <p><strong>Announcement:</strong> Default callout with brass accent.</p>
+  </div>
+  <div class="callout service">
+    <p><strong>Service update:</strong> Amber callout for planned changes.</p>
+  </div>
+  <div class="callout disruption">
+    <p><strong>Disruption:</strong> Red callout for service interruptions.</p>
+  </div>
+  <div class="callout running">
+    <p><strong>Good service:</strong> Green callout for confirmations.</p>
+  </div>
+</section>
+
+<!-- ============ ROUTE ============ -->
+<section>
+  <div class="section-num">Platform 02 &mdash; Route</div>
+  <h2>Route Stops</h2>
+  <p>Use the route component to show a linear journey with station stops.</p>
+
+  <div class="route">
+    <div class="route-stop">
+      <div class="stop-time">08:00</div>
+      <div class="stop-name">Origin</div>
+      <div class="stop-note">Departs</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">08:45</div>
+      <div class="stop-name">First Stop</div>
+      <div class="stop-note">2 min</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">09:20</div>
+      <div class="stop-name">Second Stop</div>
+      <div class="stop-note">5 min</div>
+    </div>
+    <div class="route-stop">
+      <div class="stop-time">10:00</div>
+      <div class="stop-name">Terminus</div>
+      <div class="stop-note">Arrives</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CARDS ============ -->
+<section>
+  <div class="section-num">Platform 03 &mdash; Cards</div>
+  <h2>Platform Cards</h2>
+
+  <div class="card-grid">
+    <div class="platform-card brass">
+      <div class="card-platform">1</div>
+      <h4>Card Title</h4>
+      <p>Use color classes (brass, iron, signal-red, signal-green, signal-amber, midnight).</p>
+    </div>
+    <div class="platform-card midnight">
+      <div class="card-platform">2</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="platform-card signal-green">
+      <div class="card-platform">3</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="platform-card signal-red">
+      <div class="card-platform">4</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TICKET ============ -->
+<section>
+  <div class="section-num">Platform 04 &mdash; Tickets</div>
+  <h2>Ticket Stubs</h2>
+  <p>Inline ticket components with punched-hole edges.</p>
+
+  <div class="ticket">
+    <div class="ticket-from">
+      <div class="ticket-label">From</div>
+      <div class="ticket-station">London</div>
+    </div>
+    <div class="ticket-arrow">&rarr;</div>
+    <div class="ticket-to">
+      <div class="ticket-label">To</div>
+      <div class="ticket-station">Edinburgh</div>
+    </div>
+    <div class="ticket-class">1st</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST ============ -->
+<section>
+  <div class="section-num">Platform 05 &mdash; List</div>
+  <h2>Numbered List</h2>
+
+  <div class="num-list">
+    <div class="num-item">
+      <div class="item-num">1</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">2</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">3</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE & TAGS ============ -->
+<section>
+  <div class="section-num">Platform 06 &mdash; Reference</div>
+  <h2>Data Table</h2>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Service</th><th>Route</th><th>Frequency</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Express</td><td>North Line</td><td>Every 30 min</td></tr>
+      <tr><td>Local</td><td>South Branch</td><td>Every 15 min</td></tr>
+      <tr><td>Sleeper</td><td>Night Route</td><td>Daily 23:00</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tags</h3>
+  <p>
+    <span class="tag t-brass">Brass</span>
+    <span class="tag t-iron">Iron</span>
+    <span class="tag t-signal-red">Cancelled</span>
+    <span class="tag t-signal-green">On Time</span>
+    <span class="tag t-signal-amber">Delayed</span>
+    <span class="tag t-midnight">Night</span>
+  </p>
+</section>
+
+<!-- ============ ORNAMENT ============ -->
+<div class="ornament">&mdash; &#9670; &mdash;</div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; Platform 1 &middot; All Services</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+@import url('https://fonts.googleapis.com/css2?family=Stint+Ultra+Expanded&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inconsolata:wght@400;500;600&display=swap');
+
+/* ==============================
+   Train Station — Design Tokens
+   ============================== */
+
+:root {
+  /* Station surfaces */
+  --bg: #1c1a17;
+  --surface: #262320;
+  --surface-2: #302c28;
+  --surface-warm: #2a2520;
+  --border: #3d3830;
+  --border-light: #4e4840;
+
+  /* Text — timetable cream */
+  --cream: #f0e8d8;
+  --cream-dim: #b0a890;
+  --cream-faint: #706858;
+
+  /* Brass & iron */
+  --brass: #c8a84c;
+  --brass-dim: #8a7430;
+  --brass-fill: rgba(200, 168, 76, 0.07);
+
+  --iron: #8a9098;
+  --iron-dim: #58606a;
+  --iron-fill: rgba(138, 144, 152, 0.07);
+
+  /* Signal colors */
+  --signal-red: #c84040;
+  --signal-red-dim: #7a2828;
+  --signal-red-fill: rgba(200, 64, 64, 0.07);
+
+  --signal-green: #4a9858;
+  --signal-green-dim: #2a6030;
+  --signal-green-fill: rgba(74, 152, 88, 0.07);
+
+  --signal-amber: #d0982c;
+  --signal-amber-dim: #7a5a18;
+  --signal-amber-fill: rgba(208, 152, 44, 0.07);
+
+  --midnight: #4878a8;
+  --midnight-dim: #2a4868;
+  --midnight-fill: rgba(72, 120, 168, 0.07);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--cream);
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography
+   ============================== */
+
+h1, h2 {
+  font-family: 'Stint Ultra Expanded', serif;
+  font-weight: 400;
+  color: var(--cream);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  color: var(--brass);
+}
+
+h4 {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+p {
+  color: var(--cream-dim);
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+p strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Labels
+   ============================== */
+
+.section-num {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  margin-bottom: 0.75rem;
+}
+
+.hero-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--brass-dim);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  margin-bottom: 1.25rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200, 168, 76, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.hero h1 span {
+  color: var(--brass);
+}
+
+.hero p {
+  max-width: 520px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--cream-dim);
+  position: relative;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.62rem;
+  color: var(--cream-faint);
+  letter-spacing: 0.12em;
+  position: relative;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Departures Board
+   ============================== */
+
+.departures {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.departures-header {
+  background: var(--surface-2);
+  padding: 0.6rem 1.25rem;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.departures-header .board-clock {
+  font-family: 'Inconsolata', monospace;
+  color: var(--cream-faint);
+  letter-spacing: 0.1em;
+}
+
+.dep-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 120px 100px;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .dep-row { grid-template-columns: 70px 1fr 90px; }
+  .dep-row .dep-platform { display: none; }
+}
+
+.dep-row .dep-time {
+  font-family: 'Inconsolata', monospace;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--cream);
+}
+
+.dep-row .dep-dest {
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.dep-row .dep-status {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-align: right;
+}
+
+.dep-row .dep-platform {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.75rem;
+  color: var(--cream-faint);
+  text-align: right;
+}
+
+.dep-row .dep-status.on-time   { color: var(--signal-green); }
+.dep-row .dep-status.delayed   { color: var(--signal-amber); }
+.dep-row .dep-status.cancelled { color: var(--signal-red); }
+.dep-row .dep-status.boarding  { color: var(--brass); }
+
+/* ==============================
+   Platform Cards (2-column grid)
+   ============================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+.platform-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.platform-card.brass::before       { background: var(--brass); }
+.platform-card.iron::before        { background: var(--iron); }
+.platform-card.signal-red::before  { background: var(--signal-red); }
+.platform-card.signal-green::before { background: var(--signal-green); }
+.platform-card.signal-amber::before { background: var(--signal-amber); }
+.platform-card.midnight::before    { background: var(--midnight); }
+
+.platform-card .card-platform {
+  font-family: 'Stint Ultra Expanded', serif;
+  font-size: 1.4rem;
+  color: var(--brass-dim);
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+
+.platform-card h4 { margin-bottom: 0.4rem; }
+
+.platform-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--cream-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (route stops)
+   ============================== */
+
+.route {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.route-stop {
+  flex: 1;
+  min-width: 130px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+
+.route-stop + .route-stop { border-left: none; }
+
+.route-stop::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--brass);
+}
+
+.route-stop::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 8px;
+  height: 8px;
+  background: var(--surface);
+  border: 2px solid var(--brass);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.route-stop:last-child::after { display: none; }
+
+.route-stop .stop-time {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.7rem;
+  color: var(--cream-faint);
+  margin-bottom: 0.25rem;
+}
+
+.route-stop .stop-name {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--cream);
+  margin-bottom: 0.15rem;
+}
+
+.route-stop .stop-note {
+  font-size: 0.7rem;
+  color: var(--cream-faint);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Numbered List
+   ============================== */
+
+.num-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.num-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.num-item + .num-item { border-top: none; }
+
+.num-item .item-num {
+  font-family: 'Stint Ultra Expanded', serif;
+  font-size: 1.4rem;
+  color: var(--brass-dim);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.25rem;
+  text-align: center;
+}
+
+.num-item h4 { margin-bottom: 0.3rem; }
+
+.num-item p {
+  font-size: 0.85rem;
+  color: var(--cream-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout / Announcement
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brass);
+  background: var(--brass-fill);
+}
+
+.callout.service {
+  border-left-color: var(--signal-amber);
+  background: var(--signal-amber-fill);
+}
+
+.callout.disruption {
+  border-left-color: var(--signal-red);
+  background: var(--signal-red-fill);
+}
+
+.callout.running {
+  border-left-color: var(--signal-green);
+  background: var(--signal-green-fill);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--cream-dim);
+}
+
+.callout strong { color: var(--cream); }
+
+/* ==============================
+   Ticket Stub
+   ============================== */
+
+.ticket {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+  position: relative;
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--bg);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ticket::before { left: -7px; }
+.ticket::after  { right: -7px; }
+
+.ticket .ticket-from,
+.ticket .ticket-to {
+  text-align: center;
+}
+
+.ticket .ticket-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  margin-bottom: 0.15rem;
+}
+
+.ticket .ticket-station {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--cream);
+}
+
+.ticket .ticket-arrow {
+  font-size: 1rem;
+  color: var(--brass-dim);
+}
+
+.ticket .ticket-class {
+  font-family: 'Stint Ultra Expanded', serif;
+  font-size: 1.2rem;
+  color: var(--brass);
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border: 1px solid;
+}
+
+.tag.t-brass        { background: var(--brass-fill);        color: var(--brass);        border-color: var(--brass-dim); }
+.tag.t-iron         { background: var(--iron-fill);         color: var(--iron);         border-color: var(--iron-dim); }
+.tag.t-signal-red   { background: var(--signal-red-fill);   color: var(--signal-red);   border-color: var(--signal-red-dim); }
+.tag.t-signal-green { background: var(--signal-green-fill); color: var(--signal-green); border-color: var(--signal-green-dim); }
+.tag.t-signal-amber { background: var(--signal-amber-fill); color: var(--signal-amber); border-color: var(--signal-amber-dim); }
+.tag.t-midnight     { background: var(--midnight-fill);     color: var(--midnight);     border-color: var(--midnight-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.85rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'Inconsolata', monospace;
+  font-weight: 500;
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--cream-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ==============================
+   Diagram Container
+   ============================== */
+
+.diagram-wrap {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+/* ==============================
+   Ornamental Rule
+   ============================== */
+
+.ornament {
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--brass-dim);
+  font-size: 0.9rem;
+  letter-spacing: 0.3em;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.62rem;
+  color: var(--cream-faint);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
