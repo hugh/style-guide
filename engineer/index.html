@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineer — Blueprint Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .swatch {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color { height: 48px; }
+  .swatch-info { padding: 0.5rem 0.65rem; background: var(--surface); }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.1rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-condensed {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .font-sample-body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.03em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .file-link:hover { border-color: var(--line-dim); }
+  .file-link .file-icon {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--line);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+
+  .inline-code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    background: var(--surface-2);
+    padding: 0.15em 0.4em;
+    color: var(--line);
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--border); }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    width: 5.5rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Engineer</span></h1>
+  <p>A blueprint-inspired design system with technical precision, grid backgrounds, condensed uppercase headings, and the structured feel of architectural drawings.</p>
+  <div class="hero-version">REV 01 · SPECIFICATION · <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">SEC 00 — Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component.</p>
+
+  <div class="card-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">[HTML]</div>
+      <div>
+        <h4>Template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">[CSS]</div>
+      <div>
+        <h4>Tokens.css</h4>
+        <p>Variables, grid background, all component styles</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">SEC 01 — Color Specification</div>
+  <h2>Blueprint Surfaces</h2>
+  <p>Deep navy backgrounds with a <strong>subtle grid overlay</strong>. Two grid scales: 20px minor lines and 100px major lines in semi-transparent white.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #0a1929;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0a1929</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #112240;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#112240</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #162d50;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#162d50</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #1e3a5f;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#1e3a5f</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary — headings, labels, specifications</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim — body paragraphs, descriptions, notes</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint — metadata, section numbers, grid labels</div>
+    </div>
+  </div>
+
+  <h3>Blueprint Line (Primary Accent)</h3>
+  <p>The main working color — used for headings (h3), diagram lines, callout borders, and active states.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #4fc3f7;"></div><div class="swatch-info"><div class="swatch-name">--line</div><div class="swatch-hex">#4fc3f7</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #1a6fa0;"></div><div class="swatch-info"><div class="swatch-name">--line-dim</div><div class="swatch-hex">#1a6fa0</div></div></div>
+  </div>
+
+  <h3>Status Colors</h3>
+  <p>Four status colors mapping to engineering workflow stages. Each has full, dim, and fill (8% opacity) variants.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #ef5350;"></div><div class="swatch-info"><div class="swatch-name">--redline</div><div class="swatch-hex">#ef5350</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #66bb6a;"></div><div class="swatch-info"><div class="swatch-name">--approved</div><div class="swatch-hex">#66bb6a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #ffb74d;"></div><div class="swatch-info"><div class="swatch-name">--caution</div><div class="swatch-hex">#ffb74d</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #ba68c8;"></div><div class="swatch-info"><div class="swatch-name">--note</div><div class="swatch-hex">#ba68c8</div></div></div>
+  </div>
+
+  <p>Tags with status colors:
+    <span class="tag t-line">Blueprint</span>
+    <span class="tag t-redline">Redline</span>
+    <span class="tag t-approved">Approved</span>
+    <span class="tag t-caution">Caution</span>
+    <span class="tag t-note">Note</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">SEC 02 — Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three IBM/technical fonts. <strong>Condensed uppercase for headings</strong>, <strong>IBM Plex Sans for body</strong>, <strong>IBM Plex Mono for data</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Barlow Condensed — Headings, stamps, pipeline labels (weights 400–700)</div>
+    <div class="font-sample-condensed">The Quick Brown Fox Jumps Over The Lazy Dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Sans — Body text, card content, descriptions (weights 300–600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color for emphasis.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono — Labels, tags, table headers, metadata, code</div>
+    <div class="font-sample-mono">SEC 01 — SPECIFICATION · REV 03 · DWG-001 · 2026-02-21</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>h1</td><td>Barlow Condensed</td><td>clamp(3rem, 8vw, 5.5rem)</td><td>700</td></tr>
+      <tr><td>h2</td><td>Barlow Condensed</td><td>2.2rem</td><td>600</td></tr>
+      <tr><td>h3</td><td>Barlow Condensed</td><td>1.3rem</td><td>600</td></tr>
+      <tr><td>h4</td><td>IBM Plex Sans</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>body</td><td>IBM Plex Sans</td><td>0.92rem</td><td>400</td></tr>
+      <tr><td>card-body</td><td>IBM Plex Sans</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>section-label</td><td>IBM Plex Mono</td><td>0.65rem</td><td>400</td></tr>
+      <tr><td>tag</td><td>IBM Plex Mono</td><td>0.6rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <p><strong>Convention:</strong> All headings (h1–h3) and card titles (h4) are uppercase with letter-spacing. This reinforces the technical drawing aesthetic throughout.</p>
+  </div>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">SEC 03 — Layout</div>
+  <h2>Structure</h2>
+
+  <div class="card-grid">
+    <div class="spec-card line">
+      <div class="card-icon">LAYOUT-001</div>
+      <h4>Container</h4>
+      <p>Max-width 920px, centered, 2rem horizontal padding.</p>
+    </div>
+    <div class="spec-card line">
+      <div class="card-icon">LAYOUT-002</div>
+      <h4>Grid Background</h4>
+      <p>20px minor grid + 100px major grid in semi-transparent white on body.</p>
+    </div>
+    <div class="spec-card line">
+      <div class="card-icon">LAYOUT-003</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Solid 1px border-top dividers.</p>
+    </div>
+    <div class="spec-card line">
+      <div class="card-icon">LAYOUT-004</div>
+      <h4>No Border Radius</h4>
+      <p>Sharp corners on all elements. No rounded edges — everything is rectilinear.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">SEC 04 — Components</div>
+  <h2>Spec Cards</h2>
+  <p>Two-column grid with <strong>status-colored top bars</strong>. Sharp corners, no shadow, no hover effects — clean and technical.</p>
+
+  <div class="card-grid">
+    <div class="spec-card line">
+      <div class="card-icon">LINE</div>
+      <h4>.spec-card.line</h4>
+      <p>Blueprint cyan accent. Default working state.</p>
+    </div>
+    <div class="spec-card redline">
+      <div class="card-icon">REDLINE</div>
+      <h4>.spec-card.redline</h4>
+      <p>Red accent. Revisions, corrections, changes.</p>
+    </div>
+    <div class="spec-card approved">
+      <div class="card-icon">APPROVED</div>
+      <h4>.spec-card.approved</h4>
+      <p>Green accent. Signed off, complete.</p>
+    </div>
+    <div class="spec-card caution">
+      <div class="card-icon">CAUTION</div>
+      <h4>.spec-card.caution</h4>
+      <p>Amber accent. Warnings, pending items.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-line">
+      <div class="pipe-num">PHASE 01</div>
+      <div class="pipe-name">Design</div>
+      <div class="pipe-desc">.s-line</div>
+    </div>
+    <div class="pipe-stage s-caution">
+      <div class="pipe-num">PHASE 02</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">.s-caution</div>
+    </div>
+    <div class="pipe-stage s-redline">
+      <div class="pipe-num">PHASE 03</div>
+      <div class="pipe-name">Revise</div>
+      <div class="pipe-desc">.s-redline</div>
+    </div>
+    <div class="pipe-stage s-approved">
+      <div class="pipe-num">PHASE 04</div>
+      <div class="pipe-name">Approve</div>
+      <div class="pipe-desc">.s-approved</div>
+    </div>
+  </div>
+
+  <h2>Spec List</h2>
+  <p>Connected rows with condensed numbers. Items share borders (no gap) for a unified drawing feel.</p>
+
+  <div class="spec-list">
+    <div class="spec-item">
+      <div class="item-num">01</div>
+      <div>
+        <h4>Specification Item</h4>
+        <p>Items stack with shared borders — no gaps between rows. Numbers use Barlow Condensed in --line-dim.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">02</div>
+      <div>
+        <h4>Another Item</h4>
+        <p>This creates a table-like drawing schedule feel.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout Variants</h2>
+  <div class="callout">
+    <p><strong>Note:</strong> Default callout — blueprint line accent. For general notes and documentation.</p>
+  </div>
+  <div class="callout revision">
+    <p><strong>Revision:</strong> Redline callout — for markups, corrections, and change orders.</p>
+  </div>
+  <div class="callout approval">
+    <p><strong>Approved:</strong> Green callout — for sign-offs and accepted items.</p>
+  </div>
+  <div class="callout warning">
+    <p><strong>Caution:</strong> Amber callout — for warnings and pending conditions.</p>
+  </div>
+
+  <h2>Stamps</h2>
+  <p>Rotated bordered labels mimicking rubber stamps on engineering documents.</p>
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; align-items: center;">
+    <div class="stamp draft">Draft</div>
+    <div class="stamp review" style="transform: rotate(-2deg);">Under Review</div>
+    <div class="stamp revision" style="transform: rotate(-4deg);">Revision Required</div>
+    <div class="stamp approved" style="transform: rotate(-2.5deg);">Approved</div>
+  </div>
+
+  <h2>Title Block</h2>
+  <p>Structured metadata grid mimicking the title block on architectural drawings.</p>
+
+  <div class="title-block-standalone">
+    <div class="tb-cell">
+      <div class="tb-label">Project</div>
+      <div class="tb-value">Style Guide</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Drawing No.</div>
+      <div class="tb-value">DWG-001</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Revision</div>
+      <div class="tb-value">REV 01</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Date</div>
+      <div class="tb-value">2026-02-21</div>
+    </div>
+  </div>
+
+  <h2>Blueprint Container</h2>
+  <p>Diagram wrapper with a title block in the lower-right corner, like an engineering drawing sheet.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">DWG-002 — Component Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="170" height="70" fill="none" stroke="#4fc3f7" stroke-width="0.8"/>
+      <text x="105" y="42" text-anchor="middle" fill="#4fc3f7" font-size="8.5" font-weight="500" letter-spacing="0.1em">INPUT</text>
+      <text x="105" y="60" text-anchor="middle" fill="#4a6a8a" font-size="7.5">Data source</text>
+
+      <line x1="190" y1="45" x2="245" y2="45" stroke="#4fc3f7" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <polygon points="242,41 250,45 242,49" fill="#4fc3f7"/>
+
+      <rect x="250" y="10" width="170" height="70" fill="none" stroke="#4fc3f7" stroke-width="0.8"/>
+      <text x="335" y="42" text-anchor="middle" fill="#4fc3f7" font-size="8.5" font-weight="500" letter-spacing="0.1em">PROCESS</text>
+      <text x="335" y="60" text-anchor="middle" fill="#4a6a8a" font-size="7.5">Transform</text>
+
+      <line x1="420" y1="45" x2="475" y2="45" stroke="#4fc3f7" stroke-width="0.7" stroke-dasharray="4,3"/>
+      <polygon points="472,41 480,45 472,49" fill="#4fc3f7"/>
+
+      <rect x="480" y="10" width="140" height="70" fill="none" stroke="#66bb6a" stroke-width="0.8"/>
+      <text x="550" y="42" text-anchor="middle" fill="#66bb6a" font-size="8.5" font-weight="500" letter-spacing="0.1em">OUTPUT</text>
+      <text x="550" y="60" text-anchor="middle" fill="#4a6a8a" font-size="7.5">Verified</text>
+    </svg>
+    <div class="title-block">
+      <div class="tb-title">Component Flow</div>
+      <div class="tb-meta">DWG-002 · REV 01</div>
+    </div>
+  </div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>spec-card</td><td>.spec-card .line</td><td>Status class sets top bar</td></tr>
+      <tr><td>pipe-stage</td><td>.pipe-stage .s-redline</td><td>s- prefix for stage color</td></tr>
+      <tr><td>tag</td><td>.tag .t-approved</td><td>t- prefix, bordered pill</td></tr>
+      <tr><td>callout</td><td>.callout .revision</td><td>Variant class for color</td></tr>
+      <tr><td>stamp</td><td>.stamp .approved</td><td>Rotated bordered label</td></tr>
+      <tr><td>title-block</td><td>.title-block-standalone</td><td>Metadata grid</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">SEC 05 — Design Principles</div>
+  <h2>Key Patterns</h2>
+
+  <div class="spec-list">
+    <div class="spec-item">
+      <div class="item-num">01</div>
+      <div>
+        <h4>Blueprint Grid Background</h4>
+        <p>Two-scale grid overlay on the body (20px minor, 100px major) gives every page the feel of graph paper or a drafting surface.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">02</div>
+      <div>
+        <h4>Sharp Corners Everywhere</h4>
+        <p>Zero border-radius on all components — cards, pipeline stages, diagram containers, tags, callouts. Rectilinear geometry only.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">03</div>
+      <div>
+        <h4>Condensed Uppercase Headings</h4>
+        <p>Barlow Condensed with uppercase + letter-spacing for all headings. Mirrors the labeling style on engineering drawings.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">04</div>
+      <div>
+        <h4>Status-Driven Color System</h4>
+        <p>Five colors mapping to workflow states: line (working), redline (revision), approved (complete), caution (warning), note (annotation).</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">05</div>
+      <div>
+        <h4>Title Blocks & Drawing Numbers</h4>
+        <p>Diagram containers include a lower-right title block. Cards use drawing-number style labels (SPEC-001, DWG-002). Section labels use SEC prefixes.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">06</div>
+      <div>
+        <h4>No Decoration, Maximum Precision</h4>
+        <p>No shadows, no hover animations, no rounded corners, no gradients on components. Clean lines and flat surfaces — like a technical drawing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>ENGINEER · REV 01 · SPECIFICATION DOCUMENT</p>
+  </div>
+</footer>
+
+</body>
+</html>

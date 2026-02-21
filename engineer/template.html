@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">REV 01 · DRAFT</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">SEC 01 — Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and technical.</p>
+
+  <!-- Spec Cards -->
+  <div class="card-grid">
+    <div class="spec-card line">
+      <div class="card-icon">SPEC-001</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use status class names (line, redline, approved, caution, note) for the top accent bar.</p>
+    </div>
+    <div class="spec-card approved">
+      <div class="card-icon">SPEC-002</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="spec-card caution">
+      <div class="card-icon">SPEC-003</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="spec-card redline">
+      <div class="card-icon">SPEC-004</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout variants -->
+  <div class="callout">
+    <p><strong>Note:</strong> Default callout with blueprint line accent.</p>
+  </div>
+  <div class="callout revision">
+    <p><strong>Revision:</strong> Redline callout for changes and corrections.</p>
+  </div>
+  <div class="callout approval">
+    <p><strong>Approved:</strong> Green callout for sign-offs.</p>
+  </div>
+  <div class="callout warning">
+    <p><strong>Caution:</strong> Amber callout for warnings.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE ============ -->
+<section>
+  <div class="section-num">SEC 02 — Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-line">
+      <div class="pipe-num">PHASE 01</div>
+      <div class="pipe-name">Design</div>
+      <div class="pipe-desc">Initial specification</div>
+    </div>
+    <div class="pipe-stage s-caution">
+      <div class="pipe-num">PHASE 02</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">Technical review</div>
+    </div>
+    <div class="pipe-stage s-redline">
+      <div class="pipe-num">PHASE 03</div>
+      <div class="pipe-name">Revise</div>
+      <div class="pipe-desc">Apply redlines</div>
+    </div>
+    <div class="pipe-stage s-approved">
+      <div class="pipe-num">PHASE 04</div>
+      <div class="pipe-name">Approve</div>
+      <div class="pipe-desc">Final sign-off</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPEC LIST ============ -->
+<section>
+  <div class="section-num">SEC 03 — Specifications</div>
+  <h2>Spec List</h2>
+  <p>Use the spec list for ordered items with detailed descriptions.</p>
+
+  <div class="spec-list">
+    <div class="spec-item">
+      <div class="item-num">01</div>
+      <div>
+        <h4>Specification Title</h4>
+        <p>Specification description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">02</div>
+      <div>
+        <h4>Specification Title</h4>
+        <p>Specification description goes here.</p>
+      </div>
+    </div>
+    <div class="spec-item">
+      <div class="item-num">03</div>
+      <div>
+        <h4>Specification Title</h4>
+        <p>Specification description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE, TAGS, STAMPS ============ -->
+<section>
+  <div class="section-num">SEC 04 — Reference</div>
+  <h2>Data Table</h2>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Parameter</th><th>Value</th><th>Tolerance</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>max-width</td><td>920px</td><td>-</td></tr>
+      <tr><td>section-padding</td><td>5rem</td><td>-</td></tr>
+      <tr><td>border-width</td><td>1px</td><td>-</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tags</h3>
+  <p>
+    <span class="tag t-line">Blueprint</span>
+    <span class="tag t-redline">Redline</span>
+    <span class="tag t-approved">Approved</span>
+    <span class="tag t-caution">Caution</span>
+    <span class="tag t-note">Note</span>
+  </p>
+
+  <h3>Stamps</h3>
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; align-items: center;">
+    <div class="stamp draft">Draft</div>
+    <div class="stamp review" style="transform: rotate(-2deg);">Under Review</div>
+    <div class="stamp revision" style="transform: rotate(-4deg);">Revision Required</div>
+    <div class="stamp approved" style="transform: rotate(-2.5deg);">Approved</div>
+  </div>
+</section>
+
+<!-- ============ DIAGRAM ============ -->
+<section>
+  <div class="section-num">SEC 05 — Diagrams</div>
+  <h2>Blueprint Container</h2>
+  <p>Wrap SVGs or visuals in the diagram container. Includes a title block in the lower-right corner.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">DWG-001 — System Overview</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="15" width="180" height="75" rx="0" fill="none" stroke="#4fc3f7" stroke-width="1"/>
+      <text x="110" y="48" text-anchor="middle" fill="#4fc3f7" font-size="9" font-weight="500" letter-spacing="0.1em">MODULE A</text>
+      <text x="110" y="68" text-anchor="middle" fill="#4a6a8a" font-size="8">Primary input</text>
+
+      <line x1="200" y1="52" x2="260" y2="52" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <polygon points="257,48 265,52 257,56" fill="#4fc3f7"/>
+
+      <rect x="265" y="15" width="180" height="75" rx="0" fill="none" stroke="#4fc3f7" stroke-width="1"/>
+      <text x="355" y="48" text-anchor="middle" fill="#4fc3f7" font-size="9" font-weight="500" letter-spacing="0.1em">MODULE B</text>
+      <text x="355" y="68" text-anchor="middle" fill="#4a6a8a" font-size="8">Processing</text>
+
+      <line x1="445" y1="52" x2="505" y2="52" stroke="#4fc3f7" stroke-width="0.8" stroke-dasharray="4,3"/>
+      <polygon points="502,48 510,52 502,56" fill="#4fc3f7"/>
+
+      <rect x="510" y="15" width="140" height="75" rx="0" fill="none" stroke="#4fc3f7" stroke-width="1"/>
+      <text x="580" y="48" text-anchor="middle" fill="#4fc3f7" font-size="9" font-weight="500" letter-spacing="0.1em">MODULE C</text>
+      <text x="580" y="68" text-anchor="middle" fill="#4a6a8a" font-size="8">Output</text>
+    </svg>
+    <div class="title-block">
+      <div class="tb-title">System Overview</div>
+      <div class="tb-meta">DWG-001 · REV 01</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TITLE BLOCK ============ -->
+<section>
+  <div class="section-num">SEC 06 — Title Block</div>
+  <h2>Standalone Title Block</h2>
+  <p>Use for document metadata in a structured grid.</p>
+
+  <div class="title-block-standalone">
+    <div class="tb-cell">
+      <div class="tb-label">Project</div>
+      <div class="tb-value">Project Name</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Drawing No.</div>
+      <div class="tb-value">DWG-001</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Revision</div>
+      <div class="tb-value">REV 01</div>
+    </div>
+    <div class="tb-cell">
+      <div class="tb-label">Date</div>
+      <div class="tb-value">2026-02-21</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>DOCUMENT TITLE · REV 01 · CONFIDENTIAL</p>
+  </div>
+</footer>
+
+</body>
+</html>

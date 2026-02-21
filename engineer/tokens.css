@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ==============================
+   Engineer — Design Tokens
+   ============================== */
+
+:root {
+  /* Blueprint surfaces */
+  --bg: #0a1929;
+  --surface: #112240;
+  --surface-2: #162d50;
+  --border: #1e3a5f;
+  --border-light: #264a6e;
+  --grid: rgba(255, 255, 255, 0.025);
+  --grid-accent: rgba(255, 255, 255, 0.05);
+
+  /* Text */
+  --text: #e2e8f0;
+  --text-dim: #8ba3c4;
+  --text-faint: #4a6a8a;
+
+  /* Blueprint line (primary accent) */
+  --line: #4fc3f7;
+  --line-dim: #1a6fa0;
+  --line-fill: rgba(79, 195, 247, 0.08);
+
+  /* Status colors */
+  --redline: #ef5350;
+  --redline-dim: #7f2a29;
+  --redline-fill: rgba(239, 83, 80, 0.08);
+
+  --approved: #66bb6a;
+  --approved-dim: #2e6630;
+  --approved-fill: rgba(102, 187, 106, 0.08);
+
+  --caution: #ffb74d;
+  --caution-dim: #7a5a1e;
+  --caution-fill: rgba(255, 183, 77, 0.08);
+
+  --note: #ba68c8;
+  --note-dim: #5c346a;
+  --note-fill: rgba(186, 104, 200, 0.08);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(var(--grid-accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-accent) 1px, transparent 1px);
+  background-size:
+    20px 20px,
+    20px 20px,
+    100px 100px,
+    100px 100px;
+}
+
+/* ==============================
+   Typography
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.0;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  color: var(--line);
+}
+
+h4 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+
+/* ==============================
+   Labels & Numbering
+   ============================== */
+
+.section-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  display: inline-block;
+}
+
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--line-dim);
+  margin-bottom: 2rem;
+  padding: 0.4em 0.8em;
+  border: 1px solid var(--line-dim);
+}
+
+.diagram-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.25rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(79, 195, 247, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.hero h1 span {
+  color: var(--line);
+}
+
+.hero p {
+  max-width: 540px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  position: relative;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  position: relative;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.7s ease-out both;
+}
+.hero-label { animation-delay: 0s; }
+.hero h1 { animation-delay: 0.12s; }
+.hero p { animation-delay: 0.24s; }
+.hero-version { animation-delay: 0.36s; }
+
+/* ==============================
+   Spec Cards (2-column grid)
+   ============================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+.spec-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.spec-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.spec-card.line::before    { background: var(--line); }
+.spec-card.redline::before { background: var(--redline); }
+.spec-card.approved::before { background: var(--approved); }
+.spec-card.caution::before { background: var(--caution); }
+.spec-card.note::before    { background: var(--note); }
+
+.spec-card .card-icon {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.spec-card h4 { margin-bottom: 0.4rem; }
+
+.spec-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 130px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+
+.pipe-stage:first-child { border-left: 1px solid var(--border); }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.pipe-stage.s-line::before     { background: var(--line); }
+.pipe-stage.s-redline::before  { background: var(--redline); }
+.pipe-stage.s-approved::before { background: var(--approved); }
+.pipe-stage.s-caution::before  { background: var(--caution); }
+.pipe-stage.s-note::before     { background: var(--note); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: 0.3rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Spec List (numbered)
+   ============================== */
+
+.spec-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.spec-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.spec-item + .spec-item {
+  border-top: none;
+}
+
+.spec-item .item-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--line-dim);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.25rem;
+  text-align: center;
+}
+
+.spec-item h4 { margin-bottom: 0.3rem; }
+
+.spec-item p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout / Revision Note
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--line);
+  background: var(--line-fill);
+}
+
+.callout.revision {
+  border-left-color: var(--redline);
+  background: var(--redline-fill);
+}
+
+.callout.approval {
+  border-left-color: var(--approved);
+  background: var(--approved-fill);
+}
+
+.callout.warning {
+  border-left-color: var(--caution);
+  background: var(--caution-fill);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--text); }
+
+/* ==============================
+   Stamp
+   ============================== */
+
+.stamp {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border: 2px solid;
+  transform: rotate(-3deg);
+}
+
+.stamp.draft    { color: var(--caution); border-color: var(--caution); }
+.stamp.approved { color: var(--approved); border-color: var(--approved); }
+.stamp.revision { color: var(--redline); border-color: var(--redline); }
+.stamp.review   { color: var(--line); border-color: var(--line); }
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border: 1px solid;
+}
+
+.tag.t-line     { background: var(--line-fill);     color: var(--line);     border-color: var(--line-dim); }
+.tag.t-redline  { background: var(--redline-fill);  color: var(--redline);  border-color: var(--redline-dim); }
+.tag.t-approved { background: var(--approved-fill); color: var(--approved); border-color: var(--approved-dim); }
+.tag.t-caution  { background: var(--caution-fill);  color: var(--caution);  border-color: var(--caution-dim); }
+.tag.t-note     { background: var(--note-fill);     color: var(--note);     border-color: var(--note-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.info-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.78rem;
+}
+
+/* ==============================
+   Diagram / Blueprint Container
+   ============================== */
+
+.diagram-wrap {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  overflow-x: auto;
+  position: relative;
+}
+
+.diagram-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 180px;
+  height: 60px;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.diagram-wrap .title-block {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 180px;
+  height: 60px;
+  padding: 0.5rem 0.75rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.diagram-wrap .title-block .tb-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+
+.diagram-wrap .title-block .tb-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ==============================
+   Title Block (standalone)
+   ============================== */
+
+.title-block-standalone {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border: 1px solid var(--border-light);
+  margin: 2rem 0;
+}
+
+.title-block-standalone .tb-cell {
+  padding: 0.6rem 1rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.title-block-standalone .tb-cell:last-child {
+  border-right: none;
+}
+
+.title-block-standalone .tb-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.2rem;
+}
+
+.title-block-standalone .tb-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
