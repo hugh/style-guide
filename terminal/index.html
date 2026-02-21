@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminal — CRT Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+  }
+  .swatch {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color { height: 48px; }
+  .swatch-info { padding: 0.5rem 0.65rem; background: var(--surface); }
+  .swatch-info .swatch-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text);
+    margin-bottom: 0.1rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.55rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'VT323', monospace;
+    font-size: 2rem;
+    color: var(--phosphor);
+    text-shadow: var(--glow-dim);
+    line-height: 1.2;
+  }
+  .font-sample-body {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-system {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .file-link:hover { border-color: var(--phosphor-dim); }
+  .file-link .file-icon {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--phosphor);
+    letter-spacing: 0.08em;
+    flex-shrink: 0;
+  }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+
+  .inline-code {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.82rem;
+    background: var(--surface-2);
+    padding: 0.15em 0.4em;
+    color: var(--phosphor);
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--border); }
+  .text-tier-demo .tier-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.55rem;
+    color: var(--text-faint);
+    width: 5.5rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="boot-line">[<span class="ok">OK</span>] Display driver loaded</div>
+  <div class="boot-line">[<span class="ok">OK</span>] Phosphor initialized</div>
+  <div class="boot-line">[<span class="ok">OK</span>] Components mounted</div>
+  <div class="hero-label">Design System Reference</div>
+  <h1>Terminal<span class="cursor">&#x2588;</span></h1>
+  <p>A CRT-inspired design system with pure black backgrounds, phosphor green accents, scanline overlays, monospace everything, and the blinking warmth of a late-night console.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 3px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">./00-quickstart</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+
+  <div class="card-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">[HTML]</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">[CSS]</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Variables, reset, and all component styles</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">./01-palette</div>
+  <h2>CRT Black</h2>
+  <p>Pure black backgrounds with <strong>no color tint</strong> &mdash; unlike the blue-black of Physicist, the warm-brown of Train Station, or the purple of Vesper. This is a powered-off screen.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #080808;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#080808</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #101010;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#101010</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #181818;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#181818</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #222222;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#222222</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary &mdash; headings, commands, emphasis</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim &mdash; body text, output, descriptions</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint &mdash; comments, labels, metadata</div>
+    </div>
+  </div>
+
+  <h3>Phosphor Green (Primary)</h3>
+  <p>The signature accent &mdash; named for the phosphor coating on CRT screens that converts electron beams into visible green light.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #33ff33;"></div><div class="swatch-info"><div class="swatch-name">--phosphor</div><div class="swatch-hex">#33ff33</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #1a8a1a;"></div><div class="swatch-info"><div class="swatch-name">--phosphor-dim</div><div class="swatch-hex">#1a8a1a</div></div></div>
+  </div>
+
+  <h3>ANSI Palette</h3>
+  <p>Five secondary colors drawn from the standard ANSI terminal color set. Each has full, dim, and fill (5% opacity) variants.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #ff4444;"></div><div class="swatch-info"><div class="swatch-name">--red</div><div class="swatch-hex">#ff4444</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #ffaa22;"></div><div class="swatch-info"><div class="swatch-name">--amber</div><div class="swatch-hex">#ffaa22</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #22cccc;"></div><div class="swatch-info"><div class="swatch-name">--cyan</div><div class="swatch-hex">#22cccc</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #4488ff;"></div><div class="swatch-info"><div class="swatch-name">--blue</div><div class="swatch-hex">#4488ff</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #cc44cc;"></div><div class="swatch-info"><div class="swatch-name">--magenta</div><div class="swatch-hex">#cc44cc</div></div></div>
+  </div>
+
+  <p>Tags across the palette:
+    <span class="tag t-phosphor">Phosphor</span>
+    <span class="tag t-red">Red</span>
+    <span class="tag t-amber">Amber</span>
+    <span class="tag t-cyan">Cyan</span>
+    <span class="tag t-blue">Blue</span>
+    <span class="tag t-magenta">Magenta</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">./02-typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>All monospace, all the time.</strong> VT323 for display headings (pixel CRT feel), Fira Code for body text (clean, modern mono), Share Tech Mono for system labels (utilitarian).</p>
+
+  <div class="font-sample">
+    <div class="sample-label">VT323 &mdash; Headings, display text, numbers (400)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Fira Code &mdash; Body text, code, card content (300&ndash;700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Share Tech Mono &mdash; Labels, tags, section prompts, status</div>
+    <div class="font-sample-system">$ ./01-PALETTE &middot; PID 1024 &middot; RUNNING &middot; UP 4D 12:38</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>VT323</td><td>clamp(3rem, 8vw, 5rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>VT323</td><td>1.8rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Share Tech Mono</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Fira Code</td><td>0.82rem</td><td>600</td></tr>
+      <tr><td>Body</td><td>Fira Code</td><td>0.85rem</td><td>400</td></tr>
+      <tr><td>PID / number</td><td>VT323</td><td>1.4rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>Share Tech Mono</td><td>0.65rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Share Tech Mono</td><td>0.6rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cmd-block">
+    <p><strong>Note:</strong> VT323 is a pixel-style CRT font &mdash; it renders at integer sizes with no anti-aliasing at small sizes. Use it only for large display text (h1, h2, numbers).</p>
+  </div>
+</section>
+
+<!-- ============ LAYOUT & EFFECTS ============ -->
+<section>
+  <div class="section-num">./03-layout</div>
+  <h2>Structure &amp; Effects</h2>
+
+  <div class="card-grid">
+    <div class="pane-card phosphor">
+      <div class="card-pid">01</div>
+      <h4>Scanlines</h4>
+      <p>Repeating 4px gradient overlay on body::after. Subtle horizontal lines across the entire viewport.</p>
+    </div>
+    <div class="pane-card cyan">
+      <div class="card-pid">02</div>
+      <h4>Vignette</h4>
+      <p>Radial gradient on body::before. Edges darken like a CRT monitor bezel.</p>
+    </div>
+    <div class="pane-card amber">
+      <div class="card-pid">03</div>
+      <h4>Phosphor Glow</h4>
+      <p>text-shadow on headings. Simulates phosphor bleed where electrons hit the screen.</p>
+    </div>
+    <div class="pane-card magenta">
+      <div class="card-pid">04</div>
+      <h4>Cursor Blink</h4>
+      <p>Step-end animation on .cursor class. Block cursor &#x2588; blinks at 1s interval.</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="pane-card blue">
+      <div class="card-pid">05</div>
+      <h4>Container</h4>
+      <p>Max-width 880px, centered, 2rem padding. Same as other systems.</p>
+    </div>
+    <div class="pane-card red">
+      <div class="card-pid">06</div>
+      <h4>Zero Radius</h4>
+      <p>No border-radius anywhere. Pixels don&rsquo;t curve.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">./04-components</div>
+  <h2>Process Table</h2>
+  <p>The signature component &mdash; a <span class="inline-code">ps aux</span> style process listing with PID, command, status, CPU, and memory columns.</p>
+
+  <div class="proc-table">
+    <div class="proc-header">
+      Processes
+      <span class="uptime">up 4d 12:38</span>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1024</div>
+      <div class="proc-cmd">webpack-server</div>
+      <div class="proc-status running">Running</div>
+      <div class="proc-cpu">12.4%</div>
+      <div class="proc-mem">256M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1025</div>
+      <div class="proc-cmd">eslint</div>
+      <div class="proc-status done">Done</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">48M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1026</div>
+      <div class="proc-cmd">test-runner</div>
+      <div class="proc-status failed">Failed</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">128M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1027</div>
+      <div class="proc-cmd">deploy</div>
+      <div class="proc-status waiting">Waiting</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">0M</div>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Unix pipe-style process chain. Stages connected by <span class="inline-code">|</span> pipe characters.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">read</div>
+      <div class="pipe-desc">stdin</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">grep</div>
+      <div class="pipe-desc">filter</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">sort</div>
+      <div class="pipe-desc">transform</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">write</div>
+      <div class="pipe-desc">stdout</div>
+    </div>
+  </div>
+
+  <h2>Progress Bars</h2>
+  <div class="progress">
+    <div class="progress-label">build</div>
+    <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+    <div class="progress-pct">100%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-label">test</div>
+    <div class="progress-track"><div class="progress-fill" style="width: 72%;"></div></div>
+    <div class="progress-pct">72%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-label">deploy</div>
+    <div class="progress-track"><div class="progress-fill amber" style="width: 30%;"></div></div>
+    <div class="progress-pct" style="color: var(--amber);">30%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-label">audit</div>
+    <div class="progress-track"><div class="progress-fill red" style="width: 15%;"></div></div>
+    <div class="progress-pct" style="color: var(--red);">15%</div>
+  </div>
+
+  <h2>Session Card</h2>
+  <p>Connection component showing local and remote hosts with protocol indicator.</p>
+
+  <div class="session">
+    <div class="session-from">
+      <div class="session-label">Local</div>
+      <div class="session-host">user@dev</div>
+    </div>
+    <div class="session-arrow">&rarr;</div>
+    <div class="session-to">
+      <div class="session-label">Remote</div>
+      <div class="session-host">admin@prod</div>
+    </div>
+    <div class="session-proto">SSH</div>
+  </div>
+
+  <h2>Command Blocks</h2>
+  <p>Callout variants styled as terminal output. Four log levels.</p>
+
+  <div class="cmd-block">
+    <p><strong>$ echo:</strong> Default command block with phosphor accent.</p>
+  </div>
+  <div class="cmd-block warning">
+    <p><strong>warning:</strong> Amber variant for deprecation notices and cautions.</p>
+  </div>
+  <div class="cmd-block error">
+    <p><strong>stderr:</strong> Red variant for error output and failures.</p>
+  </div>
+  <div class="cmd-block success">
+    <p><strong>exit 0:</strong> Cyan variant for success confirmations.</p>
+  </div>
+
+  <h2>Pane Cards</h2>
+  <div class="card-grid">
+    <div class="pane-card phosphor">
+      <div class="card-pid">01</div>
+      <h4>.pane-card.phosphor</h4>
+      <p>Green accent. Primary processes.</p>
+    </div>
+    <div class="pane-card cyan">
+      <div class="card-pid">02</div>
+      <h4>.pane-card.cyan</h4>
+      <p>Cyan accent. Info, success.</p>
+    </div>
+    <div class="pane-card amber">
+      <div class="card-pid">03</div>
+      <h4>.pane-card.amber</h4>
+      <p>Amber accent. Warnings.</p>
+    </div>
+    <div class="pane-card red">
+      <div class="card-pid">04</div>
+      <h4>.pane-card.red</h4>
+      <p>Red accent. Errors, critical.</p>
+    </div>
+    <div class="pane-card blue">
+      <div class="card-pid">05</div>
+      <h4>.pane-card.blue</h4>
+      <p>Blue accent. Links, references.</p>
+    </div>
+    <div class="pane-card magenta">
+      <div class="card-pid">06</div>
+      <h4>.pane-card.magenta</h4>
+      <p>Magenta accent. Special, debug.</p>
+    </div>
+  </div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>.proc-table</td><td>.proc-row .running .done .failed .waiting</td><td>Process listing</td></tr>
+      <tr><td>.pipeline</td><td>.pipe-stage</td><td>Unix pipe chain</td></tr>
+      <tr><td>.progress</td><td>.progress-fill .amber .red .cyan</td><td>Progress bar</td></tr>
+      <tr><td>.session</td><td>.session-host .session-proto</td><td>SSH connection card</td></tr>
+      <tr><td>.cmd-block</td><td>.error .warning .success</td><td>Log-level callouts</td></tr>
+      <tr><td>.pane-card</td><td>.phosphor .cyan .amber .red .blue .magenta</td><td>ANSI-colored cards</td></tr>
+      <tr><td>.tag</td><td>.t-phosphor .t-cyan .t-amber .t-red .t-blue .t-magenta</td><td>Bordered monospace labels</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">./05-principles</div>
+  <h2>Key Patterns</h2>
+
+  <div class="num-list">
+    <div class="num-item">
+      <div class="item-num">1</div>
+      <div>
+        <h4>Pure CRT Black</h4>
+        <p>The darkest background of any system (#080808). No color tint &mdash; neutral black like a powered-off CRT screen. Surface layers add minimal gray.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">2</div>
+      <div>
+        <h4>Phosphor Green Primary</h4>
+        <p>Bright phosphor green (#33ff33) as the sole primary accent. Named for the P1 phosphor coating used in early monochrome monitors. Applied with text-shadow glow.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">3</div>
+      <div>
+        <h4>All Monospace</h4>
+        <p>Every font in the stack is monospace. VT323 (pixel CRT) for display, Fira Code (modern) for body, Share Tech Mono (system) for labels. No serif or sans-serif anywhere.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">4</div>
+      <div>
+        <h4>Scanline &amp; Vignette Overlay</h4>
+        <p>Two fixed pseudo-elements on body: repeating-linear-gradient scanlines (4px period) and a radial vignette. Both use pointer-events: none to stay non-interactive.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">5</div>
+      <div>
+        <h4>Process Table</h4>
+        <p>The signature unique component. A ps-style grid with PID, command, status, CPU, and memory columns. Status colors use the ANSI palette.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">6</div>
+      <div>
+        <h4>Command Prompt Labels</h4>
+        <p>Section labels are prefixed with a green $ prompt character via CSS ::before. Section names use file-path style (./01-palette) instead of numbered headings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament">EOF</div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Terminal &middot; v0.1 &middot; All Processes</p>
+  </div>
+</footer>
+
+</body>
+</html>

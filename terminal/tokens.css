@@ -1,0 +1,760 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ==============================
+   Terminal — Design Tokens
+   ============================== */
+
+:root {
+  /* CRT black */
+  --bg: #080808;
+  --surface: #101010;
+  --surface-2: #181818;
+  --border: #222222;
+  --border-light: #2c2c2c;
+
+  /* Text — gray phosphor */
+  --text: #a0a0a0;
+  --text-dim: #585858;
+  --text-faint: #2e2e2e;
+
+  /* Phosphor green — primary accent */
+  --phosphor: #33ff33;
+  --phosphor-dim: #1a8a1a;
+  --phosphor-fill: rgba(51, 255, 51, 0.05);
+
+  /* ANSI palette */
+  --red: #ff4444;
+  --red-dim: #882222;
+  --red-fill: rgba(255, 68, 68, 0.05);
+
+  --amber: #ffaa22;
+  --amber-dim: #886611;
+  --amber-fill: rgba(255, 170, 34, 0.05);
+
+  --cyan: #22cccc;
+  --cyan-dim: #116666;
+  --cyan-fill: rgba(34, 204, 204, 0.05);
+
+  --blue: #4488ff;
+  --blue-dim: #224488;
+  --blue-fill: rgba(68, 136, 255, 0.05);
+
+  --magenta: #cc44cc;
+  --magenta-dim: #662266;
+  --magenta-fill: rgba(204, 68, 204, 0.05);
+
+  /* Glow effects */
+  --glow: 0 0 10px rgba(51, 255, 51, 0.25);
+  --glow-dim: 0 0 5px rgba(51, 255, 51, 0.12);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Fira Code', monospace;
+  font-weight: 400;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT vignette */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 50%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ==============================
+   Typography
+   ============================== */
+
+h1, h2 {
+  font-family: 'VT323', monospace;
+  font-weight: 400;
+  color: var(--phosphor);
+  text-shadow: var(--glow-dim);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  color: var(--phosphor-dim);
+}
+
+h4 {
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Labels
+   ============================== */
+
+.section-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--phosphor-dim);
+  margin-bottom: 0.75rem;
+}
+
+.section-num::before {
+  content: '$ ';
+  color: var(--phosphor);
+}
+
+.hero-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.25rem;
+}
+
+/* ==============================
+   Blinking Cursor
+   ============================== */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline;
+  color: var(--phosphor);
+  animation: blink 1s step-end infinite;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  text-shadow: var(--glow);
+}
+
+.hero h1 span {
+  color: var(--phosphor);
+}
+
+.hero p {
+  max-width: 520px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+}
+
+/* Boot sequence lines */
+.boot-line {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-bottom: 0.25rem;
+}
+
+.boot-line .ok   { color: var(--phosphor); }
+.boot-line .fail { color: var(--red); }
+.boot-line .warn { color: var(--amber); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero > * {
+  animation: fadeUp 0.4s ease-out both;
+}
+
+.hero > :nth-child(1) { animation-delay: 0s; }
+.hero > :nth-child(2) { animation-delay: 0.1s; }
+.hero > :nth-child(3) { animation-delay: 0.2s; }
+.hero > :nth-child(4) { animation-delay: 0.3s; }
+.hero > :nth-child(5) { animation-delay: 0.4s; }
+.hero > :nth-child(6) { animation-delay: 0.5s; }
+.hero > :nth-child(7) { animation-delay: 0.6s; }
+.hero > :nth-child(8) { animation-delay: 0.7s; }
+
+/* ==============================
+   Process Table
+   ============================== */
+
+.proc-table {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.proc-header {
+  background: var(--surface-2);
+  padding: 0.6rem 1.25rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--phosphor-dim);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proc-header .uptime {
+  font-family: 'Fira Code', monospace;
+  color: var(--text-faint);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.proc-row {
+  display: grid;
+  grid-template-columns: 70px 1fr 110px 70px 70px;
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .proc-row { grid-template-columns: 60px 1fr 90px; }
+  .proc-row .proc-cpu,
+  .proc-row .proc-mem { display: none; }
+}
+
+.proc-row .proc-pid {
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.proc-row .proc-cmd {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.proc-row .proc-status {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: right;
+}
+
+.proc-row .proc-cpu,
+.proc-row .proc-mem {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+.proc-row .proc-status.running  { color: var(--phosphor); }
+.proc-row .proc-status.done     { color: var(--cyan); }
+.proc-row .proc-status.failed   { color: var(--red); }
+.proc-row .proc-status.waiting  { color: var(--amber); }
+
+/* ==============================
+   Pane Cards (2-column grid)
+   ============================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+.pane-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pane-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+
+.pane-card.phosphor::before  { background: var(--phosphor); }
+.pane-card.cyan::before      { background: var(--cyan); }
+.pane-card.amber::before     { background: var(--amber); }
+.pane-card.red::before       { background: var(--red); }
+.pane-card.blue::before      { background: var(--blue); }
+.pane-card.magenta::before   { background: var(--magenta); }
+
+.pane-card .card-pid {
+  font-family: 'VT323', monospace;
+  font-size: 1.4rem;
+  color: var(--text-faint);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.pane-card h4 { margin-bottom: 0.4rem; }
+
+.pane-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 120px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--phosphor-dim);
+}
+
+.pipe-stage + .pipe-stage::after {
+  content: '|';
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Fira Code', monospace;
+  font-size: 1rem;
+  color: var(--phosphor-dim);
+  z-index: 1;
+  background: var(--bg);
+  padding: 0.1rem 0;
+  line-height: 1;
+}
+
+.pipe-stage .pipe-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  margin-bottom: 0.25rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'VT323', monospace;
+  font-size: 1.15rem;
+  color: var(--phosphor);
+  text-shadow: var(--glow-dim);
+  margin-bottom: 0.15rem;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Numbered List
+   ============================== */
+
+.num-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.num-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.num-item + .num-item { border-top: none; }
+
+.num-item .item-num {
+  font-family: 'VT323', monospace;
+  font-size: 1.6rem;
+  color: var(--phosphor-dim);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+}
+
+.num-item h4 { margin-bottom: 0.3rem; }
+
+.num-item p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Command Block (Callout)
+   ============================== */
+
+.cmd-block {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--phosphor-dim);
+  background: var(--phosphor-fill);
+}
+
+.cmd-block.error {
+  border-left-color: var(--red-dim);
+  background: var(--red-fill);
+}
+
+.cmd-block.warning {
+  border-left-color: var(--amber-dim);
+  background: var(--amber-fill);
+}
+
+.cmd-block.success {
+  border-left-color: var(--cyan-dim);
+  background: var(--cyan-fill);
+}
+
+.cmd-block p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.cmd-block strong { color: var(--text); }
+
+/* ==============================
+   Session (Connection card)
+   ============================== */
+
+.session {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.session-from,
+.session-to {
+  text-align: center;
+}
+
+.session-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.15rem;
+}
+
+.session-host {
+  font-family: 'Fira Code', monospace;
+  font-weight: 500;
+  font-size: 0.82rem;
+  color: var(--phosphor);
+}
+
+.session-arrow {
+  font-size: 1rem;
+  color: var(--text-faint);
+}
+
+.session-proto {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  color: var(--cyan);
+  padding-left: 1rem;
+  border-left: 1px solid var(--border);
+}
+
+/* ==============================
+   Progress Bar
+   ============================== */
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.progress-label {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  min-width: 80px;
+  text-align: right;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--phosphor);
+  box-shadow: var(--glow-dim);
+  transition: width 0.3s;
+}
+
+.progress-fill.amber { background: var(--amber); box-shadow: none; }
+.progress-fill.red   { background: var(--red); box-shadow: none; }
+.progress-fill.cyan  { background: var(--cyan); box-shadow: none; }
+
+.progress-pct {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.72rem;
+  color: var(--phosphor);
+  min-width: 2.5rem;
+}
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border: 1px solid;
+}
+
+.tag.t-phosphor { background: var(--phosphor-fill); color: var(--phosphor); border-color: var(--phosphor-dim); }
+.tag.t-red      { background: var(--red-fill);      color: var(--red);      border-color: var(--red-dim); }
+.tag.t-amber    { background: var(--amber-fill);    color: var(--amber);    border-color: var(--amber-dim); }
+.tag.t-cyan     { background: var(--cyan-fill);     color: var(--cyan);     border-color: var(--cyan-dim); }
+.tag.t-blue     { background: var(--blue-fill);     color: var(--blue);     border-color: var(--blue-dim); }
+.tag.t-magenta  { background: var(--magenta-fill);  color: var(--magenta);  border-color: var(--magenta-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.6rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ==============================
+   Diagram Container
+   ============================== */
+
+.diagram-wrap {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Fira Code', monospace;
+}
+
+/* ==============================
+   Ornament
+   ============================== */
+
+.ornament {
+  text-align: center;
+  margin: 3rem 0;
+  color: var(--text-faint);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.62rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

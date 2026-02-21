@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="boot-line">[<span class="ok">OK</span>] System initialized</div>
+  <div class="boot-line">[<span class="ok">OK</span>] Loading document</div>
+  <div class="hero-label">Category or Context</div>
+  <h1>Document Title<span class="cursor">&#x2588;</span></h1>
+  <p>A brief description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; Draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">./01-section-name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> for emphasis. Body text renders in the dim gray color by default.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsections use Share Tech Mono uppercase headings in phosphor-dim.</p>
+
+  <!-- Process Table -->
+  <div class="proc-table">
+    <div class="proc-header">
+      Processes
+      <span class="uptime">up 4d 12:38</span>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1024</div>
+      <div class="proc-cmd">webpack-server</div>
+      <div class="proc-status running">Running</div>
+      <div class="proc-cpu">12.4%</div>
+      <div class="proc-mem">256M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1025</div>
+      <div class="proc-cmd">eslint</div>
+      <div class="proc-status done">Done</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">48M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1026</div>
+      <div class="proc-cmd">test-runner</div>
+      <div class="proc-status failed">Failed</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">128M</div>
+    </div>
+    <div class="proc-row">
+      <div class="proc-pid">1027</div>
+      <div class="proc-cmd">deploy</div>
+      <div class="proc-status waiting">Waiting</div>
+      <div class="proc-cpu">0.0%</div>
+      <div class="proc-mem">0M</div>
+    </div>
+  </div>
+
+  <!-- Command block variants -->
+  <div class="cmd-block">
+    <p><strong>$ echo:</strong> Default command block with phosphor accent.</p>
+  </div>
+  <div class="cmd-block warning">
+    <p><strong>warning:</strong> Amber variant for deprecation notices and cautions.</p>
+  </div>
+  <div class="cmd-block error">
+    <p><strong>stderr:</strong> Red variant for error output and failures.</p>
+  </div>
+  <div class="cmd-block success">
+    <p><strong>exit 0:</strong> Cyan variant for success confirmations.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE ============ -->
+<section>
+  <div class="section-num">./02-pipeline</div>
+  <h2>Pipeline</h2>
+  <p>Use the pipeline component to show a sequence of connected processes.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">read</div>
+      <div class="pipe-desc">stdin</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">grep</div>
+      <div class="pipe-desc">filter</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">sort</div>
+      <div class="pipe-desc">transform</div>
+    </div>
+    <div class="pipe-stage">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">write</div>
+      <div class="pipe-desc">stdout</div>
+    </div>
+  </div>
+
+  <!-- Progress bars -->
+  <h3>Progress</h3>
+  <div class="progress">
+    <div class="progress-label">build</div>
+    <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
+    <div class="progress-pct">100%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-label">test</div>
+    <div class="progress-track"><div class="progress-fill" style="width: 72%;"></div></div>
+    <div class="progress-pct">72%</div>
+  </div>
+  <div class="progress">
+    <div class="progress-label">deploy</div>
+    <div class="progress-track"><div class="progress-fill amber" style="width: 30%;"></div></div>
+    <div class="progress-pct" style="color: var(--amber);">30%</div>
+  </div>
+</section>
+
+<!-- ============ CARDS ============ -->
+<section>
+  <div class="section-num">./03-panes</div>
+  <h2>Pane Cards</h2>
+
+  <div class="card-grid">
+    <div class="pane-card phosphor">
+      <div class="card-pid">01</div>
+      <h4>Card Title</h4>
+      <p>Use color classes (phosphor, cyan, amber, red, blue, magenta).</p>
+    </div>
+    <div class="pane-card cyan">
+      <div class="card-pid">02</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="pane-card amber">
+      <div class="card-pid">03</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="pane-card red">
+      <div class="card-pid">04</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SESSION ============ -->
+<section>
+  <div class="section-num">./04-session</div>
+  <h2>Session Card</h2>
+  <p>Inline connection component showing source and destination hosts.</p>
+
+  <div class="session">
+    <div class="session-from">
+      <div class="session-label">Local</div>
+      <div class="session-host">user@dev</div>
+    </div>
+    <div class="session-arrow">&rarr;</div>
+    <div class="session-to">
+      <div class="session-label">Remote</div>
+      <div class="session-host">admin@prod</div>
+    </div>
+    <div class="session-proto">SSH</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST ============ -->
+<section>
+  <div class="section-num">./05-list</div>
+  <h2>Numbered List</h2>
+
+  <div class="num-list">
+    <div class="num-item">
+      <div class="item-num">1</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">2</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+    <div class="num-item">
+      <div class="item-num">3</div>
+      <div>
+        <h4>Item Title</h4>
+        <p>Description text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE & TAGS ============ -->
+<section>
+  <div class="section-num">./06-reference</div>
+  <h2>Data Table</h2>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Command</th><th>Description</th><th>Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>grep</td><td>Search patterns</td><td>grep -r "pattern" .</td></tr>
+      <tr><td>awk</td><td>Text processing</td><td>awk '{print $1}'</td></tr>
+      <tr><td>sed</td><td>Stream editor</td><td>sed 's/old/new/g'</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Tags</h3>
+  <p>
+    <span class="tag t-phosphor">Phosphor</span>
+    <span class="tag t-cyan">Cyan</span>
+    <span class="tag t-amber">Amber</span>
+    <span class="tag t-red">Red</span>
+    <span class="tag t-blue">Blue</span>
+    <span class="tag t-magenta">Magenta</span>
+  </p>
+</section>
+
+<!-- ============ ORNAMENT ============ -->
+<div class="ornament">EOF</div>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; All Systems</p>
+  </div>
+</footer>
+
+</body>
+</html>
