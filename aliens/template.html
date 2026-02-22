@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 // draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9762;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#10052;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Warning:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Detect</div>
+      <div class="pipe-desc">Motion tracker sweep</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Identify</div>
+      <div class="pipe-desc">Bio-scan analysis</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Contain</div>
+      <div class="pipe-desc">Seal bulkheads</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Purge</div>
+      <div class="pipe-desc">Vent to vacuum</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ALIENS-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Alerts</div>
+  <h2>Motion Tracker</h2>
+  <p>Circular radar display with animated sweep and contact blips.</p>
+
+  <div class="motion-tracker">
+    <div class="tracker-label">Motion Sensor // Active</div>
+    <div class="tracker-scope">
+      <div class="tracker-sweep"></div>
+      <div class="tracker-blip" style="top: 40%; left: 65%;"></div>
+      <div class="tracker-blip" style="top: 60%; left: 35%;"></div>
+    </div>
+    <div class="tracker-readout">2 contacts // range: 15m</div>
+  </div>
+
+  <h3>Airlock Warning</h3>
+  <p>Industrial hazard panel with chevron stripe and status indicators.</p>
+
+  <div class="airlock-warning">
+    <div class="airlock-stripe"></div>
+    <div class="airlock-body">
+      <div class="airlock-header">Airlock B-7 // Status</div>
+      <p><strong>Cycle complete.</strong> Airlock warning panels feature a hazard-stripe header, bolted corners, and operational status indicators.</p>
+      <div class="airlock-status">
+        <span class="status-item active">Pressurized</span>
+        <span class="status-item warning">Cycle Active</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Bio-Scan Card</h3>
+  <p>Specimen analysis card with vital stats and scanning animation.</p>
+
+  <div class="bio-scan">
+    <div class="scan-header">
+      <span class="specimen-id">Specimen Alpha</span>
+      <span class="classification">Classified</span>
+    </div>
+    <div class="scan-body">
+      <div class="scan-silhouette">
+        <svg viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="15" rx="10" ry="14" fill="none" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="29" x2="40" y2="65" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="38" x2="20" y2="52" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="38" x2="60" y2="52" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="65" x2="25" y2="90" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="65" x2="55" y2="90" stroke="#a8d430" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="scan-stats">
+        <div class="stat-row">
+          <span class="stat-label">Species</span>
+          <span class="stat-value">Unknown</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Height</span>
+          <span class="stat-value">1.8m</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Threat</span>
+          <span class="stat-value caution">Moderate</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Life Signs</span>
+          <span class="stat-value nominal">Active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Acid Drip Divider</h3>
+  <p>SVG section separator with animated acid drips.</p>
+
+  <div class="acid-drip-divider">
+    <svg viewBox="0 0 700 50" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,8 L120,8 L125,6 L140,10 L160,7 L200,9 L220,7 L280,8 L300,6 L320,10 L350,7 L400,9 L420,7 L460,8 L480,6 L520,9 L540,8 L580,7 L620,9 L650,8 L700,8" fill="none" stroke="#a8d430" stroke-width="1.5" opacity="0.4"/>
+      <g class="drip">
+        <path d="M160,10 Q160,20 158,28 Q157,34 160,36 Q163,34 162,28 Q160,20 160,10Z" fill="#a8d430" opacity="0.5"/>
+      </g>
+      <g class="drip">
+        <path d="M310,10 Q310,22 308,32 Q307,40 310,42 Q313,40 312,32 Q310,22 310,10Z" fill="#a8d430" opacity="0.4"/>
+      </g>
+      <g class="drip">
+        <path d="M470,9 Q470,18 468,25 Q467,30 470,32 Q473,30 472,25 Q470,18 470,9Z" fill="#a8d430" opacity="0.45"/>
+      </g>
+      <g class="drip">
+        <path d="M580,8 Q580,16 578,22 Q577,27 580,28 Q583,27 582,22 Q580,16 580,8Z" fill="#a8d430" opacity="0.4"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Protocols</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Designation</th><th>Classification</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Subject Alpha</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+      <tr>
+        <td>Subject Beta</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+      <tr>
+        <td>Subject Gamma</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">specimen</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">hostile</span>
+    <span class="tag t-batch">cryo</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Containment Protocol</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10">DETECTION</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Motion tracker</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="10">BIO-SCAN</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Classify organism</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--execute)" font-size="10">PURGE</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Vent airlock</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title // v0.1 // Classified</p>
+  </div>
+</footer>
+
+</body>
+</html>

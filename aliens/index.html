@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aliens — Xenomorph Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Black Ops One', cursive;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .font-sample-body {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(168, 212, 48, 0.1);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">USCSS Nostromo // Design System Reference</div>
+  <h1><span>Aliens</span></h1>
+  <p>Claustrophobic and industrial. A design system inspired by the dark corridors of deep-space freight vessels &mdash; corrugated steel, acid-green terminal readouts, and motion tracker sweeps for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9762;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Cold steel and deep void &mdash; the interior of a derelict ship corridor. Surfaces layer like bulkhead panels in flickering emergency lighting.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #08080a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#08080a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #111214;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#111214</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1b1e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1a1b1e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #222428;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#222428</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2e3035;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2e3035</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of washed-out terminal phosphor create clear information hierarchy against the dark hull.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text);">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>An acid yellow-green primary accent plus four semantic colors mapped to ship operations. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a8d430;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#a8d430</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a8d430;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#a8d430</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4a020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d4a020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d03020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#d03020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4878a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4878a8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #5c7418;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#5c7418</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #5c7418;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#5c7418</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6810;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a6810</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #881810;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#881810</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c4c70;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2c4c70</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">specimen</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">hostile</span>
+    <span class="tag t-batch">cryo</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Two Google Fonts. <strong>Stencil-military display for headings</strong>, <strong>monospace terminal for everything else</strong> &mdash; the entire document reads like a Nostromo crew terminal.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Black Ops One &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Share Tech Mono &mdash; Body text, labels, tags, metadata, everything else</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses the terminal monospace throughout, reinforcing the Nostromo computer interface aesthetic. <strong>Strong text</strong> uses the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Black Ops One</td><td>clamp(3rem, 9vw, 6rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Black Ops One</td><td>2rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Black Ops One</td><td>1.3rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Share Tech Mono</td><td>0.85rem</td><td>400</td></tr>
+      <tr><td>Body paragraph</td><td>Share Tech Mono</td><td>0.9rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Share Tech Mono</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>Share Tech Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Share Tech Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like bulkhead compartments separated by structural borders.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace terminal label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain an acid glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9762;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Acid Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Caution Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Emergency Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#10052;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Cold Steel Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Detect</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Identify</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Contain</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Cryo</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Purge</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered protocols, directives, or corporate mandates.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Description text using .principle-num for the large stencil number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Protocol</h4>
+        <p>Numbers render in Black Ops One at 2rem in --accent color (acid green).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in acid green.</p>
+
+  <div class="callout">
+    <p><strong>Warning:</strong> This is a callout. It uses a 3px left border in --accent with a faint acid-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Motion Tracker</td><td>.motion-tracker</td><td>Radar sweep with animated blips</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#111214" stroke="#a8d430" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#a8d430" font-size="10">SCANNER</text>
+      <text x="110" y="65" text-anchor="middle" fill="#4a4840" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#4a4840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#111214" stroke="#d4a020" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d4a020" font-size="10">PROCESSOR</text>
+      <text x="350" y="65" text-anchor="middle" fill="#4a4840" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#4a4840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#111214" stroke="#4878a8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4878a8" font-size="10">DATABANK</text>
+      <text x="590" y="65" text-anchor="middle" fill="#4a4840" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Aliens Components</div>
+  <h2>Motion Tracker</h2>
+  <p>A circular radar display with animated sweep arm, range rings, and pulsing contact blips. Inspired by the iconic motion tracker from the Nostromo.</p>
+
+  <div class="motion-tracker">
+    <div class="tracker-label">Motion Sensor // Active</div>
+    <div class="tracker-scope">
+      <div class="tracker-sweep"></div>
+      <div class="tracker-blip" style="top: 35%; left: 60%;"></div>
+      <div class="tracker-blip" style="top: 55%; left: 30%;" ></div>
+      <div class="tracker-blip" style="top: 25%; left: 45%;"></div>
+    </div>
+    <div class="tracker-readout">3 contacts // range: 20m // closing</div>
+  </div>
+
+  <h2>Airlock Warning</h2>
+  <p>An industrial hazard panel with yellow/black chevron stripe, bolted frame corners, and status indicators. Use for critical system warnings and airlock operation states.</p>
+
+  <div class="airlock-warning">
+    <div class="airlock-stripe"></div>
+    <div class="airlock-body">
+      <div class="airlock-header">Airlock C-12 // Pressure Advisory</div>
+      <p><strong>Cycling in progress.</strong> Inner door sealed. Atmosphere venting to vacuum. The airlock warning uses a hazard-stripe header bar and industrial bolted frame for high-visibility alerts.</p>
+      <div class="airlock-status">
+        <span class="status-item active">Sealed</span>
+        <span class="status-item warning">Venting</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Bio-Scan Card</h2>
+  <p>A specimen analysis card with taxonomy-style header, classification stamp, vital stats grid, and animated scanning line. Use for data-heavy profile or inventory entries.</p>
+
+  <div class="bio-scan">
+    <div class="scan-header">
+      <span class="specimen-id">Specimen XX-121</span>
+      <span class="classification">Xenomorph</span>
+    </div>
+    <div class="scan-body">
+      <div class="scan-silhouette">
+        <svg viewBox="0 0 80 100" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="40" cy="15" rx="10" ry="14" fill="none" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="29" x2="40" y2="65" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="38" x2="20" y2="52" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="38" x2="60" y2="52" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="65" x2="25" y2="90" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="65" x2="55" y2="90" stroke="#a8d430" stroke-width="1"/>
+          <line x1="40" y1="45" x2="12" y2="75" stroke="#a8d430" stroke-width="0.5" stroke-dasharray="2,2"/>
+          <line x1="40" y1="45" x2="68" y2="75" stroke="#a8d430" stroke-width="0.5" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
+      <div class="scan-stats">
+        <div class="stat-row">
+          <span class="stat-label">Species</span>
+          <span class="stat-value">Internecivus raptus</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Height</span>
+          <span class="stat-value">2.4m</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Blood pH</span>
+          <span class="stat-value danger">&lt;1.0 // molecular acid</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Threat</span>
+          <span class="stat-value danger">Extreme</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Exoskeleton</span>
+          <span class="stat-value caution">Silicone-based</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Life Signs</span>
+          <span class="stat-value nominal">Active</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Acid Drip Divider</h2>
+  <p>An SVG section separator with a corroded line and dripping acid-green blobs. The drips animate with a slow downward pulse. Use between sections for thematic separation.</p>
+
+  <div class="acid-drip-divider">
+    <svg viewBox="0 0 700 50" xmlns="http://www.w3.org/2000/svg">
+      <!-- Corroded base line -->
+      <path d="M0,8 L120,8 L125,6 L140,10 L160,7 L200,9 L220,7 L280,8 L300,6 L320,10 L350,7 L400,9 L420,7 L460,8 L480,6 L520,9 L540,8 L580,7 L620,9 L650,8 L700,8" fill="none" stroke="#a8d430" stroke-width="1.5" opacity="0.4"/>
+      <!-- Drips -->
+      <g class="drip">
+        <path d="M160,10 Q160,20 158,28 Q157,34 160,36 Q163,34 162,28 Q160,20 160,10Z" fill="#a8d430" opacity="0.5"/>
+      </g>
+      <g class="drip">
+        <path d="M310,10 Q310,22 308,32 Q307,40 310,42 Q313,40 312,32 Q310,22 310,10Z" fill="#a8d430" opacity="0.4"/>
+      </g>
+      <g class="drip">
+        <path d="M470,9 Q470,18 468,25 Q467,30 470,32 Q473,30 472,25 Q470,18 470,9Z" fill="#a8d430" opacity="0.45"/>
+      </g>
+      <g class="drip">
+        <path d="M240,9 Q240,15 239,20 Q238,24 240,25 Q242,24 241,20 Q240,15 240,9Z" fill="#a8d430" opacity="0.35"/>
+      </g>
+      <g class="drip">
+        <path d="M580,8 Q580,16 578,22 Q577,27 580,28 Q583,27 582,22 Q580,16 580,8Z" fill="#a8d430" opacity="0.4"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Aliens system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Cold Steel, Not Black</h4>
+        <p>Backgrounds use blue-tinted near-blacks like cold ship hull plating, not warm tones. This creates the claustrophobic interior of a deep-space vessel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Acid Blood Glow</h4>
+        <p>The primary accent is a sickly yellow-green evoking xenomorph molecular acid. It casts a toxic glow on interactive elements and highlights.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Industrial Semantics</h4>
+        <p>Four semantic colors map to ship operations: acid green (bio-scan), caution amber (warning), emergency red (hostile), cold steel blue (cryogenics).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Terminal Monospace</h4>
+        <p>Share Tech Mono for all body text gives the entire document the feel of a Nostromo crew terminal readout. No serif or sans-serif body text.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Stencil-Stamped Headings</h4>
+        <p>Black Ops One delivers military stencil headings that echo WEYLAND-YUTANI corporate branding and military equipment markings.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Industrial Hardware</h4>
+        <p>Airlock warnings, hazard stripes, bolt corners, and corrugated textures bring real industrial infrastructure into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Corrugated Texture</h4>
+        <p>The hero section uses repeating linear gradients to simulate corrugated metal hull plating and vertical structural ribbing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Aliens &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
