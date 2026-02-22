@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doodle — Sketchbook Ink Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sketch);
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .font-sample-body {
+    font-family: 'Rubik', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    letter-spacing: 0.03em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sketch);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sketch);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px dashed var(--border);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Doodle</span></h1>
+  <p>A warm sketchbook design system with ink textures, hand-drawn borders, typewriter metadata, and muted ink-tone semantic colors for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">Pg. 00 — Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128221;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127912;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">Pg. 01 — Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm cream paper tones &mdash; not pure white. Surfaces create gentle depth like layered sketchbook pages.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f5f0e6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f5f0e6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ede8dc;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#ede8dc</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e6e0d2;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e6e0d2</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ddd7c8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#ddd7c8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8c0b0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c8c0b0</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of sepia ink create clear information hierarchy. Body text defaults to dim; headings and emphasis use the darkest ink.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Ink Colors</h3>
+  <p>A sepia primary accent plus four ink colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8b6914;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b6914</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2d6a3f;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#2d6a3f</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #5b3a8c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#5b3a8c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a83228;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83228</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a5276;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#1a5276</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b8960e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#b8960e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #5a9970;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#5a9970</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6bb8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a6bb8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #cc6860;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#cc6860</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4a88b0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#4a88b0</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with ink borders:
+    <span class="tag t-capture">capture</span>
+    <span class="tag t-refine">refine</span>
+    <span class="tag t-execute">execute</span>
+    <span class="tag t-batch">batch</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">Pg. 02 — Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Hand-lettered for headings</strong>, <strong>clean sans for body</strong>, <strong>typewriter for metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Shadows Into Light Two &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Rubik &mdash; Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 300 by default. <strong>Strong text uses weight 500</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Special Elite &mdash; Labels, tags, section numbers, metadata</div>
+    <div class="font-sample-mono">Pg. 01 &mdash; SECTION LABEL &middot; v0.1 &middot; TYPEWRITER INK</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Shadows Into Light Two</td><td>clamp(3rem, 8vw, 5.5rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Shadows Into Light Two</td><td>2.2rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Shadows Into Light Two</td><td>1.5rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Rubik</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Rubik</td><td>0.95rem</td><td>300</td></tr>
+      <tr><td>Card body</td><td>Rubik</td><td>0.82rem</td><td>300</td></tr>
+      <tr><td>Section label</td><td>Special Elite</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Special Elite</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">Pg. 03 — Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and dashed separators.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9986;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 2px dashed border-top in --border color.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams and sketch panels can break out to 1100px max-width.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>typewriter page label</strong> in the format <span class="inline-code">Pg. 01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">Pg. 04 — Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong> and hand-drawn borders. Cards have a subtle rotation for a sketched feel.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127811;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Ink Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128156;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Ink Violet top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128308;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Ink Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128309;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Ink Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Capture</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Refine</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Execute</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Done</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with hand-lettered display numbers. Good for ordered principles, steps, or rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Description text using .principle-num for the large hand-drawn number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Shadows Into Light Two at 1.8rem in --accent color.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in the sepia accent.</p>
+
+  <div class="callout">
+    <p><strong>Important:</strong> This is a callout. It uses a 3px left border in --accent with a barely-visible sepia tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Minimal data tables with dashed row borders and uppercase headers.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Ink Stamp</td><td>.ink-stamp .stamp-approve</td><td>Stamp variant sets ink color</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Rounded surface panel with hand-drawn borders for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#ede8dc" stroke="#2d6a3f" stroke-width="1.5"/>
+      <text x="110" y="45" text-anchor="middle" fill="#2d6a3f" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#a09888" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#a09888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#ede8dc" stroke="#8b6914" stroke-width="1.5"/>
+      <text x="350" y="45" text-anchor="middle" fill="#8b6914" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#a09888" font-size="9">stroke: --accent</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#a09888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#ede8dc" stroke="#a83228" stroke-width="1.5"/>
+      <text x="590" y="45" text-anchor="middle" fill="#a83228" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#a09888" font-size="9">stroke: --execute</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">Pg. 05 — Doodle Components</div>
+  <h2>Notebook Page</h2>
+  <p>A ruled-line background with a red margin line &mdash; like an actual artist's notebook page. Best for short annotations and notes.</p>
+
+  <div class="notebook-page">
+    <p>Write your notes here on the ruled lines. The text lines up with the faint horizontal rules, and the red margin line runs down the left edge just like a real notebook.</p>
+    <p>This works best for short-form text and marginalia-style annotations.</p>
+  </div>
+
+  <h2>Ink Stamps</h2>
+  <p>Rubber-stamp style inline labels with a slight rotation. Four variants plus a default red:</p>
+
+  <p style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin: 1.5rem 0;">
+    <span class="ink-stamp stamp-approve">Approved</span>
+    <span class="ink-stamp stamp-review">Review</span>
+    <span class="ink-stamp stamp-draft">Draft</span>
+    <span class="ink-stamp">Rejected</span>
+  </p>
+
+  <h2>Doodle Divider</h2>
+  <p>An ornamental <span class="inline-code">~ ~ ~</span> separator in the heading font. Use between major content sections as a softer alternative to dashed borders.</p>
+
+  <div class="doodle-divider"></div>
+
+  <h2>Sketch Panel</h2>
+  <p>A diagram container with a crosshatch background pattern, like graph paper in a sketchbook. Add <span class="inline-code">full-bleed</span> class to expand width.</p>
+
+  <div class="sketch-panel">
+    <div class="diagram-label">Figure 2 &mdash; Crosshatch Panel</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="50" y="10" width="260" height="80" rx="12" fill="#e6e0d2" stroke="#1a5276" stroke-width="1.5"/>
+      <text x="180" y="45" text-anchor="middle" fill="#1a5276" font-size="10" font-weight="600">SKETCH NODE</text>
+      <text x="180" y="65" text-anchor="middle" fill="#a09888" font-size="9">On crosshatch background</text>
+
+      <line x1="310" y1="50" x2="390" y2="50" stroke="#a09888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="390" y="10" width="260" height="80" rx="12" fill="#e6e0d2" stroke="#5b3a8c" stroke-width="1.5"/>
+      <text x="520" y="45" text-anchor="middle" fill="#5b3a8c" font-size="10" font-weight="600">NEXT NODE</text>
+      <text x="520" y="65" text-anchor="middle" fill="#a09888" font-size="9">Connected with dashes</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">Pg. 06 — Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Doodle system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Warm Paper, Not White</h4>
+        <p>Backgrounds use cream and parchment tones, creating the feel of a physical sketchbook rather than a digital screen.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Hand-Drawn Borders</h4>
+        <p>The asymmetric border-radius creates an organic, sketched feel. Cards also have subtle rotation to reinforce the hand-made quality.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Ink-Tone Semantics</h4>
+        <p>Four ink colors (green, violet, red, blue) feel like different pens from an artist's case. Muted and deep, not bright or neon.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Typewriter for Metadata</h4>
+        <p>Special Elite gives labels, tags, and section numbers the feel of a vintage typewriter stamp &mdash; imperfect and characterful.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Physical Textures</h4>
+        <p>Ruled notebook lines, crosshatch patterns, dashed borders, and ink stamps all reference physical art supplies and stationery.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>No Shadows, No Gloss</h4>
+        <p>Depth comes from layered paper tones and borders. The aesthetic is flat and tactile &mdash; ink on paper, not pixels on a screen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Doodle &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">Starter Template</a> &middot; <a href="tokens.css" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -13,6 +13,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `physicist/` — Void and spectrum theme
 - `terminal/` — CRT retro theme
 - `train-station/` — Vintage railway theme
+- `doodle/` — Sketchbook ink theme
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

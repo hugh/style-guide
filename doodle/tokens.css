@@ -1,0 +1,610 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&family=Rubik:wght@300;400;500;600&family=Special+Elite&display=swap');
+
+/* ==============================
+   Doodle — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #f5f0e6;
+  --surface: #ede8dc;
+  --surface-2: #e6e0d2;
+  --surface-3: #ddd7c8;
+  --border: #c8c0b0;
+
+  /* Text */
+  --text: #2a2520;
+  --text-dim: #6b6358;
+  --text-faint: #a09888;
+
+  /* Accent */
+  --accent: #8b6914;
+  --accent-dim: #b8960e;
+
+  /* Semantic: Capture (Ink Green) */
+  --capture: #2d6a3f;
+  --capture-dim: #5a9970;
+  --capture-fill: rgba(45, 106, 63, 0.10);
+
+  /* Semantic: Refine (Ink Violet) */
+  --refine: #5b3a8c;
+  --refine-dim: #8a6bb8;
+  --refine-fill: rgba(91, 58, 140, 0.10);
+
+  /* Semantic: Execute (Ink Red) */
+  --execute: #a83228;
+  --execute-dim: #cc6860;
+  --execute-fill: rgba(168, 50, 40, 0.10);
+
+  /* Semantic: Batch (Ink Blue) */
+  --batch: #1a5276;
+  --batch-dim: #4a88b0;
+  --batch-fill: rgba(26, 82, 118, 0.10);
+
+  /* Hand-drawn border-radius */
+  --radius-sketch: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  --radius-sketch-alt: 15px 225px 15px 255px / 255px 15px 225px 15px;
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rubik', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-weight: 400;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: 2.2rem;
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 2px dashed var(--border);
+}
+
+/* ==============================
+   Monospace Labels (Typewriter)
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'Special Elite', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      var(--border) 31px,
+      var(--border) 32px
+    );
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; }
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  position: relative;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sketch);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.flow-card:nth-child(odd) {
+  transform: rotate(-0.4deg);
+}
+.flow-card:nth-child(even) {
+  transform: rotate(0.3deg);
+}
+.flow-card:hover {
+  transform: rotate(0deg) scale(1.01);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 12px 0 0 12px; }
+.pipe-stage:last-child  { border-radius: 0 12px 12px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: var(--radius-sketch);
+  border: 1.5px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 1.8rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(139, 105, 20, 0.05);
+  border-radius: 0 var(--radius-sketch-alt);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px dashed var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sketch);
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Rubik', sans-serif;
+}
+
+/* ==============================
+   Notebook Page
+   ============================== */
+
+.notebook-page {
+  margin: 2.5rem 0;
+  padding: 2rem 2rem 2rem 4rem;
+  background:
+    linear-gradient(to right, transparent 2.5rem, #cc7777 2.5rem, #cc7777 calc(2.5rem + 1px), transparent calc(2.5rem + 1px)),
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      #c8c0b0 31px,
+      #c8c0b0 32px
+    ),
+    var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sketch);
+  position: relative;
+}
+
+.notebook-page p {
+  line-height: 32px;
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Ink Stamp
+   ============================== */
+
+.ink-stamp {
+  display: inline-block;
+  font-family: 'Special Elite', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border: 2px solid var(--execute);
+  color: var(--execute);
+  border-radius: 3px;
+  transform: rotate(-3deg);
+  opacity: 0.85;
+}
+
+.ink-stamp.stamp-approve {
+  border-color: var(--capture);
+  color: var(--capture);
+}
+
+.ink-stamp.stamp-review {
+  border-color: var(--batch);
+  color: var(--batch);
+}
+
+.ink-stamp.stamp-draft {
+  border-color: var(--refine);
+  color: var(--refine);
+}
+
+/* ==============================
+   Doodle Divider
+   ============================== */
+
+.doodle-divider {
+  text-align: center;
+  margin: 3rem 0;
+  font-family: 'Shadows Into Light Two', cursive;
+  font-size: 1.2rem;
+  color: var(--text-faint);
+  letter-spacing: 0.3em;
+}
+
+.doodle-divider::before {
+  content: '~ ~ ~';
+}
+
+/* ==============================
+   Sketch Panel (crosshatch)
+   ============================== */
+
+.sketch-panel {
+  margin: 2.5rem 0;
+  padding: 2.5rem;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(200, 192, 176, 0.15) 8px,
+      rgba(200, 192, 176, 0.15) 9px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 8px,
+      rgba(200, 192, 176, 0.15) 8px,
+      rgba(200, 192, 176, 0.15) 9px
+    ),
+    var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sketch);
+  overflow-x: auto;
+}
+
+.sketch-panel.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.85rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  color: var(--accent);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 2px dashed var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'Special Elite', monospace;
+}
