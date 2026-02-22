@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 · draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 — Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9762;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128293;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127754;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Warning:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 — Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Detect</div>
+      <div class="pipe-desc">Initial sighting</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Analyze</div>
+      <div class="pipe-desc">Assess threat</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Respond</div>
+      <div class="pipe-desc">Deploy countermeasures</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Contain</div>
+      <div class="pipe-desc">Secure perimeter</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KAIJU-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 — Alerts</div>
+  <h2>Warning Stripe</h2>
+  <p>Hazard-striped header bar for critical warnings.</p>
+
+  <div class="warning-stripe">
+    <div class="warning-stripe-inner">
+      <h4>&#9888; Hazard Zone</h4>
+      <p>Warning stripe wraps content in a diagonal yellow/black hazard pattern. Use for high-priority warnings.</p>
+    </div>
+  </div>
+
+  <h3>Emergency Broadcast</h3>
+  <p>Red-bordered alert styled like an emergency broadcast message.</p>
+
+  <div class="emergency-broadcast">
+    <div class="broadcast-header">&#9608; Emergency Broadcast System</div>
+    <p><strong>This is not a drill.</strong> Emergency broadcast boxes feature a pulsing red left border and technical styling for urgent messages.</p>
+  </div>
+
+  <h3>Seismograph Divider</h3>
+  <p>SVG waveform separator for content sections.</p>
+
+  <div class="seismograph-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,20 L100,20 L120,5 L130,35 L140,8 L150,32 L160,12 L170,28 L185,20 L250,20 L270,8 L280,32 L290,5 L300,35 L310,15 L320,25 L335,20 L450,20 L465,10 L475,30 L485,5 L495,35 L505,15 L515,25 L525,20 L600,20" fill="none" stroke="#4ce038" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <h3>Threat Level</h3>
+  <p>DEFCON-style threat indicator with escalating color segments.</p>
+
+  <div class="threat-level">
+    <div class="threat-label">Current Threat Level</div>
+    <div class="threat-bar">
+      <div class="level l-safe inactive">Safe</div>
+      <div class="level l-guarded inactive">Guarded</div>
+      <div class="level l-elevated">Elevated</div>
+      <div class="level l-high inactive">High</div>
+      <div class="level l-severe inactive">Severe</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 — Protocols</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 — Reference</div>
+  <h2>Data Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Designation</th><th>Classification</th><th>Threat Level</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Subject Alpha</td>
+        <td>Category description</td>
+        <td>Level detail</td>
+      </tr>
+      <tr>
+        <td>Subject Beta</td>
+        <td>Category description</td>
+        <td>Level detail</td>
+      </tr>
+      <tr>
+        <td>Subject Gamma</td>
+        <td>Category description</td>
+        <td>Level detail</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">mutation</span>
+    <span class="tag t-refine">plasma</span>
+    <span class="tag t-execute">destroy</span>
+    <span class="tag t-batch">ocean</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 — Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 — Threat Assessment Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">DETECTION</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Seismic sensors</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">ANALYSIS</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Classify threat</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="600">RESPONSE</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Deploy forces</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Classified</p>
+  </div>
+</footer>
+
+</body>
+</html>

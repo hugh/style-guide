@@ -63,3 +63,51 @@ Retro Americana / 1950s
   Diner red/cream/navy, chrome accents, retro signage typography.
   Checkerboard patterns, jukebox-inspired cards, neon-glow callouts,
   Route 66 badge section markers, soda-fountain pastel highlights.
+
+Manga / Anime
+  Speed lines, screentone dot patterns (finer than halftone), dramatic
+  diagonal compositions, condensed sans-serif type, selective color pops
+  on high-contrast black & white. Pink/magenta accent instead of red.
+  Japanese-inspired layout with panels and gutters.
+
+Dark Vigilante
+  Batman/Daredevil mood. Near-black backgrounds, one piercing accent
+  color (electric blue or blood red), sharp angular shapes, gothic serif
+  headings. Brooding and atmospheric rather than fun. Rain/fog texture
+  overlays, case-file-style components.
+
+Silver Age Pop Art
+  Harder Lichtenstein/Warhol lean. Larger Ben-Day dots, flat bright
+  backgrounds (not newsprint), primary colors at full saturation, speech
+  bubbles as a core layout element. More ironic and playful than the
+  current Superhero theme.
+
+Golden Age Pulp
+  Grittier and older than Silver Age. Heavily yellowed/aged paper,
+  distressed ink-splatter borders, two-tone duochrome palette (e.g.
+  red + black only), woodcut energy. Closer to EC horror comics than
+  Superman.
+
+Cartoon Network / Animated
+  Bright white backgrounds, thick rounded outlines, oversized bubbly
+  elements, candy-color palette, bouncy hover animations. Teen Titans
+  Go / Powerpuff Girls energy — playful, not epic. Rounded sans-serif
+  headings.
+
+Modern Cinematic / MCU
+  Dark and sleek. Near-black backgrounds with metallic gradients,
+  glowing edge accents, subtle light-leak effects. Clean geometric
+  sans-serif. Movie title sequence feel rather than printed page.
+  Widescreen aspect-ratio hero panels.
+
+Retro Video Game
+  Pixel-art inspired. Chunky pixel fonts, 8-bit color palette, scanline
+  overlays, tile-grid layouts. NES/SNES-era title screens. Press-start
+  monospace font, health-bar progress indicators, coin/gem counters as
+  metric components.
+
+Kaiju / Monster Movie
+  Japanese monster movie posters. Bold brushstroke headings, destroyed-
+  city textures, radiation-green accents on dark backgrounds, dramatic
+  scale contrast between elements. Warning-stripe borders, emergency
+  broadcast callouts, seismograph line dividers.
