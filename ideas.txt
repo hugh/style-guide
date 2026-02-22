@@ -48,3 +48,18 @@ Musician
   markings as emphasis levels (pp, mp, f, ff), measure/bar components, tempo
   annotations on sections (Allegro — §3), rehearsal-mark section numbering
   (boxed letters), fermata pause symbols for callouts.
+
+Mid-Century Modern
+  Warm mustard/teal/coral, atomic-age geometry, retro illustration feel.
+  Starburst dividers, boomerang shapes, Googie-inspired angles. Fonts:
+  something like Poppins or Futura-adjacent + a warm body sans.
+
+Victorian / Antique
+  Aged parchment, ornate serif typography, filigree borders, wax-seal
+  accents. Heavy decorative rules, engraving-style illustrations, gothic
+  drop caps, ribbon banners, medallion section markers.
+
+Retro Americana / 1950s
+  Diner red/cream/navy, chrome accents, retro signage typography.
+  Checkerboard patterns, jukebox-inspired cards, neon-glow callouts,
+  Route 66 badge section markers, soda-fountain pastel highlights.

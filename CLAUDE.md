@@ -14,6 +14,8 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `terminal/` — CRT retro theme
 - `train-station/` — Vintage railway theme
 - `doodle/` — Sketchbook ink theme
+- `art-deco/` — 1920s Gatsby-era gold & black theme
+- `superhero/` — Classic comics thick-outline halftone theme
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

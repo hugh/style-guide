@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Deco &mdash; 1920s Gatsby-Era Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.65rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+    letter-spacing: 0.05em;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-serif {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+  }
+  .font-sample-sans {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent-dim);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .inline-code {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.78rem;
+    background: var(--surface-2);
+    padding: 0.15em 0.4em;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid rgba(46, 42, 30, 0.5);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 0.6rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="monogram">A</div>
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Art Deco</span></h1>
+  <p>A 1920s Gatsby-era design system with burnished gold accents, geometric ornaments, jewel-tone semantics, and Art Deco typography for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">&mdash; 00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#9670;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9671;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">&mdash; 01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Dark backgrounds with a <strong>warm golden undertone</strong> &mdash; not pure black or gray. Surfaces create gentle depth through layered warmth.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0a0a08;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0a0a08</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #151510;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#151510</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1e1e16;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1e1e16</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #282820;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#282820</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2e2a1e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2e2a1e</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of cream/ivory text create clear information hierarchy. Body text defaults to dim; headings and emphasis use primary.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A <strong>burnished gold</strong> primary accent plus four jewel-tone semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c9a832;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#c9a832</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a9d6e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#2a9d6e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c47a2a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c47a2a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c43040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c43040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3068a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3068a8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a7020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#8a7020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a6848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#1a6848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #84521a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#84521a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #84202c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#84202c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #204870;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#204870</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags use transparent fills:
+    <span class="tag t-capture">emerald</span>
+    <span class="tag t-refine">amber</span>
+    <span class="tag t-execute">ruby</span>
+    <span class="tag t-batch">sapphire</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">&mdash; 02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Serif for headings</strong>, <strong>geometric sans for body</strong>, <strong>geometric sans for metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Playfair Display &mdash; Headings (h1, h2, h3, decorative numbers)</div>
+    <div class="font-sample-serif">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Raleway &mdash; Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-sans">The quick brown fox jumps over the lazy dog. Body text uses weight 300 by default. <strong>Strong text uses weight 500</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Josefin Sans &mdash; Labels, tags, section numbers, metadata</div>
+    <div class="font-sample-mono">&mdash; 01 &mdash; Section Label &middot; v0.1 &middot; Uppercase &middot; letter-spacing: 0.3em</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Playfair Display</td><td>clamp(3rem, 8vw, 6rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Playfair Display</td><td>2.4rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Playfair Display</td><td>1.4rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Raleway</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Raleway</td><td>0.95rem</td><td>300</td></tr>
+      <tr><td>Card body</td><td>Raleway</td><td>0.82rem</td><td>300</td></tr>
+      <tr><td>Section label</td><td>Josefin Sans</td><td>0.65rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Josefin Sans</td><td>0.6rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">&mdash; 03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#9670;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9671;</div>
+      <h4>Sections</h4>
+      <p>6rem vertical padding. Separated by 1px border-top in --border color.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9674;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width using the .full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9672;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>Josefin Sans label</strong> in the format <span class="inline-code">&mdash; 01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">&mdash; 04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Use semantic class names to set the bar color. Collapses to single column on mobile.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Emerald top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Ruby top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Sapphire top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <div class="deco-divider">&#9670;</div>
+
+  <h2>Gilded Frame</h2>
+  <p>A double-bordered card with gold corner chevrons. Use for featured content, pull quotes, or key callouts. Styled with <span class="inline-code">box-shadow: inset</span> for the stepped border effect.</p>
+
+  <div class="gilded-frame">
+    <h3 style="margin-top:0;">Featured Content</h3>
+    <p>The gilded frame uses a 1px gold outer border, a 3px surface-colored inset shadow, then a 1px border-colored inner line. Corner chevrons are rendered with <span class="inline-code">::before</span> and <span class="inline-code">::after</span> pseudo-elements.</p>
+  </div>
+
+  <h2>Deco Divider</h2>
+  <p>A geometric ornamental separator. The diamond is set as text content of the element, with gold lines extending via pseudo-elements.</p>
+
+  <div class="deco-divider">&#9670;</div>
+
+  <h2>Monogram</h2>
+  <p>A decorative initial letter set inside a rotated diamond frame. Use at the top of hero sections or as document branding.</p>
+
+  <div style="text-align:center; margin: 2rem 0;">
+    <div class="monogram">D</div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Capture</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Refine</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Execute</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Done</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with Playfair Display numbers. Good for ordered principles, steps, or rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Description text using .principle-num for the large serif number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Playfair Display at 1.6rem in --accent-dim. Letters also work well.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in gold.</p>
+
+  <div class="callout">
+    <p><strong>Important:</strong> This is a callout. It uses a 2px left border in --accent-dim with a barely-visible gold tinted background. No border-radius &mdash; sharp geometric edges.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Minimal data tables with gold-accented headers and a strong first column.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Gilded Frame</td><td>.gilded-frame</td><td>Double border with corner chevrons</td></tr>
+      <tr><td>Deco Divider</td><td>.deco-divider</td><td>Diamond ornamental separator</td></tr>
+      <tr><td>Monogram</td><td>.monogram</td><td>Diamond-framed initial letter</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Sunburst Panel</h2>
+  <p>A diagram container with a subtle radial gold gradient. Add <span class="inline-code">sunburst</span> class to <span class="inline-code">.diagram-wrap</span>.</p>
+
+  <div class="diagram-wrap sunburst">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#151510" stroke="#2a9d6e" stroke-width="1.5"/>
+      <text x="110" y="45" text-anchor="middle" fill="#2a9d6e" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#706848" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#706848" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#151510" stroke="#c9a832" stroke-width="1.5"/>
+      <text x="350" y="45" text-anchor="middle" fill="#c9a832" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#706848" font-size="9">stroke: --accent</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#706848" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#151510" stroke="#c43040" stroke-width="1.5"/>
+      <text x="590" y="45" text-anchor="middle" fill="#c43040" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#706848" font-size="9">stroke: --execute</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">&mdash; 05 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Dark with Golden Warmth</h4>
+        <p>Backgrounds are not pure black or gray &mdash; they carry a subtle warm, golden undertone across all surface levels.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Geometric Precision</h4>
+        <p>Sharp corners, no border-radius on cards or containers. Diamond and chevron motifs replace circles and soft curves.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Gold Ornamental Accents</h4>
+        <p>Burnished gold is used sparingly for borders, dividers, and emphasis. The deco divider, gilded frame, and monogram provide ornamental richness.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Three-Tier Text Hierarchy</h4>
+        <p>Cream/ivory primary (--text) for headings and emphasis. Dim (--text-dim) for body paragraphs. Faint (--text-faint) for labels and metadata.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Wide Letterspacing</h4>
+        <p>Headings use 0.08em tracking. Labels and tags use 0.3em. This creates the characteristic Art Deco typographic rhythm.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Jewel-Tone Semantics</h4>
+        <p>Four named color categories &mdash; Emerald, Amber, Ruby, Sapphire &mdash; each with full, dim, and transparent-fill variants. Cards, pipeline stages, tags, and diagrams all reference these consistently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Art Deco &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">Starter Template</a> &middot; <a href="tokens.css" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
