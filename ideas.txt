@@ -111,3 +111,32 @@ Kaiju / Monster Movie
   city textures, radiation-green accents on dark backgrounds, dramatic
   scale contrast between elements. Warning-stripe borders, emergency
   broadcast callouts, seismograph line dividers.
+
+Sci-Fi / Space Opera
+  Deep space black backgrounds with star-field particle textures, cool
+  blue-white primary text, holographic cyan/magenta accents. Thin-weight
+  geometric sans-serif (like Exo 2 or Orbitron) for headings, clean
+  sans for body. HUD-style borders with corner brackets instead of full
+  outlines, targeting-reticle section markers, star-chart grid diagrams.
+  Loading-bar progress components, ship-manifest tables, transmission-
+  log callouts with timestamp headers.
+
+Aliens / Xenomorph
+  Claustrophobic and industrial. Near-black with sickly yellow-green
+  accent (acid blood). Corrugated metal surface textures, moisture/
+  condensation overlays, exposed-rivet borders. Monospace readout font
+  for everything (like the Nostromo terminals). Motion-tracker radar
+  sweep as a loading/progress component, airlock warning panels,
+  bio-scan specimen cards, stencil-stamped section headers (WEYLAND-
+  YUTANI corporate style). Dripping/melting divider SVGs.
+
+Underwater / Deep Sea
+  Dark abyssal navy-to-black gradient backgrounds, bioluminescent
+  accents in electric blue, soft teal, and pale violet. Gentle
+  undulating wave-line dividers, bubble particle textures, pressure-
+  gauge depth indicators. Rounded organic shapes — no sharp corners.
+  Translucent frosted-glass card surfaces like jellyfish membranes.
+  Sonar ping radial animations on hover, bathymetric contour-line
+  decorative patterns, submarine instrument panel tables with depth/
+  pressure readouts. Soft serif or rounded sans headings to evoke
+  fluid motion.
