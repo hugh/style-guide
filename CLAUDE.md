@@ -17,6 +17,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `art-deco/` — 1920s Gatsby-era gold & black theme
 - `superhero/` — Classic comics thick-outline halftone theme
 - `kaiju/` — Japanese monster movie poster theme (radiation green, hazard stripes)
+- `space-opera/` — Sci-fi bridge theme (deep space blues, holographic cyan, nebula glows)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style
