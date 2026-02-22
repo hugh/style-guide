@@ -1,23 +1,27 @@
-# Vesper
+# Style Guide Gallery
 
-A dark, editorial design system for single-page HTML documents. Purple-tinted surfaces, semantic color coding, and clean typographic hierarchy.
+A collection of themed HTML/CSS design systems for single-page documents. Each theme is self-contained with its own stylesheet and template.
 
-**[Live Style Guide](https://gamahugh.github.io/style-guide/)** · **[Starter Template](https://gamahugh.github.io/style-guide/template.html)**
+**[Live Gallery](https://gamahugh.github.io/style-guide/)**
 
-## Files
+## Themes
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Live style guide — the design system rendered in its own style |
-| `style_guide.md` | Full reference — color tokens, type scale, spacing, component specs |
-| `tokens.css` | Drop-in stylesheet with all variables, reset, and component styles |
-| `template.html` | Starter document with every component wired up and ready to customize |
+| Theme | Description |
+|-------|-------------|
+| [Vesper](vesper/) | Dark editorial — purple-tinted surfaces, serif headings |
+| [Circus](circus/) | Big top spectacle — dark purple, warm cream, bold stripes |
+| [Engineer](engineer/) | Blueprint technical — deep navy, grid lines, redline accents |
+| [Excalidraw](excalidraw/) | Hand-drawn whiteboard — light canvas, sketchy lines |
+| [Mathematician](mathematician/) | Chalkboard — dark forest green, chalk-white text |
+| [Physicist](physicist/) | Void and spectrum — deep black, neon accents |
+| [Terminal](terminal/) | CRT retro — black screen, phosphor green, scanlines |
+| [Train Station](train-station/) | Vintage railway — dark brown, brass accents |
 
 ## Quick Start
 
-1. Copy `template.html` and `tokens.css` into your project
+1. Pick a theme and copy its `template.html` and `tokens.css` into your project
 2. Edit the hero, sections, and components in the HTML
-3. Refer to `style_guide.md` for detailed specs when needed
+3. Refer to the theme's `style_guide.md` for detailed specs when needed
 
 ## Fonts
 

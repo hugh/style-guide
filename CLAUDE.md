@@ -1,13 +1,24 @@
 # CLAUDE.md
 
-This repo contains **Vesper**, an HTML/CSS style guide and template system for creating dark-themed, editorial single-page documents.
+This repo is a collection of HTML/CSS style guides and template systems for creating themed single-page documents. Each theme lives in its own subdirectory.
 
 ## Repo Structure
 
+- `index.html` — Gallery page with iframe previews of all themes
+- `vesper/` — Dark editorial theme (purple-tinted surfaces, serif headings)
+- `circus/` — Big top spectacle theme
+- `engineer/` — Blueprint technical theme
+- `excalidraw/` — Hand-drawn whiteboard theme
+- `mathematician/` — Chalkboard theme
+- `physicist/` — Void and spectrum theme
+- `terminal/` — CRT retro theme
+- `train-station/` — Vintage railway theme
+
+Each theme subdirectory contains:
+- `index.html` — Live style guide rendered in the theme's own style
 - `style_guide.md` — Detailed style reference (colors, typography, spacing, component specs)
-- `tokens.css` — Complete drop-in stylesheet with CSS custom properties and all component styles
+- `tokens.css` — Drop-in stylesheet with CSS custom properties and all component styles
 - `template.html` — Starter HTML file demonstrating every component
-- `README.md` — Overview and quick start
 
 ## Style Rules
 
