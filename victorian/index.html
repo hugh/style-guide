@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victorian / Antique — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch { border-radius: 2px; border: 1px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Playfair Display', Georgia, serif; font-size: 2rem; color: var(--text); line-height: 1.15; font-weight: 700; }
+  .font-sample-body { font-family: 'Lora', Georgia, serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.75; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; text-decoration: none; transition: border-color 0.15s; }
+  .file-link:hover { border-color: var(--accent); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Victorian</span></h1>
+  <p>An aged parchment design system &mdash; ornate serif typography, wax-seal accents, filigree dividers, and medallion section markers for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm aged-parchment tones that evoke antique paper and leather-bound volumes. Surfaces darken like the layered pages of an old tome.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f4ece0;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f4ece0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ece2d4;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#ece2d4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e4d8c8;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e4d8c8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d8cab8;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d8cab8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c4b498;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c4b498</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis, key labels</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div></div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A wax-seal burgundy primary accent plus four Victorian semantic colors.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#8b2020;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b2020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3a7a40;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#3a7a40</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b89030;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#b89030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2a5898;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#2a5898</div></div></div>
+  </div>
+  <p>Inline tags: <span class="tag t-capture">approved</span> <span class="tag t-refine">appraisal</span> <span class="tag t-execute">urgent</span> <span class="tag t-batch">archived</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts: <strong>ornate display serif for headings</strong>, <strong>elegant serif for body</strong>, <strong>monospace for labels</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Playfair Display &mdash; Headings (h1, h2, h3) &middot; weight 700&ndash;800, italic on h1/h3</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Lora &mdash; Body text, card titles, tables (weights 400, 500, 600, 700)</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400. <strong>Strong text uses weight 700</strong> and the primary text color.</div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div><div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; c. 1847 &middot; ARCHIVES</div></div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Playfair Display</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>800 italic</td></tr>
+      <tr><td>Section h2</td><td>Playfair Display</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Playfair Display</td><td>1.15rem</td><td>700 italic</td></tr>
+      <tr><td>Card title h4</td><td>Lora</td><td>0.82rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Lora</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sharp 2px border-radius maintains a formal, institutional feel.</p>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128207;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem horizontal padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9881;&#65039;</div><h4>Sections</h4><p>5rem vertical padding. 1px solid border-top separator.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams expand to 1100px with the full-bleed class.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128241;</div><h4>Responsive</h4><p>Fluid hero type with clamp(). Grids collapse below 640px.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9883;</div><h4>.flow-card.capture</h4><p>Ivy Green top bar. Class <span class="inline-code">capture</span>.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9827;</div><h4>.flow-card.refine</h4><p>Antique Gold top bar. Class <span class="inline-code">refine</span>.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#10016;</div><h4>.flow-card.execute</h4><p>Wax Seal Red top bar. Class <span class="inline-code">execute</span>.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9830;</div><h4>.flow-card.batch</h4><p>Royal Blue top bar. Class <span class="inline-code">batch</span>.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">I</div><div class="pipe-name">Acquire</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">II</div><div class="pipe-name">Appraise</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">III</div><div class="pipe-name">Restore</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">IV</div><div class="pipe-name">Archive</div><div class="pipe-desc">.s-batch</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">V</div><div class="pipe-name">Display</div><div class="pipe-desc">.s-accent</div></div>
+  </div>
+
+  <h2>Principle List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Directive</h4><p>Numbers render in Playfair Display italic at 2.4rem in --accent (burgundy).</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Another Directive</h4><p>Good for ordered articles, decrees, or curatorial guidelines.</p></div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Nota Bene:</strong> This is a callout with a 4px left border in --accent and a faint burgundy-tinted background.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Wax Seal</td><td>.wax-seal</td><td>Circular seal with letter and label</td></tr>
+      <tr><td>Medallion</td><td>.medallion</td><td>Double-ringed section marker</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Provenance Chain</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="2" fill="#ece2d4" stroke="#3a7a40" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#3a7a40" font-size="10" font-weight="600">ACQUISITION</text>
+      <text x="110" y="62" text-anchor="middle" fill="#9a8870" font-size="9">Source verified</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#9a8870" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="2" fill="#ece2d4" stroke="#b89030" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#b89030" font-size="10" font-weight="600">RESTORATION</text>
+      <text x="350" y="62" text-anchor="middle" fill="#9a8870" font-size="9">Conservation</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#9a8870" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="2" fill="#ece2d4" stroke="#2a5898" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#2a5898" font-size="10" font-weight="600">ARCHIVE</text>
+      <text x="590" y="62" text-anchor="middle" fill="#9a8870" font-size="9">Cataloged</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Victorian Components</div>
+  <h2>Wax Seal</h2>
+  <p>A decorative seal element styled with depth shadows and a soft wax-edge blur. The letter inside is Playfair Display italic in white.</p>
+  <div style="text-align:center;margin:2rem 0 3rem;">
+    <div class="wax-seal"><span class="seal-letter">V</span><span class="seal-label">Verified</span></div>
+  </div>
+
+  <h2>Ribbon Banner</h2>
+  <p>A horizontal banner with folded ribbon ends created via <span class="inline-code">clip-path</span>. The center text sits on a burgundy field with darker arrow-point folds.</p>
+  <div style="text-align:center;"><div class="ribbon-banner"><span class="ribbon-text">Established 1847</span></div></div>
+
+  <h2>Medallion</h2>
+  <p>Circular section markers with a double-ring border and ornamental outer ring. Use Roman numerals for chapter markers.</p>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin:2rem 0 3rem;">
+    <div class="medallion"><span class="med-number">I</span><span class="med-label">Chapter</span></div>
+    <div class="medallion"><span class="med-number">II</span><span class="med-label">Chapter</span></div>
+    <div class="medallion"><span class="med-number">III</span><span class="med-label">Chapter</span></div>
+  </div>
+
+  <h2>Filigree Divider</h2>
+  <p>An SVG ornamental separator with a center cluster of dots flanked by horizontal rules.</p>
+  <div class="filigree-divider">
+    <svg viewBox="0 0 400 30" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="15" x2="160" y2="15" stroke="var(--border)" stroke-width="1"/>
+      <circle cx="170" cy="15" r="2" fill="var(--accent)"/>
+      <circle cx="185" cy="15" r="3" fill="none" stroke="var(--accent)" stroke-width="1"/>
+      <circle cx="200" cy="15" r="4" fill="var(--accent)" opacity="0.8"/>
+      <circle cx="215" cy="15" r="3" fill="none" stroke="var(--accent)" stroke-width="1"/>
+      <circle cx="230" cy="15" r="2" fill="var(--accent)"/>
+      <line x1="240" y1="15" x2="400" y2="15" stroke="var(--border)" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Aged Parchment</h4><p>Warm cream-tan backgrounds evoke antique paper and leather-bound volumes.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Wax Seal Accent</h4><p>Rich burgundy marks key elements like a pressed seal on correspondence.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Ornate Serif Typography</h4><p>Playfair Display italic headings with Lora body create period elegance worthy of a Victorian parlour.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Sharp Formal Edges</h4><p>2px border-radius maintains a crisp, institutional feel throughout all components.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Victorian Semantics</h4><p>Ivy green (approved), antique gold (craft), wax red (urgent), royal blue (authority).</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Ornamental Motifs</h4><p>Wax seals, ribbon banners, medallions, and filigree dividers bring period decoration into the design language.</p></div></div>
+    <div class="principle"><div class="principle-num">7</div><div><h4>Decorative Rules</h4><p>Ornamental gradient lines frame the hero section, evoking engraved page borders.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Victorian / Antique &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

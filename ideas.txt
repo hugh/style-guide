@@ -39,11 +39,6 @@ Mid-Century Modern
   Starburst dividers, boomerang shapes, Googie-inspired angles. Fonts:
   something like Poppins or Futura-adjacent + a warm body sans.
 
-Victorian / Antique
-  Aged parchment, ornate serif typography, filigree borders, wax-seal
-  accents. Heavy decorative rules, engraving-style illustrations, gothic
-  drop caps, ribbon banners, medallion section markers.
-
 Manga / Anime
   Speed lines, screentone dot patterns (finer than halftone), dramatic
   diagonal compositions, condensed sans-serif type, selective color pops
@@ -369,3 +364,6 @@ Weather Station / Meteorology
 
 Pottery / Ceramics Studio
   → pottery/
+
+Victorian / Antique
+  → victorian/
