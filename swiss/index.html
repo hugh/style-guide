@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiss / International Typographic Style &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border: 1px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Inter', sans-serif; font-size: 2rem; color: var(--text); line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--text-dim); letter-spacing: 0.04em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--bg); border: 1px solid var(--border); text-decoration: none; transition: border-color 0.15s; color: inherit; }
+  .file-link:hover { border-color: var(--text); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--bg); border: 1px solid var(--border); margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-2); }
+  .text-tier-demo .tier-label { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>International <span>Typographic</span> Style</h1>
+  <div class="hero-rule"></div>
+  <p>A minimalist design system rooted in the Swiss tradition &mdash; clean grids, precise typography, generous whitespace, and absolute clarity for single-page HTML documents.</p>
+  <div class="hero-version">v1.0 &middot; <a href="template.html">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. No build step required.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Note:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. All styles use CSS custom properties &mdash; no hardcoded values.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Pure white base with <strong>barely-there grey</strong> surfaces. No warm or cool bias &mdash; neutral precision.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#ffffff; border-bottom:1px solid var(--border);"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#ffffff</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f6f6f6;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f6f6f6</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#eeeeee;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#eeeeee</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e4e4e4;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#e4e4e4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0d0d0;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#d0d0d0</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, labels</div></div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#e20000;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#e20000</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#00864a;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#00864a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c89000;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89000</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e20000;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#e20000</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#0050c8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#0050c8</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">capture</span> <span class="tag t-refine">refine</span> <span class="tag t-execute">execute</span> <span class="tag t-batch">batch</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>One family, multiple weights.</strong> Inter serves as both heading and body face &mdash; true to the Swiss principle of typographic unity. JetBrains Mono for labels and code.</p>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Headings (h1, h2, h3) &middot; weight 700&ndash;800</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card titles &middot; weight 400</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700 in near-black.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">JetBrains Mono &mdash; Labels, tags, metadata</div><div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; 0.72rem &middot; UPPERCASE</div></div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Inter</td><td>clamp(3rem, 8vw, 5.5rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Inter</td><td>1.75rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Inter</td><td>1.05rem</td><td>600</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.78rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>JetBrains Mono</td><td>0.72rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Grid &amp; Structure</h2>
+  <p>Strict geometric structure. <strong>No decoration, only information.</strong> Content is organized through whitespace, alignment, and rule lines.</p>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#9638;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9135;</div><h4>Sections</h4><p>5rem vertical padding, 1px hairline border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9639;</div><h4>Full-Bleed</h4><p>Diagrams expand to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9641;</div><h4>Zero Radius</h4><p>No rounded corners anywhere. Sharp rectangles only.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Minimal cards with hairline borders and a <strong>3px semantic top bar</strong>. No shadows, no rounded corners.</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><h4>.flow-card.capture</h4><p>Green top bar &mdash; for input and collection stages.</p></div>
+    <div class="flow-card refine"><h4>.flow-card.refine</h4><p>Amber top bar &mdash; for processing and iteration stages.</p></div>
+    <div class="flow-card execute"><h4>.flow-card.execute</h4><p>Red top bar &mdash; for action and output stages.</p></div>
+    <div class="flow-card batch"><h4>.flow-card.batch</h4><p>Blue top bar &mdash; for grouped and automated stages.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Gather</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Refine</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Execute</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Deliver</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Principle:</strong> Red left border with barely-grey background. No rounded corners &mdash; sharp, clean, functional.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar, hairline border</td></tr>
+      <tr><td>Grid Module</td><td>.grid-module</td><td>12-column strict grid overlay</td></tr>
+      <tr><td>Type Specimen</td><td>.type-specimen</td><td>Typeface showcase with measurements</td></tr>
+      <tr><td>Red Rule</td><td>.red-rule</td><td>4px accent divider with optional label</td></tr>
+      <tr><td>Index Card</td><td>.index-card</td><td>Numbered reference card, top rule only</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Process Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600" font-family="Inter, sans-serif">INPUT</text>
+      <text x="110" y="62" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Capture</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600" font-family="Inter, sans-serif">PROCESS</text>
+      <text x="350" y="62" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Refine</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600" font-family="Inter, sans-serif">OUTPUT</text>
+      <text x="590" y="62" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Deliver</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+  <h2>Grid Module</h2>
+  <p>A strict <strong>12-column grid overlay</strong> showing content positioned in precise column spans. Visible column lines as hairline rules, asymmetric content placement.</p>
+  <div class="grid-module">
+    <div class="grid-module-header">
+      <h4>Grid Module</h4>
+      <div class="grid-module-meta">12 columns &middot; 900px</div>
+    </div>
+    <div class="grid-module-body">
+      <div class="grid-module-cell span-5" style="background:var(--capture-fill); border-right:1px solid var(--border);">
+        <div class="cell-label">Cols 1&ndash;5</div>
+        <div class="cell-content"><strong>Primary content area.</strong> Text, images, and data tables occupy the left five columns.</div>
+      </div>
+      <div class="grid-module-cell span-3" style="border-right:1px solid var(--border);">
+        <div class="cell-label">Cols 6&ndash;8</div>
+        <div class="cell-content">Secondary content &mdash; annotations, metadata, captions.</div>
+      </div>
+      <div class="grid-module-cell span-4" style="background:var(--surface);">
+        <div class="cell-label">Cols 9&ndash;12</div>
+        <div class="cell-content">Margin notes and references. Asymmetric balance.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Type Specimen</h2>
+  <p>A showcase panel displaying a typeface at <strong>multiple sizes</strong> with precise measurement labels.</p>
+  <div class="type-specimen">
+    <div class="type-specimen-header">
+      <div class="spec-family">Inter &mdash; Sans-serif</div>
+      <div class="spec-weight">Weight 800</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">48px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:48px; font-weight:800; letter-spacing:-0.04em; line-height:1;">Helvetica</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">32px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:32px; font-weight:800; letter-spacing:-0.02em; line-height:1.1;">International Style</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">20px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:20px; font-weight:600; line-height:1.3;">The grid is the typographer's most important tool</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">14px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:400; line-height:1.7;">Typography is a servant of thought and language to which it gives visible existence. Clean, objective, functional.</div>
+    </div>
+  </div>
+
+  <div class="red-rule">
+    <div class="red-rule-label">Divider</div>
+    <div class="red-rule-line"></div>
+  </div>
+
+  <h2>Red Rule Divider</h2>
+  <p>A thick <strong>4px red horizontal rule</strong> used as a structural accent between sections. Can include an aligned label or stand alone.</p>
+
+  <div class="red-rule">
+    <div class="red-rule-label">Section A</div>
+    <div class="red-rule-line"></div>
+  </div>
+
+  <p>Without label:</p>
+  <div class="red-rule no-label">
+    <div class="red-rule-line"></div>
+  </div>
+
+  <h2>Index Cards</h2>
+  <p>Numbered reference cards with a <strong>bold oversized number</strong>, title, and description. Only structural element is a single top rule.</p>
+  <div class="index-card-grid">
+    <div class="index-card">
+      <div class="index-card-number">01</div>
+      <h4>Asymmetric Layout</h4>
+      <p>Content positioned off-center within the grid creates visual tension and guides the eye naturally.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">02</div>
+      <h4>Sans-Serif Only</h4>
+      <p>A single sans-serif typeface at multiple weights provides hierarchy without decorative variation.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">03</div>
+      <h4>Red as Accent</h4>
+      <p>One color used sparingly. Swiss red draws attention to structure, not decoration.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">04</div>
+      <h4>Whitespace as Element</h4>
+      <p>Empty space is not wasted space. It is an active structural component of the composition.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Pure White Canvas</h4><p>Start from absolute white. Every mark on the page must earn its place. No textures, no patterns, no noise.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Single Accent Color</h4><p>Swiss red (#e20000) is the only chromatic element. It marks structure &mdash; rule lines, numbers, emphasis &mdash; never decoration.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Typographic Unity</h4><p>One typeface family (Inter) at multiple weights creates hierarchy. Unity of form, variety of expression.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Grid Discipline</h4><p>All content aligns to a strict grid. Asymmetric placement within the grid creates dynamic compositions.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Hairline Borders</h4><p>1px solid grey lines provide structure without visual weight. No shadows, no rounded corners, no gradients.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Generous Whitespace</h4><p>Space between elements is as carefully considered as the elements themselves. Let the content breathe.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Swiss / International Typographic Style &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

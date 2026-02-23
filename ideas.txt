@@ -189,6 +189,69 @@ Wrestling / Lucha Libre
   Fonts: impact/condensed bold for headings, clean sans for body,
   mono for stats.
 
+Outrun / Synthwave
+  Chrome sunset gradients on deep purple-black. Hot pink, electric
+  orange, chrome silver accents. Receding grid horizon hero, sun-stripe
+  gradient bars, chrome text effects, wireframe mountain silhouettes,
+  VHS tracking-line dividers, laser-grid card borders. 80s action-movie
+  aesthetic. Fonts: bold extended sans for headings, clean sans for body,
+  mono for timestamps.
+
+Stained Glass / Cathedral
+  Jewel-tone panels on deep charcoal. Ruby red, sapphire blue, emerald
+  green, amber gold with lead-line black borders. Gothic arch card frames,
+  rose window section markers, lead-came grid dividers, lancet window
+  callout panels, tracery ornament decorations. Light-through-glass
+  gradient glows. Fonts: gothic/blackletter for headings, clean serif
+  for body, mono for inscriptions.
+
+Tropical / Tiki
+  Bamboo and palm textures on warm sand backgrounds. Sunset orange,
+  ocean teal, hibiscus pink, palm green accents. Carved wood tiki mask
+  section markers, bamboo frame card borders, palm frond dividers,
+  luau torch callout panels, lei flower badge components, wave pattern
+  footer bars. Fonts: bold rounded display for headings, clean sans for
+  body, mono for coordinates.
+
+Cottagecore / Cozy
+  Soft florals on warm linen backgrounds. Muted pastels — dusty rose,
+  sage green, lavender, butter yellow. Cross-stitch border patterns,
+  pressed-flower card decorations, gingham check dividers, mason jar
+  callout panels, wax seal badges, hand-lettered recipe card components.
+  Gentle and pastoral. Fonts: handwritten serif (like Cormorant) for
+  headings, clean serif for body, mono for dates/recipes.
+
+Pixel Art / Game Boy
+  4-color restricted palette on pale green-grey (like original DMG
+  screen). Dithered pattern fills, tile-based 8px grid system, sprite
+  sheet card components, dialogue box callout panels, save-point section
+  markers, pixel font throughout. Distinct from Retro Game (NES/arcade).
+  Fonts: pixel/bitmap font for everything (like Press Start 2P or Silkscreen).
+
+Corporate Memphis / Flat Illustration
+  Cheerful SaaS style. White/near-white backgrounds with pastel blob
+  shapes, rounded corners everywhere (16px+), pill-shaped buttons, soft
+  drop shadows, gradient accent blobs. Friendly and approachable but
+  soulless. Fonts: rounded geometric sans (like Nunito or Quicksand)
+  for headings, clean sans for body, mono for code snippets.
+
+Y2K / Early Web
+  Glossy gel buttons and gradient meshes on silver/white backgrounds.
+  Aqua, hot pink, lime green accents with chrome/metallic highlights.
+  Beveled/embossed card borders, star/sparkle decorative elements,
+  iridescent gradient panels, bubble-text headings, hit counter badge
+  components, scrolling marquee dividers, "Under Construction" callout
+  banners. Fonts: rounded bubbly sans for headings, clean sans for
+  body, mono for counters.
+
+Construction / Safety
+  High-vis yellow and safety orange on concrete grey backgrounds. Black
+  hazard stripes, caution tape borders, hardhat icon section markers,
+  orange cone dividers, safety sign callout panels (diamond/rectangle
+  warning shapes), permit card components, chain-link fence texture
+  overlays. Fonts: condensed bold sans (like Oswald) for headings,
+  clean sans for body, mono for measurements/codes.
+
 
 DONE
 ----
@@ -303,3 +366,15 @@ Tarot / Occult
 
 Steampunk
   → steampunk/
+
+Minimalist / Swiss Design
+  → swiss/
+
+Film Photography / Kodachrome
+  → kodachrome/
+
+Japanese Zen / Wabi-Sabi
+  → zen/
+
+Grunge / Zine
+  → zine/

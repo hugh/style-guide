@@ -1,0 +1,843 @@
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Permanent+Marker&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   Grunge / Zine — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces (newsprint) */
+  --bg: #f0ece4;
+  --surface: #e8e2d8;
+  --surface-2: #ddd6ca;
+  --surface-3: #d0c8ba;
+  --border: #1a1a1a;
+
+  /* Text */
+  --text: #0a0a0a;
+  --text-dim: #3a3a38;
+  --text-faint: #6a6a68;
+
+  /* Accent (highlighter pink/red) */
+  --accent: #d82050;
+  --accent-dim: #b01840;
+
+  /* Semantic: Capture (green marker) */
+  --capture: #18882a;
+  --capture-dim: #106820;
+  --capture-fill: rgba(24, 136, 42, 0.12);
+
+  /* Semantic: Refine (yellow highlighter) */
+  --refine: #c8a008;
+  --refine-dim: #a08008;
+  --refine-fill: rgba(200, 160, 8, 0.12);
+
+  /* Semantic: Execute (red marker) */
+  --execute: #d82050;
+  --execute-dim: #b01840;
+  --execute-fill: rgba(216, 32, 80, 0.12);
+
+  /* Semantic: Batch (blue pen) */
+  --batch: #1848b8;
+  --batch-dim: #103898;
+  --batch-fill: rgba(24, 72, 184, 0.12);
+
+  /* Tape strip color */
+  --tape: rgba(220, 210, 160, 0.6);
+  --tape-border: rgba(180, 170, 120, 0.4);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  overflow-x: hidden;
+  /* Subtle newsprint noise texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Special Elite', cursive;
+  font-weight: 400;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  background: var(--execute-fill);
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 3px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero — Chaotic Zine Collage
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Torn paper strip top bar */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--execute) 0px, var(--execute) 60px,
+    var(--bg) 60px, var(--bg) 64px,
+    var(--capture) 64px, var(--capture) 124px,
+    var(--bg) 124px, var(--bg) 128px,
+    var(--refine) 128px, var(--refine) 188px,
+    var(--bg) 188px, var(--bg) 192px,
+    var(--batch) 192px, var(--batch) 252px,
+    var(--bg) 252px, var(--bg) 256px
+  );
+  clip-path: polygon(
+    0 0, 100% 0, 100% 60%,
+    98% 80%, 95% 50%, 92% 90%, 88% 60%,
+    85% 100%, 80% 40%, 75% 85%, 70% 55%,
+    65% 100%, 60% 50%, 55% 80%, 50% 45%,
+    45% 95%, 40% 60%, 35% 100%, 30% 50%,
+    25% 85%, 20% 55%, 15% 100%, 10% 65%,
+    5% 90%, 2% 50%, 0 75%
+  );
+  z-index: 1;
+}
+
+/* Subtle grid / photocopy noise */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 39px,
+      rgba(0,0,0,0.015) 39px,
+      rgba(0,0,0,0.015) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 39px,
+      rgba(0,0,0,0.015) 39px,
+      rgba(0,0,0,0.015) 40px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  transform: rotate(-1.5deg);
+}
+
+.hero h1 span {
+  font-family: 'Permanent Marker', cursive;
+  color: var(--accent);
+  display: inline-block;
+  transform: rotate(2deg);
+  background: var(--execute-fill);
+  padding: 0 0.2em;
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero > .hero-label,
+.hero > h1,
+.hero > p,
+.hero > .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.hero > .hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero > h1 { animation-delay: 0.15s; }
+.hero > p { animation-delay: 0.3s; }
+.hero > .hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s;
+}
+
+.flow-card:hover {
+  transform: rotate(-0.5deg);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 0; }
+.pipe-stage:last-child  { border-radius: 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 4px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 4px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 4px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 4px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 4px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Special Elite', cursive;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 0;
+  border: 2px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 2.4rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 5px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0;
+  border: 2px solid var(--border);
+  border-left: 5px solid var(--accent);
+  transform: rotate(0.3deg);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.3em 0.8em;
+  border-radius: 0;
+  border: 2px solid;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine-dim);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.88rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   UNIQUE: Tape Strip Card
+   ============================== */
+
+.tape-card {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 2rem 1.5rem 1.5rem;
+  margin: 2.5rem 0;
+  transform: rotate(-0.8deg);
+  /* Torn bottom edge */
+  clip-path: polygon(
+    0 0, 100% 0, 100% calc(100% - 12px),
+    97% calc(100% - 6px), 94% calc(100% - 10px),
+    90% calc(100% - 4px), 86% calc(100% - 11px),
+    82% calc(100% - 5px), 78% calc(100% - 9px),
+    74% calc(100% - 3px), 70% calc(100% - 10px),
+    66% calc(100% - 6px), 62% calc(100% - 11px),
+    58% calc(100% - 4px), 54% calc(100% - 9px),
+    50% calc(100% - 5px), 46% calc(100% - 12px),
+    42% calc(100% - 6px), 38% calc(100% - 10px),
+    34% calc(100% - 4px), 30% calc(100% - 8px),
+    26% calc(100% - 3px), 22% calc(100% - 11px),
+    18% calc(100% - 5px), 14% calc(100% - 9px),
+    10% calc(100% - 4px), 6% calc(100% - 10px),
+    3% calc(100% - 6px), 0 calc(100% - 8px)
+  );
+}
+
+/* Top-left tape strip */
+.tape-card::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  width: 70px;
+  height: 24px;
+  background: var(--tape);
+  border: 1px solid var(--tape-border);
+  transform: rotate(-4deg);
+  z-index: 2;
+}
+
+/* Top-right tape strip */
+.tape-card::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: 20px;
+  width: 65px;
+  height: 24px;
+  background: var(--tape);
+  border: 1px solid var(--tape-border);
+  transform: rotate(3deg);
+  z-index: 2;
+}
+
+.tape-card h4 {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.1rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin-bottom: 0.75rem;
+}
+
+.tape-card p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   UNIQUE: Ransom Note Block
+   ============================== */
+
+.ransom-note {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  line-height: 2.2;
+}
+
+.ransom-note span {
+  display: inline;
+  padding: 0.1em 0.3em;
+  margin: 0.1em;
+}
+
+.ransom-note span:nth-child(6n+1) {
+  font-family: 'Special Elite', cursive;
+  font-size: 1.3rem;
+  color: var(--text);
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+.ransom-note span:nth-child(6n+2) {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--text);
+  color: var(--bg);
+  display: inline-block;
+  transform: rotate(1deg);
+}
+
+.ransom-note span:nth-child(6n+3) {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  border-bottom: 2px solid var(--accent);
+}
+
+.ransom-note span:nth-child(6n+4) {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1.2rem;
+  color: var(--accent);
+  display: inline-block;
+  transform: rotate(-2deg);
+}
+
+.ransom-note span:nth-child(6n+5) {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  background: var(--refine);
+  color: var(--text);
+  padding: 0.05em 0.4em;
+  display: inline-block;
+}
+
+.ransom-note span:nth-child(6n+6) {
+  font-family: 'Special Elite', cursive;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 2px solid var(--border);
+  display: inline-block;
+  transform: rotate(1.5deg);
+}
+
+/* ==============================
+   UNIQUE: Xerox Divider
+   ============================== */
+
+.xerox-divider {
+  margin: 3rem auto;
+  max-width: 100%;
+  height: 8px;
+  background: var(--border);
+  position: relative;
+  clip-path: polygon(
+    0 10%, 2% 40%, 4% 0%, 6% 50%, 8% 15%, 10% 60%,
+    12% 5%, 14% 45%, 16% 20%, 18% 55%, 20% 0%,
+    22% 40%, 24% 10%, 26% 65%, 28% 25%, 30% 50%,
+    32% 5%, 34% 55%, 36% 15%, 38% 60%, 40% 0%,
+    42% 50%, 44% 10%, 46% 45%, 48% 20%, 50% 55%,
+    52% 5%, 54% 60%, 56% 15%, 58% 45%, 60% 0%,
+    62% 50%, 64% 20%, 66% 55%, 68% 10%, 70% 60%,
+    72% 0%, 74% 45%, 76% 15%, 78% 50%, 80% 5%,
+    82% 55%, 84% 20%, 86% 60%, 88% 0%, 90% 45%,
+    92% 10%, 94% 55%, 96% 20%, 98% 50%, 100% 5%,
+    100% 95%, 98% 60%, 96% 100%, 94% 55%, 92% 85%,
+    90% 50%, 88% 95%, 86% 60%, 84% 100%, 82% 55%,
+    80% 90%, 78% 50%, 76% 95%, 74% 65%, 72% 100%,
+    70% 55%, 68% 90%, 66% 50%, 64% 100%, 62% 60%,
+    60% 90%, 58% 55%, 56% 100%, 54% 50%, 52% 85%,
+    50% 55%, 48% 100%, 46% 60%, 44% 90%, 42% 55%,
+    40% 100%, 38% 50%, 36% 85%, 34% 55%, 32% 100%,
+    30% 60%, 28% 90%, 26% 50%, 24% 100%, 22% 55%,
+    20% 85%, 18% 50%, 16% 100%, 14% 65%, 12% 90%,
+    10% 50%, 8% 100%, 6% 60%, 4% 85%, 2% 50%, 0 90%
+  );
+  opacity: 0.7;
+}
+
+.xerox-divider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(240, 236, 228, 0.15) 2px,
+    rgba(240, 236, 228, 0.15) 3px
+  );
+}
+
+/* ==============================
+   UNIQUE: Sticker Badge
+   ============================== */
+
+.sticker-badge {
+  display: inline-block;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 0.85rem;
+  padding: 0.35em 0.9em;
+  border: 2px solid var(--border);
+  border-radius: 0;
+  background: var(--accent);
+  color: #fff;
+  transform: rotate(-2deg);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0.25rem;
+}
+
+.sticker-badge.sticker-green {
+  background: var(--capture);
+}
+
+.sticker-badge.sticker-yellow {
+  background: var(--refine);
+  color: var(--text);
+}
+
+.sticker-badge.sticker-red {
+  background: var(--execute);
+}
+
+.sticker-badge.sticker-blue {
+  background: var(--batch);
+}
+
+.sticker-badge:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.sticker-badge:nth-child(3n) {
+  transform: rotate(-3deg);
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 3px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ==============================
+   Misc Zine Utilities
+   ============================== */
+
+.rotate-left  { transform: rotate(-1.5deg); }
+.rotate-right { transform: rotate(1.5deg); }
+.rotate-heavy { transform: rotate(-3deg); }
+
+.marker-highlight {
+  background: linear-gradient(180deg, transparent 55%, rgba(200, 160, 8, 0.35) 55%);
+  padding: 0 0.1em;
+}
+
+.marker-pink {
+  background: linear-gradient(180deg, transparent 55%, rgba(216, 32, 80, 0.2) 55%);
+  padding: 0 0.1em;
+}

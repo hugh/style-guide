@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Discipline &middot; Clarity &middot; Form</div>
+  <h1>Document <span>Title</span></h1>
+  <div class="hero-rule"></div>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two concise sentences.</p>
+  <div class="hero-version">v1.0 &middot; draft</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Introduction</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases. Body text renders in the dim color by default, while headings and emphasis use near-black.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsections use uppercase Inter at weight 600. The strict hierarchy ensures every level of content is visually distinct without resorting to decoration.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture"><h4>Input Phase</h4><p>Gather raw materials, research, and requirements.</p></div>
+    <div class="flow-card refine"><h4>Process Phase</h4><p>Analyze, iterate, and distill into clear form.</p></div>
+    <div class="flow-card execute"><h4>Output Phase</h4><p>Produce final deliverables with precision.</p></div>
+    <div class="flow-card batch"><h4>Review Phase</h4><p>Evaluate, document, and archive outcomes.</p></div>
+  </div>
+
+  <div class="callout"><p><strong>Note:</strong> Callouts use a 4px red left border on a barely-grey background. Sharp corners only.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Methodology</div>
+  <h2>Process Stages</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Research</div><div class="pipe-desc">Gather data</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Analyze</div><div class="pipe-desc">Find patterns</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Design</div><div class="pipe-desc">Create form</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Deliver</div><div class="pipe-desc">Ship result</div></div>
+  </div>
+
+  <div class="red-rule">
+    <div class="red-rule-label">Transition</div>
+    <div class="red-rule-line"></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Typography</div>
+  <h2>Type Specimen</h2>
+  <div class="type-specimen">
+    <div class="type-specimen-header">
+      <div class="spec-family">Inter &mdash; Sans-serif</div>
+      <div class="spec-weight">Weight 800</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">48px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:48px; font-weight:800; letter-spacing:-0.04em; line-height:1;">Precision</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">24px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:24px; font-weight:600; line-height:1.2;">Form follows function</div>
+    </div>
+    <div class="type-specimen-row">
+      <div class="spec-size">14px</div>
+      <div class="spec-sample" style="font-family:'Inter',sans-serif; font-size:14px; font-weight:400; line-height:1.7;">Good typography is invisible. It serves the content without calling attention to itself.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Grid System</div>
+  <h2>Grid Module</h2>
+  <div class="grid-module">
+    <div class="grid-module-header">
+      <h4>Layout Grid</h4>
+      <div class="grid-module-meta">12 columns &middot; 900px</div>
+    </div>
+    <div class="grid-module-body">
+      <div class="grid-module-cell span-7" style="background:var(--capture-fill); border-right:1px solid var(--border);">
+        <div class="cell-label">Cols 1&ndash;7</div>
+        <div class="cell-content"><strong>Main content area.</strong> Primary text and images occupy the wider column.</div>
+      </div>
+      <div class="grid-module-cell span-5" style="background:var(--surface);">
+        <div class="cell-label">Cols 8&ndash;12</div>
+        <div class="cell-content">Side panel for annotations, metadata, and supporting information.</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Index Cards</h3>
+  <div class="index-card-grid">
+    <div class="index-card">
+      <div class="index-card-number">01</div>
+      <h4>Grid Alignment</h4>
+      <p>Every element snaps to the underlying column grid.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">02</div>
+      <h4>Vertical Rhythm</h4>
+      <p>Consistent spacing creates a reliable reading pace.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">03</div>
+      <h4>Asymmetric Balance</h4>
+      <p>Off-center placement creates dynamic compositions.</p>
+    </div>
+    <div class="index-card">
+      <div class="index-card-number">04</div>
+      <h4>Negative Space</h4>
+      <p>Whitespace is a deliberate structural element.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Specification Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Property</th><th>Value</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Container</td><td>900px</td><td>Centered, 2rem horizontal padding</td></tr>
+      <tr><td>Border Radius</td><td>0px</td><td>No rounding anywhere</td></tr>
+      <tr><td>Shadows</td><td>None</td><td>Flat surfaces only</td></tr>
+      <tr><td>Accent Color</td><td>#e20000</td><td>Swiss red, used sparingly</td></tr>
+    </tbody>
+  </table>
+  <p>Tags: <span class="tag t-capture">input</span> <span class="tag t-refine">process</span> <span class="tag t-execute">output</span> <span class="tag t-batch">archive</span></p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>System Overview</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Process Architecture</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600" font-family="Inter, sans-serif">RESEARCH</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Capture</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600" font-family="Inter, sans-serif">ANALYSIS</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Refine</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600" font-family="Inter, sans-serif">OUTPUT</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9" font-family="Inter, sans-serif">Deliver</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">07 &mdash; Principles</div>
+  <h2>Design Rules</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Clarity First</h4><p>Every element must communicate clearly. Remove anything that does not serve the content.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Grid Discipline</h4><p>Align everything to the grid. Break it only with intention and purpose.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Objective Form</h4><p>Design decisions are rational, not emotional. Let structure create beauty.</p></div></div>
+  </div>
+
+  <div class="red-rule no-label">
+    <div class="red-rule-line"></div>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v1.0 &middot; Swiss Design</p></div></footer>
+
+</body>
+</html>

@@ -21,6 +21,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `aliens/` — Xenomorph industrial theme (cold steel, acid yellow-green, motion trackers, airlock warnings)
 - `nasa/` — 1960s–70s Mission Control theme (deep navy, GO green, telemetry readouts, countdown timers)
 - `darkroom/` — Polaroid photography theme (warm charcoal, safelight red, film strips, contact sheets)
+- `zen/` — Japanese Zen / Wabi-Sabi theme (warm rice paper, sumi ink, enso circles, stone garden badges)
 - `dossier/` — Spy file theme (manila paper, classified stamps, redacted text, surveillance cards)
 - `cassette/` — Mixtape analog theme (dark plastic, warm orange, handwritten tracklists, tape spools)
 - `cafe/` — Chalkboard menu theme (dark slate green, chalk lettering, latte brown, menu boards)
@@ -52,6 +53,9 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `cyberpunk/` — Neon streets theme (rain-soaked black, hot pink & electric cyan, glitch effects, holographic cards)
 - `tarot/` — Occult theme (midnight indigo, gold foil, star fields, tarot cards, zodiac markers, crystal balls)
 - `steampunk/` — Brass & leather theme (dark brown, polished brass, pressure gauges, gear badges, ticker tape dividers)
+- `kodachrome/` — Film photography theme (warm cream, Kodachrome-saturated reds/greens/yellows, slide mounts, sprocket strips)
+- `zine/` — Grunge zine theme (off-white newsprint, bold black borders, tape strip cards, ransom note blocks, xerox dividers)
+- `swiss/` — International Typographic Style theme (pure white, Swiss red accent, strict grid, hairline borders, no decoration)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

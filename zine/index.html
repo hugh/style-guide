@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grunge / Zine &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border: 2px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 2px solid var(--border); margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Special Elite', cursive; font-size: 2rem; color: var(--text); line-height: 1.2; }
+  .font-sample-marker { font-family: 'Permanent Marker', cursive; font-size: 1.8rem; color: var(--accent); line-height: 1.2; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 2px solid var(--border); text-decoration: none; transition: transform 0.15s; }
+  .file-link:hover { transform: rotate(-0.5deg); background: var(--surface-2); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 2px solid var(--border); margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System &middot; Issue No. 1</div>
+  <h1>Grunge <span>Zine</span></h1>
+  <p>Torn paper collage aesthetic. Photocopier distortion, mixed typography, tape-strip borders, cut-and-paste layered panels. DIY punk energy for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. No build step. No corporate overlords. Just paste and go.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>HOW TO:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. That's it. No npm, no webpack, no frameworks. Copy. Paste. Done.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Newsprint &amp; Ink</h2>
+  <p>Off-white newsprint surfaces layered like torn paper &mdash; all borders in <strong>bold photocopier black</strong>.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f0ece4;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f0ece4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8e2d8;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e8e2d8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ddd6ca;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#ddd6ca</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0c8ba;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d0c8ba</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1a1a1a;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#1a1a1a</div></div></div>
+  </div>
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis, ink black</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, faded photocopy</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, light copy</div></div>
+  </div>
+  <h3>Marker &amp; Pen Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#d82050;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#d82050</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#18882a;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#18882a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c8a008;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c8a008</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d82050;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#d82050</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1848b8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#1848b8</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">green marker</span> <span class="tag t-refine">yellow highlighter</span> <span class="tag t-execute">red marker</span> <span class="tag t-batch">blue pen</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Typewriter distressed for headings</strong>, <strong>clean sans for body</strong>, <strong>marker for callouts</strong>, <strong>mono for labels</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Special Elite &mdash; Headings (h1, h2, h3) &middot; typewriter distressed</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Permanent Marker &mdash; Callouts, accents, principle numbers</div><div class="font-sample-marker">SMASH THE STATUS QUO!</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card titles, tables</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700 for emphasis.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div><div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; VOL. 1 &middot; ISSUE 001</div></div>
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Special Elite</td><td>clamp(2.6rem, 7vw, 5rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Special Elite</td><td>1.8rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Special Elite</td><td>1.15rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.78rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Marker callout</td><td>Permanent Marker</td><td>1.2&ndash;2.4rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Chaotic on the surface, structured underneath. Everything aligned to a <strong>900px container</strong>, but individual elements break free with rotations and torn edges.</p>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#9986;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128204;</div><h4>Sections</h4><p>5rem vertical padding, 3px black border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128247;</div><h4>Border Radius</h4><p>0px everywhere. Torn, cut, sharp. No curves.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Standard two-column cards with <strong>thick black borders</strong> and colored top bars. Hover to see slight rotation.</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>.flow-card.capture</h4><p>Green marker top bar &mdash; gather, collect, capture ideas.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>.flow-card.refine</h4><p>Yellow highlighter top bar &mdash; edit, refine, iterate.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>.flow-card.execute</h4><p>Red marker top bar &mdash; ship, publish, execute.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>.flow-card.batch</h4><p>Blue pen top bar &mdash; batch, automate, process.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Scrap</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Cut</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Paste</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Copy</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>HEY!</strong> Callouts have a thick accent left border, slight rotation, and bold black frame. Use them to shout something important.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar, thick border</td></tr>
+      <tr><td>Tape Card</td><td>.tape-card</td><td>Taped-on card with torn bottom edge</td></tr>
+      <tr><td>Ransom Note</td><td>.ransom-note</td><td>Mixed-font collage callout</td></tr>
+      <tr><td>Xerox Divider</td><td>.xerox-divider</td><td>Degraded photocopy line</td></tr>
+      <tr><td>Sticker Badge</td><td>.sticker-badge</td><td>Peeled sticker with drop shadow</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Zine Production Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#e8e2d8" stroke="#1a1a1a" stroke-width="2"/>
+      <text x="110" y="42" text-anchor="middle" fill="#18882a" font-size="10" font-weight="600">COLLECT</text>
+      <text x="110" y="60" text-anchor="middle" fill="#6a6a68" font-size="9">scraps &amp; clippings</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#6a6a68" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#e8e2d8" stroke="#1a1a1a" stroke-width="2"/>
+      <text x="350" y="42" text-anchor="middle" fill="#c8a008" font-size="10" font-weight="600">ARRANGE</text>
+      <text x="350" y="60" text-anchor="middle" fill="#6a6a68" font-size="9">cut &amp; paste layout</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#6a6a68" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#e8e2d8" stroke="#1a1a1a" stroke-width="2"/>
+      <text x="590" y="42" text-anchor="middle" fill="#d82050" font-size="10" font-weight="600">XEROX</text>
+      <text x="590" y="60" text-anchor="middle" fill="#6a6a68" font-size="9">photocopy &amp; distro</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+  <h2>Tape Strip Card</h2>
+  <p>A card that looks <strong>taped to the page</strong>. Semi-transparent tape strips at the top corners, slight rotation, and a torn-paper bottom edge via <span class="inline-code">clip-path</span>.</p>
+  <div class="tape-card">
+    <h4>This card is taped on</h4>
+    <p>Notice the scotch tape at the top corners, the slight rotation, and the torn bottom edge. Everything about this component screams "cut out of a magazine and stuck to a page." Use it for featured content, quotes, or anything that needs to feel physically present.</p>
+  </div>
+  <div class="tape-card" style="transform: rotate(1.2deg);">
+    <h4>Another taped clipping</h4>
+    <p>Rotate them differently for variety. Each one should feel like it was hastily slapped on at a different angle. The tape strips use semi-transparent yellow backgrounds with subtle borders.</p>
+  </div>
+
+  <div class="xerox-divider"></div>
+
+  <h2>Ransom Note Block</h2>
+  <p>Each word/phrase alternates between different <strong>font styles and sizes</strong> via <span class="inline-code">:nth-child</span> selectors. The collage effect of mixed typography creates the classic cut-and-paste ransom note aesthetic. Wrap each word or phrase in a <span class="inline-code">&lt;span&gt;</span>.</p>
+  <div class="ransom-note">
+    <span>We reject</span>
+    <span>your polished</span>
+    <span>corporate templates</span>
+    <span>and demand</span>
+    <span>raw chaos</span>
+    <span>in every pixel</span>
+    <span>because design</span>
+    <span>should be</span>
+    <span>dangerous</span>
+    <span>not safe</span>
+    <span>and never</span>
+    <span>boring</span>
+  </div>
+
+  <div class="xerox-divider"></div>
+
+  <h2>Xerox Divider</h2>
+  <p>A horizontal divider that looks like a <strong>degraded photocopy line</strong>. Dark grainy bar with uneven edges created by a <span class="inline-code">clip-path</span> with jagged polygon points.</p>
+  <div class="xerox-divider"></div>
+  <p>Use <span class="inline-code">&lt;div class="xerox-divider"&gt;&lt;/div&gt;</span> between sections or content blocks to add that photocopier artifact aesthetic.</p>
+  <div class="xerox-divider"></div>
+
+  <h2>Sticker Badge</h2>
+  <p>Inline badges that look like <strong>peeled stickers</strong>. Bold outline, slight rotation, offset drop shadow. Five color variants.</p>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:2rem 0;">
+    <span class="sticker-badge">Default</span>
+    <span class="sticker-badge sticker-green">Green</span>
+    <span class="sticker-badge sticker-yellow">Yellow</span>
+    <span class="sticker-badge sticker-red">Red</span>
+    <span class="sticker-badge sticker-blue">Blue</span>
+  </div>
+  <p>Use them inline: The system is <span class="sticker-badge sticker-green">LIVE</span> and ready for <span class="sticker-badge sticker-red">ACTION</span> on all channels.</p>
+  <table class="info-table" style="margin-top:2rem;">
+    <thead><tr><th>Variant</th><th>Class</th><th>Background</th></tr></thead>
+    <tbody>
+      <tr><td>Default (accent)</td><td>.sticker-badge</td><td>var(--accent)</td></tr>
+      <tr><td>Green</td><td>.sticker-badge.sticker-green</td><td>var(--capture)</td></tr>
+      <tr><td>Yellow</td><td>.sticker-badge.sticker-yellow</td><td>var(--refine)</td></tr>
+      <tr><td>Red</td><td>.sticker-badge.sticker-red</td><td>var(--execute)</td></tr>
+      <tr><td>Blue</td><td>.sticker-badge.sticker-blue</td><td>var(--batch)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Newsprint Backgrounds</h4><p>Off-white yellowed paper tones, layered like torn sheets pasted on top of each other. Never use pure white.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Bold Black Borders</h4><p>Thick 2-3px black borders on everything. No soft edges, no subtle borders. Marker-weight ink lines.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Zero Border Radius</h4><p>Nothing is rounded. Everything is torn, cut, and sharp. The only softness comes from the tape strips.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Mixed Typography</h4><p>Special Elite for headings (typewriter), Permanent Marker for callouts (handwritten), Inter for body (readable contrast), IBM Plex Mono for labels.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Slight Rotations</h4><p>Elements should look hand-placed. Subtle 1-3 degree rotations on cards, callouts, stickers. Nothing is perfectly aligned.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>DIY Punk Energy</h4><p>The overall feel should be anarchic and handmade. Tape strips, torn edges, xerox artifacts, ransom-note text. Every element tells you someone made this with scissors and a photocopier.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Grunge / Zine &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

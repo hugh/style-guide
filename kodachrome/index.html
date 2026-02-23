@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kodachrome / Film Photography &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 4px; border: 1px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Libre Franklin', sans-serif; font-size: 2rem; color: var(--text); line-height: 1.15; font-weight: 800; }
+  .font-sample-body { font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; transition: border-color 0.15s; }
+  .file-link:hover { border-color: var(--accent); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Koda<span>chrome</span></h1>
+  <p>A warm, saturated film photography design system &mdash; rich Kodachrome colors, slide mounts, sprocket strips, and contact sheets for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. No build step required. This is a <em>warm, light</em> theme &mdash; the visual counterpart to the Darkroom theme&rsquo;s B&amp;W aesthetic.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Warm Cream Surfaces</h2>
+  <p>Aged photo paper tones &mdash; warm cream backgrounds with golden undertones, like <strong>prints drying on a line</strong>.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#faf5eb;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#faf5eb</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f0ead8;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f0ead8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8e0cc;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e8e0cc</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ddd4be;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#ddd4be</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c8b898;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c8b898</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, labels</div></div>
+  </div>
+
+  <h3>Kodachrome Film Colors</h3>
+  <p>Inspired by the <strong>rich, saturated hues</strong> of Kodachrome 64 slide film &mdash; deep vegetation greens, warm yellows, vivid reds, and clear sky blues.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#c83020;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#c83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2a8838;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#2a8838</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0a010;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d0a010</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1860a8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#1860a8</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">vegetation</span> <span class="tag t-refine">sunlight</span> <span class="tag t-execute">warmth</span> <span class="tag t-batch">sky</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Clean geometric sans for headings</strong>, <strong>warm serif for body</strong>, <strong>monospace for data</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Libre Franklin &mdash; Headings (h1, h2, h3) &middot; weight 700&ndash;800</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Source Serif 4 &mdash; Body text, card titles, descriptions</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, EXIF data, frame numbers</div><div class="font-sample-mono">01 &mdash; KODACHROME 64 &middot; f/2.8 &middot; 1/125s &middot; ISO 64</div></div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Libre Franklin</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Libre Franklin</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Libre Franklin</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Source Serif 4</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Source Serif 4</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128247;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#127902;</div><h4>Sections</h4><p>5rem vertical padding, 1px border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128241;</div><h4>Responsive</h4><p>Fluid type, grids collapse below 640px.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#127795;</div><h4>.flow-card.capture</h4><p>Kodachrome green top bar &mdash; lush vegetation.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9728;&#65039;</div><h4>.flow-card.refine</h4><p>Kodachrome yellow top bar &mdash; warm sunlight.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#128293;</div><h4>.flow-card.execute</h4><p>Kodachrome red top bar &mdash; saturated warmth.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9729;&#65039;</div><h4>.flow-card.batch</h4><p>Kodachrome blue top bar &mdash; rich sky.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Shoot</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Develop</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Print</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Archive</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Film Note:</strong> Kodachrome red left border with warm-tinted background. Use for important notes and developer instructions.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar color</td></tr>
+      <tr><td>Slide Mount</td><td>.slide-mount</td><td>Dark cardboard frame with content window</td></tr>
+      <tr><td>Sprocket Strip</td><td>.sprocket-strip</td><td>Film strip divider with holes</td></tr>
+      <tr><td>Contact Sheet</td><td>.contact-sheet</td><td>Grid of numbered frames</td></tr>
+      <tr><td>Light Leak</td><td>.light-leak</td><td>Warm gradient badge</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Film Processing Pipeline</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="4" fill="#f0ead8" stroke="#2a8838" stroke-width="2"/>
+      <text x="110" y="42" text-anchor="middle" fill="#2a8838" font-size="10" font-weight="600" font-family="Libre Franklin, sans-serif">EXPOSE</text>
+      <text x="110" y="58" text-anchor="middle" fill="#8a7e68" font-size="9" font-family="Source Serif 4, serif">Capture light</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#c8b898" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="4" fill="#f0ead8" stroke="#d0a010" stroke-width="2"/>
+      <text x="350" y="42" text-anchor="middle" fill="#d0a010" font-size="10" font-weight="600" font-family="Libre Franklin, sans-serif">DEVELOP</text>
+      <text x="350" y="58" text-anchor="middle" fill="#8a7e68" font-size="9" font-family="Source Serif 4, serif">K-14 process</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#c8b898" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="4" fill="#f0ead8" stroke="#c83020" stroke-width="2"/>
+      <text x="590" y="42" text-anchor="middle" fill="#c83020" font-size="10" font-weight="600" font-family="Libre Franklin, sans-serif">PROJECT</text>
+      <text x="590" y="58" text-anchor="middle" fill="#8a7e68" font-size="9" font-family="Source Serif 4, serif">Slide mount</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+
+  <h2>Slide Mount</h2>
+  <p>A card that looks like a <strong>35mm slide mount</strong> &mdash; dark cardboard-colored frame with a bright content window in the center. Film type label at top, frame number at bottom.</p>
+  <div class="slide-mount-grid">
+    <div class="slide-mount">
+      <div class="mount-label">Kodachrome 64 &middot; KR</div>
+      <div class="mount-window">
+        <h4>Golden Hour</h4>
+        <p>Warm afternoon light filtering through autumn leaves, casting long shadows across the meadow.</p>
+      </div>
+      <div class="mount-frame-num">KR 64 &bull; 24A</div>
+    </div>
+    <div class="slide-mount">
+      <div class="mount-label">Ektachrome E100 &middot; E6</div>
+      <div class="mount-window">
+        <h4>Mountain Vista</h4>
+        <p>The Sierra Nevada range at dawn, with bands of color from deep indigo to warm peach across the horizon.</p>
+      </div>
+      <div class="mount-frame-num">E100 &bull; 12A</div>
+    </div>
+    <div class="slide-mount">
+      <div class="mount-label">Kodachrome 25 &middot; KM</div>
+      <div class="mount-window">
+        <h4>Street Scene</h4>
+        <p>A 1970s main street with vintage cars, hand-painted signs, and afternoon sun warming the brick facades.</p>
+      </div>
+      <div class="mount-frame-num">KM 25 &bull; 08A</div>
+    </div>
+  </div>
+
+  <h2>Sprocket Strip</h2>
+  <p>A horizontal <strong>film strip divider</strong> with sprocket holes along top and bottom edges. Dark film base color with rectangular sprocket cutouts and small frame thumbnails.</p>
+  <div class="sprocket-strip">
+    <div class="sprocket-holes">
+      <span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span>
+    </div>
+    <div class="sprocket-content">
+      <div class="sprocket-frame"><span class="frame-icon">&#127763;</span><span class="frame-label">18</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#127795;</span><span class="frame-label">19</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#9728;&#65039;</span><span class="frame-label">20</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#127747;</span><span class="frame-label">21</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#128247;</span><span class="frame-label">22</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#127774;</span><span class="frame-label">23</span></div>
+      <div class="sprocket-frame"><span class="frame-icon">&#127796;</span><span class="frame-label">24</span></div>
+    </div>
+    <div class="sprocket-holes">
+      <span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span><span class="hole"></span>
+    </div>
+  </div>
+
+  <h2>Contact Sheet</h2>
+  <p>A grid layout that mimics a <strong>photographic contact sheet</strong>. Small numbered cells in a strict grid with dark borders between frames and an orange-mask tinted background.</p>
+  <div class="contact-sheet">
+    <div class="sheet-header">
+      <span class="sheet-title">Roll 14 &mdash; Summer Road Trip</span>
+      <span class="sheet-meta">Kodachrome 64 &middot; 36 exp</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-frame"><span class="frame-icon">&#127747;</span><span class="frame-num">1</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127795;</span><span class="frame-num">2</span></div>
+      <div class="contact-frame selected"><span class="frame-icon">&#9728;&#65039;</span><span class="frame-num">3</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#128663;</span><span class="frame-num">4</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127774;</span><span class="frame-num">5</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127796;</span><span class="frame-num">6</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127763;</span><span class="frame-num">7</span></div>
+      <div class="contact-frame selected"><span class="frame-icon">&#128247;</span><span class="frame-num">8</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#9968;</span><span class="frame-num">9</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127748;</span><span class="frame-num">10</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127760;</span><span class="frame-num">11</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127756;</span><span class="frame-num">12</span></div>
+    </div>
+  </div>
+
+  <h2>Light Leak Badge</h2>
+  <p>An inline badge with a <strong>warm gradient overlay</strong> simulating a film light leak &mdash; orange-to-magenta in a rounded pill shape with a warm glow. Four variants available.</p>
+  <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin:2rem 0 3rem;">
+    <span class="light-leak">Default Leak</span>
+    <span class="light-leak leak-warm">Warm Leak</span>
+    <span class="light-leak leak-cool">Cool Leak</span>
+    <span class="light-leak leak-golden">Golden Hour</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Warm Cream Backgrounds</h4><p>Aged photo paper tones with golden undertones, like prints on a drying line or slides on a light table.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Kodachrome Red Accent</h4><p>The iconic saturated warm red marks key interactive elements and primary emphasis throughout the system.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Film Color Semantics</h4><p>Green (vegetation/go), yellow (sunlight/process), red (warmth/alert), blue (sky/archive) map to Kodachrome&rsquo;s signature rendition.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Mid-Century Geometric Headings</h4><p>Libre Franklin channels the clean, confident style of 1960s&ndash;70s film packaging and camera manuals.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Warm Serif Body</h4><p>Source Serif 4 provides an intimate, readable warmth befitting personal photo essays and nostalgic storytelling.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Analog Film Components</h4><p>Slide mounts, sprocket strips, contact sheets, and light leak badges bring the tangible darkroom-to-projector experience into the design.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Kodachrome / Film Photography &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

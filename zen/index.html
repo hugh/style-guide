@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Zen / Wabi-Sabi — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 2px; border: 1px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.75rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--text); line-height: 1.2; font-weight: 400; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.8; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; text-decoration: none; transition: border-color 0.2s; }
+  .file-link:hover { border-color: var(--accent); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Wabi-<span>Sabi</span></h1>
+  <p>Asymmetric minimalism &mdash; warm stone, sumi ink, and generous emptiness. A contemplative design system for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. No build step required.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. All components are ready to use. Embrace negative space &mdash; let the content breathe.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm rice-paper tones &mdash; natural, organic warmth like aged <strong>washi paper</strong> and <strong>tatami mats</strong>.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f5f0e8;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f5f0e8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ece5d8;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#ece5d8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e0d8c8;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e0d8c8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d4cab8;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d4cab8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c0b4a0;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c0b4a0</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis (sumi ink)</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions (faded ink)</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, labels (ghost ink)</div></div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>Colors drawn from traditional Japanese aesthetics &mdash; <strong>shibori indigo</strong>, <strong>temple moss</strong>, <strong>lacquer gold</strong>, and <strong>torii vermillion</strong>.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#2a4a6a;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#2a4a6a</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a7a50;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#4a7a50</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b08830;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#b08830</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b83828;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#b83828</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2a4a6a;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#2a4a6a</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">moss</span> <span class="tag t-refine">lacquer</span> <span class="tag t-execute">vermillion</span> <span class="tag t-batch">indigo</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Elegant serif for headings</strong>, <strong>clean sans for body</strong>, <strong>monospace for labels</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Cormorant Garamond &mdash; Headings (h1, h2, h3) &middot; weight 300&ndash;600</div><div class="font-sample-heading">The beauty of imperfection</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card titles, tables</div><div class="font-sample-body">In the practice of tea, every gesture is deliberate, every silence meaningful. <strong>Strong text uses weight 600.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div><div class="font-sample-mono">01 &mdash; ARRANGEMENT &middot; KINTSUGI &middot; MA</div></div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Cormorant Garamond</td><td>clamp(2.8rem, 8vw, 5rem)</td><td>300</td></tr>
+      <tr><td>Section h2</td><td>Cormorant Garamond</td><td>1.85rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Cormorant Garamond</td><td>1.25rem</td><td>500</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.78rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Generous negative space (<strong>ma</strong>) is essential. Let content breathe. Asymmetry is embraced &mdash; not every element needs to be perfectly centered or balanced.</p>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#9711;</div><h4>Container</h4><p>Max-width 900px, centered, 2.5rem padding. Generous margins.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#10072;</div><h4>Sections</h4><p>5rem vertical padding, 1px border-top. Let each section breathe.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;</div><h4>Full-Bleed</h4><p>Diagrams expand to 1100px max-width with full-bleed class.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9724;</div><h4>Border Radius</h4><p>2px everywhere &mdash; barely there. Suggests hand-cut imperfection.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Four semantic colors, each with a thin top bar. Cards use <strong>2px radius</strong> to maintain the hand-crafted feeling.</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#127807;</div><h4>.flow-card.capture</h4><p>Temple moss green top bar.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#10024;</div><h4>.flow-card.refine</h4><p>Lacquer gold top bar.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9961;</div><h4>.flow-card.execute</h4><p>Torii vermillion top bar.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#127754;</div><h4>.flow-card.batch</h4><p>Deep indigo top bar.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Gather</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Refine</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Shape</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Release</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Contemplation:</strong> Indigo left border with a faint wash background. Used for meditative asides and quiet emphasis.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar</td></tr>
+      <tr><td>Enso Circle</td><td>.enso</td><td>Hand-brushed section marker</td></tr>
+      <tr><td>Tokonoma Alcove</td><td>.tokonoma</td><td>Recessed niche card</td></tr>
+      <tr><td>Ink Wash Divider</td><td>.ink-wash-divider</td><td>Organic brush-stroke separator</td></tr>
+      <tr><td>Stone Garden Badge</td><td>.stone-badge</td><td>Organic blob tag</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Contemplation Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="2" fill="#ece5d8" stroke="#4a7a50" stroke-width="1.5"/>
+      <text x="110" y="45" text-anchor="middle" fill="#4a7a50" font-size="10" font-weight="600">OBSERVE</text>
+      <text x="110" y="62" text-anchor="middle" fill="#8a8478" font-size="9">Awareness</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#c0b4a0" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="2" fill="#ece5d8" stroke="#b08830" stroke-width="1.5"/>
+      <text x="350" y="45" text-anchor="middle" fill="#b08830" font-size="10" font-weight="600">REFLECT</text>
+      <text x="350" y="62" text-anchor="middle" fill="#8a8478" font-size="9">Understanding</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#c0b4a0" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="2" fill="#ece5d8" stroke="#2a4a6a" stroke-width="1.5"/>
+      <text x="590" y="45" text-anchor="middle" fill="#2a4a6a" font-size="10" font-weight="600">ACT</text>
+      <text x="590" y="62" text-anchor="middle" fill="#8a8478" font-size="9">Expression</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+  <h2>Enso Circle</h2>
+  <p>A hand-brushed, <strong>intentionally incomplete</strong> circle &mdash; the Zen symbol of enlightenment, strength, and the acceptance of imperfection. Used as a section marker or contemplative pause.</p>
+
+  <div style="display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin:2rem 0;">
+    <div class="enso">
+      <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 80 15 C 120 12, 150 40, 148 80 C 146 120, 118 150, 78 148 C 38 146, 12 118, 14 78 C 16 48, 35 22, 65 18" fill="none" stroke="#1a1810" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+      <span class="enso-text">Emptiness</span>
+    </div>
+    <div class="enso enso-sm">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50 10 C 75 8, 92 28, 90 52 C 88 76, 72 92, 48 90 C 24 88, 8 72, 10 48 C 12 30, 25 14, 42 12" fill="none" stroke="#2a4a6a" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span class="enso-text">Ma</span>
+    </div>
+    <div class="enso enso-lg">
+      <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 110 18 C 165 14, 205 55, 202 110 C 199 165, 162 205, 107 202 C 52 199, 16 162, 18 107 C 20 62, 48 26, 88 20" fill="none" stroke="#1a1810" stroke-width="3.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <span class="enso-text">Wabi-Sabi</span>
+    </div>
+  </div>
+
+  <h2>Tokonoma Alcove</h2>
+  <p>A recessed niche &mdash; inspired by the <strong>tokonoma</strong> alcove in traditional Japanese homes where a single scroll or flower arrangement is displayed. Asymmetric padding draws the eye inward.</p>
+
+  <div class="tokonoma">
+    <h3>The Beauty of Impermanence</h3>
+    <p>Nothing lasts, nothing is finished, and nothing is perfect. These are the three marks of existence that wabi-sabi teaches us to embrace rather than resist. In the crack of a tea bowl repaired with gold, we find not damage but beauty.</p>
+    <div class="tokonoma-caption">Kintsugi &middot; The art of golden repair</div>
+  </div>
+
+  <div class="tokonoma">
+    <h3>Ma &mdash; Negative Space</h3>
+    <p>The pause between notes gives music its rhythm. The emptiness of a room gives it its purpose. In design, what we leave out matters as much as what we include.</p>
+    <div class="tokonoma-caption">Interval &middot; The space between</div>
+  </div>
+
+  <h2>Ink Wash Divider</h2>
+  <p>An organic brush-stroke separator &mdash; irregular edges, <strong>sumi-e</strong> ink wash quality. Fades from concentrated ink to dilute wash.</p>
+
+  <div class="ink-wash-divider">
+    <svg viewBox="0 0 600 24" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ink-fade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#1a1810" stop-opacity="0"/>
+          <stop offset="15%" stop-color="#1a1810" stop-opacity="0.35"/>
+          <stop offset="40%" stop-color="#1a1810" stop-opacity="0.5"/>
+          <stop offset="65%" stop-color="#1a1810" stop-opacity="0.3"/>
+          <stop offset="85%" stop-color="#1a1810" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#1a1810" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M 0 12 Q 30 8, 80 11 Q 140 15, 200 10 Q 280 6, 350 13 Q 420 18, 480 11 Q 540 7, 600 12" fill="none" stroke="url(#ink-fade)" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 60 12 Q 120 16, 180 11 Q 240 7, 310 14 Q 370 17, 440 10 Q 500 6, 540 13" fill="none" stroke="url(#ink-fade)" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <h2>Stone Garden Badges</h2>
+  <p>Organic stone-shaped badges &mdash; each one slightly different, like <strong>karesansui</strong> (dry landscape) garden stones. Five clip-path variants create natural irregularity.</p>
+
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 3rem;align-items:center;">
+    <span class="stone-badge stone-1 sb-capture">Moss</span>
+    <span class="stone-badge stone-2 sb-refine">Lacquer</span>
+    <span class="stone-badge stone-3 sb-execute">Vermillion</span>
+    <span class="stone-badge stone-4 sb-batch">Indigo</span>
+    <span class="stone-badge stone-5">Stone</span>
+    <span class="stone-badge stone-1">Gravel</span>
+    <span class="stone-badge stone-3 sb-capture">Bamboo</span>
+    <span class="stone-badge stone-2 sb-refine">Gold</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Warm Neutrals</h4><p>Rice-paper backgrounds with organic warmth &mdash; never cold grey or pure white. Every surface feels natural and aged.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Generous Emptiness (Ma)</h4><p>Space is not absence but presence. Let content breathe with ample padding, margins, and line-height.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Imperfect Edges</h4><p>2px border-radius suggests hand-cut paper. Organic clip-paths on badges. Nothing is machine-perfect.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Sumi Ink Typography</h4><p>Cormorant Garamond provides organic elegance in headings. Light weights channel the delicacy of brush calligraphy.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Traditional Palette</h4><p>Colors from Japanese natural dyeing &mdash; shibori indigo, temple moss, lacquer gold, torii vermillion.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Contemplative Components</h4><p>Enso circles, tokonoma alcoves, ink-wash dividers, and stone-garden badges bring Zen aesthetics into the interface.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Japanese Zen / Wabi-Sabi &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>
