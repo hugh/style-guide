@@ -34,11 +34,6 @@ Alchemist
   pipeline (lead → ... → gold), symbol-heavy labels, illuminated manuscript-
   style section openers.
 
-Mid-Century Modern
-  Warm mustard/teal/coral, atomic-age geometry, retro illustration feel.
-  Starburst dividers, boomerang shapes, Googie-inspired angles. Fonts:
-  something like Poppins or Futura-adjacent + a warm body sans.
-
 Manga / Anime
   Speed lines, screentone dot patterns (finer than halftone), dramatic
   diagonal compositions, condensed sans-serif type, selective color pops
@@ -364,6 +359,9 @@ Weather Station / Meteorology
 
 Pottery / Ceramics Studio
   → pottery/
+
+Mid-Century Modern
+  → mid-century/
 
 Victorian / Antique
   → victorian/

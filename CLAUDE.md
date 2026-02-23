@@ -38,6 +38,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `weather/` — Meteorology theme (dark radar screen, Doppler green, barometer gauges, forecast strips, storm warnings)
 - `pottery/` — Ceramics studio theme (warm clay linen, terracotta accents, kiln gauges, glaze recipe cards, potter's marks)
 - `victorian/` — Antique theme (aged parchment, ornate serifs, wax seals, filigree dividers, ribbon banners, medallions)
+- `mid-century/` — Atomic-age theme (warm cream, mustard/teal/coral, starburst dividers, boomerang cards, Googie panels)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

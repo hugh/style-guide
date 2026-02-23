@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mid-Century Modern — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.15;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Mid-Century <span>Modern</span></h1>
+  <p>A warm atomic-age design system &mdash; mustard and teal accents, starburst dividers, boomerang shapes, and Googie-inspired panels for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128752;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm cream tones inspired by mid-century interiors. Surfaces layer like <strong>Danish teak on linen</strong>, building depth without coolness.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #faf6ee;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#faf6ee</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f2ece2;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f2ece2</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #eae2d6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#eae2d6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ddd4c6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#ddd4c6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8bca8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c8bca8</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm brown create clear information hierarchy against the cream backgrounds.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A warm mustard primary accent plus four mid-century-inspired semantic colors. Each maps to a <strong>design principle</strong> or <strong>atomic-age motif</strong>.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4982c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#d4982c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a8a7a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#1a8a7a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4982c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d4982c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d05848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#d05848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4870a0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4870a0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b07820;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#b07820</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #126a5c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#126a5c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b07820;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#b07820</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b04038;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#b04038</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #305888;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#305888</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">teal</span>
+    <span class="tag t-refine">mustard</span>
+    <span class="tag t-execute">coral</span>
+    <span class="tag t-batch">slate</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Bold geometric sans for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Poppins &mdash; Headings (h1, h2, h3) &middot; weight 700&ndash;800</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">DM Sans &mdash; Body text, card titles, tables (weights 300, 400, 500, 600, 700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 700</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; ATOMIC AGE &middot; v0.1 &middot; MODERN</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Poppins</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Poppins</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Poppins</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>DM Sans</td><td>0.78rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>DM Sans</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>DM Sans</td><td>0.88rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing against the warm cream background.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards brighten their border on hover. All cards use 12px border-radius.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Teal top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9733;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Mustard Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9650;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Coral top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9679;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Slate Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Sketch</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Draft</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Build</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Ship</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for design principles, rules, or process steps.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Design Principle</h4>
+        <p>Description text using .principle-num for the large Poppins number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Poppins at 2.4rem in --accent color (mustard gold).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in mustard.</p>
+
+  <div class="callout">
+    <p><strong>Design Note:</strong> This is a callout. It uses a 4px left border in --accent with a faint mustard-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for pill-shaped tag color</td></tr>
+      <tr><td>Starburst</td><td>.starburst-divider</td><td>SVG divider with radiating lines</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Design Process</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#f2ece2" stroke="#1a8a7a" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#1a8a7a" font-size="10" font-weight="600">CONCEPT</text>
+      <text x="110" y="62" text-anchor="middle" fill="#9a8e7c" font-size="9">Atomic age vision</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#9a8e7c" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#f2ece2" stroke="#d4982c" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d4982c" font-size="10" font-weight="600">PROTOTYPE</text>
+      <text x="350" y="62" text-anchor="middle" fill="#9a8e7c" font-size="9">Form + function</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#9a8e7c" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#f2ece2" stroke="#d05848" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#d05848" font-size="10" font-weight="600">PRODUCE</text>
+      <text x="590" y="62" text-anchor="middle" fill="#9a8e7c" font-size="9">Mass market</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Retro Components</div>
+  <h2>Starburst Divider</h2>
+  <p>An SVG section separator with radiating lines from a center dot, evoking the classic <strong>mid-century starburst</strong> motif used in clocks, wall art, and signage.</p>
+
+  <div class="starburst-divider">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="6" fill="var(--accent)"/>
+      <g stroke="var(--accent)" stroke-width="1.5">
+        <line x1="50" y1="5" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="95"/>
+        <line x1="5" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="95" y2="50"/>
+        <line x1="18" y1="18" x2="28" y2="28"/><line x1="72" y1="72" x2="82" y2="82"/>
+        <line x1="82" y1="18" x2="72" y2="28"/><line x1="28" y1="72" x2="18" y2="82"/>
+      </g>
+    </svg>
+  </div>
+
+  <h2>Googie Angle Panel</h2>
+  <p>A panel with asymmetric rounded corners inspired by <strong>Googie architecture</strong> &mdash; the space-age style of 1950s coffee shops and motels. Four color band variants: <span class="inline-code">gp-teal</span>, <span class="inline-code">gp-mustard</span>, <span class="inline-code">gp-coral</span>, <span class="inline-code">gp-blue</span>.</p>
+
+  <div class="googie-panel gp-teal">
+    <div class="googie-label">Featured</div>
+    <h4>Teal Panel</h4>
+    <p>Content with asymmetric border-radius: 4px 40px 4px 40px. The left border uses the teal semantic color.</p>
+  </div>
+
+  <div class="googie-panel gp-mustard">
+    <div class="googie-label">Highlight</div>
+    <h4>Mustard Panel</h4>
+    <p>Same asymmetric shape with a warm mustard left border accent.</p>
+  </div>
+
+  <h2>Boomerang Card</h2>
+  <p>A card with a decorative <strong>boomerang shape</strong> in the corner &mdash; the iconic mid-century motif found in Formica countertops and wallpaper. Four color variants: <span class="inline-code">boom-teal</span>, <span class="inline-code">boom-mustard</span>, <span class="inline-code">boom-coral</span>, <span class="inline-code">boom-blue</span>.</p>
+
+  <div class="boomerang-card boom-teal">
+    <div class="boom-header"><h4>Teal Boomerang</h4></div>
+    <div class="boom-body"><p>Card with a decorative boomerang shape in the corner, tinted in teal. The shape uses border-radius: 0 60px 0 60px.</p></div>
+  </div>
+
+  <div class="boomerang-card boom-coral">
+    <div class="boom-header"><h4>Coral Boomerang</h4></div>
+    <div class="boom-body"><p>Same card structure with a coral-tinted boomerang accent in the upper-right corner.</p></div>
+  </div>
+
+  <h2>Atomic Badges</h2>
+  <p>Circular badges with an <strong>orbit ring and electron dot</strong>, evoking atomic-age imagery. The dashed orbit ring sits 10px outside the badge circle, with a small electron dot at the top.</p>
+
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 3rem;">
+    <div class="atomic-badge"><span class="badge-text">NEW</span></div>
+    <div class="atomic-badge"><span class="badge-text">MOD</span></div>
+    <div class="atomic-badge"><span class="badge-text">FAB</span></div>
+    <div class="atomic-badge"><span class="badge-text">JET</span></div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Mid-Century Modern system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Warm Cream Backgrounds</h4>
+        <p>Light backgrounds use warm off-white and cream tones, creating an inviting retro canvas that evokes Danish modern interiors.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Mustard Gold Accent</h4>
+        <p>The primary accent is a rich mustard gold that was ubiquitous in 1950s&ndash;60s interiors. It marks headings, callout borders, and principle numbers.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Atomic-Age Semantics</h4>
+        <p>Four semantic colors map to the mid-century palette: teal (fresh/modern), mustard (warm/craft), coral (bold/alert), slate blue (cool/info).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Generous Rounded Corners</h4>
+        <p>12px border-radius on all cards and panels, with pill-shaped 20px radius on tags, giving the system a soft, organic mid-century feel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Bold Geometric Headings</h4>
+        <p>Poppins delivers clean, geometric headings with tight letter-spacing that channel the Futura-adjacent type of the atomic age.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Retro Unique Components</h4>
+        <p>Starburst dividers, boomerang cards, Googie panels, and atomic badges bring iconic mid-century motifs into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Atomic Starburst Hero</h4>
+        <p>The hero section features a subtle repeating-conic-gradient starburst and a faint boomerang accent shape, setting the retro tone immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Mid-Century Modern &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
