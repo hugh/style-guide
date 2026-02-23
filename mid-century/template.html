@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design Studio &middot; Atomic Age</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases. Body text renders in the dim color by default.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>Card Title</h4><p>Card description text.</p></div>
+  </div>
+
+  <div class="callout"><p><strong>Note:</strong> Callouts are used for important asides.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Sketch</div><div class="pipe-desc">Ideation</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Draft</div><div class="pipe-desc">Refinement</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Build</div><div class="pipe-desc">Production</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Ship</div><div class="pipe-desc">Delivery</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Retro Elements</div>
+  <h2>Starburst Divider</h2>
+  <div class="starburst-divider">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="6" fill="var(--accent)"/>
+      <g stroke="var(--accent)" stroke-width="1.5">
+        <line x1="50" y1="5" x2="50" y2="20"/><line x1="50" y1="80" x2="50" y2="95"/>
+        <line x1="5" y1="50" x2="20" y2="50"/><line x1="80" y1="50" x2="95" y2="50"/>
+        <line x1="18" y1="18" x2="28" y2="28"/><line x1="72" y1="72" x2="82" y2="82"/>
+        <line x1="82" y1="18" x2="72" y2="28"/><line x1="28" y1="72" x2="18" y2="82"/>
+      </g>
+    </svg>
+  </div>
+
+  <h3>Googie Panel</h3>
+  <div class="googie-panel gp-teal">
+    <div class="googie-label">Featured</div>
+    <h4>Panel Title</h4>
+    <p>Content with asymmetric rounded corners inspired by Googie architecture.</p>
+  </div>
+
+  <h3>Boomerang Card</h3>
+  <div class="boomerang-card boom-mustard">
+    <div class="boom-header"><h4>Card Title</h4></div>
+    <div class="boom-body"><p>Card with a decorative boomerang shape in the corner.</p></div>
+  </div>
+
+  <h3>Atomic Badges</h3>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 3rem;">
+    <div class="atomic-badge"><span class="badge-text">NEW</span></div>
+    <div class="atomic-badge"><span class="badge-text">MOD</span></div>
+    <div class="atomic-badge"><span class="badge-text">FAB</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Guidelines</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Material</th><th>Color</th><th>Era</th></tr></thead>
+    <tbody>
+      <tr><td>Teak</td><td>Warm brown</td><td>1950s</td></tr>
+      <tr><td>Formica</td><td>Mustard</td><td>1960s</td></tr>
+      <tr><td>Fiberglass</td><td>White</td><td>1950s</td></tr>
+    </tbody>
+  </table>
+  <p>Tags: <span class="tag t-capture">teal</span> <span class="tag t-refine">mustard</span> <span class="tag t-execute">coral</span> <span class="tag t-batch">slate</span></p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Design Process</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">CONCEPT</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Atomic age vision</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600">PROTOTYPE</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Form + function</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--execute)" font-size="11" font-weight="600">PRODUCE</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Mass market</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Mid-Century Modern</p></div></footer>
+
+</body>
+</html>

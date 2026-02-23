@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Art — Silver Age Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 0;
+    border: 3px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Bangers', cursive;
+    font-size: 2.4rem;
+    color: var(--text);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+  .font-sample-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 0;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .file-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 3px 3px 0 var(--border);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 0;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Pop Art</span></h1>
+  <p>A bold Silver Age design system inspired by Lichtenstein and Warhol &mdash; bright flat colors, large Ben-Day dots, speech bubbles, and thick black outlines for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128221;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127912;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Flat, bright, and fully saturated. The yellow background is the defining Lichtenstein color. Surfaces are pure flat white &mdash; no cream, no texture.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #fef430;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#fef430</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffffff;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#ffffff</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0f0f0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#f0f0f0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e0e0e0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#e0e0e0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1a1a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#1a1a1a</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of black ink on bright backgrounds. High contrast is essential to the pop art aesthetic.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>Primary colors at full saturation &mdash; not muted, not pastel. Pop art demands <strong>bold and unapologetic</strong> color. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e02040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#e02040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #00a840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#00a840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0c000;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#f0c000</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e02040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#e02040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0060e0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#0060e0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a01830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#a01830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #007830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#007830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b89000;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#b89000</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a01830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#a01830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0048a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#0048a8</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with bold rectangular borders:
+    <span class="tag t-capture">create</span>
+    <span class="tag t-refine">process</span>
+    <span class="tag t-execute">action</span>
+    <span class="tag t-batch">collect</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts with distinct roles. <strong>Comic display for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Bangers &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Inter &mdash; Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; v0.1 &middot; POP ART SYSTEM</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Bangers</td><td>clamp(3.5rem, 10vw, 7rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Bangers</td><td>2.4rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Bangers</td><td>1.6rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Inter</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>500</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and thick black separators.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 3px solid black border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams and Ben-Day panels can break out to 1100px max-width.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong> and thick black borders. Cards lift on hover with a hard shadow for maximum pop.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127912;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Bright Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127776;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Bright Yellow top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Bright Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128308;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Bright Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Capture</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Refine</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Execute</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Done</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold comic display numbers. Good for ordered principles, steps, or rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Description text using .principle-num for the large Bangers number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Bangers at 2rem in --accent color.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Uses a black border (not accent) to maintain the comic outline feel.</p>
+
+  <div class="callout">
+    <p><strong>Hey!</strong> This is a callout. It uses a 5px left border in --border (black) with a flat white background. Strong text inside uses Pop Red.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with thick header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Speech Bubble</td><td>.speech-bubble</td><td>Rounded balloon with triangle tail</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Thick-bordered panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#ffffff" stroke="#00a840" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#00a840" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#888888" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#888888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#ffffff" stroke="#e02040" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#e02040" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#888888" font-size="9">stroke: --accent</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#888888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#ffffff" stroke="#0060e0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#0060e0" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#888888" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Pop Art Components</div>
+  <h2>Speech Bubble</h2>
+  <p>A callout styled as a comic speech bubble with a triangular tail, thick black border, and rounded white fill. Perfect for dialogue, quotes, or attributed commentary.</p>
+
+  <div class="speech-bubble">
+    <p><strong>Artist says:</strong> Art is what you can get away with. The speech bubble uses a rounded border-radius and a triangle pointer created with CSS borders.</p>
+  </div>
+
+  <h2>Thought Bubble</h2>
+  <p>Similar to the speech bubble but with a cloud-like border and small circle trail instead of a pointed tail. Use for internal monologue or contemplative asides.</p>
+
+  <div class="thought-bubble">
+    <p><strong>Hmm...</strong> Maybe if I use more dots and brighter colors, the masses will finally understand my genius. The thought bubble uses organic border-radius and circular trail elements.</p>
+  </div>
+
+  <h2>Ben-Day Panel</h2>
+  <p>A content panel with the iconic Ben-Day dot pattern overlay. The dots are larger and more visible than subtle halftone &mdash; this is <strong>Lichtenstein scale</strong>. Color variants available:</p>
+
+  <div class="benday-panel">
+    <div class="diagram-label">Default &mdash; Red Dots</div>
+    <p>The Ben-Day panel applies a repeating radial-gradient dot pattern over a white surface. Use it for featured content, highlighted sections, or visual emphasis. All content sits above the dots via z-index.</p>
+  </div>
+
+  <div class="benday-panel dots-blue">
+    <div class="diagram-label">Variant &mdash; Blue Dots (.dots-blue)</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="50" y="10" width="260" height="80" rx="0" fill="#f0f0f0" stroke="#0060e0" stroke-width="2"/>
+      <text x="180" y="45" text-anchor="middle" fill="#0060e0" font-size="10" font-weight="600">POP NODE</text>
+      <text x="180" y="65" text-anchor="middle" fill="#888888" font-size="9">On blue dot background</text>
+
+      <line x1="310" y1="50" x2="390" y2="50" stroke="#888888" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="390" y="10" width="260" height="80" rx="0" fill="#f0f0f0" stroke="#e02040" stroke-width="2"/>
+      <text x="520" y="45" text-anchor="middle" fill="#e02040" font-size="10" font-weight="600">ART NODE</text>
+      <text x="520" y="65" text-anchor="middle" fill="#888888" font-size="9">Connected with dashes</text>
+    </svg>
+  </div>
+
+  <h2>POW Badge</h2>
+  <p>Starburst explosion badges using CSS <span class="inline-code">clip-path: polygon()</span> for a 22-point star shape. Four color variants:</p>
+
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; margin: 1.5rem 0;">
+    <div class="pow-badge badge-red">POW!</div>
+    <div class="pow-badge badge-blue">ZAP!</div>
+    <div class="pow-badge badge-yellow">BAM!</div>
+    <div class="pow-badge badge-green">WHAM!</div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Pop Art system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Bright Yellow, Not Newsprint</h4>
+        <p>The background is flat, saturated Lichtenstein yellow at full intensity. This is gallery-wall pop art, not aged paper.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Thick Black Outlines</h4>
+        <p>3px solid borders on everything with sharp 0px border-radius for a graphic, screen-printed feel. This is the most important visual element.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Full-Saturation Primaries</h4>
+        <p>Classic pop art palette (green, yellow, red, blue) at maximum saturation. Bold and unapologetic, never muted or pastel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Ben-Day Dots, Not Halftone</h4>
+        <p>Larger, more visible dots than subtle newsprint halftone. These are the iconic Lichtenstein dots at gallery scale.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Speech Bubbles as Layout</h4>
+        <p>Speech and thought bubbles are core layout elements, not decorative afterthoughts. This is how pop art communicates.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Ironic and Playful</h4>
+        <p>Pop art is self-aware. The design should feel bold, fun, and slightly tongue-in-cheek &mdash; Warhol winking at you from the gallery wall.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Hard Shadows, Sharp Edges</h4>
+        <p>Flat hard-edged shadows on hover, 0px border-radius everywhere (except speech bubbles). Everything should feel like it was screen-printed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Pop Art &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

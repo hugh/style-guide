@@ -1,0 +1,723 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ==============================
+   Pop Art — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #fef430;
+  --surface: #ffffff;
+  --surface-2: #f0f0f0;
+  --surface-3: #e0e0e0;
+  --border: #1a1a1a;
+
+  /* Text */
+  --text: #1a1a1a;
+  --text-dim: #444444;
+  --text-faint: #888888;
+
+  /* Accent (Pop Red) */
+  --accent: #e02040;
+  --accent-dim: #a01830;
+
+  /* Semantic: Capture (Bright Green) */
+  --capture: #00a840;
+  --capture-dim: #007830;
+  --capture-fill: rgba(0, 168, 64, 0.12);
+
+  /* Semantic: Refine (Bright Yellow) */
+  --refine: #f0c000;
+  --refine-dim: #b89000;
+  --refine-fill: rgba(240, 192, 0, 0.12);
+
+  /* Semantic: Execute (Bright Red) */
+  --execute: #e02040;
+  --execute-dim: #a01830;
+  --execute-fill: rgba(224, 32, 64, 0.12);
+
+  /* Semantic: Batch (Bright Blue) */
+  --batch: #0060e0;
+  --batch-dim: #0048a8;
+  --batch-fill: rgba(0, 96, 224, 0.12);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Bangers', cursive;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  font-size: clamp(3.5rem, 10vw, 7rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 3px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Large Ben-Day dot pattern */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(224, 32, 64, 0.12) 3px, transparent 3px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+
+/* Bold color block stripe accents */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 96, 224, 0.06) 0%, transparent 25%),
+    linear-gradient(315deg, rgba(224, 32, 64, 0.06) 0%, transparent 25%);
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 1; }
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 1; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 0;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.flow-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 3px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 0; }
+.pipe-stage:last-child  { border-radius: 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 5px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 5px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 5px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 5px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 5px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 0;
+  border: 3px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Bangers', cursive;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 5px solid var(--border);
+  background: var(--surface);
+  border-radius: 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.25em 0.65em;
+  border-radius: 0;
+  border: 2px solid;
+  text-transform: uppercase;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   Speech Bubble (unique to Pop Art)
+   ============================== */
+
+.speech-bubble {
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 24px;
+}
+
+.speech-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 2.5rem;
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 18px solid var(--border);
+}
+
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -13px;
+  left: calc(2.5rem + 3px);
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 15px solid var(--surface);
+  z-index: 1;
+}
+
+.speech-bubble p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.speech-bubble strong {
+  color: var(--text);
+}
+
+/* ==============================
+   Thought Bubble (unique to Pop Art)
+   ============================== */
+
+.thought-bubble {
+  position: relative;
+  margin: 2.5rem 0 3.5rem;
+  padding: 1.5rem 2rem;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+}
+
+.thought-bubble::before {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 2.5rem;
+  width: 16px;
+  height: 16px;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 50%;
+}
+
+.thought-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 2rem;
+  width: 10px;
+  height: 10px;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 50%;
+}
+
+.thought-bubble p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.thought-bubble strong {
+  color: var(--text);
+}
+
+/* ==============================
+   Ben-Day Panel (unique to Pop Art)
+   ============================== */
+
+.benday-panel {
+  margin: 2.5rem 0;
+  padding: 2.5rem;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.benday-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(224, 32, 64, 0.10) 2.5px, transparent 2.5px);
+  background-size: 14px 14px;
+  pointer-events: none;
+}
+
+.benday-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.benday-panel.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benday-panel.dots-blue::before {
+  background: radial-gradient(circle, rgba(0, 96, 224, 0.10) 2.5px, transparent 2.5px);
+  background-size: 14px 14px;
+}
+
+.benday-panel.dots-green::before {
+  background: radial-gradient(circle, rgba(0, 168, 64, 0.10) 2.5px, transparent 2.5px);
+  background-size: 14px 14px;
+}
+
+.benday-panel.dots-yellow::before {
+  background: radial-gradient(circle, rgba(240, 192, 0, 0.10) 2.5px, transparent 2.5px);
+  background-size: 14px 14px;
+}
+
+/* ==============================
+   POW Badge (unique to Pop Art)
+   ============================== */
+
+.pow-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  font-family: 'Bangers', cursive;
+  font-size: 1.6rem;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.pow-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--refine);
+  border: 3px solid var(--border);
+  clip-path: polygon(
+    50% 0%,
+    63% 18%,
+    80% 5%,
+    78% 28%,
+    100% 30%,
+    87% 45%,
+    100% 60%,
+    82% 65%,
+    88% 85%,
+    70% 75%,
+    58% 95%,
+    50% 78%,
+    42% 95%,
+    30% 75%,
+    12% 85%,
+    18% 65%,
+    0% 60%,
+    13% 45%,
+    0% 30%,
+    22% 28%,
+    20% 5%,
+    37% 18%
+  );
+  z-index: -1;
+}
+
+.pow-badge.badge-red::before { background: var(--execute); }
+.pow-badge.badge-red { color: var(--surface); }
+
+.pow-badge.badge-blue::before { background: var(--batch); }
+.pow-badge.badge-blue { color: var(--surface); }
+
+.pow-badge.badge-green::before { background: var(--capture); }
+.pow-badge.badge-green { color: var(--surface); }
+
+.pow-badge.badge-yellow::before { background: var(--refine); }
+.pow-badge.badge-yellow { color: var(--text); }
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 0;
+  border: 2px solid var(--border);
+  color: var(--accent);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 3px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

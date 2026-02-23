@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surveillance — CCTV Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .font-sample-body {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(224, 32, 32, 0.1);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-timestamp">SYS-MAIN // 2026-02-23 03:14:07 UTC</div>
+  <div class="hero-label">Central Command // Design System Reference</div>
+  <h1><span>Surveillance</span></h1>
+  <p>Clinical and menacing. A design system inspired by security monitoring equipment &mdash; dark monitor greys, harsh white text, red REC indicators, and multi-camera grid layouts for single-page HTML documents.</p>
+  <div class="hero-rec">Rec</div>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128249;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Monitor black and panel dark &mdash; the interior of a security control room. Surfaces layer like stacked CCTV monitors in a darkened operations center.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0a0a0c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0a0a0c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #121214;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#121214</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1a1e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1a1a1e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #242428;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#242428</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #333338;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#333338</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of harsh monitor phosphor create clear information hierarchy against the dark panels.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text);">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, timestamps, ghost labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A harsh REC red primary accent plus four semantic colors mapped to surveillance operations. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e02020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#e02020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #30c050;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#30c050</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d0a020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d0a020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e02020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#e02020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2878d0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#2878d0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #901414;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#901414</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a7030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#1a7030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #886810;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#886810</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #901414;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#901414</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #184888;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#184888</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">active</span>
+    <span class="tag t-refine">standby</span>
+    <span class="tag t-execute">alert</span>
+    <span class="tag t-batch">system</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Two monospace Google Fonts. <strong>Share Tech Mono for headings</strong> gives the surveillance monitor feel, while <strong>IBM Plex Mono for body text</strong> provides slightly more readable monospace for extended content. Emphasis comes through weight and color, not font variety.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Share Tech Mono &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Body text, h4 titles, labels, tags, metadata</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses IBM Plex Mono throughout, reinforcing the clinical monitoring equipment aesthetic. <strong>Strong text</strong> uses the primary text color and heavier weight to stand out from dim body copy.</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Share Tech Mono</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Share Tech Mono</td><td>1.8rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Share Tech Mono</td><td>1.2rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>IBM Plex Mono</td><td>0.8rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>IBM Plex Mono</td><td>0.88rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>IBM Plex Mono</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like monitor panels separated by structural borders.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128187;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9608;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a red glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128249;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Active Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128065;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Standby Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Alert Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128187;</div>
+      <h4>.flow-card.batch</h4>
+      <p>System Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Detect</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Track</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Record</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Archive</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered protocols, directives, or standard operating procedures.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Description text using .principle-num for the large number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Protocol</h4>
+        <p>Numbers render in Share Tech Mono at 2rem in --accent color (REC red).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in red.</p>
+
+  <div class="callout">
+    <p><strong>Alert:</strong> This is a callout. It uses a 3px left border in --accent with a faint red-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Camera Feed</td><td>.camera-feed</td><td>CCTV monitor with REC indicator</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#121214" stroke="#30c050" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#30c050" font-size="10">SENSOR</text>
+      <text x="110" y="65" text-anchor="middle" fill="#505058" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#505058" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#121214" stroke="#d0a020" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d0a020" font-size="10">PROCESSOR</text>
+      <text x="350" y="65" text-anchor="middle" fill="#505058" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#505058" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#121214" stroke="#2878d0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#2878d0" font-size="10">STORAGE</text>
+      <text x="590" y="65" text-anchor="middle" fill="#505058" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Surveillance Components</div>
+  <h2>Camera Feed</h2>
+  <p>A CCTV monitor card with camera ID label, timestamp overlay, scan-line texture, and pulsing REC indicator. Styled like a live security camera feed output.</p>
+
+  <div class="camera-feed">
+    <div class="feed-header">
+      <span class="cam-id">CAM-07 // Lobby North</span>
+      <span class="feed-timestamp">2026-02-23 03:14:07</span>
+    </div>
+    <div class="feed-body">
+      <p>Camera feed content area. Place descriptions, captured stills, data overlays, or embedded visual content here. The scan-line texture overlay and REC indicator give the appearance of live CCTV monitoring equipment.</p>
+    </div>
+    <div class="feed-footer">
+      <span class="rec-indicator">Rec</span>
+      <span class="feed-status">1080p // 30fps // Motion Active</span>
+    </div>
+  </div>
+
+  <h2>Evidence Tag</h2>
+  <p>A callout styled like a physical evidence bag label with case number, date, and officer fields in a structured monospace grid. Uses dashed borders to evoke perforated labels and chain-of-custody documentation.</p>
+
+  <div class="evidence-tag">
+    <div class="tag-header">
+      <span class="tag-title">Evidence Tag</span>
+      <span class="tag-classification">Restricted</span>
+    </div>
+    <div class="tag-body">
+      <div class="tag-grid">
+        <div class="tag-field">
+          <span class="field-label">Case Number</span>
+          <span class="field-value">SVL-2026-04419</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Date Collected</span>
+          <span class="field-value">2026-02-23</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Collecting Officer</span>
+          <span class="field-value">Det. R. Vasquez</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Location</span>
+          <span class="field-value">Sector 7-G // Cam 14</span>
+        </div>
+      </div>
+      <div class="tag-notes">
+        <p>Chain of custody notes and evidence handling instructions. The dashed border and structured grid layout evoke physical evidence tags used in forensic documentation.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Static Divider</h2>
+  <p>An SVG section separator that creates a TV static noise band effect. Horizontal bars flicker at different rates to simulate signal interference between camera feeds.</p>
+
+  <div class="static-divider">
+    <svg viewBox="0 0 700 32" xmlns="http://www.w3.org/2000/svg">
+      <rect class="static-band" x="0" y="0" width="700" height="6" fill="#333338" opacity="0.4"/>
+      <rect class="static-band" x="0" y="8" width="700" height="3" fill="#505058" opacity="0.3"/>
+      <rect class="static-band" x="0" y="13" width="700" height="8" fill="#333338" opacity="0.5"/>
+      <rect class="static-band" x="0" y="23" width="700" height="4" fill="#505058" opacity="0.25"/>
+      <rect class="static-band" x="0" y="28" width="700" height="4" fill="#333338" opacity="0.35"/>
+      <!-- Noise pixels -->
+      <rect x="45" y="2" width="2" height="2" fill="#808088" opacity="0.3"/>
+      <rect x="120" y="14" width="3" height="1" fill="#d0d0d8" opacity="0.2"/>
+      <rect x="230" y="5" width="2" height="2" fill="#808088" opacity="0.25"/>
+      <rect x="340" y="15" width="4" height="1" fill="#d0d0d8" opacity="0.15"/>
+      <rect x="410" y="9" width="2" height="2" fill="#808088" opacity="0.3"/>
+      <rect x="520" y="24" width="3" height="1" fill="#d0d0d8" opacity="0.2"/>
+      <rect x="600" y="3" width="2" height="2" fill="#808088" opacity="0.25"/>
+      <rect x="180" y="25" width="4" height="1" fill="#d0d0d8" opacity="0.15"/>
+      <rect x="480" y="1" width="2" height="2" fill="#808088" opacity="0.2"/>
+      <rect x="650" y="17" width="3" height="1" fill="#d0d0d8" opacity="0.25"/>
+    </svg>
+  </div>
+
+  <h2>Recognition Box</h2>
+  <p>A card with dashed bounding-box border like facial recognition targeting, corner bracket markers in accent red, crosshair overlay on the silhouette, and a status label. Use for subject identification entries.</p>
+
+  <div class="recognition-box">
+    <div class="corner-bl"></div>
+    <div class="corner-br"></div>
+    <div class="recog-header">
+      <span class="recog-id">Subject XX-041</span>
+      <span class="recog-status status-alert">Alert</span>
+    </div>
+    <div class="recog-body">
+      <div class="recog-silhouette">
+        <svg viewBox="0 0 40 55" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="20" cy="12" rx="8" ry="10" fill="none" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="22" x2="20" y2="40" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="28" x2="8" y2="35" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="28" x2="32" y2="35" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="40" x2="10" y2="52" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="40" x2="30" y2="52" stroke="#e02020" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="recog-stats">
+        <div class="stat-row">
+          <span class="stat-label">Subject ID</span>
+          <span class="stat-value">TGT-0041</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Confidence</span>
+          <span class="stat-value match">97.3%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Last Seen</span>
+          <span class="stat-value">Cam-07 // 03:12 UTC</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Threat Level</span>
+          <span class="stat-value alert">Elevated</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Database</span>
+          <span class="stat-value">NCIC // Watchlist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>Recognition status variants:</p>
+  <p>
+    <span class="tag t-capture">status-match</span>
+    <span class="tag t-refine">status-scanning</span>
+    <span class="tag t-execute">status-alert</span>
+    <span class="tag t-batch">status-clear</span>
+  </p>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Surveillance system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Monitor Black, Not Warm</h4>
+        <p>Backgrounds use cool-tinted near-blacks like powered-off CRT monitors. The slight blue-grey undertone evokes the cold glow of a security control room at 3am.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>REC Red Dominance</h4>
+        <p>The primary accent is a harsh recording-indicator red. It pulses on active elements and draws the eye like a blinking REC light on a surveillance camera.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Operational Semantics</h4>
+        <p>Four semantic colors map to surveillance operations: active green (recording), standby amber (motion/tracking), alert red (flagged), system blue (information/archive).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>All-Mono Typography</h4>
+        <p>Both fonts are monospace. Share Tech Mono for headings gives the security monitor look. IBM Plex Mono for body text provides slightly more readable extended content while maintaining the clinical equipment feel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Timestamp Everything</h4>
+        <p>Timestamps and camera IDs appear on components like real security footage overlays. Every piece of data feels logged, recorded, and traceable.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Evidence Chain</h4>
+        <p>Evidence tags, recognition boxes, and structured data grids evoke forensic documentation and chain-of-custody paperwork. Information is clinical and procedural.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Signal Interference</h4>
+        <p>Scan-line overlays, static noise dividers, and flickering animations bring the imperfections of analog video surveillance into the digital design language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Surveillance &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

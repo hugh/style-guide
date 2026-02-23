@@ -40,6 +40,10 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `victorian/` — Antique theme (aged parchment, ornate serifs, wax seals, filigree dividers, ribbon banners, medallions)
 - `mid-century/` — Atomic-age theme (warm cream, mustard/teal/coral, starburst dividers, boomerang cards, Googie panels)
 - `alchemist/` — Medieval mystical theme (dark parchment, gold leaf accents, drop caps, recipe cards, transmutation circles)
+- `subway/` — Metro transit theme (dark tunnel grey, route-color stripes, station signs, arrival boards, transfer badges)
+- `bakery/` — Patisserie theme (warm vanilla cream, caramel accents, recipe cards, timer badges, cake layer dividers)
+- `surveillance/` — CCTV theme (monitor black, REC red, camera feeds, evidence tags, recognition boxes)
+- `pop-art/` — Silver Age pop art theme (bright yellow, thick black outlines, Ben-Day dots, speech bubbles, POW badges)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

@@ -1,0 +1,991 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+/* ==============================
+   Surveillance — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #0a0a0c;
+  --surface: #121214;
+  --surface-2: #1a1a1e;
+  --surface-3: #242428;
+  --border: #333338;
+
+  /* Text */
+  --text: #d0d0d8;
+  --text-dim: #808088;
+  --text-faint: #505058;
+
+  /* Accent (REC Red) */
+  --accent: #e02020;
+  --accent-dim: #901414;
+
+  /* Semantic: Capture (Active Green) */
+  --capture: #30c050;
+  --capture-dim: #1a7030;
+  --capture-fill: rgba(48, 192, 80, 0.12);
+
+  /* Semantic: Refine (Standby Amber) */
+  --refine: #d0a020;
+  --refine-dim: #886810;
+  --refine-fill: rgba(208, 160, 32, 0.12);
+
+  /* Semantic: Execute (Alert Red) */
+  --execute: #e02020;
+  --execute-dim: #901414;
+  --execute-fill: rgba(224, 32, 32, 0.12);
+
+  /* Semantic: Batch (System Blue) */
+  --batch: #2878d0;
+  --batch-dim: #184888;
+  --batch-fill: rgba(40, 120, 208, 0.12);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.88rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Camera grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 120px,
+      rgba(51, 51, 56, 0.25) 120px,
+      rgba(51, 51, 56, 0.25) 121px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 120px,
+      rgba(51, 51, 56, 0.25) 120px,
+      rgba(51, 51, 56, 0.25) 121px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(10, 10, 12, 0.6) 100%);
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span { color: var(--accent); text-shadow: 0 0 30px rgba(224, 32, 32, 0.5); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  position: relative;
+  z-index: 2;
+}
+
+/* REC indicator in hero */
+.hero-rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-rec::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(224, 32, 32, 0.6);
+  animation: recPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(224, 32, 32, 0.6); }
+  50% { opacity: 0.3; box-shadow: 0 0 2px rgba(224, 32, 32, 0.2); }
+}
+
+/* Timestamp overlay */
+.hero-timestamp {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version, .hero-rec {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+.hero-rec { animation-delay: 0.6s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(224, 32, 32, 0.1);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); box-shadow: 0 0 8px rgba(48, 192, 80, 0.3); }
+.flow-card.refine::before   { background: var(--refine); box-shadow: 0 0 8px rgba(208, 160, 32, 0.3); }
+.flow-card.execute::before  { background: var(--execute); box-shadow: 0 0 8px rgba(224, 32, 32, 0.3); }
+.flow-card.batch::before    { background: var(--batch); box-shadow: 0 0 8px rgba(40, 120, 208, 0.3); }
+.flow-card.accent::before   { background: var(--accent); box-shadow: 0 0 8px rgba(224, 32, 32, 0.3); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 2px 0 0 2px; }
+.pipe-stage:last-child  { border-radius: 0 2px 2px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 2px;
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(224, 32, 32, 0.05);
+  border-radius: 0 2px 2px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* ==============================
+   Camera Feed (unique to Surveillance)
+   ============================== */
+
+.camera-feed {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scan-line texture overlay */
+.camera-feed::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(10, 10, 12, 0.15) 2px,
+    rgba(10, 10, 12, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.camera-feed .feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.camera-feed .cam-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.camera-feed .feed-timestamp {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.camera-feed .feed-body {
+  padding: 2rem 1.5rem;
+  min-height: 180px;
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+}
+
+.camera-feed .feed-body p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.camera-feed .feed-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 2;
+}
+
+/* Pulsing REC indicator */
+.camera-feed .rec-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.camera-feed .rec-indicator::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(224, 32, 32, 0.6);
+  animation: recPulse 1.5s ease-in-out infinite;
+}
+
+.camera-feed .feed-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ==============================
+   Evidence Tag (unique to Surveillance)
+   ============================== */
+
+.evidence-tag {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.evidence-tag .tag-header {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 2px dashed var(--border);
+  background: var(--surface-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.evidence-tag .tag-header .tag-title {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.evidence-tag .tag-header .tag-classification {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  background: var(--execute-fill);
+  color: var(--execute);
+  border: 1px solid var(--execute-dim);
+}
+
+.evidence-tag .tag-body {
+  padding: 1.25rem;
+}
+
+.evidence-tag .tag-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 2rem;
+}
+
+@media (max-width: 480px) {
+  .evidence-tag .tag-grid { grid-template-columns: 1fr; }
+}
+
+.evidence-tag .tag-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.evidence-tag .field-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.evidence-tag .field-value {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.evidence-tag .tag-notes {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 2px dashed var(--border);
+}
+
+.evidence-tag .tag-notes p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+
+/* ==============================
+   Static Divider (unique to Surveillance)
+   ============================== */
+
+.static-divider {
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.static-divider svg {
+  width: 100%;
+  max-width: 700px;
+  height: 32px;
+  overflow: visible;
+}
+
+@keyframes staticFlicker {
+  0%   { opacity: 0.4; }
+  10%  { opacity: 0.6; }
+  20%  { opacity: 0.3; }
+  30%  { opacity: 0.7; }
+  40%  { opacity: 0.35; }
+  50%  { opacity: 0.55; }
+  60%  { opacity: 0.3; }
+  70%  { opacity: 0.65; }
+  80%  { opacity: 0.4; }
+  90%  { opacity: 0.5; }
+  100% { opacity: 0.4; }
+}
+
+.static-divider .static-band {
+  animation: staticFlicker 0.8s steps(5) infinite;
+}
+
+.static-divider .static-band:nth-child(2) { animation-delay: 0.15s; }
+.static-divider .static-band:nth-child(3) { animation-delay: 0.3s; }
+.static-divider .static-band:nth-child(4) { animation-delay: 0.1s; }
+
+/* ==============================
+   Recognition Box (unique to Surveillance)
+   ============================== */
+
+.recognition-box {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 2px dashed var(--border);
+  border-radius: 2px;
+  position: relative;
+  padding: 1.5rem;
+}
+
+/* Corner bracket markers */
+.recognition-box::before,
+.recognition-box::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+.recognition-box::before {
+  top: -1px;
+  left: -1px;
+  border-width: 3px 0 0 3px;
+}
+
+.recognition-box::after {
+  top: -1px;
+  right: -1px;
+  border-width: 3px 3px 0 0;
+}
+
+.recognition-box .corner-bl,
+.recognition-box .corner-br {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--accent);
+  border-style: solid;
+}
+
+.recognition-box .corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 3px 3px;
+}
+
+.recognition-box .corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 3px 3px 0;
+}
+
+.recognition-box .recog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.recognition-box .recog-id {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.recognition-box .recog-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.recognition-box .recog-status.status-match {
+  background: var(--capture-fill);
+  color: var(--capture);
+  border-color: var(--capture-dim);
+}
+
+.recognition-box .recog-status.status-scanning {
+  background: var(--refine-fill);
+  color: var(--refine);
+  border-color: var(--refine-dim);
+  animation: statusBlink 1.2s ease-in-out infinite;
+}
+
+.recognition-box .recog-status.status-alert {
+  background: var(--execute-fill);
+  color: var(--execute);
+  border-color: var(--execute-dim);
+  animation: statusBlink 0.8s ease-in-out infinite;
+}
+
+.recognition-box .recog-status.status-clear {
+  background: var(--batch-fill);
+  color: var(--batch);
+  border-color: var(--batch-dim);
+}
+
+@keyframes statusBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.recognition-box .recog-body {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 480px) {
+  .recognition-box .recog-body { grid-template-columns: 1fr; }
+}
+
+.recognition-box .recog-silhouette {
+  width: 100px;
+  height: 100px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Crosshair overlay */
+.recognition-box .recog-silhouette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, transparent calc(50% - 0.5px), rgba(224, 32, 32, 0.4) calc(50% - 0.5px), rgba(224, 32, 32, 0.4) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.5px), rgba(224, 32, 32, 0.4) calc(50% - 0.5px), rgba(224, 32, 32, 0.4) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+  pointer-events: none;
+}
+
+.recognition-box .recog-silhouette svg {
+  width: 50px;
+  height: 65px;
+  opacity: 0.5;
+}
+
+.recognition-box .recog-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.recognition-box .stat-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--surface-3);
+  font-size: 0.78rem;
+}
+
+.recognition-box .stat-row:last-child { border-bottom: none; }
+
+.recognition-box .stat-label {
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.68rem;
+}
+
+.recognition-box .stat-value {
+  color: var(--text);
+}
+
+.recognition-box .stat-value.match { color: var(--capture); }
+.recognition-box .stat-value.alert { color: var(--execute); }
+.recognition-box .stat-value.pending { color: var(--refine); }
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bakery &mdash; Patisserie Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Satisfy', cursive;
+    font-size: 2.8rem;
+    color: var(--text);
+    line-height: 1.05;
+    font-weight: 400;
+  }
+  .font-sample-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(192, 104, 56, 0.1);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">350&deg;F &middot; 45 min &middot; serves 8</div>
+  <h1><span>Bakery</span></h1>
+  <p>Warm vanilla cream and powdered sugar. A design system inspired by the patisserie &mdash; recipe cards, timer badges, layered cake dividers, and pastry box packaging for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127856;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm vanilla cream tones &mdash; the warmth of a freshly baked kitchen. Surfaces layer like sheets of parchment paper and dusted flour.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #fdf8f0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#fdf8f0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f8f0e4;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f8f0e4</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0e6d6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#f0e6d6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e4d8c4;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#e4d8c4</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4c4a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#d4c4a8</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm brown tones create clear readability on the cream backgrounds.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, measurements, timestamps</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A caramel/toffee accent plus four baking-inspired semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c06838;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent (Caramel)</div><div class="swatch-hex">#c06838</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #5a9060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture (Pistachio)</div><div class="swatch-hex">#5a9060</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c89838;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Golden Crust)</div><div class="swatch-hex">#c89838</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c84858;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Raspberry)</div><div class="swatch-hex">#c84858</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4878a0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Blueberry)</div><div class="swatch-hex">#4878a0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a4828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#8a4828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3a6840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#3a6840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #907020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#907020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #903038;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#903038</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #305878;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#305878</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">pistachio</span>
+    <span class="tag t-refine">caramel</span>
+    <span class="tag t-execute">raspberry</span>
+    <span class="tag t-batch">blueberry</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts with distinct roles. <strong>Warm rounded script for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for measurements</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Satisfy &mdash; Headings (h1, h2, h3) and decorative labels</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">DM Sans &mdash; Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Measurements, temperatures, section labels, tags</div>
+    <div class="font-sample-mono">01 &mdash; 350&deg;F &middot; 45 min &middot; 225g &middot; serves 12</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Satisfy</td><td>clamp(3.5rem, 10vw, 7rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Satisfy</td><td>2.8rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Satisfy</td><td>2rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>DM Sans</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>DM Sans</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Recipe title</td><td>Satisfy</td><td>1.8rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like recipe pages in a binder.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a warm caramel glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127811;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Pistachio green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127854;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Golden Crust top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#127827;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Raspberry top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#129347;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Blueberry top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear baking process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Mix</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Proof</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Bake</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Decorate</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Callout, Table &amp; Diagram</h2>
+
+  <div class="callout">
+    <p><strong>Baker's Tip:</strong> This is a callout. It uses a 3px left border in --accent with a faint caramel-tinted background.</p>
+  </div>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Recipe Card</td><td>.recipe-card</td><td>Structured card with ingredients, params</td></tr>
+      <tr><td>Timer Badge</td><td>.timer-badge</td><td>Circular 80px countdown display</td></tr>
+      <tr><td>Cake Layer Divider</td><td>.cake-layer-divider</td><td>SVG layered cake section separator</td></tr>
+      <tr><td>Pastry Box</td><td>.pastry-box</td><td>Packaging frame with ribbon bow</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#f8f0e4" stroke="#5a9060" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#5a9060" font-size="10" font-weight="600">MIX</text>
+      <text x="110" y="65" text-anchor="middle" fill="#a89878" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#a89878" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#f8f0e4" stroke="#c89838" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#c89838" font-size="10" font-weight="600">PROOF</text>
+      <text x="350" y="65" text-anchor="middle" fill="#a89878" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#a89878" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#f8f0e4" stroke="#c84858" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#c84858" font-size="10" font-weight="600">BAKE</text>
+      <text x="590" y="65" text-anchor="middle" fill="#a89878" font-size="9">stroke: --execute</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Bakery Components</div>
+  <h2>Recipe Card</h2>
+  <p>A structured recipe card with a Satisfy-font title, ingredient checklist with checkboxes and monospace quantities, and a footer displaying baking parameters in mono.</p>
+
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <span class="recipe-title">Lemon Drizzle Cake</span>
+      <span class="recipe-meta">Yields 1 loaf</span>
+    </div>
+    <div class="recipe-body">
+      <h4>Ingredients</h4>
+      <ul class="recipe-ingredients">
+        <li>
+          <span class="ingredient-check checked">&#10003;</span>
+          <span class="ingredient-qty">225g</span>
+          <span>Self-raising flour</span>
+        </li>
+        <li>
+          <span class="ingredient-check checked">&#10003;</span>
+          <span class="ingredient-qty">225g</span>
+          <span>Caster sugar</span>
+        </li>
+        <li>
+          <span class="ingredient-check checked">&#10003;</span>
+          <span class="ingredient-qty">225g</span>
+          <span>Unsalted butter, softened</span>
+        </li>
+        <li>
+          <span class="ingredient-check"></span>
+          <span class="ingredient-qty">4 large</span>
+          <span>Eggs</span>
+        </li>
+        <li>
+          <span class="ingredient-check"></span>
+          <span class="ingredient-qty">2 tbsp</span>
+          <span>Lemon juice + zest of 2 lemons</span>
+        </li>
+      </ul>
+    </div>
+    <div class="recipe-footer">
+      <div class="recipe-param">
+        <span class="param-label">Oven Temp</span>
+        <span class="param-value">350&deg;F / 180&deg;C</span>
+      </div>
+      <div class="recipe-param">
+        <span class="param-label">Bake Time</span>
+        <span class="param-value">45&ndash;50 min</span>
+      </div>
+      <div class="recipe-param">
+        <span class="param-label">Servings</span>
+        <span class="param-value">10 slices</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Timer Badge</h2>
+  <p>Circular countdown badges (80px) for tracking baking times. The default uses <span class="inline-code">--execute</span> (raspberry) for urgency. Add <span class="inline-code">.ready</span> (pistachio green) for done, or <span class="inline-code">.waiting</span> (golden) for in-progress. The <span class="inline-code">.urgent</span> variant adds a pulsing glow animation.</p>
+
+  <div class="timer-badge-group">
+    <div class="timer-badge urgent">
+      <span class="timer-value">2:30</span>
+      <span class="timer-unit">min</span>
+    </div>
+    <div class="timer-badge waiting">
+      <span class="timer-value">15</span>
+      <span class="timer-unit">min</span>
+    </div>
+    <div class="timer-badge">
+      <span class="timer-value">45</span>
+      <span class="timer-unit">min</span>
+    </div>
+    <div class="timer-badge ready">
+      <span class="timer-value">0:00</span>
+      <span class="timer-unit">done</span>
+    </div>
+  </div>
+
+  <h2>Cake Layer Divider</h2>
+  <p>An SVG section separator showing a layered cake cross-section &mdash; alternating sponge and frosting layers with cherry decorations on top. Use between content sections for a thematic break.</p>
+
+  <div class="cake-layer-divider">
+    <svg viewBox="0 0 700 48" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bottom sponge layer -->
+      <rect x="50" y="36" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Frosting layer 1 -->
+      <rect x="50" y="30" width="600" height="6" rx="1" fill="#f8f0e4"/>
+      <!-- Middle sponge layer -->
+      <rect x="50" y="20" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Frosting layer 2 -->
+      <rect x="50" y="14" width="600" height="6" rx="1" fill="#f8f0e4"/>
+      <!-- Top sponge layer -->
+      <rect x="50" y="4" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Top frosting drip -->
+      <path d="M50,4 Q55,0 65,4 Q100,-2 150,4 Q200,-1 250,4 Q300,-2 350,4 Q400,-1 450,4 Q500,-2 550,4 Q600,-1 630,4 Q645,0 650,4" fill="none" stroke="#f8f0e4" stroke-width="3"/>
+      <!-- Cherry decorations -->
+      <circle cx="175" cy="2" r="4" fill="#c84858"/>
+      <circle cx="350" cy="1" r="4" fill="#c84858"/>
+      <circle cx="525" cy="2" r="4" fill="#c84858"/>
+    </svg>
+  </div>
+
+  <h2>Pastry Box</h2>
+  <p>A packaging-style frame with a decorative ribbon and bow across the top. Use for featured or highlighted content &mdash; special announcements, promotions, or signature items.</p>
+
+  <div class="pastry-box">
+    <div class="pastry-box-inner">
+      <div class="pastry-box-label">Chef's Selection</div>
+      <h3>Pistachio Cr&egrave;me Br&ucirc;l&eacute;e</h3>
+      <p>Silky pistachio custard with a hand-torched caramel crust, served in a ramekin dusted with powdered sugar and edible gold leaf.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Bakery system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Warm Vanilla, Not Stark White</h4>
+        <p>Backgrounds use warm cream tones like vanilla batter and parchment paper, not cold whites. This creates a cozy, inviting bakery atmosphere.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Caramel Accent</h4>
+        <p>The primary accent is a rich caramel/toffee brown inspired by golden-baked crusts and caramelized sugar. Warm and appetizing.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Flavor Semantics</h4>
+        <p>Four semantic colors map to bakery flavors: pistachio green (fresh), golden crust (warmth), raspberry pink (sweetness), blueberry blue (richness).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Script Headings</h4>
+        <p>Satisfy delivers the feel of handwritten bakery signage and recipe labels &mdash; warm, personal, and inviting, like a chalkboard menu.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Precise Measurements</h4>
+        <p>IBM Plex Mono for all measurements, temperatures, and timings gives baking data the precision that pastry requires &mdash; baking is chemistry.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Soft Rounded Corners</h4>
+        <p>A generous 10px border-radius on all components creates the soft, rounded feel of pastry &mdash; croissant curves, bread loaves, and piped frosting.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Bakery Artifacts</h4>
+        <p>Recipe cards, timer badges, layered cake dividers, and pastry box packaging bring real patisserie equipment and presentation into the design language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Bakery &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

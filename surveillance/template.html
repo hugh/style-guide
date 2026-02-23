@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-timestamp">CAM-MAIN // 2026-02-23 03:14:07 UTC</div>
+  <div class="hero-label">Central Monitoring // Facility Control</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-rec">Rec</div>
+  <div class="hero-version">v0.1 // draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128249;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128065;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128187;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Alert:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Monitoring Pipeline</div>
+  <h2>Surveillance Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of monitoring stages.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Detect</div>
+      <div class="pipe-desc">Motion sensors active</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Track</div>
+      <div class="pipe-desc">Subject identification</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Record</div>
+      <div class="pipe-desc">Footage captured</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Review</div>
+      <div class="pipe-desc">Analyst verification</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SURVEILLANCE-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Camera Feeds</div>
+  <h2>Camera Feed</h2>
+  <p>CCTV monitor card with camera ID, timestamp, scan-line overlay, and pulsing REC indicator.</p>
+
+  <div class="camera-feed">
+    <div class="feed-header">
+      <span class="cam-id">CAM-07 // Lobby North</span>
+      <span class="feed-timestamp">2026-02-23 03:14:07</span>
+    </div>
+    <div class="feed-body">
+      <p>Camera feed content area. Use this for descriptions, captured stills, or embedded visual data. The scan-line overlay and REC indicator give the appearance of live CCTV monitoring.</p>
+    </div>
+    <div class="feed-footer">
+      <span class="rec-indicator">Rec</span>
+      <span class="feed-status">1080p // 30fps // Motion Active</span>
+    </div>
+  </div>
+
+  <h3>Evidence Tag</h3>
+  <p>Evidence bag label with structured case data fields in monospace grid layout.</p>
+
+  <div class="evidence-tag">
+    <div class="tag-header">
+      <span class="tag-title">Evidence Tag</span>
+      <span class="tag-classification">Restricted</span>
+    </div>
+    <div class="tag-body">
+      <div class="tag-grid">
+        <div class="tag-field">
+          <span class="field-label">Case Number</span>
+          <span class="field-value">SVL-2026-04419</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Date Collected</span>
+          <span class="field-value">2026-02-23</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Collecting Officer</span>
+          <span class="field-value">Det. R. Vasquez</span>
+        </div>
+        <div class="tag-field">
+          <span class="field-label">Location</span>
+          <span class="field-value">Sector 7-G // Cam 14</span>
+        </div>
+      </div>
+      <div class="tag-notes">
+        <p>Additional notes regarding chain of custody or evidence handling instructions go here.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Static Divider</h3>
+  <p>SVG section separator that simulates TV static noise banding.</p>
+
+  <div class="static-divider">
+    <svg viewBox="0 0 700 32" xmlns="http://www.w3.org/2000/svg">
+      <rect class="static-band" x="0" y="0" width="700" height="6" fill="#333338" opacity="0.4"/>
+      <rect class="static-band" x="0" y="8" width="700" height="3" fill="#505058" opacity="0.3"/>
+      <rect class="static-band" x="0" y="13" width="700" height="8" fill="#333338" opacity="0.5"/>
+      <rect class="static-band" x="0" y="23" width="700" height="4" fill="#505058" opacity="0.25"/>
+      <rect class="static-band" x="0" y="28" width="700" height="4" fill="#333338" opacity="0.35"/>
+      <!-- Noise pixels -->
+      <rect x="45" y="2" width="2" height="2" fill="#808088" opacity="0.3"/>
+      <rect x="120" y="14" width="3" height="1" fill="#d0d0d8" opacity="0.2"/>
+      <rect x="230" y="5" width="2" height="2" fill="#808088" opacity="0.25"/>
+      <rect x="340" y="15" width="4" height="1" fill="#d0d0d8" opacity="0.15"/>
+      <rect x="410" y="9" width="2" height="2" fill="#808088" opacity="0.3"/>
+      <rect x="520" y="24" width="3" height="1" fill="#d0d0d8" opacity="0.2"/>
+      <rect x="600" y="3" width="2" height="2" fill="#808088" opacity="0.25"/>
+      <rect x="180" y="25" width="4" height="1" fill="#d0d0d8" opacity="0.15"/>
+      <rect x="480" y="1" width="2" height="2" fill="#808088" opacity="0.2"/>
+      <rect x="650" y="17" width="3" height="1" fill="#d0d0d8" opacity="0.25"/>
+    </svg>
+  </div>
+
+  <h3>Recognition Box</h3>
+  <p>Facial recognition bounding box card with corner bracket markers and target status.</p>
+
+  <div class="recognition-box">
+    <div class="corner-bl"></div>
+    <div class="corner-br"></div>
+    <div class="recog-header">
+      <span class="recog-id">Subject Alpha</span>
+      <span class="recog-status status-match">Match</span>
+    </div>
+    <div class="recog-body">
+      <div class="recog-silhouette">
+        <svg viewBox="0 0 40 55" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="20" cy="12" rx="8" ry="10" fill="none" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="22" x2="20" y2="40" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="28" x2="8" y2="35" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="28" x2="32" y2="35" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="40" x2="10" y2="52" stroke="#e02020" stroke-width="1"/>
+          <line x1="20" y1="40" x2="30" y2="52" stroke="#e02020" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="recog-stats">
+        <div class="stat-row">
+          <span class="stat-label">Subject ID</span>
+          <span class="stat-value">TGT-0041</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Confidence</span>
+          <span class="stat-value match">97.3%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Last Seen</span>
+          <span class="stat-value">Cam-07 // 03:12 UTC</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Status</span>
+          <span class="stat-value alert">Flagged</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Protocols</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Protocol description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Incident Log</div>
+  <h2>Data Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Timestamp</th><th>Camera</th><th>Event</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>03:14:07</td>
+        <td>CAM-07</td>
+        <td>Motion detected — lobby north entrance</td>
+        <td>Recording</td>
+      </tr>
+      <tr>
+        <td>03:11:42</td>
+        <td>CAM-03</td>
+        <td>Perimeter breach — east fence sector 4</td>
+        <td>Alert dispatched</td>
+      </tr>
+      <tr>
+        <td>03:08:19</td>
+        <td>CAM-12</td>
+        <td>Vehicle identified — plate scan complete</td>
+        <td>Logged</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">active</span>
+    <span class="tag t-refine">standby</span>
+    <span class="tag t-execute">alert</span>
+    <span class="tag t-batch">system</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Monitoring Pipeline</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="90" y="55" text-anchor="middle" fill="var(--capture)" font-size="10">DETECT</text>
+      <text x="90" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Motion sensors</text>
+
+      <line x1="160" y1="60" x2="210" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="210" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="280" y="55" text-anchor="middle" fill="var(--refine)" font-size="10">TRACK</text>
+      <text x="280" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Subject ID</text>
+
+      <line x1="350" y1="60" x2="400" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="400" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="470" y="55" text-anchor="middle" fill="var(--execute)" font-size="10">RECORD</text>
+      <text x="470" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Capture footage</text>
+
+      <line x1="540" y1="60" x2="560" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="560" y="20" width="120" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="620" y="55" text-anchor="middle" fill="var(--batch)" font-size="10">REVIEW</text>
+      <text x="620" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Analyst check</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title // v0.1 // Classified</p>
+  </div>
+</footer>
+
+</body>
+</html>

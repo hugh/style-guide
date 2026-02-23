@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">350&deg;F &middot; 45 min &middot; serves 8</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127811;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127854;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#127827;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#129347;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Baker's Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Baking Pipeline</h2>
+  <p>Use the pipeline component to show a linear baking process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Mix</div>
+      <div class="pipe-desc">Combine ingredients</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Proof</div>
+      <div class="pipe-desc">Let dough rise</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Bake</div>
+      <div class="pipe-desc">Into the oven</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Decorate</div>
+      <div class="pipe-desc">Frost &amp; finish</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BAKERY-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Recipes</div>
+  <h2>Recipe Card</h2>
+  <p>A structured card with recipe name, ingredient checklist, and baking parameters.</p>
+
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <span class="recipe-title">Classic Vanilla Sponge</span>
+      <span class="recipe-meta">Yields 1 cake</span>
+    </div>
+    <div class="recipe-body">
+      <h4>Ingredients</h4>
+      <ul class="recipe-ingredients">
+        <li>
+          <span class="ingredient-check checked">&#10003;</span>
+          <span class="ingredient-qty">225g</span>
+          <span>All-purpose flour, sifted</span>
+        </li>
+        <li>
+          <span class="ingredient-check checked">&#10003;</span>
+          <span class="ingredient-qty">200g</span>
+          <span>Caster sugar</span>
+        </li>
+        <li>
+          <span class="ingredient-check"></span>
+          <span class="ingredient-qty">4 large</span>
+          <span>Eggs, room temperature</span>
+        </li>
+        <li>
+          <span class="ingredient-check"></span>
+          <span class="ingredient-qty">200g</span>
+          <span>Unsalted butter, softened</span>
+        </li>
+        <li>
+          <span class="ingredient-check"></span>
+          <span class="ingredient-qty">2 tsp</span>
+          <span>Vanilla extract</span>
+        </li>
+      </ul>
+    </div>
+    <div class="recipe-footer">
+      <div class="recipe-param">
+        <span class="param-label">Oven Temp</span>
+        <span class="param-value">350&deg;F / 180&deg;C</span>
+      </div>
+      <div class="recipe-param">
+        <span class="param-label">Bake Time</span>
+        <span class="param-value">25&ndash;30 min</span>
+      </div>
+      <div class="recipe-param">
+        <span class="param-label">Servings</span>
+        <span class="param-value">12 slices</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Timer Badges</h3>
+  <p>Circular countdown badges for tracking baking times.</p>
+
+  <div class="timer-badge-group">
+    <div class="timer-badge urgent">
+      <span class="timer-value">2:30</span>
+      <span class="timer-unit">min</span>
+    </div>
+    <div class="timer-badge waiting">
+      <span class="timer-value">45</span>
+      <span class="timer-unit">min</span>
+    </div>
+    <div class="timer-badge ready">
+      <span class="timer-value">0:00</span>
+      <span class="timer-unit">done</span>
+    </div>
+  </div>
+
+  <h3>Cake Layer Divider</h3>
+  <p>SVG section separator showing a layered cake cross-section.</p>
+
+  <div class="cake-layer-divider">
+    <svg viewBox="0 0 700 48" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bottom sponge layer -->
+      <rect x="50" y="36" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Frosting layer 1 -->
+      <rect x="50" y="30" width="600" height="6" rx="1" fill="#f8f0e4"/>
+      <!-- Middle sponge layer -->
+      <rect x="50" y="20" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Frosting layer 2 -->
+      <rect x="50" y="14" width="600" height="6" rx="1" fill="#f8f0e4"/>
+      <!-- Top sponge layer -->
+      <rect x="50" y="4" width="600" height="10" rx="2" fill="#e4d8c4"/>
+      <!-- Top frosting drip -->
+      <path d="M50,4 Q55,0 65,4 Q100,-2 150,4 Q200,-1 250,4 Q300,-2 350,4 Q400,-1 450,4 Q500,-2 550,4 Q600,-1 630,4 Q645,0 650,4" fill="none" stroke="#f8f0e4" stroke-width="3"/>
+      <!-- Cherry decorations -->
+      <circle cx="175" cy="2" r="4" fill="#c84858"/>
+      <circle cx="350" cy="1" r="4" fill="#c84858"/>
+      <circle cx="525" cy="2" r="4" fill="#c84858"/>
+    </svg>
+  </div>
+
+  <h3>Pastry Box</h3>
+  <p>A packaging-style frame for featured content with a decorative ribbon.</p>
+
+  <div class="pastry-box">
+    <div class="pastry-box-inner">
+      <div class="pastry-box-label">Featured Selection</div>
+      <h3>Today's Special</h3>
+      <p>Rose-pistachio croissants with a delicate rosewater glaze and toasted pistachio crumble. Available while supplies last.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Techniques</div>
+  <h2>Baking Principles</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Mise en Place</h4>
+        <p>Measure and prepare all ingredients before you start. Room-temperature butter and eggs produce the best texture.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Don't Overmix</h4>
+        <p>Fold gently once dry ingredients are added. Overworking develops gluten and makes baked goods tough.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Know Your Oven</h4>
+        <p>Use an oven thermometer. Most ovens run 10&ndash;25 degrees off from the dial setting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Ingredient Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Ingredient</th><th>Quantity</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>All-Purpose Flour</td>
+        <td>225g</td>
+        <td>Sifted, spooned &amp; leveled</td>
+      </tr>
+      <tr>
+        <td>Unsalted Butter</td>
+        <td>200g</td>
+        <td>Softened to room temperature</td>
+      </tr>
+      <tr>
+        <td>Vanilla Extract</td>
+        <td>2 tsp</td>
+        <td>Pure, not imitation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">pistachio</span>
+    <span class="tag t-refine">caramel</span>
+    <span class="tag t-execute">raspberry</span>
+    <span class="tag t-batch">blueberry</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Baking Workflow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="140" height="80" rx="12" fill="var(--surface-2)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="90" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">MIX</text>
+      <text x="90" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Combine</text>
+
+      <line x1="160" y1="60" x2="210" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="210" y="20" width="140" height="80" rx="12" fill="var(--surface-2)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="280" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">PROOF</text>
+      <text x="280" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Rise</text>
+
+      <line x1="350" y1="60" x2="400" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="400" y="20" width="140" height="80" rx="12" fill="var(--surface-2)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="470" y="55" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="600">BAKE</text>
+      <text x="470" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Oven</text>
+
+      <line x1="540" y1="60" x2="590" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">DECORATE</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Frost &amp; finish</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Bakery</p>
+  </div>
+</footer>
+
+</body>
+</html>

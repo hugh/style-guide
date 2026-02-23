@@ -40,12 +40,6 @@ Dark Vigilante
   headings. Brooding and atmospheric rather than fun. Rain/fog texture
   overlays, case-file-style components.
 
-Silver Age Pop Art
-  Harder Lichtenstein/Warhol lean. Larger Ben-Day dots, flat bright
-  backgrounds (not newsprint), primary colors at full saturation, speech
-  bubbles as a core layout element. More ironic and playful than the
-  current Superhero theme.
-
 Golden Age Pulp
   Grittier and older than Silver Age. Heavily yellowed/aged paper,
   distressed ink-splatter borders, two-tone duochrome palette (e.g.
@@ -168,14 +162,6 @@ Medieval Manuscript / Illuminated
   serif body. Fonts: blackletter (like UnifrakturCook) for headings,
   clean serif for body, mono for verse numbers.
 
-Surveillance / CCTV
-  Dark monitor-grey backgrounds with harsh white text and red REC
-  indicator accents. Multi-camera grid layouts, timestamp overlays on
-  every component, static/noise texture dividers, evidence tag callout
-  boxes, facial recognition bounding-box card frames. Tight condensed
-  mono for everything. Fonts: condensed mono for all text, with
-  emphasis through weight and color rather than font variety.
-
 Greenhouse / Terrarium
   Warm humid greens on dark loam backgrounds. Terracotta and moss
   accents, botanical identification cards with Latin names, humidity
@@ -260,22 +246,6 @@ Haunted House / Gothic Horror
   textures. Fonts: gothic serif (like Nosifer or Creepster) for
   headings, clean serif body, mono for dates/epitaphs.
 
-Subway / Metro Transit
-  Dark tunnel grey backgrounds, route-color stripe accents (like NYC
-  MTA or London Tube lines). Station sign card components with rounded
-  rectangle frames, route map SVG diagrams, arrival countdown boards,
-  turnstile gate dividers, transfer connection badges, wayfinding
-  arrow callouts. Fonts: transport sans (like Overpass) for headings,
-  clean sans for body, mono for schedules/times.
-
-Bakery / Patisserie
-  Warm vanilla cream backgrounds with powdered sugar white and caramel
-  brown accents. Recipe card components with ingredient checklists,
-  timer countdown badges, layered cake cross-section dividers, rolling
-  pin progress bars, pastry box packaging frames. Warm and inviting.
-  Fonts: rounded script (like Satisfy) for headings, clean sans for
-  body, mono for measurements/temps.
-
 Wrestling / Lucha Libre
   Hot bold backgrounds with neon accent combos (lime green + hot pink,
   electric blue + orange). Mask-shaped card frames, championship belt
@@ -359,6 +329,18 @@ Alchemist
 
 Mid-Century Modern
   → mid-century/
+
+Subway / Metro Transit
+  → subway/
+
+Bakery / Patisserie
+  → bakery/
+
+Surveillance / CCTV
+  → surveillance/
+
+Silver Age Pop Art
+  → pop-art/
 
 Victorian / Antique
   → victorian/

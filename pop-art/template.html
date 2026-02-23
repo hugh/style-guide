@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127912;</div>
+      <h4>Sketch</h4>
+      <p>Rough pencil drawings on bristol board. Capture the initial concept with loose energy and bold gestures.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127776;</div>
+      <h4>Color</h4>
+      <p>Apply flat, saturated colors. No gradients, no blending &mdash; pure pop art primaries at full intensity.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>Print</h4>
+      <p>Screen print the final artwork. Each color is a separate pass &mdash; precision meets bold graphic impact.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128308;</div>
+      <h4>Exhibit</h4>
+      <p>Gallery-ready editions. Frame, hang, and let the masses decide if it is art or commerce.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Remember:</strong> In the future, everyone will be world-famous for fifteen minutes. Make sure your layout is ready for its close-up.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Creative Pipeline</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Sketch</div>
+      <div class="pipe-desc">Pencil on paper</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Color</div>
+      <div class="pipe-desc">Flat primaries</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Print</div>
+      <div class="pipe-desc">Screen print</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Exhibit</div>
+      <div class="pipe-desc">Gallery wall</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POP ART COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Dialogue</div>
+  <h2>Speech Bubble</h2>
+  <p>A callout with a CSS triangle pointer for dialogue or quotes.</p>
+
+  <div class="speech-bubble">
+    <p><strong>Warhol says:</strong> Art is anything you can get away with. Use speech bubbles for quotes, dialogue, or attributed commentary.</p>
+  </div>
+
+  <h3>Thought Bubble</h3>
+  <p>A cloud-shaped callout with trailing circles for internal monologue.</p>
+
+  <div class="thought-bubble">
+    <p><strong>Thinking...</strong> Is this pop art or is this commerce? Does it matter? The thought bubble uses organic border-radius and small circles instead of a pointed tail.</p>
+  </div>
+
+  <h3>Ben-Day Panel</h3>
+  <p>A panel with the iconic dot pattern overlay for featured content.</p>
+
+  <div class="benday-panel">
+    <h4>Featured Content</h4>
+    <p>The Ben-Day panel adds a visible dot pattern over the surface, referencing Lichtenstein's iconic printing technique. Use it for featured callouts or standalone content blocks that need extra visual weight.</p>
+  </div>
+
+  <h3>POW Badge</h3>
+  <p>Starburst explosion badges for emphasis and drama.</p>
+
+  <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
+    <div class="pow-badge badge-red">POW!</div>
+    <div class="pow-badge badge-blue">ZAP!</div>
+    <div class="pow-badge badge-yellow">BAM!</div>
+    <div class="pow-badge badge-green">WHAM!</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Principles</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Go Big</h4>
+        <p>Pop art is not subtle. Scale up, saturate more, and push every visual decision to its boldest conclusion.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Flat is Beautiful</h4>
+        <p>No gradients, no textures, no shadows (except hard flat ones). Every surface is a single, confident color.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Repeat Yourself</h4>
+        <p>Warhol made repetition an art form. Consistent patterns, repeated elements, and systematic color application.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Art Materials</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Material</th><th>Use</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bristol Board</td>
+        <td>Base drawing surface</td>
+        <td>Heavy weight, smooth finish for clean ink lines</td>
+      </tr>
+      <tr>
+        <td>Acrylic Ink</td>
+        <td>Flat color application</td>
+        <td>Dries fast, saturated primaries, no blending</td>
+      </tr>
+      <tr>
+        <td>Screen Mesh</td>
+        <td>Print reproduction</td>
+        <td>230 mesh for fine detail, 110 mesh for bold fills</td>
+      </tr>
+      <tr>
+        <td>Ben-Day Screens</td>
+        <td>Dot pattern overlays</td>
+        <td>Mechanical tones at various dot sizes and spacing</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">create</span>
+    <span class="tag t-refine">process</span>
+    <span class="tag t-execute">action</span>
+    <span class="tag t-batch">collect</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Creative Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">SKETCH</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Pencil concept</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">COLOR</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Flat primaries</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">PRINT</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Screen press</text>
+    </svg>
+  </div>
+
+  <h3>Ben-Day Panel</h3>
+  <p>Use the Ben-Day panel for diagrams with a dot pattern overlay for pop art texture.</p>
+
+  <div class="benday-panel">
+    <div class="diagram-label">Figure 2 &mdash; Ben-Day Panel</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="50" y="10" width="180" height="80" rx="0" fill="var(--surface-2)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="140" y="45" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">CONCEPT</text>
+      <text x="140" y="65" text-anchor="middle" fill="var(--text-faint)" font-size="9">Start here</text>
+
+      <line x1="230" y1="50" x2="320" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="320" y="10" width="180" height="80" rx="0" fill="var(--surface-2)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="410" y="45" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="600">GALLERY</text>
+      <text x="410" y="65" text-anchor="middle" fill="var(--text-faint)" font-size="9">Exhibition ready</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Pop Art</p>
+  </div>
+</footer>
+
+</body>
+</html>

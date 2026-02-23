@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Transit Authority &middot; System Map</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases. Body text renders in the dim color by default.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>Card Title</h4><p>Card description text.</p></div>
+  </div>
+
+  <div class="callout"><p><strong>Service Advisory:</strong> Callouts are used for important service updates and rider alerts.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Route</div>
+  <h2>Line Stages</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Uptown</div><div class="pipe-desc">Green Line</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Midtown</div><div class="pipe-desc">Yellow Line</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Express</div><div class="pipe-desc">Red Line</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Downtown</div><div class="pipe-desc">Blue Line</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Transit Elements</div>
+  <h2>Station Sign</h2>
+  <div style="text-align:center;">
+    <div class="station-sign">
+      <span class="station-name">Grand Central</span>
+      <div class="station-lines">
+        <div class="line-badge lb-red">1</div>
+        <div class="line-badge lb-green">4</div>
+        <div class="line-badge lb-blue">7</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Arrival Board</h3>
+  <div class="arrival-board">
+    <div class="board-header"><span>Destination</span><span>Arriving</span></div>
+    <div class="board-row">
+      <div class="board-line" style="background:var(--execute);">1</div>
+      <div class="board-dest">Uptown &amp; The Bronx</div>
+      <div class="board-time">2 min</div>
+    </div>
+    <div class="board-row">
+      <div class="board-line" style="background:var(--capture);">4</div>
+      <div class="board-dest">Downtown &amp; Brooklyn</div>
+      <div class="board-time">5 min</div>
+    </div>
+    <div class="board-row">
+      <div class="board-line" style="background:var(--batch);">7</div>
+      <div class="board-dest">Flushing &mdash; Main St</div>
+      <div class="board-time">8 min</div>
+    </div>
+  </div>
+
+  <h3>Turnstile Divider</h3>
+  <div class="turnstile-divider">
+    <svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="15" x2="200" y2="15" stroke="rgba(240,192,48,0.2)" stroke-width="1"/>
+      <rect x="210" y="5" width="80" height="20" rx="10" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="250" y="19" text-anchor="middle" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="7" letter-spacing="0.1em">ENTER</text>
+      <line x1="300" y1="15" x2="500" y2="15" stroke="rgba(240,192,48,0.2)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <h3>Transfer Badges</h3>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:2rem 0 3rem;">
+    <div class="transfer-badge">
+      <span class="transfer-icon">&#8644;</span>
+      <div class="transfer-lines">
+        <div class="transfer-dot" style="background:var(--execute);">1</div>
+        <div class="transfer-dot" style="background:var(--capture);">4</div>
+      </div>
+      <span class="transfer-text">Transfer</span>
+    </div>
+    <div class="transfer-badge">
+      <span class="transfer-icon">&#8644;</span>
+      <div class="transfer-lines">
+        <div class="transfer-dot" style="background:var(--batch);">7</div>
+        <div class="transfer-dot" style="background:var(--refine);">N</div>
+      </div>
+      <span class="transfer-text">Transfer</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Guidelines</div>
+  <h2>System Rules</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Service Schedule</h2>
+  <table class="info-table">
+    <thead><tr><th>Line</th><th>Route</th><th>Frequency</th></tr></thead>
+    <tbody>
+      <tr><td>1 Red</td><td>Uptown Express</td><td>Every 4 min</td></tr>
+      <tr><td>4 Green</td><td>Crosstown Local</td><td>Every 6 min</td></tr>
+      <tr><td>7 Blue</td><td>Downtown Limited</td><td>Every 5 min</td></tr>
+    </tbody>
+  </table>
+  <p>Tags: <span class="tag t-capture">green line</span> <span class="tag t-refine">yellow line</span> <span class="tag t-execute">red line</span> <span class="tag t-batch">blue line</span></p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Route Map</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; System Overview</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="8" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">UPTOWN</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Green Line</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="8" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600">MIDTOWN</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Transfer Hub</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="8" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600">DOWNTOWN</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Blue Line</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Metro Transit</p></div></footer>
+
+</body>
+</html>
