@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Season 1 &middot; Episode 1</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127775;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128142;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Sequence</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Sketch</div><div class="pipe-desc">Draw it out</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Ink</div><div class="pipe-desc">Clean lines</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Color</div><div class="pipe-desc">Fill it in</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">04</div><div class="pipe-name">Animate</div><div class="pipe-desc">Make it move</div></div>
+  </div>
+</section>
+
+<!-- ============ CARTOON-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Toon Zone</div>
+  <h2>Speech Bubble</h2>
+  <p>A cartoon speech bubble with a triangular tail.</p>
+
+  <div class="speech-bubble">
+    <div class="bubble-text"><strong>Hey!</strong> This is a speech bubble component. Use it for quotes, announcements, or character dialogue.</div>
+    <div class="bubble-author">&mdash; The Narrator</div>
+  </div>
+
+  <h3>Action Badges</h3>
+  <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0;">
+    <span class="action-badge ab-pink">Pow!</span>
+    <span class="action-badge ab-red">Boom!</span>
+    <span class="action-badge ab-blue">Zap!</span>
+    <span class="action-badge ab-green">Go!</span>
+    <span class="action-badge ab-orange starburst">New!</span>
+  </div>
+
+  <h3>Character Cards</h3>
+  <div class="character-grid">
+    <div class="character-card">
+      <div class="char-avatar av-pink">&#128171;</div>
+      <div class="char-name">Blossom</div>
+      <div class="char-role">Team Leader</div>
+      <div class="char-tags"><span class="char-tag">smart</span><span class="char-tag">brave</span></div>
+    </div>
+    <div class="character-card">
+      <div class="char-avatar av-blue">&#128167;</div>
+      <div class="char-name">Bubbles</div>
+      <div class="char-role">Joy Specialist</div>
+      <div class="char-tags"><span class="char-tag">kind</span><span class="char-tag">strong</span></div>
+    </div>
+    <div class="character-card">
+      <div class="char-avatar av-green">&#9889;</div>
+      <div class="char-name">Buttercup</div>
+      <div class="char-role">Tough Fighter</div>
+      <div class="char-tags"><span class="char-tag">bold</span><span class="char-tag">fierce</span></div>
+    </div>
+  </div>
+
+  <h3>Episode Guide</h3>
+  <div class="episode-grid">
+    <div class="episode-card ep-pink">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E01</div>
+        <div class="ep-title">Episode Title</div>
+        <p class="ep-desc">Brief episode description goes here.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-blue">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E02</div>
+        <div class="ep-title">Episode Title</div>
+        <p class="ep-desc">Brief episode description goes here.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-green">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E03</div>
+        <div class="ep-title">Episode Title</div>
+        <p class="ep-desc">Brief episode description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Rules</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Character</th><th>Power</th><th>Color</th></tr></thead>
+    <tbody>
+      <tr><td>Blossom</td><td>Ice Breath</td><td>Pink</td></tr>
+      <tr><td>Bubbles</td><td>Sonic Scream</td><td>Blue</td></tr>
+      <tr><td>Buttercup</td><td>Super Strength</td><td>Green</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">safe</span> <span class="tag t-refine">star</span> <span class="tag t-execute">pow</span> <span class="tag t-batch">cool</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Animation Pipeline</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="16" fill="var(--surface)" stroke="var(--capture)" stroke-width="3"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="12" font-weight="700">STORYBOARD</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Plan the scenes</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="280" y="20" width="200" height="80" rx="16" fill="var(--surface)" stroke="var(--refine)" stroke-width="3"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="12" font-weight="700">ANIMATE</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Key frames</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="540" y="20" width="140" height="80" rx="16" fill="var(--surface)" stroke="var(--batch)" stroke-width="3"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="12" font-weight="700">AIR</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Broadcast</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Cartoon</p></div></footer>
+
+</body>
+</html>

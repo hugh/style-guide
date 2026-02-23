@@ -73,12 +73,6 @@ Golden Age Pulp
   red + black only), woodcut energy. Closer to EC horror comics than
   Superman.
 
-Cartoon Network / Animated
-  Bright white backgrounds, thick rounded outlines, oversized bubbly
-  elements, candy-color palette, bouncy hover animations. Teen Titans
-  Go / Powerpuff Girls energy — playful, not epic. Rounded sans-serif
-  headings.
-
 Modern Cinematic / MCU
   Dark and sleek. Near-black backgrounds with metallic gradients,
   glowing edge accents, subtle light-leak effects. Clean geometric
@@ -398,3 +392,6 @@ Pinball Machine
 
 Cartographer
   → cartographer/
+
+Cartoon Network / Animated
+  → cartoon/

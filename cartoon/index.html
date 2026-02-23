@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartoon — Animated Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 12px;
+    border: 3px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.6rem;
+    color: var(--text);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+  }
+  .file-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(42, 42, 58, 0.12);
+  }
+  .file-link .file-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    border-radius: 16px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    width: 7rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Cartoon</span> Network</h1>
+  <p>A candy-colored design system inspired by animated TV shows &mdash; thick rounded outlines, bubbly oversized type, bouncy hover animations, speech bubbles, action badges, and episode guide cards for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#127912;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127752;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Let's Go!</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Bright white base &mdash; clean like animation cels, letting candy colors pop against thick dark outlines.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffffff; border-bottom: 1px solid #e4e0ee;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#ffffff</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f6f4fa;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f6f4fa</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #eeeaf6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#eeeaf6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e4e0ee;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#e4e0ee</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a2a3a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2a2a3a</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of dark text on the bright white base, with soft lavender undertones for a friendly feel.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, episode numbers</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A vivid hot pink primary accent plus four candy-bright semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff3e8a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#ff3e8a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #00cc88;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#00cc88</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffb020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#ffb020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff4455;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#ff4455</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4488ff;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4488ff</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d02870;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#d02870</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #009966;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#009966</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d09010;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#d09010</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d02838;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#d02838</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2860d0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2860d0</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">safe</span>
+    <span class="tag t-refine">star</span>
+    <span class="tag t-execute">pow</span>
+    <span class="tag t-batch">cool</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Bubbly rounded display for headings</strong>, <strong>friendly rounded sans for body</strong>, <strong>monospace for labels and metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Fredoka &mdash; Headings, Badges</div>
+    <div class="font-sample-heading">The Quick Brown Fox Jumps Over The Lazy Dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Nunito &mdash; Body text, descriptions, cards</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses Nunito for warm, rounded readability. <strong>Strong text uses the primary text color</strong> to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, episode numbers, tags</div>
+    <div class="font-sample-mono">S01 E01 &middot; SEASON PREMIERE &middot; 22 MIN</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Fredoka</td><td>clamp(2.8rem, 7vw, 5rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Fredoka</td><td>1.8rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Fredoka</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Nunito</td><td>0.82rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Nunito</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>500</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and thick cartoon outlines.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128187;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128204;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 3px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong> and thick outlines. Cards bounce up on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127775;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Candy Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Candy Orange top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Candy Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128142;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Bright Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Sketch</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Ink</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Color</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Comp</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Air!</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bubbly display numbers. Good for ordered rules, steps, or episode guides.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Description text using .principle-num for the large bubbly number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Numbers render in Fredoka at 2.2rem in --accent color (hot pink).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Bordered aside for important notes. Strong text inside callouts renders in hot pink.</p>
+
+  <div class="callout">
+    <p><strong>Fun Fact:</strong> This is a callout. It has a pink left border, thick outline, and rounded corners.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with monospace headers and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color, pill shape</td></tr>
+      <tr><td>Speech Bubble</td><td>.speech-bubble</td><td>Rounded with triangle tail</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Animation Pipeline</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="16" fill="#f6f4fa" stroke="#00cc88" stroke-width="3"/>
+      <text x="110" y="42" text-anchor="middle" fill="#00cc88" font-size="12" font-weight="700">STORYBOARD</text>
+      <text x="110" y="60" text-anchor="middle" fill="#9088a0" font-size="9">Plan scenes</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#9088a0" stroke-width="2" stroke-dasharray="6,4"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="16" fill="#f6f4fa" stroke="#ffb020" stroke-width="3"/>
+      <text x="350" y="42" text-anchor="middle" fill="#ffb020" font-size="12" font-weight="700">ANIMATE</text>
+      <text x="350" y="60" text-anchor="middle" fill="#9088a0" font-size="9">Key frames</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#9088a0" stroke-width="2" stroke-dasharray="6,4"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="16" fill="#f6f4fa" stroke="#4488ff" stroke-width="3"/>
+      <text x="590" y="42" text-anchor="middle" fill="#4488ff" font-size="12" font-weight="700">BROADCAST</text>
+      <text x="590" y="60" text-anchor="middle" fill="#9088a0" font-size="9">On air!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Toon Components</div>
+  <h2>Speech Bubble</h2>
+  <p>A cartoon speech bubble with a triangular tail pointing down-left. Use <span class="inline-code">strong</span> tags inside for accent-colored emphasis.</p>
+
+  <div class="speech-bubble">
+    <div class="bubble-text"><strong>Hey there!</strong> This is a speech bubble component. Use it for quotes, announcements, character dialogue, or fun callouts in your document.</div>
+    <div class="bubble-author">&mdash; The Narrator</div>
+  </div>
+
+  <p style="margin-top: 2.5rem;">Another speech bubble:</p>
+
+  <div class="speech-bubble">
+    <div class="bubble-text">Speech bubbles are great for <strong>pull quotes</strong> or highlighting important statements with personality!</div>
+    <div class="bubble-author">&mdash; The Animator</div>
+  </div>
+
+  <h2>Action Badges</h2>
+  <p>Bold colored badges for emphasis, like comic book sound effects. Five color variants plus a <span class="inline-code">starburst</span> modifier for rotated, angular badges. Badges scale and rotate on hover.</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin:1.5rem 0;align-items:center;">
+    <span class="action-badge ab-pink">Pow!</span>
+    <span class="action-badge ab-red">Boom!</span>
+    <span class="action-badge ab-blue">Zap!</span>
+    <span class="action-badge ab-green">Go!</span>
+    <span class="action-badge ab-orange">Wow!</span>
+  </div>
+
+  <p>Starburst variant with angular corners and rotation:</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin:1.5rem 0;align-items:center;">
+    <span class="action-badge ab-pink starburst">New!</span>
+    <span class="action-badge ab-blue starburst">Epic!</span>
+    <span class="action-badge ab-green starburst">Yes!</span>
+    <span class="action-badge ab-orange starburst">Hot!</span>
+  </div>
+
+  <h2>Character Cards</h2>
+  <p>Cartoon character cards with circular avatar, name, role, and trait tags. Avatar background tint uses <span class="inline-code">av-pink</span>, <span class="inline-code">av-blue</span>, <span class="inline-code">av-green</span>, or <span class="inline-code">av-orange</span>. Cards bounce up on hover.</p>
+
+  <div class="character-grid">
+    <div class="character-card">
+      <div class="char-avatar av-pink">&#128171;</div>
+      <div class="char-name">Blossom</div>
+      <div class="char-role">Team Leader</div>
+      <div class="char-tags"><span class="char-tag">smart</span><span class="char-tag">brave</span><span class="char-tag">pink</span></div>
+    </div>
+    <div class="character-card">
+      <div class="char-avatar av-blue">&#128167;</div>
+      <div class="char-name">Bubbles</div>
+      <div class="char-role">Joy Specialist</div>
+      <div class="char-tags"><span class="char-tag">kind</span><span class="char-tag">strong</span><span class="char-tag">blue</span></div>
+    </div>
+    <div class="character-card">
+      <div class="char-avatar av-green">&#9889;</div>
+      <div class="char-name">Buttercup</div>
+      <div class="char-role">Tough Fighter</div>
+      <div class="char-tags"><span class="char-tag">bold</span><span class="char-tag">fierce</span><span class="char-tag">green</span></div>
+    </div>
+    <div class="character-card">
+      <div class="char-avatar av-orange">&#127775;</div>
+      <div class="char-name">Starfire</div>
+      <div class="char-role">Alien Princess</div>
+      <div class="char-tags"><span class="char-tag">joyful</span><span class="char-tag">powerful</span></div>
+    </div>
+  </div>
+
+  <h2>Episode Guide</h2>
+  <p>TV episode guide cards with color-coded top bars. Five color variants: <span class="inline-code">ep-pink</span>, <span class="inline-code">ep-blue</span>, <span class="inline-code">ep-green</span>, <span class="inline-code">ep-orange</span>, <span class="inline-code">ep-red</span>. Cards bounce up on hover.</p>
+
+  <div class="episode-grid">
+    <div class="episode-card ep-pink">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E01</div>
+        <div class="ep-title">The Big Premiere</div>
+        <p class="ep-desc">The team assembles for the first time and discovers their powers.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-blue">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E02</div>
+        <div class="ep-title">Double Trouble</div>
+        <p class="ep-desc">An evil twin appears and causes chaos downtown.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-green">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E03</div>
+        <div class="ep-title">Pizza Party</div>
+        <p class="ep-desc">The gang tries to agree on pizza toppings. It goes badly.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-orange">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E04</div>
+        <div class="ep-title">Field Trip</div>
+        <p class="ep-desc">A trip to the museum turns into an unexpected adventure.</p>
+      </div>
+    </div>
+    <div class="episode-card ep-red">
+      <div class="ep-color-bar"></div>
+      <div class="ep-body">
+        <div class="ep-number">S01 E05</div>
+        <div class="ep-title">Season Finale</div>
+        <p class="ep-desc">The ultimate showdown! Can the team save the day?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Cartoon system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Bright White Base</h4>
+        <p>Backgrounds use clean white like animation cels, letting candy colors pop against thick dark outlines.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Hot Pink Accent</h4>
+        <p>The primary accent channels Powerpuff Girls / Teen Titans Go energy — playful, not epic.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Candy-Color Semantics</h4>
+        <p>Four vivid candy colors: green (go), orange (star), red (pow), blue (cool). Full saturation, maximum fun.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Bubbly Rounded Type</h4>
+        <p>Fredoka delivers oversized, rounded, playful heading energy. Nunito keeps body text warm and friendly.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Thick Cartoon Outlines</h4>
+        <p>3px dark borders on everything create the signature animated look — bold, confident, unmissable.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Big Rounded Corners</h4>
+        <p>16px border-radius on cards and panels. 24px on speech bubbles. 20px on pill tags. Everything is bubbly.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Bouncy Animations</h4>
+        <p>Hover transforms use cubic-bezier(0.34, 1.56, 0.64, 1) for playful overshoot, like a bouncing cartoon character.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">8</div>
+      <div>
+        <h4>Toon Artifacts</h4>
+        <p>Speech bubbles, action badges, character cards, and episode guides bring the animated TV show into the design language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Cartoon &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
