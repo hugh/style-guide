@@ -4,12 +4,6 @@ Style Guide Theme Ideas
 TODO
 ----
 
-Cartographer
-  Aged parchment background, sepia and burnt umber tones, topographic
-  contour-line patterns as decorative elements, coordinate grids, legend
-  boxes, compass-rose section markers. Fonts: something old-map like
-  Cormorant Garamond + a clean body serif.
-
 Noir
   Film noir / case file. High-contrast black and white, single red accent.
   Typewriter font (Courier Prime), manila folder card backgrounds, evidence
@@ -401,3 +395,6 @@ Musician
 
 Pinball Machine
   → pinball/
+
+Cartographer
+  → cartographer/

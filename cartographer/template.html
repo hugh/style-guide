@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Survey No. 47 &middot; 1:50,000</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127795;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9968;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#127988;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127754;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Expedition</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">I</div><div class="pipe-name">Survey</div><div class="pipe-desc">Measure terrain</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">II</div><div class="pipe-name">Draft</div><div class="pipe-desc">Plot coordinates</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">III</div><div class="pipe-name">Engrave</div><div class="pipe-desc">Ink the plate</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">IV</div><div class="pipe-name">Publish</div><div class="pipe-desc">Print the map</div></div>
+  </div>
+</section>
+
+<!-- ============ CARTOGRAPHER-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Survey</div>
+  <h2>Legend Box</h2>
+  <p>A map legend showing symbol definitions.</p>
+
+  <div class="legend-box">
+    <div class="legend-title">Legend</div>
+    <div class="legend-entries">
+      <div class="legend-entry">
+        <div class="legend-symbol" style="background: var(--capture);"></div>
+        <span class="legend-text">Forest &amp; Vegetation</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-symbol" style="background: var(--batch);"></div>
+        <span class="legend-text">Water Bodies &amp; Rivers</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-line" style="border-color: var(--refine);"></div>
+        <span class="legend-text">Contour Lines (100m interval)</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-line dashed" style="border-color: var(--execute);"></div>
+        <span class="legend-text">Administrative Boundary</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-dot" style="background: var(--accent);"></div>
+        <span class="legend-text">Settlement / Point of Interest</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Compass Rose</h3>
+  <div class="compass-rose">
+    <div class="compass-ring"></div>
+    <span class="compass-dir dir-n">N</span>
+    <span class="compass-dir dir-s">S</span>
+    <span class="compass-dir dir-e">E</span>
+    <span class="compass-dir dir-w">W</span>
+    <div class="compass-center"></div>
+  </div>
+
+  <h3>Coordinate Cards</h3>
+  <div class="coord-grid">
+    <div class="coord-card">
+      <div class="coord-name">Base Camp</div>
+      <div class="coord-position">27&deg;59'17"N &nbsp; 86&deg;55'31"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">5,364 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Glacial moraine</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 48 1284</span></div>
+      </div>
+    </div>
+    <div class="coord-card">
+      <div class="coord-name">Ridge Point</div>
+      <div class="coord-position">28&deg;00'26"N &nbsp; 86&deg;51'47"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">6,120 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Rocky scree</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 44 1312</span></div>
+      </div>
+    </div>
+    <div class="coord-card">
+      <div class="coord-name">River Crossing</div>
+      <div class="coord-position">27&deg;56'08"N &nbsp; 86&deg;58'42"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">4,880 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Alluvial plain</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 52 1256</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Contour Divider</h3>
+  <div class="contour-divider">
+    <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 30 Q100 10, 200 22 T400 18 T600 28 T800 14 T900 24" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+      <path d="M0 24 Q120 8, 240 18 T480 14 T680 24 T850 10 T900 18" fill="none" stroke="var(--border)" stroke-width="1"/>
+      <path d="M0 36 Q80 18, 180 28 T360 24 T540 32 T720 20 T900 30" fill="none" stroke="var(--border)" stroke-width="1"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Principles</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Feature</th><th>Classification</th><th>Elevation</th></tr></thead>
+    <tbody>
+      <tr><td>Summit Peak</td><td>Mountain</td><td>8,849 m</td></tr>
+      <tr><td>Blue Lake</td><td>Alpine lake</td><td>4,920 m</td></tr>
+      <tr><td>Cedar Pass</td><td>Mountain pass</td><td>5,340 m</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">forest</span> <span class="tag t-refine">elevation</span> <span class="tag t-execute">boundary</span> <span class="tag t-batch">water</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Survey Process</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">SURVEY</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Field measurements</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600">COMPILE</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Plot coordinates</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600">PUBLISH</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Print the map</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Cartographer</p></div></footer>
+
+</body>
+</html>

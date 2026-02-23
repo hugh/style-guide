@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartographer — Aged Parchment Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: var(--text);
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    text-decoration: none;
+    transition: box-shadow 0.15s;
+  }
+  .file-link:hover {
+    box-shadow: 0 2px 12px rgba(42, 34, 24, 0.08);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    width: 7rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>The <span>Cartographer</span></h1>
+  <p>An aged-parchment design system inspired by antique maps and surveyor's notebooks &mdash; topographic contour patterns, coordinate grids, legend boxes, compass-rose dividers, and location cards for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128220;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128506;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Survey Ready:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm parchment tones &mdash; the aged paper of a hand-drawn survey map. Surfaces layer like folded map panels and legend boxes.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f2ead8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f2ead8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8e0cc;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e8e0cc</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ded6c0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#ded6c0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4ccb4;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d4ccb4</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c4bca0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c4bca0</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of ink-dark text create clear information hierarchy on the warm parchment backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, grid labels, coordinate metadata</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A warm burnt umber primary accent plus four cartographic semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8b4020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b4020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a7048;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#2a7048</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b08820;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#b08820</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a83020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a5488;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#2a5488</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #6a3018;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#6a3018</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1e5434;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#1e5434</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #886818;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#886818</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #802418;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#802418</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1e3e68;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#1e3e68</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">forest</span>
+    <span class="tag t-refine">elevation</span>
+    <span class="tag t-execute">boundary</span>
+    <span class="tag t-batch">water</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Elegant old-map serif for headings</strong>, <strong>clean body serif for paragraphs</strong>, <strong>monospace for coordinates and labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Cormorant Garamond &mdash; Headings</div>
+    <div class="font-sample-heading">The Quick Brown Fox Jumps Over The Lazy Dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Source Serif 4 &mdash; Body text, descriptions, cards</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses Source Serif 4 for refined readability on the parchment surface. <strong>Strong text uses the primary text color</strong> to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, coordinates, tags</div>
+    <div class="font-sample-mono">27&deg;59'17"N &nbsp; 86&deg;55'31"E &middot; ELEV 5,364M &middot; GRID QR 48 1284</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Cormorant Garamond</td><td>clamp(2.8rem, 7vw, 5rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Cormorant Garamond</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Cormorant Garamond</td><td>1.3rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Source Serif 4</td><td>0.82rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Source Serif 4</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and fine-line borders like map panel edges.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128220;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128204;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards get a warm paper shadow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127795;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Forest Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9968;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Goldenrod top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#127988;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Terra Cotta top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127754;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Cartographic Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">I</div>
+      <div class="pipe-name">Survey</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">II</div>
+      <div class="pipe-name">Draft</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">III</div>
+      <div class="pipe-name">Engrave</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">IV</div>
+      <div class="pipe-name">Color</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">V</div>
+      <div class="pipe-name">Publish</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with elegant serif display numbers. Good for ordered rules, steps, or survey procedures.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Description text using .principle-num for the large serif number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Numbers render in Cormorant Garamond at 2.2rem in --accent color (burnt umber).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in burnt umber.</p>
+
+  <div class="callout">
+    <p><strong>Field Note:</strong> This is a callout. It uses a 3px left border in --accent with a warm umber-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with monospace headers and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Legend Box</td><td>.legend-box</td><td>Map legend with symbol entries</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Survey Process</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#e8e0cc" stroke="#2a7048" stroke-width="2"/>
+      <text x="110" y="42" text-anchor="middle" fill="#2a7048" font-size="11" font-weight="600">SURVEY</text>
+      <text x="110" y="60" text-anchor="middle" fill="#8a8068" font-size="9">Field measurements</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#8a8068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#e8e0cc" stroke="#b08820" stroke-width="2"/>
+      <text x="350" y="42" text-anchor="middle" fill="#b08820" font-size="11" font-weight="600">COMPILE</text>
+      <text x="350" y="60" text-anchor="middle" fill="#8a8068" font-size="9">Plot coordinates</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#8a8068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#e8e0cc" stroke="#2a5488" stroke-width="2"/>
+      <text x="590" y="42" text-anchor="middle" fill="#2a5488" font-size="11" font-weight="600">PUBLISH</text>
+      <text x="590" y="60" text-anchor="middle" fill="#8a8068" font-size="9">Print the map</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Map Components</div>
+  <h2>Legend Box</h2>
+  <p>A map legend panel showing symbol definitions. Use <span class="inline-code">.legend-symbol</span> for filled rectangles, <span class="inline-code">.legend-line</span> for line styles (add <span class="inline-code">.dashed</span> for dashed), and <span class="inline-code">.legend-dot</span> for point markers.</p>
+
+  <div class="legend-box">
+    <div class="legend-title">Legend</div>
+    <div class="legend-entries">
+      <div class="legend-entry">
+        <div class="legend-symbol" style="background: var(--capture);"></div>
+        <span class="legend-text">Forest &amp; Dense Vegetation</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-symbol" style="background: var(--batch);"></div>
+        <span class="legend-text">Water Bodies, Rivers &amp; Streams</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-symbol" style="background: var(--refine); opacity: 0.4;"></div>
+        <span class="legend-text">Sandy &amp; Desert Terrain</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-line" style="border-color: var(--refine);"></div>
+        <span class="legend-text">Contour Lines (100m interval)</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-line dashed" style="border-color: var(--execute);"></div>
+        <span class="legend-text">Administrative Boundary</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-line dashed" style="border-color: var(--text-faint);"></div>
+        <span class="legend-text">Trail / Footpath</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-dot" style="background: var(--accent);"></div>
+        <span class="legend-text">Settlement / Town</span>
+      </div>
+      <div class="legend-entry">
+        <div class="legend-dot" style="background: var(--batch);"></div>
+        <span class="legend-text">Spring / Water Source</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Compass Rose</h2>
+  <p>A decorative compass element as a section divider or orientation marker. The N direction is highlighted in the accent color.</p>
+
+  <div class="compass-rose">
+    <div class="compass-ring"></div>
+    <span class="compass-dir dir-n">N</span>
+    <span class="compass-dir dir-s">S</span>
+    <span class="compass-dir dir-e">E</span>
+    <span class="compass-dir dir-w">W</span>
+    <div class="compass-center"></div>
+  </div>
+
+  <h2>Coordinate Cards</h2>
+  <p>Location cards with geographic coordinates, elevation, and terrain classification. The position uses <strong>degree-minute-second notation</strong> in monospace for precision.</p>
+
+  <div class="coord-grid">
+    <div class="coord-card">
+      <div class="coord-name">Base Camp</div>
+      <div class="coord-position">27&deg;59'17"N &nbsp; 86&deg;55'31"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">5,364 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Glacial moraine</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 48 1284</span></div>
+      </div>
+    </div>
+    <div class="coord-card">
+      <div class="coord-name">Ridge Point</div>
+      <div class="coord-position">28&deg;00'26"N &nbsp; 86&deg;51'47"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">6,120 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Rocky scree</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 44 1312</span></div>
+      </div>
+    </div>
+    <div class="coord-card">
+      <div class="coord-name">River Crossing</div>
+      <div class="coord-position">27&deg;56'08"N &nbsp; 86&deg;58'42"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">4,880 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Alluvial plain</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 52 1256</span></div>
+      </div>
+    </div>
+    <div class="coord-card">
+      <div class="coord-name">Summit Peak</div>
+      <div class="coord-position">28&deg;01'44"N &nbsp; 86&deg;49'15"E</div>
+      <div class="coord-details">
+        <div class="coord-detail"><span class="coord-key">Elev</span><span class="coord-val">8,849 m</span></div>
+        <div class="coord-detail"><span class="coord-key">Terrain</span><span class="coord-val">Snow &amp; ice</span></div>
+        <div class="coord-detail"><span class="coord-key">Grid</span><span class="coord-val">QR 42 1326</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Contour Divider</h2>
+  <p>Wavy topographic contour lines as a section separator. Three SVG paths create organic undulation in the border color.</p>
+
+  <div class="contour-divider">
+    <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 30 Q100 10, 200 22 T400 18 T600 28 T800 14 T900 24" fill="none" stroke="var(--border)" stroke-width="1.5"/>
+      <path d="M0 24 Q120 8, 240 18 T480 14 T680 24 T850 10 T900 18" fill="none" stroke="var(--border)" stroke-width="1"/>
+      <path d="M0 36 Q80 18, 180 28 T360 24 T540 32 T720 20 T900 30" fill="none" stroke="var(--border)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <p style="margin-top:1rem;">Another contour divider with accent color:</p>
+
+  <div class="contour-divider">
+    <svg viewBox="0 0 900 40" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 20 Q150 5, 300 18 T600 12 T900 20" fill="none" stroke="var(--refine)" stroke-width="1.5" opacity="0.5"/>
+      <path d="M0 26 Q130 12, 280 22 T580 16 T900 26" fill="none" stroke="var(--refine)" stroke-width="1" opacity="0.4"/>
+      <path d="M0 32 Q110 18, 260 28 T560 22 T900 32" fill="none" stroke="var(--refine)" stroke-width="1" opacity="0.3"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Cartographer system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Aged Parchment</h4>
+        <p>Backgrounds use warm cream-tan tones like hand-drawn maps on aged paper, unfolded under warm light.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Burnt Umber Accent</h4>
+        <p>The primary accent evokes sepia ink and hand-coloured cartographic details found in antique surveys.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Cartographic Semantics</h4>
+        <p>Four semantic colors map to geographic concepts: forest green (vegetation), goldenrod (elevation), terra cotta (boundaries), cartographic blue (water).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Old-Map Typography</h4>
+        <p>Cormorant Garamond delivers the elegance of engraved map cartouches. Source Serif 4 provides crisp body text readability.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Sharp Map Edges</h4>
+        <p>3px border-radius keeps edges subtle and precise, like the crisp folds and panel lines of a folded survey map.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Contour-Line Texture</h4>
+        <p>Concentric elliptical gradients in the hero and wavy SVG dividers evoke the topographic contour lines found on ordnance survey maps.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Map Artifacts</h4>
+        <p>Legend boxes, compass roses, coordinate cards, and contour dividers bring the physical cartographic toolkit into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">8</div>
+      <div>
+        <h4>Coordinate Precision</h4>
+        <p>IBM Plex Mono renders coordinates, grid references, and elevation data with the technical precision of survey instruments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Cartographer &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
