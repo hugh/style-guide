@@ -40,28 +40,11 @@ Dark Vigilante
   headings. Brooding and atmospheric rather than fun. Rain/fog texture
   overlays, case-file-style components.
 
-Golden Age Pulp
-  Grittier and older than Silver Age. Heavily yellowed/aged paper,
-  distressed ink-splatter borders, two-tone duochrome palette (e.g.
-  red + black only), woodcut energy. Closer to EC horror comics than
-  Superman.
-
 Modern Cinematic / MCU
   Dark and sleek. Near-black backgrounds with metallic gradients,
   glowing edge accents, subtle light-leak effects. Clean geometric
   sans-serif. Movie title sequence feel rather than printed page.
   Widescreen aspect-ratio hero panels.
-
-Underwater / Deep Sea
-  Dark abyssal navy-to-black gradient backgrounds, bioluminescent
-  accents in electric blue, soft teal, and pale violet. Gentle
-  undulating wave-line dividers, bubble particle textures, pressure-
-  gauge depth indicators. Rounded organic shapes — no sharp corners.
-  Translucent frosted-glass card surfaces like jellyfish membranes.
-  Sonar ping radial animations on hover, bathymetric contour-line
-  decorative patterns, submarine instrument panel tables with depth/
-  pressure readouts. Soft serif or rounded sans headings to evoke
-  fluid motion.
 
 Cyberpunk / Neon
   Rain-soaked dark streets. Near-black backgrounds with hot pink and
@@ -104,23 +87,6 @@ Apothecary / Pharmacy
   and-pestle section markers, vintage label typography (small caps
   serif), medicine bottle silhouette dividers, ingredient lists with
   quantity grids. Aged label paper surfaces, hand-lettered serif feel.
-
-Architect / Drafting
-  Warm white vellum background, fine technical pen lines, floor plan
-  grid containers, dimension annotation callouts, material spec
-  tables, section-cut dividers, title block footers with revision
-  history, redline markup accent color. Light backgrounds with thin
-  precise lines, architectural hand-lettering style labels. Fonts:
-  geometric sans (like Archivo) for headings, technical mono for
-  dimensions and annotations.
-
-Laboratory / Research
-  Clinical white backgrounds, thin precise borders, lab notebook
-  grid paper textures, specimen jar cards, chemical formula callouts,
-  petri dish circular badges, microscope crosshair section markers,
-  gel electrophoresis band dividers, safety data sheet tables. Clean
-  white base with clinical blue and safety orange accents. Fonts:
-  clean sans for body, monospace for data and formulas.
 
 Steampunk
   Brass and copper on dark leather, gear/cog decorative elements,
@@ -341,6 +307,18 @@ Surveillance / CCTV
 
 Silver Age Pop Art
   → pop-art/
+
+Golden Age Pulp
+  → pulp/
+
+Underwater / Deep Sea
+  → deep-sea/
+
+Architect / Drafting
+  → architect/
+
+Laboratory / Research
+  → laboratory/
 
 Victorian / Antique
   → victorian/

@@ -1,0 +1,803 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   Laboratory / Research — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #f6f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef0f4;
+  --surface-3: #dce0e8;
+  --border: #c0c8d4;
+
+  /* Text */
+  --text: #1a1e28;
+  --text-dim: #4a5060;
+  --text-faint: #8890a0;
+
+  /* Accent (Safety Orange) */
+  --accent: #e86820;
+  --accent-dim: #b04810;
+
+  /* Semantic: Capture (Bio Green / Safe / Go) */
+  --capture: #28a048;
+  --capture-dim: #1a7030;
+  --capture-fill: rgba(40, 160, 72, 0.08);
+
+  /* Semantic: Refine (Caution Amber / Chemical) */
+  --refine: #d89020;
+  --refine-dim: #a06810;
+  --refine-fill: rgba(216, 144, 32, 0.08);
+
+  /* Semantic: Execute (Hazard Red / Danger) */
+  --execute: #d03030;
+  --execute-dim: #a01818;
+  --execute-fill: rgba(208, 48, 48, 0.08);
+
+  /* Semantic: Batch (Clinical Blue / Primary) */
+  --batch: #2070c8;
+  --batch-dim: #104890;
+  --batch-fill: rgba(32, 112, 200, 0.08);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels (Lab Notation)
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--batch);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Lab notebook grid paper — thin blue lines */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(32, 112, 200, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 112, 200, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Subtle clinical glow at bottom */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background:
+    radial-gradient(ellipse 800px 200px at 50% 100%, rgba(32, 112, 200, 0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 400px 120px at 50% 100%, rgba(232, 104, 32, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span { color: var(--batch); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+  border-color: var(--batch);
+  box-shadow: 0 1px 8px rgba(32, 112, 200, 0.1);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 4px 0 0 4px; }
+.pipe-stage:last-child  { border-radius: 0 4px 4px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--batch);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid var(--batch);
+  background: rgba(32, 112, 200, 0.04);
+  border-radius: 0 4px 4px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--batch); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables (Safety Data Sheet style)
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+  background: var(--surface-2);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.info-table tr:hover td {
+  background: var(--surface-2);
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   Specimen Card (unique to Laboratory)
+   ============================== */
+
+.specimen-card {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.specimen-card .specimen-header {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specimen-card .specimen-header .specimen-id {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.specimen-card .specimen-header .specimen-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+}
+
+.specimen-card .specimen-status.status-safe {
+  background: var(--capture-fill);
+  color: var(--capture);
+  border: 1px solid var(--capture-dim);
+}
+
+.specimen-card .specimen-status.status-caution {
+  background: var(--refine-fill);
+  color: var(--refine);
+  border: 1px solid var(--refine-dim);
+}
+
+.specimen-card .specimen-status.status-hazard {
+  background: var(--execute-fill);
+  color: var(--execute);
+  border: 1px solid var(--execute-dim);
+}
+
+.specimen-card .specimen-status.status-pending {
+  background: var(--batch-fill);
+  color: var(--batch);
+  border: 1px solid var(--batch-dim);
+}
+
+.specimen-body {
+  padding: 1.25rem;
+}
+
+.specimen-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.specimen-field {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--surface-3);
+}
+
+.specimen-field:nth-child(odd) {
+  padding-right: 1rem;
+  border-right: 1px solid var(--surface-3);
+}
+
+.specimen-field:nth-child(even) {
+  padding-left: 1rem;
+}
+
+.specimen-field .field-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.25rem;
+}
+
+.specimen-field .field-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+
+.specimen-notes {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface-3);
+}
+
+.specimen-notes .notes-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.specimen-notes p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Petri Dish Badge (unique to Laboratory)
+   ============================== */
+
+.petri-dish-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 2.5rem 0;
+}
+
+.petri-dish {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Inner ring */
+.petri-dish::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-3);
+  pointer-events: none;
+}
+
+.petri-dish .petri-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.15rem;
+  line-height: 1;
+}
+
+.petri-dish .petri-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--text);
+}
+
+.petri-dish.petri-capture .petri-value { color: var(--capture); }
+.petri-dish.petri-capture { border-color: var(--capture); }
+.petri-dish.petri-capture::before { border-color: var(--capture-fill); }
+
+.petri-dish.petri-refine .petri-value { color: var(--refine); }
+.petri-dish.petri-refine { border-color: var(--refine); }
+.petri-dish.petri-refine::before { border-color: var(--refine-fill); }
+
+.petri-dish.petri-execute .petri-value { color: var(--execute); }
+.petri-dish.petri-execute { border-color: var(--execute); }
+.petri-dish.petri-execute::before { border-color: var(--execute-fill); }
+
+.petri-dish.petri-batch .petri-value { color: var(--batch); }
+.petri-dish.petri-batch { border-color: var(--batch); }
+.petri-dish.petri-batch::before { border-color: var(--batch-fill); }
+
+/* ==============================
+   Electrophoresis Divider (unique to Laboratory)
+   ============================== */
+
+.electrophoresis-divider {
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.electrophoresis-divider svg {
+  width: 100%;
+  max-width: 700px;
+  height: 40px;
+}
+
+/* ==============================
+   Safety Panel (unique to Laboratory)
+   ============================== */
+
+.safety-panel {
+  margin: 2rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.safety-panel .safety-header {
+  padding: 0.6rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.safety-panel .safety-header .safety-icon {
+  font-size: 1rem;
+}
+
+.safety-panel .safety-body {
+  padding: 1.25rem;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.safety-panel .safety-body p {
+  margin: 0;
+}
+
+.safety-panel .safety-body strong {
+  color: var(--text);
+}
+
+/* Safety Warning (Amber) */
+.safety-panel.safety-warning .safety-header {
+  background: var(--refine-fill);
+  color: var(--refine);
+  border-bottom: 2px solid var(--refine);
+}
+
+/* Safety Danger (Red) */
+.safety-panel.safety-danger .safety-header {
+  background: var(--execute-fill);
+  color: var(--execute);
+  border-bottom: 2px solid var(--execute);
+}
+
+/* Safety Info (Blue) */
+.safety-panel.safety-info .safety-header {
+  background: var(--batch-fill);
+  color: var(--batch);
+  border-bottom: 2px solid var(--batch);
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--batch);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

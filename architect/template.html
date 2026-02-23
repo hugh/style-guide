@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Architectural Design Document</div>
+  <h1>Project <span>Title</span></h1>
+  <p>A brief description of the project scope. Use this area for the building type, site context, or design intent statement.</p>
+  <div class="hero-version">dwg. A-001 &middot; rev. 0</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Program</div>
+  <h2>Project Overview</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color for emphasis.</p>
+
+  <h3>Design Intent</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable like specification notes on a drawing set.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9670;</div>
+      <h4>Site Analysis</h4>
+      <p>Evaluate existing conditions, topography, solar orientation, and prevailing winds for optimal building placement.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9638;</div>
+      <h4>Material Selection</h4>
+      <p>Specify primary and secondary materials. Cross-reference with structural requirements and budget constraints.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9888;</div>
+      <h4>Code Review</h4>
+      <p>Verify compliance with local building codes, ADA accessibility standards, and fire safety regulations.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9783;</div>
+      <h4>Drawing Set</h4>
+      <p>Prepare complete construction documents including plans, sections, elevations, and detail drawings.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Note:</strong> All dimensions are in millimeters unless otherwise noted. Contractor shall verify all measurements on site before commencing work.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Design Phases</h2>
+  <p>The architectural design process follows a standard sequence of deliverable phases from programming through construction.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Program</div>
+      <div class="pipe-desc">Requirements gathering</div>
+    </div>
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Schematic</div>
+      <div class="pipe-desc">Concept design</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Development</div>
+      <div class="pipe-desc">Design refinement</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Construction</div>
+      <div class="pipe-desc">Documents &amp; admin</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ARCHITECT-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Details</div>
+  <h2>Dimension Callout</h2>
+  <p>Architectural dimension annotations with extension lines and a measurement label.</p>
+
+  <div class="dimension-callout">
+    <svg viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;height:auto;">
+      <!-- Left extension line -->
+      <line x1="50" y1="10" x2="50" y2="50" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Right extension line -->
+      <line x1="450" y1="10" x2="450" y2="50" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Dimension line -->
+      <line x1="50" y1="30" x2="215" y2="30" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="285" y1="30" x2="450" y2="30" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Arrows / ticks -->
+      <line x1="50" y1="25" x2="50" y2="35" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="450" y1="25" x2="450" y2="35" stroke="var(--text)" stroke-width="1.5"/>
+      <!-- Dimension text -->
+      <text x="250" y="34" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.05em">12,000 mm</text>
+    </svg>
+  </div>
+
+  <h3>Section Cut Divider</h3>
+  <p>Section-cut line used as a thematic divider, styled like an architectural section mark.</p>
+
+  <div class="section-cut">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <!-- Main cut line -->
+      <line x1="0" y1="20" x2="255" y2="20" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="345" y1="20" x2="600" y2="20" stroke="var(--text)" stroke-width="1.5"/>
+      <!-- Section circle left -->
+      <circle cx="40" cy="20" r="10" fill="var(--surface)" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="40" y="24" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">A</text>
+      <!-- Section circle right -->
+      <circle cx="560" cy="20" r="10" fill="var(--surface)" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="560" y="24" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">A</text>
+      <!-- Section label -->
+      <text x="300" y="24" text-anchor="middle" fill="var(--text-faint)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="0.15em">SECTION A-A</text>
+    </svg>
+  </div>
+
+  <h3>Grid Overlay Panel</h3>
+  <p>A container with a faint floor-plan grid background for wrapping content or diagrams.</p>
+
+  <div class="grid-panel">
+    <div class="grid-panel-label">Floor Plan &mdash; Ground Level</div>
+    <p>Content placed inside a grid panel sits over a repeating floor-plan grid. Use this for diagrams, spatial layouts, or any content that benefits from an architectural grid context.</p>
+    <p>The grid shows both major divisions (60px) and minor subdivisions (12px), mimicking the modular grid used in architectural drawings.</p>
+  </div>
+
+  <h3>Title Block</h3>
+  <p>Footer-style component mimicking the title block on architectural drawings.</p>
+
+  <div class="title-block">
+    <div class="tb-row tb-header">
+      <div class="tb-cell tb-wide">
+        <div class="tb-label">Project</div>
+        <div class="tb-value tb-large">Riverside Cultural Center</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Drawing No.</div>
+        <div class="tb-value">A-101</div>
+      </div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-cell">
+        <div class="tb-label">Client</div>
+        <div class="tb-value">City of Portland</div>
+      </div>
+      <div class="tb-cell">
+        <div class="tb-label">Architect</div>
+        <div class="tb-value">Studio Name</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Scale</div>
+        <div class="tb-value">1 : 100</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Date</div>
+        <div class="tb-value">2026-02-23</div>
+      </div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-cell">
+        <div class="tb-label">Revisions</div>
+        <div class="tb-revisions">
+          <div class="rev-entry">
+            <span class="rev-num">R3</span>
+            <span class="rev-date">2026-02-20</span>
+            <span class="rev-desc">Updated structural grid dimensions per engineer review</span>
+          </div>
+          <div class="rev-entry">
+            <span class="rev-num">R2</span>
+            <span class="rev-date">2026-01-15</span>
+            <span class="rev-desc">Revised facade glazing details</span>
+          </div>
+          <div class="rev-entry">
+            <span class="rev-num">R1</span>
+            <span class="rev-date">2025-12-01</span>
+            <span class="rev-desc">Initial issue for review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Specifications</div>
+  <h2>Design Principles</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Orientation &amp; Light</h4>
+        <p>Primary living spaces face south to maximize passive solar gain. Deep overhangs control summer heat while admitting low-angle winter light.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Material Honesty</h4>
+        <p>Expressed structure and natural materials. Concrete, timber, and glass are used in their raw state without applied finishes where possible.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Threshold Sequence</h4>
+        <p>A deliberate progression from public to private spaces through a series of spatial thresholds, creating a sense of arrival and discovery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Materials</div>
+  <h2>Material Schedule</h2>
+  <p>Specification tables use precise pen-line borders with uppercase headers.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Material</th><th>Specification</th><th>Application</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Concrete</td>
+        <td>40 MPa, board-formed finish, Class 2 exposure</td>
+        <td>Foundation, retaining walls, feature columns</td>
+      </tr>
+      <tr>
+        <td>Glulam Timber</td>
+        <td>GL24h, 200 x 600mm members, clear finished</td>
+        <td>Primary roof structure, exposed beams</td>
+      </tr>
+      <tr>
+        <td>Zinc Cladding</td>
+        <td>0.7mm standing seam, pre-weathered, natural grey</td>
+        <td>Roof and upper wall cladding</td>
+      </tr>
+      <tr>
+        <td>Double Glazing</td>
+        <td>6/16/6mm, low-e coating, argon filled, U=1.1</td>
+        <td>All window and curtain wall assemblies</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Specification tags:
+    <span class="tag t-capture">site</span>
+    <span class="tag t-refine">material</span>
+    <span class="tag t-execute">redline</span>
+    <span class="tag t-batch">blueprint</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Design Process Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--capture)" stroke-width="1.5"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600" text-transform="uppercase">SCHEMATIC</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Concept design</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--refine)" stroke-width="1.5"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">DEVELOPMENT</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Design refinement</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="var(--surface)" stroke="var(--execute)" stroke-width="1.5"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="600">CDs</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Construction docs</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; DWG A-001 &middot; Architect / Drafting Theme</p>
+  </div>
+</footer>
+
+</body>
+</html>

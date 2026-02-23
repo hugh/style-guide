@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Research Division // Protocol Document</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#129514;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;&#65039;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9763;&#65039;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128300;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Lab Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the clinical blue accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Methodology</div>
+  <h2>Research Pipeline</h2>
+  <p>Use the pipeline component to show a linear research methodology.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Hypothesize</div>
+      <div class="pipe-desc">Define research question</div>
+    </div>
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Experiment</div>
+      <div class="pipe-desc">Conduct trials</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Analyze</div>
+      <div class="pipe-desc">Process results</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Publish</div>
+      <div class="pipe-desc">Submit findings</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LABORATORY-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Specimens</div>
+  <h2>Specimen Card</h2>
+  <p>Lab specimen label with classification data in monospace grid layout.</p>
+
+  <div class="specimen-card">
+    <div class="specimen-header">
+      <span class="specimen-id">SPC-2026-0442</span>
+      <span class="specimen-status status-safe">Stable</span>
+    </div>
+    <div class="specimen-body">
+      <div class="specimen-grid">
+        <div class="specimen-field">
+          <div class="field-label">Classification</div>
+          <div class="field-value">Organic / Amino Acid</div>
+        </div>
+        <div class="specimen-field">
+          <div class="field-label">Date Collected</div>
+          <div class="field-value">2026-02-18</div>
+        </div>
+        <div class="specimen-field">
+          <div class="field-label">Source</div>
+          <div class="field-value">Marine Sediment</div>
+        </div>
+        <div class="specimen-field">
+          <div class="field-label">Storage</div>
+          <div class="field-value">-80&deg;C Freezer B</div>
+        </div>
+      </div>
+      <div class="specimen-notes">
+        <div class="notes-label">Notes</div>
+        <p>Sample shows elevated glycine concentrations. Further mass spectrometry analysis recommended.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Petri Dish Badges</h3>
+  <p>Circular status indicators styled like petri dishes.</p>
+
+  <div class="petri-dish-row">
+    <div class="petri-dish petri-capture">
+      <span class="petri-label">pH</span>
+      <span class="petri-value">7.4</span>
+    </div>
+    <div class="petri-dish petri-refine">
+      <span class="petri-label">Temp</span>
+      <span class="petri-value">37&deg;</span>
+    </div>
+    <div class="petri-dish petri-execute">
+      <span class="petri-label">Conc</span>
+      <span class="petri-value">High</span>
+    </div>
+    <div class="petri-dish petri-batch">
+      <span class="petri-label">Trial</span>
+      <span class="petri-value">04</span>
+    </div>
+  </div>
+
+  <h3>Electrophoresis Divider</h3>
+  <p>SVG gel electrophoresis band separator.</p>
+
+  <div class="electrophoresis-divider">
+    <svg viewBox="0 0 700 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Gel background -->
+      <rect x="0" y="0" width="700" height="40" fill="#eef0f4" rx="2"/>
+      <!-- Bands -->
+      <rect x="50"  y="4"  width="600" height="4" rx="1" fill="#2070c8" opacity="0.7"/>
+      <rect x="80"  y="11" width="540" height="3" rx="1" fill="#2070c8" opacity="0.45"/>
+      <rect x="120" y="17" width="460" height="5" rx="1" fill="#2070c8" opacity="0.6"/>
+      <rect x="60"  y="25" width="580" height="2" rx="1" fill="#2070c8" opacity="0.3"/>
+      <rect x="140" y="30" width="420" height="4" rx="1" fill="#2070c8" opacity="0.5"/>
+      <rect x="100" y="36" width="500" height="2" rx="1" fill="#2070c8" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <h3>Safety Panels</h3>
+  <p>Hazard and safety callouts with colored header strips.</p>
+
+  <div class="safety-panel safety-info">
+    <div class="safety-header">
+      <span class="safety-icon">&#9432;</span>
+      <span>Protocol Information</span>
+    </div>
+    <div class="safety-body">
+      <p>All personnel must complete biosafety training before entering the containment laboratory. Review protocol SOP-114 for decontamination procedures.</p>
+    </div>
+  </div>
+
+  <div class="safety-panel safety-warning">
+    <div class="safety-header">
+      <span class="safety-icon">&#9888;&#65039;</span>
+      <span>Chemical Hazard</span>
+    </div>
+    <div class="safety-body">
+      <p><strong>Formaldehyde exposure limit:</strong> 0.75 ppm (8-hr TWA). Ensure fume hood is active before handling fixation reagents.</p>
+    </div>
+  </div>
+
+  <div class="safety-panel safety-danger">
+    <div class="safety-header">
+      <span class="safety-icon">&#9763;&#65039;</span>
+      <span>Biohazard &mdash; BSL-3</span>
+    </div>
+    <div class="safety-body">
+      <p>This specimen requires BSL-3 containment. Full PPE including N95 respirator, double gloves, and face shield required at all times.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Protocols</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Prepare Reagents</h4>
+        <p>Verify expiration dates and prepare working solutions from stock concentrations per protocol specifications.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Calibrate Instruments</h4>
+        <p>Run calibration standards on all analytical instruments before beginning sample measurements.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Record Observations</h4>
+        <p>Document all measurements, anomalies, and environmental conditions in the laboratory notebook.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Compounds</div>
+  <h2>Compounds Data Table</h2>
+  <p>Tables styled like safety data sheets with clinical borders and uppercase headers.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Compound</th><th>Formula</th><th>MW (g/mol)</th><th>Hazard</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sodium Chloride</td>
+        <td>NaCl</td>
+        <td>58.44</td>
+        <td><span class="tag t-capture">safe</span></td>
+      </tr>
+      <tr>
+        <td>Hydrochloric Acid</td>
+        <td>HCl</td>
+        <td>36.46</td>
+        <td><span class="tag t-execute">corrosive</span></td>
+      </tr>
+      <tr>
+        <td>Ethanol</td>
+        <td>C&#8322;H&#8325;OH</td>
+        <td>46.07</td>
+        <td><span class="tag t-refine">flammable</span></td>
+      </tr>
+      <tr>
+        <td>Phosphate Buffer</td>
+        <td>PBS</td>
+        <td>n/a</td>
+        <td><span class="tag t-batch">reagent</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">safe</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">hazard</span>
+    <span class="tag t-batch">clinical</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Sample Processing Pipeline</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="180" height="80" rx="4" fill="var(--surface)" stroke="var(--batch)" stroke-width="1.5"/>
+      <text x="110" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">COLLECTION</text>
+      <text x="110" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="8">Field samples</text>
+
+      <line x1="200" y1="60" x2="260" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="20" width="180" height="80" rx="4" fill="var(--surface)" stroke="var(--capture)" stroke-width="1.5"/>
+      <text x="350" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">EXTRACTION</text>
+      <text x="350" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="8">DNA isolation</text>
+
+      <line x1="440" y1="60" x2="500" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="20" width="180" height="80" rx="4" fill="var(--surface)" stroke="var(--refine)" stroke-width="1.5"/>
+      <text x="590" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">ANALYSIS</text>
+      <text x="590" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="8">Sequencing</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Laboratory</p>
+  </div>
+</footer>
+
+</body>
+</html>

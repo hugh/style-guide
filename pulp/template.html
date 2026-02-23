@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Thrilling Tales Monthly</div>
+  <h1>Tales of <span>Terror</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences of cheap ink on yellowed paper.</p>
+  <div class="hero-version">vol. 1, no. 1 &middot; 1938</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9997;&#65039;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128396;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128240;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128230;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Editor&rsquo;s Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Publishing Pipeline</h2>
+  <p>Use the pipeline component to show a linear sequence of steps in the pulp publishing process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Write</div>
+      <div class="pipe-desc">Draft the manuscript</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Illustrate</div>
+      <div class="pipe-desc">Woodcut art &amp; covers</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Print</div>
+      <div class="pipe-desc">Cheap ink on pulpwood</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Distribute</div>
+      <div class="pipe-desc">Newsstand delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PULP-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Pulp Artifacts</div>
+  <h2>Pulp Cover</h2>
+  <p>Magazine cover card with bold title, dramatic tagline, and heavy black border frame.</p>
+
+  <div class="pulp-cover">
+    <div class="pulp-cover-inner">
+      <div class="pulp-cover-issue">Vol. XII &middot; No. 7 &middot; October 1938</div>
+      <h3>The Crawling Shadow</h3>
+      <div class="cover-tagline">&ldquo;From the depths of the ancient tomb, it came for them all&hellip;&rdquo;</div>
+      <div class="cover-footer">Thrilling Tales Monthly &middot; 10&cent;</div>
+    </div>
+  </div>
+
+  <h3>Splatter Border</h3>
+  <p>SVG divider with ink splatter/drip effect along a horizontal line.</p>
+
+  <div class="splatter-border">
+    <svg viewBox="0 0 700 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Main ink line -->
+      <line x1="0" y1="12" x2="700" y2="12" stroke="#1a1008" stroke-width="2" opacity="0.7"/>
+      <!-- Splatter drips -->
+      <circle cx="85" cy="12" r="4" fill="#1a1008" opacity="0.6"/>
+      <circle cx="88" cy="19" r="2" fill="#1a1008" opacity="0.4"/>
+      <circle cx="200" cy="12" r="3" fill="#b82018" opacity="0.5"/>
+      <circle cx="203" cy="18" r="1.5" fill="#b82018" opacity="0.3"/>
+      <circle cx="340" cy="12" r="5" fill="#1a1008" opacity="0.5"/>
+      <circle cx="337" cy="20" r="2.5" fill="#1a1008" opacity="0.35"/>
+      <circle cx="343" cy="22" r="1.5" fill="#1a1008" opacity="0.25"/>
+      <circle cx="480" cy="12" r="3.5" fill="#b82018" opacity="0.5"/>
+      <circle cx="478" cy="19" r="2" fill="#b82018" opacity="0.35"/>
+      <circle cx="600" cy="12" r="4" fill="#1a1008" opacity="0.55"/>
+      <circle cx="604" cy="20" r="2" fill="#1a1008" opacity="0.3"/>
+      <!-- Small spatter -->
+      <circle cx="120" cy="9" r="1" fill="#1a1008" opacity="0.3"/>
+      <circle cx="260" cy="14" r="1.5" fill="#1a1008" opacity="0.25"/>
+      <circle cx="420" cy="8" r="1" fill="#b82018" opacity="0.3"/>
+      <circle cx="550" cy="15" r="1.5" fill="#1a1008" opacity="0.2"/>
+      <circle cx="660" cy="10" r="1" fill="#1a1008" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <h3>Woodcut Badge</h3>
+  <p>Rectangular badge with heavy borders and crosshatch-style background.</p>
+
+  <p style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+    <span class="woodcut-badge">Weird Tales</span>
+    <span class="woodcut-badge badge-accent">Horror</span>
+    <span class="woodcut-badge badge-capture">Adventure</span>
+    <span class="woodcut-badge badge-refine">Mystery</span>
+  </p>
+
+  <h3>Price Stamp</h3>
+  <p>Circular newsstand price tag with heavy border.</p>
+
+  <p style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center;">
+    <span class="price-stamp">10&cent;</span>
+    <span class="price-stamp stamp-accent">15&cent;</span>
+    <span class="price-stamp stamp-large">25&cent;</span>
+  </p>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Principles</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Principle description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Principle description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Principle description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Pulp Materials</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Material</th><th>Source</th><th>Cost per Ton</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Pulpwood Newsprint</td>
+        <td>Maine lumber mills</td>
+        <td>$18.00</td>
+      </tr>
+      <tr>
+        <td>Lampblack Ink</td>
+        <td>Chemical suppliers, Newark NJ</td>
+        <td>$42.50</td>
+      </tr>
+      <tr>
+        <td>Red Duochrome Ink</td>
+        <td>Specialty print houses</td>
+        <td>$68.00</td>
+      </tr>
+      <tr>
+        <td>Saddle-Stitch Wire</td>
+        <td>Bindery supply co.</td>
+        <td>$12.00</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">adventure</span>
+    <span class="tag t-refine">mystery</span>
+    <span class="tag t-execute">horror</span>
+    <span class="tag t-batch">detective</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Publishing Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="#e8d8b8" stroke="#2a6830" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="#2a6830" font-size="10" font-weight="700">MANUSCRIPT</text>
+      <text x="120" y="75" text-anchor="middle" fill="#7a6840" font-size="9">Writer&apos;s draft</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="#7a6840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="#e8d8b8" stroke="#a87818" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="#a87818" font-size="10" font-weight="700">ILLUSTRATION</text>
+      <text x="380" y="75" text-anchor="middle" fill="#7a6840" font-size="9">Cover &amp; interior art</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="#7a6840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="#e8d8b8" stroke="#b82018" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="#b82018" font-size="10" font-weight="700">PRESS</text>
+      <text x="610" y="75" text-anchor="middle" fill="#7a6840" font-size="9">Print run</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; Vol. I &middot; Printed on Pulpwood</p>
+  </div>
+</footer>
+
+</body>
+</html>

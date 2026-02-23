@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulp &mdash; Golden Age Pulp Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 0;
+    border: 2px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Bitter', serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1.1;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .font-sample-body {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--text);
+    box-shadow: 3px 3px 0 var(--border);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Pulp</span></h1>
+  <p>Yellowed paper, cheap ink, and blood-red duochrome. A gritty design system inspired by Golden Age pulp magazines &mdash; woodcut energy, ink splatter borders, and newsstand price stamps for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128240;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128220;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Heavily yellowed paper tones &mdash; decades of aging, foxing, and sun damage on cheap pulpwood newsprint. Surfaces layer like stacked magazine pages turning brown at the edges.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0e4c8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f0e4c8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8d8b8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e8d8b8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #deccaa;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#deccaa</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d0be98;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d0be98</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a08860;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#a08860</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of ink darkness create clear information hierarchy on aged paper &mdash; from near-black fresh ink to ghost-printed remnants.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 700;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, issue numbers, price stamps</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A blood-red pulp accent plus four duochrome-era semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b82018;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent (Pulp Red)</div><div class="swatch-hex">#b82018</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a6830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture (Swamp)</div><div class="swatch-hex">#2a6830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a87818;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Aged Gold)</div><div class="swatch-hex">#a87818</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b82018;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Crimson)</div><div class="swatch-hex">#b82018</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a2840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Midnight)</div><div class="swatch-hex">#1a2840</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #801410;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#801410</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a4820;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#1a4820</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #785410;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#785410</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #801410;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#801410</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0e1828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#0e1828</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">adventure</span>
+    <span class="tag t-refine">mystery</span>
+    <span class="tag t-execute">horror</span>
+    <span class="tag t-batch">detective</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts with distinct roles. <strong>Heavy slab serif for headings</strong>, <strong>readable serif for body</strong>, <strong>technical mono for labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Bitter &mdash; Headings (h1, h2, h3) &mdash; bold slab serif with woodcut energy</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Source Serif 4 &mdash; Body text, card titles, tables (weights 300, 400, 500, 600, 700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 700</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, issue metadata</div>
+    <div class="font-sample-mono">01 &mdash; VOL. XII &middot; NO. 7 &middot; OCTOBER 1938 &middot; 10&cent;</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Bitter</td><td>clamp(3rem, 9vw, 6rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Bitter</td><td>2.2rem</td><td>800</td></tr>
+      <tr><td>Subsection h3</td><td>Bitter</td><td>1.4rem</td><td>800</td></tr>
+      <tr><td>Card title h4</td><td>Source Serif 4</td><td>0.85rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Source Serif 4</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Source Serif 4</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like pages torn from a pulp magazine and pinned to the wall.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 2px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>heavy colored top accent bar</strong>. Cards gain a rough offset shadow on hover, like a cheaply printed plate slipping on the press.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9997;&#65039;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Swamp Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128396;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Aged Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128240;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Pulp Crimson top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128230;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Midnight Ink top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Write</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Illustrate</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Print</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Distribute</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Sell</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered protocols, editorial rules, or house style guides.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Protocol Title</h4>
+        <p>Description text using .principle-num for the large Bitter number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Protocol</h4>
+        <p>Numbers render in Bitter at 2rem in --accent color (pulp crimson).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in pulp red.</p>
+
+  <div class="callout">
+    <p><strong>Editor&rsquo;s Note:</strong> This is a callout. It uses a 4px left border in --accent with a faint red-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with heavy 2px header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + offset shadow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Pulp Cover</td><td>.pulp-cover</td><td>Magazine cover frame with double border</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#e8d8b8" stroke="#2a6830" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#2a6830" font-size="10" font-weight="700">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#7a6840" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#7a6840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#e8d8b8" stroke="#a87818" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#a87818" font-size="10" font-weight="700">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#7a6840" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#7a6840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#e8d8b8" stroke="#1a2840" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#1a2840" font-size="10" font-weight="700">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#7a6840" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Pulp Components</div>
+  <h2>Pulp Cover</h2>
+  <p>A card styled like a pulp magazine cover with a bold title, dramatic tagline, issue number, and heavy black double-border frame. Use for feature callouts, article headers, or dramatic section openers.</p>
+
+  <div class="pulp-cover">
+    <div class="pulp-cover-inner">
+      <div class="pulp-cover-issue">Vol. XII &middot; No. 7 &middot; October 1938</div>
+      <h3>The Crawling Shadow</h3>
+      <div class="cover-tagline">&ldquo;From the depths of the ancient tomb, it came for them all &mdash; and no mortal weapon could stop it.&rdquo;</div>
+      <div class="cover-footer">Thrilling Tales Monthly &middot; 10&cent;</div>
+    </div>
+  </div>
+
+  <p>The outer border is 4px solid <span class="inline-code">--text</span>, with an inner 2px border creating the classic pulp double-frame. Issue metadata and footer use IBM Plex Mono, while the title uses Bitter in <span class="inline-code">--accent</span> color.</p>
+
+  <h2>Splatter Border</h2>
+  <p>An inline SVG divider with ink splatter and drip effects along a horizontal line. Mimics the messy printing of cheap pulp presses where ink pools and drips at the edges. Use between content sections for gritty thematic separation.</p>
+
+  <div class="splatter-border">
+    <svg viewBox="0 0 700 24" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <line x1="0" y1="12" x2="700" y2="12" stroke="#1a1008" stroke-width="2" opacity="0.7"/>
+      <circle cx="85" cy="12" r="4" fill="#1a1008" opacity="0.6"/>
+      <circle cx="88" cy="19" r="2" fill="#1a1008" opacity="0.4"/>
+      <circle cx="200" cy="12" r="3" fill="#b82018" opacity="0.5"/>
+      <circle cx="203" cy="18" r="1.5" fill="#b82018" opacity="0.3"/>
+      <circle cx="340" cy="12" r="5" fill="#1a1008" opacity="0.5"/>
+      <circle cx="337" cy="20" r="2.5" fill="#1a1008" opacity="0.35"/>
+      <circle cx="343" cy="22" r="1.5" fill="#1a1008" opacity="0.25"/>
+      <circle cx="480" cy="12" r="3.5" fill="#b82018" opacity="0.5"/>
+      <circle cx="478" cy="19" r="2" fill="#b82018" opacity="0.35"/>
+      <circle cx="600" cy="12" r="4" fill="#1a1008" opacity="0.55"/>
+      <circle cx="604" cy="20" r="2" fill="#1a1008" opacity="0.3"/>
+      <circle cx="120" cy="9" r="1" fill="#1a1008" opacity="0.3"/>
+      <circle cx="260" cy="14" r="1.5" fill="#1a1008" opacity="0.25"/>
+      <circle cx="420" cy="8" r="1" fill="#b82018" opacity="0.3"/>
+      <circle cx="550" cy="15" r="1.5" fill="#1a1008" opacity="0.2"/>
+      <circle cx="660" cy="10" r="1" fill="#1a1008" opacity="0.3"/>
+    </svg>
+  </div>
+
+  <h2>Woodcut Badge</h2>
+  <p>A rectangular badge with heavy borders and a crosshatch-style background pattern created by <span class="inline-code">repeating-linear-gradient</span>. Bold uppercase text evokes hand-carved woodblock printing. Available in default (black), accent (red), capture (green), and refine (gold) variants.</p>
+
+  <p style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1.5rem;">
+    <span class="woodcut-badge">Weird Tales</span>
+    <span class="woodcut-badge badge-accent">Horror</span>
+    <span class="woodcut-badge badge-capture">Adventure</span>
+    <span class="woodcut-badge badge-refine">Mystery</span>
+  </p>
+
+  <h2>Price Stamp</h2>
+  <p>A small circular stamp mimicking a newsstand price tag with heavy border and inner ring. Comes in default, accent, and large variants. Use for pricing callouts, version badges, or decorative numbering.</p>
+
+  <p style="display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; margin-top: 1.5rem;">
+    <span class="price-stamp">10&cent;</span>
+    <span class="price-stamp stamp-accent">15&cent;</span>
+    <span class="price-stamp stamp-large">25&cent;</span>
+    <span class="price-stamp stamp-accent stamp-large">50&cent;</span>
+  </p>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Pulp system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Yellowed, Not White</h4>
+        <p>Backgrounds use warm-tinted aged paper tones, never clean white. This creates the feel of a magazine that has been sitting in a box in someone&rsquo;s attic for eighty years.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Blood-Red Duochrome</h4>
+        <p>The primary accent is a deep crimson red inspired by the limited two-color printing of pulp magazines. Red plus black creates maximum drama on cheap paper.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Pulp-Era Semantics</h4>
+        <p>Four semantic colors map to pulp fiction genres: swamp green (adventure), aged gold (mystery), pulp crimson (horror), midnight ink (detective noir).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Slab Serif Woodcuts</h4>
+        <p>Bitter delivers heavy, blocky uppercase headings that evoke hand-carved woodblock type used for pulp magazine mastheads and cover titles.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Cheap Print Labels</h4>
+        <p>IBM Plex Mono for all metadata gives issue numbers, price stamps, and section labels the mechanical precision of linotype slugs and printing press registration marks.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Zero Border-Radius</h4>
+        <p>Every element uses sharp, raw edges with 0px border-radius. Nothing is polished or refined &mdash; it&rsquo;s all rough cuts and hard corners, like pages cut with a guillotine trimmer.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Ink Splatter Texture</h4>
+        <p>The hero uses repeating radial gradients to simulate the noise and splatter of cheap ink on bad paper. Splatter borders and heavy 2px strokes reinforce the messy, urgent feel of pulp printing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Pulp &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

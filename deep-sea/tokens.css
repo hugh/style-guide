@@ -1,0 +1,1007 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Nunito:wght@700;800&display=swap');
+
+/* ==============================
+   Deep Sea — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #060a14;
+  --surface: #0c1220;
+  --surface-2: #121a2c;
+  --surface-3: #1a2438;
+  --border: #243050;
+
+  /* Text */
+  --text: #c8d4e8;
+  --text-dim: #7088a8;
+  --text-faint: #3a5070;
+
+  /* Accent (Electric Blue Bioluminescence) */
+  --accent: #00b8e0;
+  --accent-dim: #005870;
+
+  /* Semantic: Capture (Soft Teal — Life/Oxygen) */
+  --capture: #00a8a0;
+  --capture-dim: #005450;
+  --capture-fill: rgba(0, 168, 160, 0.12);
+
+  /* Semantic: Refine (Pale Violet — Deep Current) */
+  --refine: #8868c8;
+  --refine-dim: #443464;
+  --refine-fill: rgba(136, 104, 200, 0.12);
+
+  /* Semantic: Execute (Thermal Vent Red-Orange) */
+  --execute: #e05030;
+  --execute-dim: #702818;
+  --execute-fill: rgba(224, 80, 48, 0.12);
+
+  /* Semantic: Batch (Ocean Current Blue) */
+  --batch: #2868c0;
+  --batch-dim: #143460;
+  --batch-fill: rgba(40, 104, 192, 0.12);
+
+  /* Frosted Glass */
+  --glass-bg: rgba(12, 18, 32, 0.7);
+  --glass-bg-hover: rgba(12, 18, 32, 0.85);
+  --glass-blur: 12px;
+
+  /* Shared Radius (organic, no sharp corners) */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-xs: 6px;
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels (Readouts)
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, #080e1a 40%, #0a1224 70%, var(--bg) 100%);
+}
+
+/* Bathymetric contour lines */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 600px 600px at 50% 60%,
+      transparent 120px,
+      rgba(0, 184, 224, 0.03) 121px,
+      transparent 123px,
+      transparent 180px,
+      rgba(0, 184, 224, 0.025) 181px,
+      transparent 183px,
+      transparent 240px,
+      rgba(0, 184, 224, 0.02) 241px,
+      transparent 243px,
+      transparent 300px,
+      rgba(0, 184, 224, 0.015) 301px,
+      transparent 303px,
+      transparent 360px,
+      rgba(0, 184, 224, 0.01) 361px,
+      transparent 363px,
+      transparent 420px,
+      rgba(0, 184, 224, 0.008) 421px,
+      transparent 423px
+    );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bioluminescent ambient glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(0, 184, 224, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, rgba(136, 104, 200, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(0, 168, 160, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span {
+  color: var(--accent);
+  text-shadow: 0 0 40px rgba(0, 184, 224, 0.4), 0 0 80px rgba(0, 184, 224, 0.15);
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 1rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   — Frosted glass jellyfish membranes
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.flow-card:hover {
+  border-color: var(--accent);
+  background: var(--glass-bg-hover);
+  box-shadow: 0 0 20px rgba(0, 184, 224, 0.1), 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.flow-card.capture::before  { background: var(--capture); box-shadow: 0 0 12px rgba(0, 168, 160, 0.4); }
+.flow-card.refine::before   { background: var(--refine); box-shadow: 0 0 12px rgba(136, 104, 200, 0.4); }
+.flow-card.execute::before  { background: var(--execute); box-shadow: 0 0 12px rgba(224, 80, 48, 0.4); }
+.flow-card.batch::before    { background: var(--batch); box-shadow: 0 0 12px rgba(40, 104, 192, 0.4); }
+.flow-card.accent::before   { background: var(--accent); box-shadow: 0 0 12px rgba(0, 184, 224, 0.4); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.pipe-stage:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.pipe-stage:last-child  { border-radius: 0 var(--radius) var(--radius) 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+  text-shadow: 0 0 16px rgba(0, 184, 224, 0.3);
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(0, 184, 224, 0.05);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.2em 0.6em;
+  border-radius: var(--radius-xs);
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables (Submarine Instrument Panel)
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6, 10, 20, 0.5);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   Wave Divider (unique to Deep Sea)
+   ============================== */
+
+.wave-divider {
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.wave-divider svg {
+  width: 100%;
+  max-width: 800px;
+  height: 60px;
+  overflow: visible;
+}
+
+/* ==============================
+   Depth Gauge (unique to Deep Sea)
+   ============================== */
+
+.depth-gauge {
+  margin: 2.5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.depth-gauge .gauge-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.gauge-dial {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 2px solid var(--border);
+  position: relative;
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(0, 184, 224, 0.08);
+}
+
+/* Concentric pressure rings */
+.gauge-dial::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, transparent 24%, var(--border) 24.5%, transparent 25%),
+    radial-gradient(circle at center, transparent 44%, var(--border) 44.5%, transparent 45%),
+    radial-gradient(circle at center, transparent 64%, var(--border) 64.5%, transparent 65%),
+    radial-gradient(circle at center, transparent 84%, var(--border) 84.5%, transparent 85%);
+  opacity: 0.4;
+}
+
+/* Center dot */
+.gauge-dial::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(0, 184, 224, 0.6);
+}
+
+.gauge-needle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  transform-origin: left center;
+  transform: rotate(-45deg);
+  border-radius: 2px;
+  box-shadow: 0 0 6px rgba(0, 184, 224, 0.4);
+}
+
+.gauge-reading {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(0, 184, 224, 0.5);
+  white-space: nowrap;
+}
+
+.gauge-unit {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.depth-gauge .gauge-readout {
+  margin-top: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+/* ==============================
+   Specimen Card (unique to Deep Sea)
+   ============================== */
+
+.specimen-card {
+  margin: 2.5rem 0;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.specimen-card .specimen-header {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(6, 10, 20, 0.4);
+}
+
+.specimen-card .species-name {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.specimen-card .species-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.specimen-card .specimen-class {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25em 0.6em;
+  border-radius: var(--radius-xs);
+  background: rgba(0, 168, 160, 0.15);
+  color: var(--capture);
+  border: 1px solid var(--capture-dim);
+}
+
+.specimen-card .specimen-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 640px) {
+  .specimen-card .specimen-body { grid-template-columns: 1fr; }
+}
+
+.specimen-card .specimen-data {
+  padding: 1.5rem;
+}
+
+.specimen-card .data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--surface-3);
+  font-size: 0.78rem;
+}
+
+.specimen-card .data-row:last-child { border-bottom: none; }
+
+.specimen-card .data-label {
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+}
+
+.specimen-card .data-value {
+  color: var(--text);
+}
+
+.specimen-card .data-value.teal    { color: var(--capture); }
+.specimen-card .data-value.violet  { color: var(--refine); }
+.specimen-card .data-value.warning { color: var(--execute); }
+.specimen-card .data-value.blue    { color: var(--batch); }
+.specimen-card .data-value.glow    { color: var(--accent); text-shadow: 0 0 8px rgba(0, 184, 224, 0.4); }
+
+.specimen-card .specimen-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--border);
+  padding: 1.5rem;
+  background: rgba(6, 10, 20, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .specimen-card .specimen-visual {
+    border-left: none;
+    border-top: 1px solid var(--border);
+    min-height: 160px;
+  }
+}
+
+.specimen-card .specimen-visual svg {
+  width: 120px;
+  height: 120px;
+  opacity: 0.5;
+}
+
+/* Gentle scan line */
+.specimen-card .specimen-visual::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  animation: specimenScan 3s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+@keyframes specimenScan {
+  0% { top: 10%; opacity: 0; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
+  100% { top: 90%; opacity: 0; }
+}
+
+/* ==============================
+   Sonar Ping (unique to Deep Sea)
+   ============================== */
+
+.sonar-ping {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 0;
+}
+
+.sonar-ping .ping-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+
+.ping-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 184, 224, 0.08);
+  border: 2px solid var(--accent);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(0, 184, 224, 0.15);
+}
+
+.ping-circle .ping-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 184, 224, 0.6);
+  z-index: 2;
+}
+
+/* Concentric pulse rings */
+.ping-circle .ping-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  animation: sonarPulse 2.5s ease-out infinite;
+  opacity: 0;
+}
+
+.ping-circle .ping-ring:nth-child(2) {
+  width: 30px;
+  height: 30px;
+  animation-delay: 0s;
+}
+
+.ping-circle .ping-ring:nth-child(3) {
+  width: 30px;
+  height: 30px;
+  animation-delay: 0.8s;
+}
+
+.ping-circle .ping-ring:nth-child(4) {
+  width: 30px;
+  height: 30px;
+  animation-delay: 1.6s;
+}
+
+@keyframes sonarPulse {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 0.6;
+    border-width: 2px;
+  }
+  100% {
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.sonar-ping .ping-status {
+  margin-top: 0.75rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Sonar ping as inline marker */
+.sonar-ping.inline {
+  display: inline-flex;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+}
+
+.sonar-ping.inline .ping-circle {
+  width: 32px;
+  height: 32px;
+}
+
+.sonar-ping.inline .ping-dot {
+  width: 6px;
+  height: 6px;
+}
+
+.sonar-ping.inline .ping-circle .ping-ring:nth-child(2),
+.sonar-ping.inline .ping-circle .ping-ring:nth-child(3),
+.sonar-ping.inline .ping-circle .ping-ring:nth-child(4) {
+  width: 6px;
+  height: 6px;
+}
+
+@keyframes sonarPulseSmall {
+  0% {
+    width: 6px;
+    height: 6px;
+    opacity: 0.6;
+  }
+  100% {
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+  }
+}
+
+.sonar-ping.inline .ping-circle .ping-ring {
+  animation-name: sonarPulseSmall;
+}
+
+/* ==============================
+   Bubble Texture (decorative)
+   ============================== */
+
+.bubble-texture {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bubble-texture .bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 184, 224, 0.08), transparent);
+  border: 1px solid rgba(0, 184, 224, 0.04);
+  animation: bubbleRise linear infinite;
+}
+
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-10vh) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--accent);
+}

@@ -44,6 +44,10 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `bakery/` — Patisserie theme (warm vanilla cream, caramel accents, recipe cards, timer badges, cake layer dividers)
 - `surveillance/` — CCTV theme (monitor black, REC red, camera feeds, evidence tags, recognition boxes)
 - `pop-art/` — Silver Age pop art theme (bright yellow, thick black outlines, Ben-Day dots, speech bubbles, POW badges)
+- `pulp/` — Golden Age pulp theme (yellowed paper, pulp red, slab serif woodcuts, splatter borders, price stamps)
+- `deep-sea/` — Underwater theme (abyssal navy, bioluminescent accents, frosted glass cards, depth gauges, sonar pings)
+- `architect/` — Drafting theme (warm vellum, redline accent, drafting grids, dimension callouts, title blocks)
+- `laboratory/` — Research theme (clinical white, safety orange, specimen cards, petri dishes, electrophoresis dividers)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

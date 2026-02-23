@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architect / Drafting &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Archivo', sans-serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--text);
+    box-shadow: 0 1px 4px rgba(42, 38, 32, 0.08);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Drafting Studio // Design System Reference</div>
+  <h1>Architect <span>/</span> Drafting</h1>
+  <p>Precise, clean, technical. A design system inspired by architectural drawings &mdash; vellum backgrounds, fine pen lines, dimension annotations, floor-plan grids, and title blocks for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128208;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128207;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm vellum tones &mdash; the layered papers of a drafting table. From the light drawing sheet through tracing paper overlays to the heavier cardboard mount board.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f8f4ec;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f8f4ec</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0ece2;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f0ece2</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8e2d6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e8e2d6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #dcd4c6;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#dcd4c6</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c0b8a4;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#c0b8a4</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm drafting ink create clear contrast against the vellum background. From dense ink through light pencil to the faintest ghost lines.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, dimension values</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, annotations, grid labels, ghost lines</div>
+    </div>
+  </div>
+
+  <h3>Semantic Colors</h3>
+  <p>Four colors drawn from the architectural drawing process. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a8848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture (Site)</div><div class="swatch-hex">#2a8848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c89830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Material)</div><div class="swatch-hex">#c89830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c83030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Redline)</div><div class="swatch-hex">#c83030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2868a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Blueprint)</div><div class="swatch-hex">#2868a8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a5c30;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#1a5c30</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6a1c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a6a1c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #982020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#982020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a4870;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#1a4870</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">site</span>
+    <span class="tag t-refine">material</span>
+    <span class="tag t-execute">redline</span>
+    <span class="tag t-batch">blueprint</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a clear role. <strong>Geometric sans for headings</strong>, <strong>clean sans for body text</strong>, and <strong>technical monospace for dimensions and annotations</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Archivo &mdash; Headings (h1, h2, h3) &mdash; weights 600, 700</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Inter &mdash; Body text, card titles (h4) &mdash; weights 400, 500, 600</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from the dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Dimensions, annotations, labels, tags, section numbers</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; 12,000 MM &middot; SCALE 1:100 &middot; DWG A-101</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Archivo</td><td>clamp(3rem, 9vw, 6rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Archivo</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Archivo</td><td>1.3rem</td><td>600</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Inter</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like sequential sheets in a drawing set.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#9638;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9472;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9645;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace annotation label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+
+  <h3>Zero Radius</h3>
+  <p>All components use <strong>0px border-radius</strong> for a precise, technical feel. Sharp corners echo the clean edges of drafted lines and cut paper.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a subtle ink-dark border on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9670;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Site Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9638;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Material Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9888;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Redline Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9783;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Blueprint Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear design process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Program</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Schematic</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Development</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Construction</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Close-Out</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered design principles, specifications, or guidelines.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Description text using .principle-num for the large Archivo number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Archivo at 2rem in --accent color (redline red).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in redline red.</p>
+
+  <div class="callout">
+    <p><strong>Drawing Note:</strong> This is a callout. It uses a 3px left border in --accent with a faint red-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with a heavy header border and clean row separators &mdash; like precise pen lines on a specification schedule.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Title Block</td><td>.title-block</td><td>Drawing information footer</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="#2a8848" stroke-width="1.5"/>
+      <text x="110" y="45" text-anchor="middle" fill="#2a8848" font-size="10" font-weight="600">SCHEMATIC</text>
+      <text x="110" y="65" text-anchor="middle" fill="#9a9080" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#9a9080" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="#c89830" stroke-width="1.5"/>
+      <text x="350" y="45" text-anchor="middle" fill="#c89830" font-size="10" font-weight="600">DEVELOPMENT</text>
+      <text x="350" y="65" text-anchor="middle" fill="#9a9080" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#9a9080" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="var(--surface)" stroke="#2868a8" stroke-width="1.5"/>
+      <text x="590" y="45" text-anchor="middle" fill="#2868a8" font-size="10" font-weight="600">CONSTRUCTION</text>
+      <text x="590" y="65" text-anchor="middle" fill="#9a9080" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Drafting Components</div>
+  <h2>Dimension Callout</h2>
+  <p>Architectural dimension annotations with extension lines and a measurement label between them. These mimic the precise dimension marks found on construction drawings.</p>
+
+  <div class="dimension-callout">
+    <svg viewBox="0 0 500 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;height:auto;">
+      <!-- Left extension line -->
+      <line x1="50" y1="10" x2="50" y2="50" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Right extension line -->
+      <line x1="450" y1="10" x2="450" y2="50" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Dimension line left -->
+      <line x1="50" y1="30" x2="215" y2="30" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Dimension line right -->
+      <line x1="285" y1="30" x2="450" y2="30" stroke="var(--text)" stroke-width="0.75"/>
+      <!-- Tick marks -->
+      <line x1="50" y1="25" x2="50" y2="35" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="450" y1="25" x2="450" y2="35" stroke="var(--text)" stroke-width="1.5"/>
+      <!-- Measurement text -->
+      <text x="250" y="34" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="0.05em">12,000 mm</text>
+    </svg>
+  </div>
+
+  <p>A multi-segment variant showing stacked dimensions:</p>
+
+  <div class="dimension-callout">
+    <svg viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:500px;height:auto;">
+      <!-- Upper dimension: full span -->
+      <line x1="50" y1="5" x2="50" y2="30" stroke="var(--text)" stroke-width="0.5"/>
+      <line x1="450" y1="5" x2="450" y2="30" stroke="var(--text)" stroke-width="0.5"/>
+      <line x1="50" y1="15" x2="210" y2="15" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="290" y1="15" x2="450" y2="15" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="50" y1="11" x2="50" y2="19" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="450" y1="11" x2="450" y2="19" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="250" y="19" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.05em">24,000 mm</text>
+
+      <!-- Lower dimensions: split -->
+      <line x1="50" y1="45" x2="50" y2="80" stroke="var(--text)" stroke-width="0.5"/>
+      <line x1="250" y1="45" x2="250" y2="80" stroke="var(--text)" stroke-width="0.5"/>
+      <line x1="450" y1="45" x2="450" y2="80" stroke="var(--text)" stroke-width="0.5"/>
+
+      <line x1="50" y1="60" x2="120" y2="60" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="180" y1="60" x2="250" y2="60" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="50" y1="56" x2="50" y2="64" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="250" y1="56" x2="250" y2="64" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="150" y="64" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.05em">12,000</text>
+
+      <line x1="250" y1="60" x2="320" y2="60" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="380" y1="60" x2="450" y2="60" stroke="var(--text)" stroke-width="0.75"/>
+      <line x1="450" y1="56" x2="450" y2="64" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="350" y="64" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing="0.05em">12,000</text>
+    </svg>
+  </div>
+
+  <h2>Section Cut Divider</h2>
+  <p>An SVG divider styled like an architectural section-cut line. A heavy line with circles at each end containing section letters or numbers. Used as a thematic separator between content areas.</p>
+
+  <div class="section-cut">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <!-- Main cut line -->
+      <line x1="0" y1="20" x2="255" y2="20" stroke="var(--text)" stroke-width="1.5"/>
+      <line x1="345" y1="20" x2="600" y2="20" stroke="var(--text)" stroke-width="1.5"/>
+      <!-- Section circle left -->
+      <circle cx="40" cy="20" r="10" fill="var(--bg)" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="40" y="24" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">A</text>
+      <!-- Section circle right -->
+      <circle cx="560" cy="20" r="10" fill="var(--bg)" stroke="var(--text)" stroke-width="1.5"/>
+      <text x="560" y="24" text-anchor="middle" fill="var(--text)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">A</text>
+      <!-- Section label -->
+      <text x="300" y="24" text-anchor="middle" fill="var(--text-faint)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="0.15em">SECTION A-A</text>
+    </svg>
+  </div>
+
+  <p style="margin-top: 2rem;">Variant with numbered sections:</p>
+
+  <div class="section-cut">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+      <line x1="0" y1="20" x2="255" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+      <line x1="345" y1="20" x2="600" y2="20" stroke="var(--accent)" stroke-width="1.5"/>
+      <circle cx="40" cy="20" r="10" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="40" y="24" text-anchor="middle" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">1</text>
+      <circle cx="560" cy="20" r="10" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.5"/>
+      <text x="560" y="24" text-anchor="middle" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="600">1</text>
+      <text x="300" y="24" text-anchor="middle" fill="var(--text-faint)" font-family="IBM Plex Mono, monospace" font-size="9" letter-spacing="0.15em">SECTION 1-1</text>
+    </svg>
+  </div>
+
+  <h2>Grid Overlay Panel</h2>
+  <p>A card-style container with a faint floor-plan grid background. The grid shows major divisions (60px) and minor subdivisions (12px), mimicking the modular planning grid used in architectural drawings. Wrap diagrams, spatial layouts, or content that benefits from a grid context.</p>
+
+  <div class="grid-panel">
+    <div class="grid-panel-label">Floor Plan &mdash; Ground Level</div>
+    <p>This content sits over a repeating floor-plan grid. The grid is rendered with CSS background gradients as a <span class="inline-code">::before</span> pseudo-element, keeping it behind all content.</p>
+    <p>Use <span class="inline-code">.grid-panel</span> on any container. The label bar is optional &mdash; add <span class="inline-code">.grid-panel-label</span> for a title with a border-bottom separator.</p>
+  </div>
+
+  <h2>Title Block</h2>
+  <p>A footer-style component mimicking the title block found on architectural drawings. Contains fields for project name, drawing number, scale, date, and revision history arranged in a grid of bordered cells.</p>
+
+  <div class="title-block">
+    <div class="tb-row tb-header">
+      <div class="tb-cell tb-wide">
+        <div class="tb-label">Project</div>
+        <div class="tb-value tb-large">Riverside Cultural Center</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Drawing No.</div>
+        <div class="tb-value">A-101</div>
+      </div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-cell">
+        <div class="tb-label">Client</div>
+        <div class="tb-value">City of Portland</div>
+      </div>
+      <div class="tb-cell">
+        <div class="tb-label">Architect</div>
+        <div class="tb-value">Studio Name</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Scale</div>
+        <div class="tb-value">1 : 100</div>
+      </div>
+      <div class="tb-cell tb-narrow">
+        <div class="tb-label">Date</div>
+        <div class="tb-value">2026-02-23</div>
+      </div>
+    </div>
+    <div class="tb-row">
+      <div class="tb-cell">
+        <div class="tb-label">Revisions</div>
+        <div class="tb-revisions">
+          <div class="rev-entry">
+            <span class="rev-num">R3</span>
+            <span class="rev-date">2026-02-20</span>
+            <span class="rev-desc">Updated structural grid dimensions per engineer review</span>
+          </div>
+          <div class="rev-entry">
+            <span class="rev-num">R2</span>
+            <span class="rev-date">2026-01-15</span>
+            <span class="rev-desc">Revised facade glazing details</span>
+          </div>
+          <div class="rev-entry">
+            <span class="rev-num">R1</span>
+            <span class="rev-date">2025-12-01</span>
+            <span class="rev-desc">Initial issue for review</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Architect / Drafting system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Warm Vellum, Not White</h4>
+        <p>Backgrounds use warm, off-white vellum tones reminiscent of tracing paper and drawing sheets. Never pure white &mdash; the subtle warmth creates the feel of an architect&rsquo;s desk.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Precise Pen Lines</h4>
+        <p>All borders are thin 1px solid lines with 0px border-radius. Sharp, precise, technical. No rounded corners, no soft edges &mdash; every line is deliberate like ink from a technical pen.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Redline Markup Accent</h4>
+        <p>The primary accent color is redline red (#c83030), drawn from the architectural tradition of markup and revision annotations on drawings under review.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Drafting Grid Texture</h4>
+        <p>The hero section and grid panels use a faint repeating grid of major and minor lines, evoking the planning grids used in floor plans and structural layouts.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Three-Font Hierarchy</h4>
+        <p>Archivo provides geometric, confident headings. Inter delivers clean, readable body text. IBM Plex Mono handles all annotations, dimensions, and technical labels with engineering precision.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Architectural Vocabulary</h4>
+        <p>Title blocks, section-cut dividers, dimension callouts, and grid overlays bring the spatial language of architectural drawing directly into the document structure.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Material Semantics</h4>
+        <p>Four semantic colors map to architectural concepts: site green (landscape, context), material amber (wood, warmth), redline red (markup, review), and blueprint blue (technical, water).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Architect / Drafting &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
