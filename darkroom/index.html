@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Darkroom — Polaroid Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Caveat', cursive;
+    font-size: 2.8rem;
+    color: var(--text);
+    line-height: 1.05;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(200, 48, 48, 0.1);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">f/2.8 &middot; 1/125s &middot; ISO 400</div>
+  <h1><span>Darkroom</span></h1>
+  <p>Chemical warmth under safelight red. A design system inspired by analog photography &mdash; Polaroid borders, contact sheets, developer-tray progress bars, and film-strip dividers for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128248;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm charcoal tones &mdash; the darkness of an enlarger room lit only by a dim amber bulb. Surfaces layer like trays of chemicals on a wet bench.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #121110;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#121110</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1918;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#1a1918</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #222120;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#222120</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c2a28;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#2c2a28</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3a3835;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#3a3835</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm parchment tones create clear readability under the safelight glow.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, EXIF data, timestamps</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A chemical-red safelight accent plus four photography-process semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c83030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent (Safelight)</div><div class="swatch-hex">#c83030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c89848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Sepia)</div><div class="swatch-hex">#c89848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b83878;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Magenta)</div><div class="swatch-hex">#b83878</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4880a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Developer)</div><div class="swatch-hex">#4880a8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #802020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#802020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #886828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#886828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #782050;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#782050</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c5070;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2c5070</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">exposure</span>
+    <span class="tag t-refine">sepia</span>
+    <span class="tag t-execute">magenta</span>
+    <span class="tag t-batch">developer</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts with distinct roles. <strong>Handwritten cursive for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Caveat &mdash; Headings (h1, h2, h3) and handwritten captions</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">DM Sans &mdash; Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; EXIF data, timestamps, section labels, tags</div>
+    <div class="font-sample-mono">01 &mdash; ROLL 24 &middot; f/2.8 &middot; 1/125s &middot; ISO 400 &middot; 35mm</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Caveat</td><td>clamp(3.5rem, 10vw, 7rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Caveat</td><td>2.8rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Caveat</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>DM Sans</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>DM Sans</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Polaroid caption</td><td>Caveat</td><td>1rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like prints drying on a line.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a warm safelight glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128248;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Safelight Red top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127750;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Sepia Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128156;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Chemical Magenta top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128167;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Developer Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear darkroom process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Expose</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Develop</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Stop Bath</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Fix</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Wash</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Callout, Table &amp; Diagram</h2>
+
+  <div class="callout">
+    <p><strong>Darkroom Note:</strong> This is a callout. It uses a 3px left border in --accent with a faint red-tinted background.</p>
+  </div>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Polaroid</td><td>.polaroid</td><td>Instant photo card with white border + caption</td></tr>
+      <tr><td>Contact Sheet</td><td>.contact-sheet</td><td>Thumbnail grid with frame numbers</td></tr>
+      <tr><td>Developer Tray</td><td>.developer-tray</td><td>Progress bars styled as chemical baths</td></tr>
+      <tr><td>Film Strip</td><td>.film-strip-divider</td><td>SVG section separator with sprocket holes</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#c83030" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#c83030" font-size="10" font-weight="600">EXPOSE</text>
+      <text x="110" y="65" text-anchor="middle" fill="#605850" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#605850" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#c89848" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#c89848" font-size="10" font-weight="600">DEVELOP</text>
+      <text x="350" y="65" text-anchor="middle" fill="#605850" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#605850" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#4880a8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4880a8" font-size="10" font-weight="600">PRINT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#605850" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Darkroom Components</div>
+  <h2>Polaroid Cards</h2>
+  <p>Instant-photo cards with thick white borders, slight rotation, and handwritten Caveat captions. Cards straighten on hover with a lifted shadow.</p>
+
+  <div class="polaroid-grid">
+    <div class="polaroid">
+      <div class="photo-area"><span class="photo-icon">&#127751;</span></div>
+      <div class="photo-caption">Brooklyn Bridge, golden hour</div>
+      <div class="photo-meta">2024-06-14 &middot; f/5.6 &middot; 1/250s</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo-area"><span class="photo-icon">&#127796;</span></div>
+      <div class="photo-caption">Desert road, somewhere in Nevada</div>
+      <div class="photo-meta">2024-03-22 &middot; f/8 &middot; 1/500s</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo-area"><span class="photo-icon">&#9749;</span></div>
+      <div class="photo-caption">Morning light on the counter</div>
+      <div class="photo-meta">2024-09-01 &middot; f/2.8 &middot; 1/60s</div>
+    </div>
+    <div class="polaroid">
+      <div class="photo-area"><span class="photo-icon">&#127747;</span></div>
+      <div class="photo-caption">Fog rolling in at dusk</div>
+      <div class="photo-meta">2024-11-18 &middot; f/4 &middot; 1/125s</div>
+    </div>
+  </div>
+
+  <h2>Contact Sheet</h2>
+  <p>A thumbnail grid mimicking a real contact sheet &mdash; small frames with EXIF-style numbering. Selected frames get a red border overlay. Use for gallery overviews or thumbnail navigation.</p>
+
+  <div class="contact-sheet">
+    <div class="sheet-header">
+      <span class="sheet-title">Roll 24 &mdash; Contact Sheet</span>
+      <span class="sheet-meta">35mm &middot; Tri-X 400 &middot; 36 exp</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-frame selected"><span class="frame-icon">&#127751;</span><span class="frame-num">01</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127796;</span><span class="frame-num">02</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#9749;</span><span class="frame-num">03</span></div>
+      <div class="contact-frame selected"><span class="frame-icon">&#127747;</span><span class="frame-num">04</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127748;</span><span class="frame-num">05</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#128247;</span><span class="frame-num">06</span></div>
+      <div class="contact-frame"><span class="frame-icon">&#127749;</span><span class="frame-num">07</span></div>
+      <div class="contact-frame selected"><span class="frame-icon">&#127750;</span><span class="frame-num">08</span></div>
+    </div>
+  </div>
+
+  <h2>Developer Tray</h2>
+  <p>Progress bars styled as chemical processing baths. Each bar represents a step in the developing process with labeled stages and percentage completion.</p>
+
+  <div class="developer-tray">
+    <div class="tray-label">Processing Status</div>
+    <div class="tray-bars">
+      <div class="tray-bar">
+        <div class="bar-label">Develop</div>
+        <div class="bar-track"><div class="bar-fill fill-batch" style="width: 100%;"></div></div>
+        <div class="bar-pct">100%</div>
+      </div>
+      <div class="tray-bar">
+        <div class="bar-label">Stop</div>
+        <div class="bar-track"><div class="bar-fill fill-refine" style="width: 100%;"></div></div>
+        <div class="bar-pct">100%</div>
+      </div>
+      <div class="tray-bar">
+        <div class="bar-label">Fix</div>
+        <div class="bar-track"><div class="bar-fill fill-execute" style="width: 72%;"></div></div>
+        <div class="bar-pct">72%</div>
+      </div>
+      <div class="tray-bar">
+        <div class="bar-label">Wash</div>
+        <div class="bar-track"><div class="bar-fill fill-capture" style="width: 0%;"></div></div>
+        <div class="bar-pct">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Film Strip Divider</h2>
+  <p>An SVG section separator mimicking 35mm film with sprocket holes and frame borders. Use between content sections for thematic separation.</p>
+
+  <div class="film-strip-divider">
+    <svg viewBox="0 0 700 36" xmlns="http://www.w3.org/2000/svg">
+      <!-- Film base -->
+      <rect x="0" y="0" width="700" height="36" fill="#1a1918" rx="1"/>
+      <!-- Top sprocket holes -->
+      <rect x="30" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="100" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="170" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="240" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="310" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="380" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="450" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="520" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="590" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="660" y="3" width="8" height="5" rx="1" fill="#121110"/>
+      <!-- Bottom sprocket holes -->
+      <rect x="30" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="100" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="170" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="240" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="310" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="380" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="450" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="520" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="590" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <rect x="660" y="28" width="8" height="5" rx="1" fill="#121110"/>
+      <!-- Frame dividers -->
+      <line x1="63" y1="10" x2="63" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="133" y1="10" x2="133" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="203" y1="10" x2="203" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="273" y1="10" x2="273" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="343" y1="10" x2="343" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="413" y1="10" x2="413" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="483" y1="10" x2="483" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="553" y1="10" x2="553" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <line x1="623" y1="10" x2="623" y2="26" stroke="#2c2a28" stroke-width="0.5"/>
+      <!-- Frame numbers -->
+      <text x="50" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">24</text>
+      <text x="120" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">25</text>
+      <text x="190" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">26</text>
+      <text x="260" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">27</text>
+      <text x="330" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">28</text>
+      <text x="400" y="21" text-anchor="middle" fill="#c83030" font-size="6" font-family="IBM Plex Mono, monospace">29</text>
+      <text x="470" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">30</text>
+      <text x="540" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">31</text>
+      <text x="610" y="21" text-anchor="middle" fill="#3a3835" font-size="6" font-family="IBM Plex Mono, monospace">32</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Darkroom system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Warm Charcoal, Not Cold</h4>
+        <p>Backgrounds use warm brown-tinted near-blacks like darkroom walls, not cool-toned or pure black. This creates intimacy and analog warmth.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Safelight Red</h4>
+        <p>The primary accent is a deep red inspired by the safelight bulbs used in photographic darkrooms. It provides warmth without destroying the developing image.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Chemistry Semantics</h4>
+        <p>Four semantic colors map to photographic chemistry: safelight red (exposure), sepia amber (toning), chemical magenta (filter), developer blue (processing).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Handwritten Headings</h4>
+        <p>Caveat delivers the feel of handwritten captions on the back of a Polaroid &mdash; personal, immediate, and intimate.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>EXIF Data Labels</h4>
+        <p>IBM Plex Mono for all metadata gives timestamps, settings, and labels the mechanical precision of camera EXIF data and film edge markings.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Analog Artifacts</h4>
+        <p>Polaroid borders, contact sheet grids, film strip dividers, and developer tray progress bars bring real photographic darkroom equipment into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Light Leak Texture</h4>
+        <p>The hero section uses faint diagonal gradients in red and amber, evoking the accidental light leaks that give analog photography its character.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Darkroom &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

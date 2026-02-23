@@ -20,6 +20,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `space-opera/` — Sci-fi bridge theme (deep space blues, holographic cyan, nebula glows)
 - `aliens/` — Xenomorph industrial theme (cold steel, acid yellow-green, motion trackers, airlock warnings)
 - `nasa/` — 1960s–70s Mission Control theme (deep navy, GO green, telemetry readouts, countdown timers)
+- `darkroom/` — Polaroid photography theme (warm charcoal, safelight red, film strips, contact sheets)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

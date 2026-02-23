@@ -187,3 +187,44 @@ NASA Mission Control
   Space Grotesk or Outfit) for headings, monospace (IBM Plex Mono)
   for telemetry/data. Red/white/blue semantic colors with NASA worm
   logo energy — clean, confident, engineering-precise.
+
+Polaroid / Darkroom
+  Dark charcoal with chemical-red safelight accents, instant-photo
+  card components with white borders and slight rotation, contact
+  sheet grids, developer-tray progress bars, handwritten caption
+  labels (cursive font), film-strip dividers, light-leak gradient
+  overlays. Warm grain texture on surfaces, timestamp metadata in
+  the style of photo EXIF data. Fonts: a handwriting/cursive font
+  for captions (like Caveat), clean sans for body.
+
+Nautical / Maritime
+  Navy and brass, rope-knot dividers, porthole-framed cards, signal
+  flag tag components, lighthouse beacon loading indicator, ship's
+  log callout blocks, compass bearing section markers, canvas/sail
+  texture backgrounds. Deep ocean navy base, warm brass/gold accents,
+  weathered rope tan secondary. Fonts: strong slab serif for headings,
+  clean sans for body, monospace for coordinates/log entries.
+
+Apothecary / Pharmacy
+  Vintage medicine cabinet aesthetic, dark bottle-green and amber,
+  prescription label cards with Rx headers, dosage tables, mortar-
+  and-pestle section markers, vintage label typography (small caps
+  serif), medicine bottle silhouette dividers, ingredient lists with
+  quantity grids. Aged label paper surfaces, hand-lettered serif feel.
+
+Aviation / Cockpit
+  Instrument panel dark grey, amber/green CRT readouts, altimeter
+  and artificial horizon components, flight plan tables, radio
+  chatter logs (similar to CAPCOM but with ATC cadence), black box
+  recorder callouts, runway diagram containers. Dark instrument grey
+  backgrounds, phosphor green and amber data readouts. Fonts: clean
+  condensed sans for headings, monospace for instrument readouts.
+
+Architect / Drafting
+  Warm white vellum background, fine technical pen lines, floor plan
+  grid containers, dimension annotation callouts, material spec
+  tables, section-cut dividers, title block footers with revision
+  history, redline markup accent color. Light backgrounds with thin
+  precise lines, architectural hand-lettering style labels. Fonts:
+  geometric sans (like Archivo) for headings, technical mono for
+  dimensions and annotations.
