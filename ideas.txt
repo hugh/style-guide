@@ -270,3 +270,43 @@ Steampunk
   telegraph ticker tape dividers, clockwork animation on hover. Deep
   brown leather base, warm brass/copper accents. Fonts: ornate
   Victorian serif for headings, clean serif body, mono for gauges.
+
+Tarot / Occult
+  Deep indigo and midnight purple backgrounds, gold-foil accents,
+  celestial star-field textures. Tarot card components with ornate
+  frames, zodiac wheel section markers, crystal ball callout panels,
+  mystic symbol dividers. Serif headings with an arcane, woodcut feel.
+  Fonts: decorative serif (like Cinzel Decorative) for headings, clean
+  serif for body, mono for card numerals.
+
+Expedition / Explorer's Journal
+  Sun-bleached canvas backgrounds, weathered leather brown and compass
+  brass accents. Field sketch cards with hand-drawn borders, topographic
+  elevation callouts, expedition log entries with date/coordinates,
+  rope-lash dividers. Handwritten heading font with clean serif body.
+  Fonts: handwriting (like Caveat or Patrick Hand) for headings, clean
+  serif for body, mono for coordinates.
+
+Neon Diner / Roadside
+  Near-black asphalt backgrounds with hot neon tube accents in pink,
+  teal, and amber. Menu board card components, "OPEN 24HRS" blinking
+  sign callouts, chrome jukebox progress bars, checkered floor pattern
+  dividers. Retro script headings with condensed sans body. Fonts:
+  retro script (like Pacifico or Sacramento) for headings, condensed
+  sans for body, mono for prices/labels.
+
+Medieval Manuscript / Illuminated
+  Aged vellum cream backgrounds, rich vermillion and ultramarine accents
+  with gold leaf. Ornamental drop caps, illuminated initial letter
+  components, marginalia annotation callouts, vine-tendril border frames,
+  chapter heading cartouches. Blackletter display headings with clean
+  serif body. Fonts: blackletter (like UnifrakturCook) for headings,
+  clean serif for body, mono for verse numbers.
+
+Surveillance / CCTV
+  Dark monitor-grey backgrounds with harsh white text and red REC
+  indicator accents. Multi-camera grid layouts, timestamp overlays on
+  every component, static/noise texture dividers, evidence tag callout
+  boxes, facial recognition bounding-box card frames. Tight condensed
+  mono for everything. Fonts: condensed mono for all text, with
+  emphasis through weight and color rather than font variety.
