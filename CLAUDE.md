@@ -36,6 +36,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `brutalist/` — Anti-design theme (raw concrete grey, thick black borders, system fonts, no transitions, construction orange)
 - `aviation/` — Cockpit instrument theme (dark panel grey, amber gauges, altimeter dials, ATC radio logs, black box recorders)
 - `weather/` — Meteorology theme (dark radar screen, Doppler green, barometer gauges, forecast strips, storm warnings)
+- `pottery/` — Ceramics studio theme (warm clay linen, terracotta accents, kiln gauges, glaze recipe cards, potter's marks)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

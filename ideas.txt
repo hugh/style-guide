@@ -300,14 +300,6 @@ Wrestling / Lucha Libre
   Fonts: impact/condensed bold for headings, clean sans for body,
   mono for stats.
 
-Pottery / Ceramics Studio
-  Warm terracotta and clay backgrounds with glaze-color accents (celadon
-  green, cobalt blue, iron red, ash white). Kiln temperature gauge
-  components, glaze recipe cards with firing schedules, coil-built
-  texture dividers, wheel-thrown circular section markers, pottery mark
-  stamp badges. Earthy and handmade. Fonts: organic sans for headings,
-  clean sans for body, mono for temperatures/measurements.
-
 
 DONE
 ----
@@ -374,3 +366,6 @@ Aviation / Cockpit
 
 Weather Station / Meteorology
   → weather/
+
+Pottery / Ceramics Studio
+  → pottery/
