@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Board Game — Tabletop Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Nunito', sans-serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1.1;
+    font-weight: 800;
+  }
+  .font-sample-body {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(216, 168, 80, 0.12);
+    transform: translateY(-2px);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Board <span>Game</span></h1>
+  <p>A warm, tactile design system inspired by tabletop board games &mdash; felt-green surfaces, wooden token accents, player cards, dice rolls, and score tracks for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#127922;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127918;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Setup:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Warm forest greens like the felt surface of a gaming table. Surfaces layer like stacked game boards and card mats.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a3020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#1a3020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #223828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#223828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a4230;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#2a4230</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #324a38;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#324a38</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #405840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#405840</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of cream-to-sage create clear information hierarchy against the green felt backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, round counters</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A warm wooden-token gold primary accent plus four game-world semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d8a850;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#d8a850</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #58c858;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#58c858</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d8a850;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d8a850</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d85040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#d85040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4890d0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4890d0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a07830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#a07830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #388838;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#388838</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a07830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#a07830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a03028;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#a03028</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #286898;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#286898</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">common</span>
+    <span class="tag t-refine">rare</span>
+    <span class="tag t-execute">epic</span>
+    <span class="tag t-batch">legendary</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Rounded bold headings for warmth</strong>, <strong>soft sans for readability</strong>, <strong>monospace for scores and metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Nunito Extra Bold &mdash; Headings (h1, h2, h3, h4)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Quicksand &mdash; Body text, card descriptions, tables (weights 400, 500, 600, 700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, scores, metadata</div>
+    <div class="font-sample-mono">01 &mdash; ROUND 05 / 10 &middot; SCORE: 042 &middot; p. 12</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Nunito</td><td>clamp(3rem, 8vw, 5.5rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Nunito</td><td>2rem</td><td>800</td></tr>
+      <tr><td>Subsection h3</td><td>Nunito</td><td>1.3rem</td><td>800</td></tr>
+      <tr><td>Card title h4</td><td>Nunito</td><td>0.85rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Quicksand</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Quicksand</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and subtle separators on the green felt background.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards lift and glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127922;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Roll Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Token Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Penalty Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128302;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Meeple Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Draw</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Place</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Roll</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Trade</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Score</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered rules, objectives, or house rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Description text using .principle-num for the large Nunito number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Numbers render in Nunito Extra Bold at 2.2rem in --accent color (wooden token gold).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in token gold.</p>
+
+  <div class="callout">
+    <p><strong>House Rule:</strong> This is a callout. It uses a 3px left border in --accent with a faint gold-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar + glow color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Player Card</td><td>.player-card .active</td><td>Active turn indicator badge</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#223828" stroke="#58c858" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#58c858" font-size="10" font-weight="600">GATHER</text>
+      <text x="110" y="65" text-anchor="middle" fill="#688060" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#688060" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#223828" stroke="#d8a850" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d8a850" font-size="10" font-weight="600">BUILD</text>
+      <text x="350" y="65" text-anchor="middle" fill="#688060" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#688060" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#223828" stroke="#4890d0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4890d0" font-size="10" font-weight="600">SCORE</text>
+      <text x="590" y="65" text-anchor="middle" fill="#688060" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Game Components</div>
+  <h2>Player Turn Cards</h2>
+  <p>Player cards with meeple icon, name, and score. Add <span class="inline-code">active</span> class for the current player&rsquo;s turn (adds gold border and &ldquo;YOUR TURN&rdquo; badge). Use <span class="inline-code">p-red</span>, <span class="inline-code">p-blue</span>, <span class="inline-code">p-green</span>, <span class="inline-code">p-yellow</span> for meeple colors.</p>
+
+  <div class="player-grid">
+    <div class="player-card p-red active">
+      <div class="player-meeple">&#9823;</div>
+      <div class="player-name">Player 1</div>
+      <div class="player-score">42</div>
+      <div class="player-score-label">Points</div>
+    </div>
+    <div class="player-card p-blue">
+      <div class="player-meeple">&#9823;</div>
+      <div class="player-name">Player 2</div>
+      <div class="player-score">38</div>
+      <div class="player-score-label">Points</div>
+    </div>
+    <div class="player-card p-green">
+      <div class="player-meeple">&#9823;</div>
+      <div class="player-name">Player 3</div>
+      <div class="player-score">35</div>
+      <div class="player-score-label">Points</div>
+    </div>
+    <div class="player-card p-yellow">
+      <div class="player-meeple">&#9823;</div>
+      <div class="player-name">Player 4</div>
+      <div class="player-score">29</div>
+      <div class="player-score-label">Points</div>
+    </div>
+  </div>
+
+  <h2>Dice Roll</h2>
+  <p>Physical dice with colored variants. Default is white, with <span class="inline-code">d-red</span>, <span class="inline-code">d-blue</span>, and <span class="inline-code">d-gold</span> color options. Result text sits alongside in monospace.</p>
+
+  <div class="dice-group">
+    <div class="die">5</div>
+    <div class="die d-red">3</div>
+    <div class="die d-blue">6</div>
+    <div class="die d-gold">2</div>
+    <div class="dice-result">Total: 16</div>
+  </div>
+
+  <p style="margin-top: 1.5rem;">Smaller roll:</p>
+  <div class="dice-group">
+    <div class="die">4</div>
+    <div class="die">1</div>
+    <div class="dice-result">Total: 5 &mdash; Move forward 5 spaces</div>
+  </div>
+
+  <h2>Score Track</h2>
+  <p>A leaderboard panel with player color dots, progress bars, and point totals. The header shows the current round counter.</p>
+
+  <div class="score-track">
+    <div class="track-header">Leaderboard<span class="track-round">Round 07 / 10</span></div>
+    <div class="track-body">
+      <div class="track-row">
+        <div class="track-color" style="background: var(--execute)"></div>
+        <div class="track-name">Player 1</div>
+        <div class="track-bar"><div class="track-fill" style="width:84%; background: var(--execute)"></div></div>
+        <div class="track-pts">42</div>
+      </div>
+      <div class="track-row">
+        <div class="track-color" style="background: var(--batch)"></div>
+        <div class="track-name">Player 2</div>
+        <div class="track-bar"><div class="track-fill" style="width:76%; background: var(--batch)"></div></div>
+        <div class="track-pts">38</div>
+      </div>
+      <div class="track-row">
+        <div class="track-color" style="background: var(--capture)"></div>
+        <div class="track-name">Player 3</div>
+        <div class="track-bar"><div class="track-fill" style="width:70%; background: var(--capture)"></div></div>
+        <div class="track-pts">35</div>
+      </div>
+      <div class="track-row">
+        <div class="track-color" style="background: var(--refine)"></div>
+        <div class="track-name">Player 4</div>
+        <div class="track-bar"><div class="track-fill" style="width:58%; background: var(--refine)"></div></div>
+        <div class="track-pts">29</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Rulebook Callout</h2>
+  <p>A structured reference panel styled like a rulebook page. Includes a header with book icon, title, and page reference, plus a body with rule text and optional example blocks.</p>
+
+  <div class="rulebook">
+    <div class="rule-header"><span class="rule-icon">&#128214;</span><span class="rule-title">Placement Rules</span><span class="rule-page">p. 12</span></div>
+    <div class="rule-body">
+      <p>Tiles must be placed adjacent to at least one existing tile on the board. <strong>Matching edges score bonus points.</strong> A tile cannot be placed if it would create an impossible configuration.</p>
+      <div class="rule-example">Example: Placing a forest tile next to a river tile scores 2 bonus points. A castle tile adjacent to 3 or more roads scores 5 bonus points.</div>
+    </div>
+  </div>
+
+  <div class="rulebook" style="margin-top: 1.5rem;">
+    <div class="rule-header"><span class="rule-icon">&#9888;</span><span class="rule-title">Penalty</span><span class="rule-page">p. 24</span></div>
+    <div class="rule-body">
+      <p>If a player cannot place a tile on their turn, they <strong>lose 3 points</strong> and draw a new tile. The skipped tile is returned to the bottom of the draw pile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Board Game system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Felt-Green Table</h4>
+        <p>Backgrounds use warm forest greens like the felt surface of a gaming table, creating an inviting, tactile foundation.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Wooden Token Gold</h4>
+        <p>The primary accent is a warm gold inspired by natural wood game pieces, tokens, and meeples.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Game-Night Semantics</h4>
+        <p>Four semantic colors map to tabletop concepts: roll green (success), token gold (score), penalty red (danger), meeple blue (player).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Rounded &amp; Friendly</h4>
+        <p>Nunito Extra Bold and Quicksand deliver warm, approachable typography with generous rounding. 8-10px border-radius throughout reinforces the tactile feel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Physical Components</h4>
+        <p>Player cards, dice, score tracks, and rulebook callouts bring the physicality of board games into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Board Grid</h4>
+        <p>Faint grid lines in the hero evoke the squares and hexes of a game board surface.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Playful Yet Structured</h4>
+        <p>The design balances warmth and fun with clear structure — monospace metadata, consistent spacing, and organized information hierarchy keep things readable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Board Game &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -386,3 +386,39 @@ Weather Station / Meteorology
   icons, isobar contour dividers, storm warning callout banners,
   precipitation timeline charts. Fonts: clean geometric sans for
   headings, clean sans for body, mono for readings.
+
+Pinball Machine
+  Glossy black playfield with chrome bumper borders, backglass art
+  panels, tilt warning callouts, multiball score counters, flipper-
+  shaped navigation tabs, ramp trajectory SVG diagrams. Neon pink,
+  electric blue, and hot yellow accents on deep black. Fonts: bold
+  condensed display for headings, clean sans for body, mono for scores.
+
+Botanical Garden / Herbarium
+  Pressed-flower muted palette on dark forest backgrounds. Herbarium
+  specimen sheet cards with collection data labels, garden map grid
+  containers, bloom calendar timelines, seed dispersal SVG diagrams,
+  potting soil dark texture surfaces. Fonts: elegant serif for headings,
+  clean sans for body, mono for taxonomy/dates.
+
+Radio Station / FM Broadcast
+  Dark studio backgrounds with on-air red and frequency dial accents.
+  Equalizer bar components, playlist rotation cards, broadcast log
+  tables, "ON AIR" illuminated sign callouts, frequency spectrum
+  dividers, request line ticker components. Fonts: bold condensed sans
+  for headings, clean sans for body, mono for frequencies/timestamps.
+
+Board Game / Tabletop
+  Felt-green table backgrounds with wooden token accents. Game board
+  grid containers, player turn cards, dice roll result badges, rulebook
+  sidebar callouts, score track components, card deck shuffler
+  animations. Fonts: rounded sans for headings, clean sans for body,
+  mono for scores/rules.
+
+Observatory / Astronomy
+  Deep midnight blue-black with nebula purple and stellar white accents.
+  Star chart grid containers, constellation diagram SVGs, celestial
+  coordinate callouts, observation log cards with RA/Dec data, light
+  pollution gauge bars, telescope aperture circular frames. Fonts:
+  clean geometric sans for headings, clean sans for body, mono for
+  coordinates.
