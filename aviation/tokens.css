@@ -1,0 +1,825 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   Aviation / Cockpit — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #0e1014;
+  --surface: #181c22;
+  --surface-2: #222830;
+  --surface-3: #2c3440;
+  --border: #3a4250;
+
+  /* Text */
+  --text: #d0ccc0;
+  --text-dim: #8a8878;
+  --text-faint: #585848;
+
+  /* Accent (Instrument Amber) */
+  --accent: #e09020;
+  --accent-dim: #b07018;
+
+  /* Semantic: Capture (Phosphor Green — active, go) */
+  --capture: #30c850;
+  --capture-dim: #20a038;
+  --capture-fill: rgba(48, 200, 80, 0.10);
+
+  /* Semantic: Refine (Caution Amber — advisory) */
+  --refine: #e8b830;
+  --refine-dim: #c09020;
+  --refine-fill: rgba(232, 184, 48, 0.10);
+
+  /* Semantic: Execute (Warning Red — alert, emergency) */
+  --execute: #e03030;
+  --execute-dim: #b82020;
+  --execute-fill: rgba(224, 48, 48, 0.10);
+
+  /* Semantic: Batch (Navigation Blue — heading, info) */
+  --batch: #3888d0;
+  --batch-dim: #2868a8;
+  --batch-fill: rgba(56, 136, 208, 0.10);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  overflow-x: hidden;
+}
+
+/* Subtle instrument glow */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(224, 144, 32, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 60%, rgba(48, 200, 80, 0.015) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 8vw, 5.5rem);
+  line-height: 1.0;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Instrument gauge rings */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(224, 144, 32, 0.08);
+  box-shadow:
+    0 0 0 40px rgba(224, 144, 32, 0.03),
+    0 0 0 80px rgba(224, 144, 32, 0.02),
+    0 0 0 160px rgba(224, 144, 32, 0.01);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Horizon line */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(224, 144, 32, 0.15) 30%,
+    rgba(224, 144, 32, 0.15) 70%,
+    transparent
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.flow-card:hover {
+  border-color: var(--text-faint);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 4px 0 0 4px; }
+.pipe-stage:last-child  { border-radius: 0 4px 4px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: rgba(224, 144, 32, 0.06);
+  border-radius: 0 4px 4px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.3em 0.7em;
+  border-radius: 3px;
+  border: 1px solid;
+  text-transform: uppercase;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.88rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   Altimeter Gauge (unique)
+   ============================== */
+
+.altimeter {
+  margin: 2.5rem auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Outer bezel ring */
+.altimeter::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 4px solid var(--surface-3);
+  background: transparent;
+}
+
+/* Tick marks ring */
+.altimeter::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+}
+
+.altimeter .alt-reading {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.altimeter .alt-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  line-height: 1;
+}
+
+.altimeter .alt-unit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.altimeter .alt-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+/* ==============================
+   Artificial Horizon (unique)
+   ============================== */
+
+.horizon {
+  margin: 2.5rem auto;
+  width: 220px;
+  height: 140px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  position: relative;
+}
+
+.horizon .horizon-sky {
+  height: 50%;
+  background: linear-gradient(to bottom, #1a3868, #3070b8);
+}
+
+.horizon .horizon-ground {
+  height: 50%;
+  background: linear-gradient(to bottom, #7a5020, #4a3018);
+}
+
+.horizon .horizon-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--text);
+  transform: translateY(-1px);
+}
+
+.horizon .horizon-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+}
+
+.horizon .horizon-wings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.horizon .horizon-label {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* ==============================
+   Radio Log (unique)
+   ============================== */
+
+.radio-log {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.radio-log .log-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.radio-log .log-freq {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--capture);
+}
+
+.radio-log .log-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.radio-log .log-entries {
+  padding: 0;
+  list-style: none;
+}
+
+.radio-log .log-entry {
+  display: flex;
+  gap: 1rem;
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid var(--surface-3);
+  font-size: 0.85rem;
+}
+
+.radio-log .log-entry:last-child { border-bottom: none; }
+
+.radio-log .log-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  min-width: 3.5rem;
+  padding-top: 0.1rem;
+}
+
+.radio-log .log-callsign {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 6rem;
+  font-size: 0.8rem;
+  padding-top: 0.1rem;
+}
+
+.radio-log .log-msg {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   Black Box (unique)
+   ============================== */
+
+.black-box {
+  margin: 2.5rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.black-box .bbox-header {
+  padding: 0.6rem 1.25rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent) 0px,
+    var(--accent) 8px,
+    var(--surface-3) 8px,
+    var(--surface-3) 16px
+  );
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.black-box .bbox-header .bbox-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  background: var(--bg);
+  padding: 0.15rem 0.6rem;
+}
+
+.black-box .bbox-body {
+  padding: 1.5rem 1.25rem;
+  background: var(--surface);
+}
+
+.black-box .bbox-body p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.black-box .bbox-body .bbox-data {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--capture);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

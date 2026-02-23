@@ -127,14 +127,6 @@ Apothecary / Pharmacy
   serif), medicine bottle silhouette dividers, ingredient lists with
   quantity grids. Aged label paper surfaces, hand-lettered serif feel.
 
-Aviation / Cockpit
-  Instrument panel dark grey, amber/green CRT readouts, altimeter
-  and artificial horizon components, flight plan tables, radio
-  chatter logs (similar to CAPCOM but with ATC cadence), black box
-  recorder callouts, runway diagram containers. Dark instrument grey
-  backgrounds, phosphor green and amber data readouts. Fonts: clean
-  condensed sans for headings, monospace for instrument readouts.
-
 Architect / Drafting
   Warm white vellum background, fine technical pen lines, floor plan
   grid containers, dimension annotation callouts, material spec
@@ -383,3 +375,6 @@ Retro Americana / 1950s
 
 Brutalist Web
   → brutalist/
+
+Aviation / Cockpit
+  → aviation/

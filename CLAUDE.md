@@ -34,6 +34,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `western/` — Wanted poster theme (sun-bleached parchment, burnt sienna, sheriff badges, saloon doors)
 - `retro-americana/` — 1950s diner theme (warm cream, diner red, chrome gold, neon signs, checkerboard panels)
 - `brutalist/` — Anti-design theme (raw concrete grey, thick black borders, system fonts, no transitions, construction orange)
+- `aviation/` — Cockpit instrument theme (dark panel grey, amber gauges, altimeter dials, ATC radio logs, black box recorders)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

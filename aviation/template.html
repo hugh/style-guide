@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Flight Ops &middot; Clearance Delivery</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9992;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#129517;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Advisory:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Flight Plan</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">I</div><div class="pipe-name">Preflight</div><div class="pipe-desc">Systems check</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">II</div><div class="pipe-name">Taxi</div><div class="pipe-desc">Ground control</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">III</div><div class="pipe-name">Takeoff</div><div class="pipe-desc">Full throttle</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">IV</div><div class="pipe-name">Cruise</div><div class="pipe-desc">Flight level</div></div>
+  </div>
+</section>
+
+<!-- ============ AVIATION-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Instruments</div>
+  <h2>Altimeter</h2>
+  <p>A circular instrument gauge displaying altitude readings.</p>
+
+  <div class="altimeter">
+    <div class="alt-reading">
+      <span class="alt-value">35,000</span>
+      <span class="alt-unit">Feet MSL</span>
+      <span class="alt-label">Altitude</span>
+    </div>
+  </div>
+
+  <h3>Artificial Horizon</h3>
+  <div class="horizon">
+    <div class="horizon-sky"></div>
+    <div class="horizon-ground"></div>
+    <div class="horizon-line"></div>
+    <div class="horizon-wings"></div>
+    <div class="horizon-center"></div>
+    <div class="horizon-label">Attitude Indicator</div>
+  </div>
+
+  <h3>Radio Log</h3>
+  <div class="radio-log">
+    <div class="log-header">
+      <div class="log-freq">118.70</div>
+      <div class="log-label">Tower Frequency</div>
+    </div>
+    <ul class="log-entries">
+      <li class="log-entry"><span class="log-time">14:22</span><span class="log-callsign">TWR</span><span class="log-msg">November-four-two-seven, cleared for takeoff runway two-eight left.</span></li>
+      <li class="log-entry"><span class="log-time">14:22</span><span class="log-callsign">N427</span><span class="log-msg">Cleared for takeoff two-eight left, November-four-two-seven.</span></li>
+      <li class="log-entry"><span class="log-time">14:25</span><span class="log-callsign">TWR</span><span class="log-msg">November-four-two-seven, contact departure on one-two-four-point-three.</span></li>
+    </ul>
+  </div>
+
+  <h3>Black Box</h3>
+  <div class="black-box">
+    <div class="bbox-header"><span class="bbox-title">Flight Data Recorder</span></div>
+    <div class="bbox-body">
+      <p>Critical flight data recorded for incident analysis. Black box callouts are used for important warnings and flight-critical information.</p>
+      <div class="bbox-data">ALT: 35000 FT &middot; HDG: 270&deg; &middot; IAS: 280 KT &middot; VS: +500 FPM</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Checklist</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Flight Log</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Waypoint</th><th>Altitude</th><th>ETE</th></tr></thead>
+    <tbody>
+      <tr><td>KJFK</td><td>FL000</td><td>00:00</td></tr>
+      <tr><td>MERIT</td><td>FL350</td><td>01:15</td></tr>
+      <tr><td>KLAX</td><td>FL000</td><td>05:30</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">active</span> <span class="tag t-refine">caution</span> <span class="tag t-execute">alert</span> <span class="tag t-batch">info</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Flight Profile</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="4" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">DEPARTURE</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">FL000 → FL350</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="4" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="600">CRUISE</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">FL350 steady</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="4" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600">APPROACH</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">FL350 → FL000</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Aviation</p></div></footer>
+
+</body>
+</html>
