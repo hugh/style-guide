@@ -48,6 +48,10 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `deep-sea/` — Underwater theme (abyssal navy, bioluminescent accents, frosted glass cards, depth gauges, sonar pings)
 - `architect/` — Drafting theme (warm vellum, redline accent, drafting grids, dimension callouts, title blocks)
 - `laboratory/` — Research theme (clinical white, safety orange, specimen cards, petri dishes, electrophoresis dividers)
+- `noir/` — Film noir theme (high-contrast black & white, blood red accent, typewriter font, evidence tags, redacted text)
+- `cyberpunk/` — Neon streets theme (rain-soaked black, hot pink & electric cyan, glitch effects, holographic cards)
+- `tarot/` — Occult theme (midnight indigo, gold foil, star fields, tarot cards, zodiac markers, crystal balls)
+- `steampunk/` — Brass & leather theme (dark brown, polished brass, pressure gauges, gear badges, ticker tape dividers)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

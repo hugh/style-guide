@@ -4,12 +4,6 @@ Style Guide Theme Ideas
 TODO
 ----
 
-Noir
-  Film noir / case file. High-contrast black and white, single red accent.
-  Typewriter font (Courier Prime), manila folder card backgrounds, evidence
-  tag components, redacted text blocks (black bars over text), crime board
-  string-connection diagrams, stamped "CLASSIFIED" labels.
-
 Journalist
   Newspaper broadsheet. Cream newsprint background, multi-column layouts,
   large drop caps, serif-heavy (like a front page), dateline headers, pull
@@ -46,15 +40,6 @@ Modern Cinematic / MCU
   sans-serif. Movie title sequence feel rather than printed page.
   Widescreen aspect-ratio hero panels.
 
-Cyberpunk / Neon
-  Rain-soaked dark streets. Near-black backgrounds with hot pink and
-  electric cyan neon accents, glitch/distortion effects on hover,
-  CJK-mixed typography fragments as decorative elements. Monospace
-  or condensed grotesque body text, futuristic geometric headings.
-  Neon sign glow on borders (box-shadow blur), rain-streak overlay
-  textures, corrupted-data callout blocks, neural-link connection
-  diagrams, holographic shimmer gradients on cards.
-
 Art Nouveau
   Organic flowing curves and botanical elegance. Muted jewel tones —
   deep teal, dusty rose, antique gold, sage green — on cream or soft
@@ -87,22 +72,6 @@ Apothecary / Pharmacy
   and-pestle section markers, vintage label typography (small caps
   serif), medicine bottle silhouette dividers, ingredient lists with
   quantity grids. Aged label paper surfaces, hand-lettered serif feel.
-
-Steampunk
-  Brass and copper on dark leather, gear/cog decorative elements,
-  pressure gauge indicators, Victorian mechanical typeface headings,
-  pneumatic tube callout containers, rivet-studded panel borders,
-  telegraph ticker tape dividers, clockwork animation on hover. Deep
-  brown leather base, warm brass/copper accents. Fonts: ornate
-  Victorian serif for headings, clean serif body, mono for gauges.
-
-Tarot / Occult
-  Deep indigo and midnight purple backgrounds, gold-foil accents,
-  celestial star-field textures. Tarot card components with ornate
-  frames, zodiac wheel section markers, crystal ball callout panels,
-  mystic symbol dividers. Serif headings with an arcane, woodcut feel.
-  Fonts: decorative serif (like Cinzel Decorative) for headings, clean
-  serif for body, mono for card numerals.
 
 Expedition / Explorer's Journal
   Sun-bleached canvas backgrounds, weathered leather brown and compass
@@ -322,3 +291,15 @@ Laboratory / Research
 
 Victorian / Antique
   → victorian/
+
+Noir
+  → noir/
+
+Cyberpunk / Neon
+  → cyberpunk/
+
+Tarot / Occult
+  → tarot/
+
+Steampunk
+  → steampunk/

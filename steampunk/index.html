@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steampunk — Brass &amp; Leather Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 4px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 2px 16px rgba(200, 144, 48, 0.15);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Steampunk</span></h1>
+  <p>A Victorian industrial design system &mdash; brass and copper on dark leather, gear-driven components, pressure gauges, and riveted panels for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128220;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9881;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep leather browns and aged wood tones. Surfaces layer like worn workshop benches and polished instrument panels against a dark leather backdrop.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #14100c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#14100c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1e1810;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#1e1810</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #28201a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#28201a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #342a20;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#342a20</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4a3c2c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#4a3c2c</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm parchment tones create clear information hierarchy against the dark leather backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A polished brass primary accent plus four industrial semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c89030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#c89030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #508848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#508848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c89030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c06030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c06030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4870a0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4870a0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6420;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#8a6420</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #305830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#305830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6420;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a6420</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #804020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#804020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #304870;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#304870</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">patina</span>
+    <span class="tag t-refine">brass</span>
+    <span class="tag t-execute">copper</span>
+    <span class="tag t-batch">steel</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Ornate Victorian serif for headings</strong>, <strong>clean readable serif for body</strong>, <strong>industrial mono for gauges and labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Playfair Display &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Lora &mdash; Body text, card titles, tables (weights 400, 500, 600, 700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 700</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, gauge readouts</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; v0.1 &middot; PSI: 78.4</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Playfair Display</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>900</td></tr>
+      <tr><td>Section h2</td><td>Playfair Display</td><td>1.8rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Playfair Display</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Lora</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Lora</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Lora</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and brass-riveted separators against the dark leather background.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128220;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace telegraph label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a warm brass glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9881;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Patina Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128295;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Polished Brass top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Heated Copper top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9875;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Blued Steel top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Design</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Fabricate</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Assemble</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Deploy</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Commission</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered directives, protocols, or workshop rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Description text using .principle-num for the large Playfair Display number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Directive</h4>
+        <p>Numbers render in Playfair Display at 2rem in --accent color (polished brass).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in polished brass.</p>
+
+  <div class="callout">
+    <p><strong>Notice:</strong> This is a callout. It uses a 3px left border in --accent with a faint brass-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Rivet Panel</td><td>.rivet-panel</td><td>Corner rivets with brass border</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#1e1810" stroke="#508848" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#508848" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#6a5840" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#6a5840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#1e1810" stroke="#c89030" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#c89030" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#6a5840" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#6a5840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#1e1810" stroke="#4870a0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4870a0" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#6a5840" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Steampunk Components</div>
+  <h2>Pressure Gauge</h2>
+  <p>A circular gauge with concentric brass bezel rings, a rotating needle indicator, and a monospace pressure reading. The gauge is 200px and uses layered radial gradients for the bezel and dial face.</p>
+
+  <div class="pressure-gauge">
+    <div class="gauge-label">PSI</div>
+    <div class="gauge-needle"></div>
+    <div class="gauge-reading">78.4</div>
+  </div>
+
+  <p style="text-align: center; margin-top: 1rem;">A second gauge at high pressure:</p>
+
+  <div class="pressure-gauge">
+    <div class="gauge-label">BAR</div>
+    <div class="gauge-needle" style="transform: rotate(60deg);"></div>
+    <div class="gauge-reading">142.7</div>
+  </div>
+
+  <h2>Rivet Panel</h2>
+  <p>A content panel with decorative brass rivet dots in all four corners, evoking hand-riveted industrial enclosures. The outer container and inner wrapper each provide two rivets via <span class="inline-code">::before</span> and <span class="inline-code">::after</span> pseudo-elements.</p>
+
+  <div class="rivet-panel">
+    <div class="rivet-panel-inner">
+      <h4>&#9881; Workshop Bulletin</h4>
+      <p>The brass border and corner rivets create an industrial panel aesthetic. Use rivet panels for important notices, technical specifications, or any content that deserves a framed, official appearance. The leather-toned background completes the workshop feel.</p>
+    </div>
+  </div>
+
+  <div class="rivet-panel" style="margin-top: 2rem;">
+    <div class="rivet-panel-inner">
+      <h4>&#128295; Maintenance Schedule</h4>
+      <p>Main boiler: inspect weekly. Piston seals: replace every 2000 cycles. Gear lubricant: top off daily. All pressure vessels require certification stamp from the Chief Engineer before recommissioning.</p>
+    </div>
+  </div>
+
+  <h2>Ticker Tape Divider</h2>
+  <p>A telegraph-style horizontal separator with dashed perforation borders along the top and bottom edges, and a centered message in monospace. Evokes the paper tape from a stock ticker or telegraph machine.</p>
+
+  <div class="ticker-tape">
+    <div class="ticker-tape-strip">
+      <span class="ticker-tape-text">Incoming Dispatch</span>
+    </div>
+  </div>
+
+  <p>Another ticker with different text:</p>
+
+  <div class="ticker-tape">
+    <div class="ticker-tape-strip">
+      <span class="ticker-tape-text">End of Section &middot; Proceed</span>
+    </div>
+  </div>
+
+  <h2>Gear Badge</h2>
+  <p>A circular badge with a cog-tooth border created via <span class="inline-code">clip-path: polygon()</span>. The gear shape is brass-colored with a dark center disc and centered text. Rotates 15 degrees on hover for a clockwork animation effect.</p>
+
+  <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+    <div class="gear-badge">
+      <span class="gear-badge-text">MK<br>IV</span>
+    </div>
+    <div class="gear-badge">
+      <span class="gear-badge-text">A1</span>
+    </div>
+    <div class="gear-badge">
+      <span class="gear-badge-text">ENG<br>02</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Steampunk system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Dark Leather, Not Black</h4>
+        <p>Backgrounds use warm brown-tinted near-blacks like aged leather, not pure #000. This creates the rich depth of a Victorian workshop or captain's cabin.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Warm Metallic Accents</h4>
+        <p>The primary accent is polished brass with warm golden glow. All interactive highlights use brass tones rather than cold white or blue.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Industrial Semantics</h4>
+        <p>Four semantic colors map to metallic/material concepts: patina green (oxidized copper), polished brass (refined metal), heated copper (forge work), blued steel (precision instruments).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Telegraph Readout Labels</h4>
+        <p>IBM Plex Mono gives section labels, tags, and gauge readings the feel of telegraph ticker tape and precision instrument readouts.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Victorian Serif Headings</h4>
+        <p>Playfair Display delivers ornate, high-contrast serif headings that echo the typographic style of Victorian-era engineering manuals and broadsheets.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Riveted Construction</h4>
+        <p>2px solid borders, corner rivets, and machined 4px border-radius create panels that feel hand-assembled from brass plates and leather backing.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Leather Grain Texture</h4>
+        <p>The hero section uses scattered radial gradients in warm brass tones to create a subtle leather grain and workshop atmosphere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Steampunk &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

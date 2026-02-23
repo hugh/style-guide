@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Case No. 1947-0023 &middot; Classified</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128270;</div>
+      <h4>Investigate</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128172;</div>
+      <h4>Interrogate</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128161;</div>
+      <h4>Deduce</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9879;</div>
+      <h4>Apprehend</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Case Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear investigative process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Investigate</div>
+      <div class="pipe-desc">Gather evidence</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Interrogate</div>
+      <div class="pipe-desc">Question suspects</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Deduce</div>
+      <div class="pipe-desc">Connect the dots</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Apprehend</div>
+      <div class="pipe-desc">Close the case</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NOIR-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Evidence</div>
+  <h2>Evidence Tags</h2>
+  <p>Police evidence tags with case numbers, dates, and officer information.</p>
+
+  <div class="evidence-grid">
+    <div class="evidence-tag">
+      <div class="tag-header">
+        <div class="tag-case">Evidence #A-001</div>
+        <div class="tag-date">1947-11-14</div>
+      </div>
+      <div class="tag-item">.38 Caliber Revolver</div>
+      <div class="tag-detail">Found beneath the bar at the Blue Dahlia. Serial number filed off. Two rounds discharged.</div>
+      <div class="tag-officer">Logged by: Det. M. Crane &middot; Badge #4471</div>
+    </div>
+    <div class="evidence-tag">
+      <div class="tag-header">
+        <div class="tag-case">Evidence #A-002</div>
+        <div class="tag-date">1947-11-14</div>
+      </div>
+      <div class="tag-item">Matchbook &mdash; Club Tropicana</div>
+      <div class="tag-detail">Recovered from victim&rsquo;s coat pocket. Handwritten phone number on inside cover: KL5-4809.</div>
+      <div class="tag-officer">Logged by: Det. M. Crane &middot; Badge #4471</div>
+    </div>
+  </div>
+
+  <h3>Redacted Content</h3>
+  <p>Inline redacted text: The witness identified <span class="redacted">John D. Morrison</span> as the suspect seen leaving the <span class="redacted">warehouse on 5th</span> that evening.</p>
+
+  <div class="redacted-block">
+    <div class="redacted-label">Redacted &mdash; Level 3 Clearance Required</div>
+    <div class="redacted-line"></div>
+    <div class="redacted-line"></div>
+    <div class="redacted-line medium"></div>
+    <div class="redacted-line short"></div>
+  </div>
+
+  <h3>Case Board</h3>
+  <p>A detective&rsquo;s crime board with pinned items and string connections.</p>
+
+  <div class="case-board">
+    <div class="board-title">Case #1947-0023 &mdash; Homicide Investigation</div>
+    <div class="board-items">
+      <div class="board-item">
+        <div class="item-label">Suspect</div>
+        <div class="item-title">Victor Laszlo</div>
+        <div class="item-desc">Last seen at the Blue Dahlia, 11:30 PM. No alibi.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Witness</div>
+        <div class="item-title">Rita Hayward</div>
+        <div class="item-desc">Bartender. Claims she heard two shots from the back room.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Location</div>
+        <div class="item-title">The Blue Dahlia</div>
+        <div class="item-desc">Jazz club on Vine St. Known for illegal gambling in the back.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Evidence</div>
+        <div class="item-title">.38 Revolver</div>
+        <div class="item-desc">Found under the bar. Ballistics match pending.</div>
+      </div>
+    </div>
+    <div class="board-connections">
+      <div class="conn-node">Laszlo</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">Blue Dahlia</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">.38 Revolver</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">Victim</div>
+    </div>
+  </div>
+
+  <h3>Classified Stamp</h3>
+  <p>Overlay stamp for restricted content.</p>
+
+  <div class="stamp-block">
+    <div class="stamp-text">Classified</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Procedure</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Secure the Scene</h4>
+        <p>Establish a perimeter. No one enters or leaves without authorization.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Collect Evidence</h4>
+        <p>Photograph everything. Bag and tag all physical evidence with chain of custody.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Interview Witnesses</h4>
+        <p>Take statements separately. Cross-reference timelines for inconsistencies.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Suspects</div>
+  <h2>Suspects Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Suspect</th><th>Alias</th><th>Status</th><th>Last Known Location</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Victor Laszlo</td>
+        <td>&ldquo;The Hungarian&rdquo;</td>
+        <td><span class="tag t-execute">wanted</span></td>
+        <td>Blue Dahlia, Vine St.</td>
+      </tr>
+      <tr>
+        <td>Eddie Mars</td>
+        <td>&ldquo;The Fixer&rdquo;</td>
+        <td><span class="tag t-refine">person of interest</span></td>
+        <td>Cypress Club, Sunset Blvd.</td>
+      </tr>
+      <tr>
+        <td>Sam Spade Jr.</td>
+        <td>&ldquo;Junior&rdquo;</td>
+        <td><span class="tag t-capture">cleared</span></td>
+        <td>Office, 3rd &amp; Main</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">evidence</span>
+    <span class="tag t-refine">manila</span>
+    <span class="tag t-execute">blood</span>
+    <span class="tag t-batch">police</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Case Timeline</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="var(--surface-2)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="700">INVESTIGATE</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Gather clues</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="var(--surface-2)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="700">DEDUCE</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Connect evidence</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="var(--surface-2)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="700">APPREHEND</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Close the case</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Noir</p>
+  </div>
+</footer>
+
+</body>
+</html>

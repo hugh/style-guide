@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyberpunk / Neon — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.15;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(255, 20, 147, 0.2);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Cyberpunk</span></h1>
+  <p>A rain-soaked neon design system &mdash; hot pink and electric cyan accents, glitch effects, holographic shimmer, and data stream textures for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128752;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Rain-soaked near-blacks with purple undertones. Surfaces layer like wet pavement reflecting neon signage in the dark.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #08080c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#08080c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #10101a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#10101a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #181828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#181828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #202038;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#202038</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a2a48;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2a2a48</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of cool lavender-white create information hierarchy against the dark rain-washed backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A hot pink neon primary accent plus four cyberpunk semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff1493;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#ff1493</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #00e5ff;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#00e5ff</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e0d020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#e0d020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff1493;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#ff1493</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4060ff;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4060ff</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #990c58;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#990c58</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #007a99;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#007a99</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a8010;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a8010</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #990c58;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#990c58</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2030a0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2030a0</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">recon</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">critical</span>
+    <span class="tag t-batch">secure</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Futuristic geometric display for headings</strong>, <strong>monospace for body text</strong>, <strong>technical mono for labels and metadata</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Orbitron &mdash; Headings (h1, h2, h3) &middot; weights 700&ndash;900</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">JetBrains Mono &mdash; Body text, card titles, tables (weights 300&ndash;700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; v0.1 &middot; SYSTEM READOUT</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Orbitron</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>900</td></tr>
+      <tr><td>Section h2</td><td>Orbitron</td><td>1.8rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Orbitron</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>JetBrains Mono</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>JetBrains Mono</td><td>0.9rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>JetBrains Mono</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and subtle separators against the rain-soaked dark backdrop.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>neon-glowing colored top accent bar</strong>. Cards gain a neon border glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128274;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Electric Cyan top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;&#65039;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Warning Neon Yellow top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Hot Pink top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128752;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Deep Electric Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Hack</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Decrypt</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Extract</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Upload</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Purge</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers and neon glow. Good for ordered directives, protocols, or operative rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Description text using .principle-num for the large Orbitron number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Directive</h4>
+        <p>Numbers render in Orbitron at 2rem in --accent color (hot pink neon) with a subtle text-shadow glow.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in hot pink neon.</p>
+
+  <div class="callout">
+    <p><strong>Notice:</strong> This is a callout. It uses a 3px left border in --accent with a faint pink-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + neon glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Neon Sign</td><td>.neon-sign</td><td>Multi-layered text-shadow glow with pulse</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#10101a" stroke="#00e5ff" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#00e5ff" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#505070" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#505070" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#10101a" stroke="#ff1493" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#ff1493" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#505070" font-size="9">stroke: --execute</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#505070" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#10101a" stroke="#4060ff" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4060ff" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#505070" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Cyberpunk Components</div>
+  <h2>Neon Sign</h2>
+  <p>A text element with multiple layered CSS text-shadow glows in the accent color, creating a neon tube signage effect. The sign pulses with a subtle flicker animation. Use the <span class="inline-code">.neon-text</span> element for the glowing text, and add <span class="inline-code">.cyan</span> or <span class="inline-code">.yellow</span> modifier classes for alternate colors.</p>
+
+  <div class="neon-sign">
+    <div class="neon-text">Neon District</div>
+    <div class="neon-sub">Hot Pink &middot; Default Accent</div>
+  </div>
+
+  <div class="neon-sign">
+    <div class="neon-text cyan">Open 24/7</div>
+    <div class="neon-sub">Electric Cyan &middot; .neon-text.cyan</div>
+  </div>
+
+  <div class="neon-sign">
+    <div class="neon-text yellow">Danger Zone</div>
+    <div class="neon-sub">Warning Neon &middot; .neon-text.yellow</div>
+  </div>
+
+  <h2>Glitch Block</h2>
+  <p>A callout/card with a corrupted-data aesthetic: scan-line texture overlay and a CSS glitch animation that triggers on hover, briefly shifting the element via <span class="inline-code">clip-path</span> and <span class="inline-code">transform</span>. A glitching horizontal bar sweeps across the block during the animation.</p>
+
+  <div class="glitch-block">
+    <div class="glitch-header">
+      &#9608; Corrupted Data Stream
+      <span>Source: Unknown</span>
+      <span>Integrity: 12%</span>
+    </div>
+    <p><strong>Signal fragmented.</strong> The glitch block uses a scan-line texture via <span class="inline-code">::before</span> and a glitch bar via <span class="inline-code">::after</span>. On hover, the block triggers a <span class="inline-code">clip-path</span> + <span class="inline-code">transform</span> shift animation to simulate data corruption. The left border uses <span class="inline-code">--capture</span> (electric cyan).</p>
+  </div>
+
+  <h2>Holographic Card</h2>
+  <p>A translucent card with a multi-color shimmer gradient that shifts on hover. The background uses <span class="inline-code">background-size: 200% 200%</span> and animates <span class="inline-code">background-position</span> on interaction. A holographic sweep overlay animates continuously via <span class="inline-code">::before</span>.</p>
+
+  <div class="holo-card">
+    <h4>&#9670; Holographic Display Panel</h4>
+    <p>The holographic card combines a translucent multi-color gradient background with a continuous shimmer animation overlay. On hover, the border glows with the accent color and the gradient position shifts, creating an interactive holographic parallax effect.</p>
+  </div>
+
+  <p style="margin-top: 1rem;">Holographic cards can also be placed in a two-column grid using <span class="inline-code">.holo-grid</span>:</p>
+
+  <div class="holo-grid">
+    <div class="holo-card">
+      <h4>&#9670; Module Alpha</h4>
+      <p>Holographic display with <strong>shimmer gradient</strong> and neon border glow on interaction.</p>
+    </div>
+    <div class="holo-card">
+      <h4>&#9670; Module Beta</h4>
+      <p>Identical styling in a <strong>two-column layout</strong>. Collapses to single column on mobile.</p>
+    </div>
+  </div>
+
+  <h2>Data Stream Divider</h2>
+  <p>An SVG/CSS separator that resembles streaming data or matrix rain. Thin vertical lines of varying height and opacity animate with staggered falling motion. Uses <span class="inline-code">--capture</span>, <span class="inline-code">--accent</span>, and <span class="inline-code">--batch</span> colors.</p>
+
+  <div class="data-stream-divider">
+    <svg viewBox="0 0 800 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <rect class="stream-line" x="40" y="8" width="1.5" height="20" fill="#00e5ff" opacity="0.6" rx="0.5"/>
+      <rect class="stream-line" x="80" y="15" width="1.5" height="30" fill="#ff1493" opacity="0.4" rx="0.5"/>
+      <rect class="stream-line" x="120" y="5" width="1.5" height="15" fill="#00e5ff" opacity="0.3" rx="0.5"/>
+      <rect class="stream-line" x="160" y="20" width="1.5" height="25" fill="#4060ff" opacity="0.5" rx="0.5"/>
+      <rect class="stream-line" x="200" y="10" width="1.5" height="18" fill="#00e5ff" opacity="0.7" rx="0.5"/>
+      <rect class="stream-line" x="240" y="12" width="1.5" height="35" fill="#ff1493" opacity="0.3" rx="0.5"/>
+      <rect class="stream-line" x="280" y="5" width="1.5" height="12" fill="#e0d020" opacity="0.4" rx="0.5"/>
+      <rect class="stream-line" x="320" y="18" width="1.5" height="28" fill="#00e5ff" opacity="0.5" rx="0.5"/>
+      <rect class="stream-line" x="360" y="8" width="1.5" height="22" fill="#ff1493" opacity="0.6" rx="0.5"/>
+      <rect class="stream-line" x="400" y="14" width="1.5" height="16" fill="#4060ff" opacity="0.3" rx="0.5"/>
+      <rect class="stream-line" x="440" y="6" width="1.5" height="32" fill="#00e5ff" opacity="0.4" rx="0.5"/>
+      <rect class="stream-line" x="480" y="20" width="1.5" height="20" fill="#ff1493" opacity="0.5" rx="0.5"/>
+      <rect class="stream-line" x="520" y="10" width="1.5" height="14" fill="#e0d020" opacity="0.3" rx="0.5"/>
+      <rect class="stream-line" x="560" y="15" width="1.5" height="26" fill="#00e5ff" opacity="0.6" rx="0.5"/>
+      <rect class="stream-line" x="600" y="8" width="1.5" height="18" fill="#4060ff" opacity="0.4" rx="0.5"/>
+      <rect class="stream-line" x="640" y="22" width="1.5" height="24" fill="#ff1493" opacity="0.3" rx="0.5"/>
+      <rect class="stream-line" x="680" y="5" width="1.5" height="30" fill="#00e5ff" opacity="0.5" rx="0.5"/>
+      <rect class="stream-line" x="720" y="12" width="1.5" height="15" fill="#ff1493" opacity="0.7" rx="0.5"/>
+      <rect class="stream-line" x="760" y="18" width="1.5" height="22" fill="#4060ff" opacity="0.4" rx="0.5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Cyberpunk / Neon system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rain-Soaked Black, Not Pure Black</h4>
+        <p>Backgrounds use purple-tinted near-blacks like wet pavement at night, not pure #000. The purple undertone reflects the neon light pollution of the cityscape.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Neon Glow is Key</h4>
+        <p>The primary visual effect is neon luminance: multi-layered text-shadow on featured text, box-shadow blur on card borders, and radial-gradient ambient light on containers.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Glitch &amp; Corruption</h4>
+        <p>Data decay and signal interference are core aesthetic elements. Scan lines, clip-path glitch shifts, and corrupted data headers reinforce the cyberpunk atmosphere.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Holographic Shimmer</h4>
+        <p>Multi-color translucent gradients with animated position shifts create the illusion of holographic projection surfaces and AR overlays.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Monospace Everything</h4>
+        <p>JetBrains Mono for body text and IBM Plex Mono for labels give the entire document a terminal/hacker aesthetic, as if rendered on a CRT or neural implant display.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Geometric Futuristic Headings</h4>
+        <p>Orbitron delivers sharp, angular uppercase headings that evoke corporate megastructure signage and cybernetic interface chrome.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Sharp Edges, Minimal Radius</h4>
+        <p>Border-radius of 2px throughout creates a hard, angular, tech-industrial aesthetic. No soft curves &mdash; everything is razor-cut and precise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Cyberpunk / Neon &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

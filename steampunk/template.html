@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9881;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128295;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9875;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Notice:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Fabrication Pipeline</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Design</div>
+      <div class="pipe-desc">Draft blueprints</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Fabricate</div>
+      <div class="pipe-desc">Machine parts</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Assemble</div>
+      <div class="pipe-desc">Forge &amp; weld</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Deploy</div>
+      <div class="pipe-desc">Commission unit</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STEAMPUNK-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Instruments</div>
+  <h2>Pressure Gauge</h2>
+  <p>Circular gauge with brass bezel, needle indicator, and monospace reading.</p>
+
+  <div class="pressure-gauge">
+    <div class="gauge-label">PSI</div>
+    <div class="gauge-needle"></div>
+    <div class="gauge-reading">78.4</div>
+  </div>
+
+  <h3>Rivet Panel</h3>
+  <p>Brass-bordered panel with decorative rivet dots in the four corners.</p>
+
+  <div class="rivet-panel">
+    <div class="rivet-panel-inner">
+      <h4>&#9881; Workshop Notice</h4>
+      <p>Rivet panels use corner rivets via pseudo-elements on both the outer container and an inner wrapper. The brass border and leather background evoke hand-riveted industrial panels.</p>
+    </div>
+  </div>
+
+  <h3>Ticker Tape Divider</h3>
+  <p>Telegraph-style separator with dashed perforation borders and centered text.</p>
+
+  <div class="ticker-tape">
+    <div class="ticker-tape-strip">
+      <span class="ticker-tape-text">Incoming Dispatch</span>
+    </div>
+  </div>
+
+  <h3>Gear Badge</h3>
+  <p>Cog-shaped badge using clip-path for gear teeth, with centered text. Rotates on hover.</p>
+
+  <div class="gear-badge">
+    <span class="gear-badge-text">MK<br>IV</span>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Protocols</div>
+  <h2>Engineering Principles</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Measure Twice, Cut Once</h4>
+        <p>Every precision component must be verified against the blueprint before machining begins. Tolerances of 0.02mm or less are standard.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Pressure Before Speed</h4>
+        <p>The boiler pressure must reach nominal operating range before engaging the main drive assembly.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Maintain the Patina</h4>
+        <p>Copper oxidation is a feature, not a defect. The verdigris patina protects underlying metal from further corrosion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Materials</div>
+  <h2>Component Registry</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Material</th><th>Grade</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Main Gear Train</td>
+        <td>Phosphor bronze</td>
+        <td>CDA 544</td>
+        <td>Operational</td>
+      </tr>
+      <tr>
+        <td>Boiler Plates</td>
+        <td>Mild steel</td>
+        <td>A516-70</td>
+        <td>Inspected</td>
+      </tr>
+      <tr>
+        <td>Piston Rings</td>
+        <td>Cast iron</td>
+        <td>GG-25</td>
+        <td>Replace Q3</td>
+      </tr>
+      <tr>
+        <td>Valve Stems</td>
+        <td>Naval brass</td>
+        <td>CDA 464</td>
+        <td>Serviceable</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">patina</span>
+    <span class="tag t-refine">brass</span>
+    <span class="tag t-execute">copper</span>
+    <span class="tag t-batch">steel</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Schematics</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Steam Drive Assembly</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="#1e1810" stroke="#508848" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="#508848" font-size="10" font-weight="600">BOILER</text>
+      <text x="120" y="75" text-anchor="middle" fill="#6a5840" font-size="9">Generate steam</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="#6a5840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="#1e1810" stroke="#c89030" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="#c89030" font-size="10" font-weight="600">PISTON CHAMBER</text>
+      <text x="380" y="75" text-anchor="middle" fill="#6a5840" font-size="9">Convert pressure</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="#6a5840" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="#1e1810" stroke="#4870a0" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="#4870a0" font-size="10" font-weight="600">DRIVE SHAFT</text>
+      <text x="610" y="75" text-anchor="middle" fill="#6a5840" font-size="9">Deliver torque</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Classified</p>
+  </div>
+</footer>
+
+</body>
+</html>

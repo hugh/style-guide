@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">The Arcane Codex</div>
+  <h1>The <span>Reading</span></h1>
+  <p>A brief subtitle or description of what this document covers. The cards have been drawn and the stars are aligned.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; The Arcana</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9752;</div>
+      <h4>The Empress</h4>
+      <p>Abundance, nurturing energy, and the fertile ground from which all growth springs. The emerald light of creation.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9788;</div>
+      <h4>The Sun</h4>
+      <p>Illumination, clarity, and golden truth revealed. The diviner's gift of sight beyond the veil.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9876;</div>
+      <h4>The Tower</h4>
+      <p>Sudden upheaval, destruction of false structures, and the blood-red flash of unavoidable transformation.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9733;</div>
+      <h4>The Star</h4>
+      <p>Hope, wisdom, and the sapphire light of cosmic guidance. The calm after the storm.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>The Veil Thins:</strong> Callouts are used for important asides. The strong tag within a callout renders in the gold accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; The Ritual</div>
+  <h2>Reading Pipeline</h2>
+  <p>Use the pipeline component to show a linear sequence of steps in the divination ritual.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">I</div>
+      <div class="pipe-name">Shuffle</div>
+      <div class="pipe-desc">Cleanse the deck</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">II</div>
+      <div class="pipe-name">Draw</div>
+      <div class="pipe-desc">Select the spread</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">III</div>
+      <div class="pipe-name">Interpret</div>
+      <div class="pipe-desc">Read the symbols</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">IV</div>
+      <div class="pipe-name">Reveal</div>
+      <div class="pipe-desc">Deliver the truth</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TAROT-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; The Cards</div>
+  <h2>Tarot Cards</h2>
+  <p>Portrait-ratio cards with ornate double-border frames, gold foil accents, and arcane symbols.</p>
+
+  <div class="tarot-grid">
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">0</div>
+        <div class="card-symbol">&#9883;</div>
+        <div class="card-title">The Fool</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">I</div>
+        <div class="card-symbol">&#9734;</div>
+        <div class="card-title">The Magician</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">II</div>
+        <div class="card-symbol">&#9789;</div>
+        <div class="card-title">High Priestess</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">XIII</div>
+        <div class="card-symbol">&#9760;</div>
+        <div class="card-title">Death</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Crystal Ball</h3>
+  <p>Circular callout panel with radial gradient glow and faint star sparkles.</p>
+
+  <div class="crystal-ball">
+    <div class="ball-text">The stars whisper of change approaching from the east</div>
+    <div class="ball-caption">Vision &middot; Clarity</div>
+  </div>
+
+  <h3>Zodiac Marker</h3>
+  <p>Circular badges with astrological symbols used as section markers.</p>
+
+  <div class="zodiac-section">
+    <div class="zodiac-marker">&#9800;</div>
+    <div class="zodiac-label">Aries &mdash; The Ram</div>
+  </div>
+
+  <h3>Mystic Divider</h3>
+  <p>SVG section separator with celestial moon-phase motif.</p>
+
+  <div class="mystic-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left stars -->
+      <circle cx="60" cy="20" r="1.5" fill="#d4a830" opacity="0.5"/>
+      <circle cx="90" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+      <!-- Left line -->
+      <line x1="110" y1="20" x2="200" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.3"/>
+      <!-- Left crescent -->
+      <circle cx="220" cy="20" r="8" fill="none" stroke="#d4a830" stroke-width="1" opacity="0.5"/>
+      <circle cx="224" cy="20" r="8" fill="#0a0814"/>
+      <!-- Center full moon -->
+      <circle cx="300" cy="20" r="10" fill="none" stroke="#d4a830" stroke-width="1.5" opacity="0.8"/>
+      <circle cx="300" cy="20" r="6" fill="#d4a830" opacity="0.15"/>
+      <!-- Right crescent -->
+      <circle cx="380" cy="20" r="8" fill="none" stroke="#d4a830" stroke-width="1" opacity="0.5"/>
+      <circle cx="376" cy="20" r="8" fill="#0a0814"/>
+      <!-- Right line -->
+      <line x1="400" y1="20" x2="490" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.3"/>
+      <!-- Right stars -->
+      <circle cx="510" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+      <circle cx="540" cy="20" r="1.5" fill="#d4a830" opacity="0.5"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Principles</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Cleanse the Space</h4>
+        <p>Before any reading, clear the energy of the room and the deck. Burn sage or palo santo to purify.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Focus the Question</h4>
+        <p>Hold a clear intention in your mind. The cards respond to the energy of the question asked.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Trust the Spread</h4>
+        <p>Every card drawn has meaning. There are no accidents in the arrangement of the arcana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Major Arcana Reference</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Numeral</th><th>Card</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>0</td>
+        <td>The Fool</td>
+        <td>New beginnings, innocence, free spirit</td>
+      </tr>
+      <tr>
+        <td>I</td>
+        <td>The Magician</td>
+        <td>Manifestation, resourcefulness, power</td>
+      </tr>
+      <tr>
+        <td>II</td>
+        <td>The High Priestess</td>
+        <td>Intuition, sacred knowledge, the subconscious</td>
+      </tr>
+      <tr>
+        <td>XIII</td>
+        <td>Death</td>
+        <td>Endings, transformation, transition</td>
+      </tr>
+      <tr>
+        <td>XV</td>
+        <td>The Devil</td>
+        <td>Shadow self, attachment, bondage</td>
+      </tr>
+      <tr>
+        <td>XXI</td>
+        <td>The World</td>
+        <td>Completion, integration, accomplishment</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">growth</span>
+    <span class="tag t-refine">divination</span>
+    <span class="tag t-execute">danger</span>
+    <span class="tag t-batch">wisdom</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure I &mdash; The Celtic Cross Spread</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="#12101e" stroke="#38a868" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="#38a868" font-size="10" font-weight="600">SIGNIFICATOR</text>
+      <text x="120" y="75" text-anchor="middle" fill="#585068" font-size="9">Present position</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="#12101e" stroke="#d4a830" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="#d4a830" font-size="10" font-weight="600">CROSSING CARD</text>
+      <text x="380" y="75" text-anchor="middle" fill="#585068" font-size="9">Challenge ahead</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="#12101e" stroke="#4868c8" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="#4868c8" font-size="10" font-weight="600">OUTCOME</text>
+      <text x="610" y="75" text-anchor="middle" fill="#585068" font-size="9">Final revelation</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>The Arcane Codex &middot; v0.1 &middot; As Above, So Below</p>
+  </div>
+</footer>
+
+</body>
+</html>

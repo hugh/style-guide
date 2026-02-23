@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot / Occult — Mystical Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.8rem;
+    color: var(--text);
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(212, 168, 48, 0.12);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Tarot</span></h1>
+  <p>A mystical occult design system &mdash; midnight indigo surfaces, gold-foil accents, celestial star fields, tarot card frames, crystal ball callouts, and zodiac markers for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9734;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep midnight indigo and purple-black surfaces that evoke the velvet interior of a fortune teller's parlor. Surfaces layer like shadows cast by candlelight.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0a0814;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0a0814</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #12101e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#12101e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1a1828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #242234;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#242234</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #36304a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#36304a</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of moonlit purple-white create clear information hierarchy against the midnight backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A gold-foil primary accent plus four occult semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4a830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#d4a830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #38a868;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#38a868</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4a830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d4a830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c83848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c83848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4868c8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4868c8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6e1c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#8a6e1c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #206840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#206840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8a6e1c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#8a6e1c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #802028;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#802028</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c4080;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2c4080</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">growth</span>
+    <span class="tag t-refine">divination</span>
+    <span class="tag t-execute">danger</span>
+    <span class="tag t-batch">wisdom</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Ornamental decorative serif for headings</strong>, <strong>clean serif for body</strong>, <strong>monospace for labels and card numerals</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Cinzel Decorative &mdash; Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Crimson Pro &mdash; Body text, card titles, tables (weights 300, 400, 500, 600, 700)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, card numerals, metadata</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; v0.1 &middot; ARCANUM XIII</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Cinzel Decorative</td><td>clamp(2.4rem, 7vw, 4.5rem)</td><td>900</td></tr>
+      <tr><td>Section h2</td><td>Cinzel Decorative</td><td>1.6rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Cinzel Decorative</td><td>1.1rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Crimson Pro</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Crimson Pro</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Crimson Pro</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and subtle separators against the midnight indigo background.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9789;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace numeral label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>glowing colored top accent bar</strong>. Cards gain a gold foil glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9752;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Emerald top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9788;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9876;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Blood Ruby top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9733;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Sapphire top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">I</div>
+      <div class="pipe-name">Shuffle</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">II</div>
+      <div class="pipe-name">Draw</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">III</div>
+      <div class="pipe-name">Interpret</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">IV</div>
+      <div class="pipe-name">Reveal</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">V</div>
+      <div class="pipe-name">Reflect</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered rituals, tenets, or sacred laws.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Principle Title</h4>
+        <p>Description text using .principle-num for the large Cinzel Decorative number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Principle</h4>
+        <p>Numbers render in Cinzel Decorative at 2rem in --accent color (gold foil).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in gold.</p>
+
+  <div class="callout">
+    <p><strong>The Veil Thins:</strong> This is a callout. It uses a 3px left border in --accent with a faint gold-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Tarot Card</td><td>.tarot-card</td><td>Portrait-ratio double-bordered card frame</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure I &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#12101e" stroke="#38a868" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#38a868" font-size="10" font-weight="600">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#585068" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#12101e" stroke="#d4a830" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d4a830" font-size="10" font-weight="600">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#585068" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#12101e" stroke="#4868c8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4868c8" font-size="10" font-weight="600">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#585068" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Occult Components</div>
+  <h2>Tarot Card</h2>
+  <p>A tall portrait-ratio card with an ornate double border &mdash; outer gold, inner fine &mdash; roman numeral at top, card name at bottom, and a centered symbol area. Gold foil accents throughout.</p>
+
+  <div class="tarot-grid">
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">0</div>
+        <div class="card-symbol">&#9883;</div>
+        <div class="card-title">The Fool</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">I</div>
+        <div class="card-symbol">&#9734;</div>
+        <div class="card-title">The Magician</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">II</div>
+        <div class="card-symbol">&#9789;</div>
+        <div class="card-title">High Priestess</div>
+      </div>
+    </div>
+    <div class="tarot-card">
+      <div class="card-inner">
+        <div class="card-numeral">XIII</div>
+        <div class="card-symbol">&#9760;</div>
+        <div class="card-title">Death</div>
+      </div>
+    </div>
+  </div>
+
+  <p>The outer <span class="inline-code">.tarot-card</span> provides the 2px gold border and padding. The inner <span class="inline-code">.card-inner</span> provides a finer 1px gold-dim border, creating the classic double-frame effect. Use <span class="inline-code">.card-numeral</span> for the roman numeral, <span class="inline-code">.card-symbol</span> for the centered icon, and <span class="inline-code">.card-title</span> for the name.</p>
+
+  <h2>Crystal Ball</h2>
+  <p>A circular callout panel like a scrying orb, with a radial gradient glow, centered text, and faint star sparkles that pulse gently. Use it for prophecies, key insights, or mystical asides.</p>
+
+  <div class="crystal-ball">
+    <div class="ball-text">The cards reveal what the mind already knows but fears to speak</div>
+    <div class="ball-caption">Inner Sight &middot; Divination</div>
+  </div>
+
+  <p>The ball uses <span class="inline-code">border-radius: 50%</span> with a layered radial-gradient background. Faint sparkle dots are rendered via <span class="inline-code">::before</span> and a gloss highlight via <span class="inline-code">::after</span>. The sparkles use a slow opacity animation.</p>
+
+  <h2>Zodiac Marker</h2>
+  <p>Circular badge with an astrological symbol, ornate double-ring border, and gold accent. Used as section markers to denote celestial associations.</p>
+
+  <div style="display: flex; gap: 2.5rem; flex-wrap: wrap; margin: 2rem 0;">
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9800;</div>
+      <div class="zodiac-label">Aries</div>
+    </div>
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9801;</div>
+      <div class="zodiac-label">Taurus</div>
+    </div>
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9802;</div>
+      <div class="zodiac-label">Gemini</div>
+    </div>
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9803;</div>
+      <div class="zodiac-label">Cancer</div>
+    </div>
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9804;</div>
+      <div class="zodiac-label">Leo</div>
+    </div>
+    <div class="zodiac-section">
+      <div class="zodiac-marker">&#9805;</div>
+      <div class="zodiac-label">Virgo</div>
+    </div>
+  </div>
+
+  <p>The marker uses a <span class="inline-code">box-shadow</span> triple-ring technique: an inner gold border, a surface-colored spacer ring, and an outer gold-dim ring. The <span class="inline-code">::before</span> pseudo-element adds a faint outer ornate ring at low opacity.</p>
+
+  <h2>Mystic Divider</h2>
+  <p>An inline SVG section separator with a celestial moon-phase motif: crescent &mdash; full moon &mdash; crescent, flanked by stars and thin golden lines. Use it to break up content sections with an arcane feel.</p>
+
+  <div class="mystic-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <!-- Left stars -->
+      <circle cx="60" cy="20" r="1.5" fill="#d4a830" opacity="0.5"/>
+      <circle cx="90" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+      <!-- Left line -->
+      <line x1="110" y1="20" x2="200" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.3"/>
+      <!-- Left crescent (circle + bg-colored mask) -->
+      <circle cx="220" cy="20" r="8" fill="none" stroke="#d4a830" stroke-width="1" opacity="0.5"/>
+      <circle cx="224" cy="20" r="8" fill="#0a0814"/>
+      <!-- Center full moon -->
+      <circle cx="300" cy="20" r="10" fill="none" stroke="#d4a830" stroke-width="1.5" opacity="0.8"/>
+      <circle cx="300" cy="20" r="6" fill="#d4a830" opacity="0.15"/>
+      <!-- Right crescent -->
+      <circle cx="380" cy="20" r="8" fill="none" stroke="#d4a830" stroke-width="1" opacity="0.5"/>
+      <circle cx="376" cy="20" r="8" fill="#0a0814"/>
+      <!-- Right line -->
+      <line x1="400" y1="20" x2="490" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.3"/>
+      <!-- Right stars -->
+      <circle cx="510" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+      <circle cx="540" cy="20" r="1.5" fill="#d4a830" opacity="0.5"/>
+    </svg>
+  </div>
+
+  <p>A second variation, more minimal:</p>
+
+  <div class="mystic-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+      <line x1="60" y1="20" x2="260" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="300" cy="20" r="3" fill="#d4a830" opacity="0.4"/>
+      <line x1="340" y1="20" x2="540" y2="20" stroke="#d4a830" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="560" cy="20" r="1" fill="#d4a830" opacity="0.3"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Tarot / Occult system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Midnight, Not Black</h4>
+        <p>Backgrounds use deep indigo and purple-tinted near-blacks, never pure #000. This creates the velvet depth of a candlelit reading room.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Gold Foil Accents</h4>
+        <p>The primary accent is a warm gold (#d4a830) evoking gilded tarot card edges, gold-leaf illuminated manuscripts, and candlelit metallic surfaces.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Occult Semantics</h4>
+        <p>Four semantic colors map to arcane concepts: emerald (life/growth), gold (divination/insight), blood ruby (danger/death), sapphire (wisdom/the cosmos).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Arcane Typography</h4>
+        <p>Cinzel Decorative gives headings an ornamental, woodcut-engraved quality. It evokes ancient manuscripts, occult grimoires, and carved stone inscriptions.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Clean Serif Body</h4>
+        <p>Crimson Pro provides elegant, readable body text that balances the ornate headings with classical serif refinement.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Celestial Star Fields</h4>
+        <p>The hero section uses scattered radial-gradient dots and ambient celestial glows to create a star-field texture, as if the document floats in the night sky.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Ornate Double Borders</h4>
+        <p>Tarot cards and zodiac markers use layered borders (outer bold, inner fine) to create the ornate frame aesthetic of traditional tarot decks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Tarot / Occult &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

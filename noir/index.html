@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noir — Film Noir Case File Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 0;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.1;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .font-sample-body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    background: rgba(200, 32, 32, 0.04);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Case File &middot; Homicide Division &middot; Classified</div>
+  <h1><span>Noir</span></h1>
+  <p>High-contrast black and white with a single red accent. A design system inspired by film noir case files &mdash; typewriter text, manila evidence tags, redacted documents, crime board string connections, and classified stamps for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128221;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep, pure blacks &mdash; the darkness of a detective&rsquo;s office lit only by a desk lamp. Surfaces layer like manila folders stacked on a filing cabinet.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0c0c0c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0c0c0c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #161616;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#161616</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1e1e1e;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1e1e1e</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a2a2a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#2a2a2a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3a3a3a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#3a3a3a</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of harsh white-to-grey create stark readability under a single spotlight.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 700;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, case numbers, timestamps</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A single blood-red accent plus four muted investigative semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c82020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent (Blood Red)</div><div class="swatch-hex">#c82020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #508850;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture (Evidence)</div><div class="swatch-hex">#508850</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b89030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Manila)</div><div class="swatch-hex">#b89030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c82020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Blood)</div><div class="swatch-hex">#c82020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4868a0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Police)</div><div class="swatch-hex">#4868a0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #305030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#305030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #786020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#786020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #801414;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#801414</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2c4060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2c4060</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">evidence</span>
+    <span class="tag t-refine">manila</span>
+    <span class="tag t-execute">blood</span>
+    <span class="tag t-batch">police</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Two Google Fonts with distinct roles. <strong>Typewriter monospace for all headings and body text</strong>, <strong>technical mono for metadata and labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Courier Prime &mdash; Headings (h1, h2, h3) &middot; Weight 700 &middot; Uppercase</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Courier Prime &mdash; Body text, card titles, descriptions &middot; Weights 400, 700</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 700</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Case numbers, timestamps, section labels, tags</div>
+    <div class="font-sample-mono">01 &mdash; CASE #1947-0023 &middot; HOMICIDE &middot; CLASSIFIED &middot; DET. CRANE</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Courier Prime</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Courier Prime</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Courier Prime</td><td>1.4rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Courier Prime</td><td>0.85rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Courier Prime</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Evidence item</td><td>Courier Prime</td><td>1rem</td><td>700</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like pages in a case file.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Border-Radius</h4>
+      <p>All elements use 0px border-radius. Sharp edges, no softness.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a subtle manila tint on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128270;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Evidence Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#128221;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Manila Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128308;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Blood Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9879;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Police Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear investigative process.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Investigate</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Interrogate</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Deduce</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Apprehend</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+  </div>
+
+  <h2>Callout, Table &amp; Diagram</h2>
+
+  <div class="callout">
+    <p><strong>Case Note:</strong> This is a callout. It uses a 3px left border in --accent with a faint red-tinted background.</p>
+  </div>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Evidence Tag</td><td>.evidence-tag</td><td>Police evidence tag with case number, manila tint</td></tr>
+      <tr><td>Redacted Block</td><td>.redacted-block</td><td>Black bars over content, classified content</td></tr>
+      <tr><td>Case Board</td><td>.case-board</td><td>Detective crime board with pinned items, string connections</td></tr>
+      <tr><td>Classified Stamp</td><td>.classified-stamp</td><td>Rotated red stamp overlay text</td></tr>
+    </tbody>
+  </table>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#161616" stroke="#508850" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#508850" font-size="10" font-weight="700">INVESTIGATE</text>
+      <text x="110" y="65" text-anchor="middle" fill="#606060" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#606060" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#161616" stroke="#b89030" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#b89030" font-size="10" font-weight="700">INTERROGATE</text>
+      <text x="350" y="65" text-anchor="middle" fill="#606060" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#606060" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#161616" stroke="#4868a0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4868a0" font-size="10" font-weight="700">APPREHEND</text>
+      <text x="590" y="65" text-anchor="middle" fill="#606060" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Noir Components</div>
+  <h2>Evidence Tags</h2>
+  <p>Police evidence tags with case numbers, dates, item descriptions, and officer fields. Manila/amber left-bar tint with a hole-punch circle in the top-right corner. Use a two-column grid for side-by-side tags.</p>
+
+  <div class="evidence-grid">
+    <div class="evidence-tag">
+      <div class="tag-header">
+        <div class="tag-case">Evidence #A-001</div>
+        <div class="tag-date">1947-11-14</div>
+      </div>
+      <div class="tag-item">.38 Caliber Revolver</div>
+      <div class="tag-detail">Found beneath the bar at the Blue Dahlia. Serial number filed off. Two rounds discharged.</div>
+      <div class="tag-officer">Logged by: Det. M. Crane &middot; Badge #4471</div>
+    </div>
+    <div class="evidence-tag">
+      <div class="tag-header">
+        <div class="tag-case">Evidence #A-002</div>
+        <div class="tag-date">1947-11-14</div>
+      </div>
+      <div class="tag-item">Matchbook &mdash; Club Tropicana</div>
+      <div class="tag-detail">Recovered from victim&rsquo;s coat pocket. Handwritten phone number on inside cover.</div>
+      <div class="tag-officer">Logged by: Det. M. Crane &middot; Badge #4471</div>
+    </div>
+  </div>
+
+  <h2>Redacted Content</h2>
+  <p>Inline and block-level redaction for classified or censored content. Inline: wrap text in <span class="inline-code">.redacted</span>. Block: use <span class="inline-code">.redacted-block</span> with line elements.</p>
+
+  <p>Inline example: The suspect was identified as <span class="redacted">Colonel Mustard</span> at approximately <span class="redacted">2300 hours</span> near the <span class="redacted">warehouse district</span>.</p>
+
+  <div class="redacted-block">
+    <div class="redacted-label">Redacted &mdash; Level 3 Clearance Required</div>
+    <div class="redacted-line"></div>
+    <div class="redacted-line"></div>
+    <div class="redacted-line medium"></div>
+    <div class="redacted-line short"></div>
+  </div>
+
+  <h2>Case Board</h2>
+  <p>A detective&rsquo;s crime board with pinned items connected by string lines. Items display on a grid with red pin markers. Use <span class="inline-code">.board-connections</span> for the dashed string-connection chain below.</p>
+
+  <div class="case-board">
+    <div class="board-title">Case #1947-0023 &mdash; Homicide Investigation</div>
+    <div class="board-items">
+      <div class="board-item">
+        <div class="item-label">Suspect</div>
+        <div class="item-title">Victor Laszlo</div>
+        <div class="item-desc">Last seen at the Blue Dahlia, 11:30 PM. No alibi confirmed.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Witness</div>
+        <div class="item-title">Rita Hayward</div>
+        <div class="item-desc">Bartender. Claims she heard two shots from the back room.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Location</div>
+        <div class="item-title">The Blue Dahlia</div>
+        <div class="item-desc">Jazz club on Vine St. Known for illegal gambling in the back.</div>
+      </div>
+      <div class="board-item">
+        <div class="item-label">Evidence</div>
+        <div class="item-title">.38 Revolver</div>
+        <div class="item-desc">Found under the bar. Ballistics match pending from the lab.</div>
+      </div>
+    </div>
+    <div class="board-connections">
+      <div class="conn-node">Laszlo</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">Blue Dahlia</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">.38 Revolver</div>
+      <div class="conn-string"></div>
+      <div class="conn-node">Victim</div>
+    </div>
+  </div>
+
+  <h2>Classified Stamp</h2>
+  <p>A rotated stamp overlay reading &ldquo;CLASSIFIED&rdquo; or &ldquo;CONFIDENTIAL&rdquo; in red, positioned at -8 degrees. Use <span class="inline-code">.stamp-block</span> for a standalone display, or <span class="inline-code">.classified-wrap</span> with <span class="inline-code">.classified-stamp</span> as an overlay on any content.</p>
+
+  <div class="stamp-block">
+    <div class="stamp-text">Classified</div>
+  </div>
+
+  <div class="classified-wrap" style="margin-top: 2rem;">
+    <div class="evidence-tag" style="margin: 0;">
+      <div class="tag-header">
+        <div class="tag-case">Evidence #X-099</div>
+        <div class="tag-date">1947-12-01</div>
+      </div>
+      <div class="tag-item">Unknown Substance</div>
+      <div class="tag-detail">Chemical analysis pending. Highly volatile. Handle with extreme caution.</div>
+      <div class="tag-officer">Logged by: [REDACTED] &middot; Badge #[REDACTED]</div>
+    </div>
+    <div class="classified-stamp small">Confidential</div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Noir system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>High Contrast, No Mercy</h4>
+        <p>Deep black backgrounds with harsh white text. No warm tones in the greys &mdash; pure, cold, neutral. Like a spotlight cutting through darkness in an interrogation room.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Single Red Accent</h4>
+        <p>One color only: blood red (#c82020). Used for stamps, accents, danger, and emphasis. Everything else is black, white, and grey. The red hits like a gunshot.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Zero Border-Radius</h4>
+        <p>Every element has sharp, hard corners. No softness, no curves, no comfort. This is a case file, not a greeting card.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Typewriter Everything</h4>
+        <p>Courier Prime for all headings and body text creates a unified typewriter aesthetic &mdash; like every word was hammered out on a Smith Corona at 2 AM.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Manila Tint on Interaction</h4>
+        <p>Cards gain a subtle warm manila tint on hover, like pulling a folder from the filing cabinet into the desk lamp&rsquo;s cone of light.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Case File Semantics</h4>
+        <p>Four muted semantic colors map to investigative roles: evidence green (cleared), manila gold (pending), blood red (dangerous), police blue (authority).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Redaction &amp; Classification</h4>
+        <p>Black bars over text and rotated rubber stamps bring the vocabulary of government documents and police reports into the design language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Noir &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
