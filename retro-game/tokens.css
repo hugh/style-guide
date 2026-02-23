@@ -1,0 +1,822 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* ==============================
+   Retro Video Game — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #0c0c18;
+  --surface: #181828;
+  --surface-2: #202038;
+  --surface-3: #282840;
+  --border: #303050;
+
+  /* Text */
+  --text: #e8e8f0;
+  --text-dim: #9898b0;
+  --text-faint: #585878;
+
+  /* Accent (Player Green) */
+  --accent: #48d848;
+  --accent-dim: #288828;
+
+  /* Semantic: Capture (Health Green) */
+  --capture: #48d848;
+  --capture-dim: #288828;
+  --capture-fill: rgba(72, 216, 72, 0.12);
+
+  /* Semantic: Refine (Coin Gold) */
+  --refine: #e8c840;
+  --refine-dim: #a89020;
+  --refine-fill: rgba(232, 200, 64, 0.12);
+
+  /* Semantic: Execute (Fire Red) */
+  --execute: #e84848;
+  --execute-dim: #a82828;
+  --execute-fill: rgba(232, 72, 72, 0.12);
+
+  /* Semantic: Batch (Magic Blue) */
+  --batch: #4888e8;
+  --batch-dim: #2858a8;
+  --batch-fill: rgba(72, 136, 232, 0.12);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'VT323', monospace;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.15rem;
+  overflow-x: hidden;
+}
+
+/* Scanline overlay on the whole page */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.8rem);
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  font-size: 0.55rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 2px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Pixel grid background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(72, 216, 72, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 216, 72, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Starfield dots */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 30% 70%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 50% 15%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 70% 55%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 85% 35%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 15% 85%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 90% 80%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(1px 1px at 40% 45%, var(--text-faint) 50%, transparent 100%),
+    radial-gradient(2px 2px at 60% 90%, var(--accent) 50%, transparent 100%),
+    radial-gradient(2px 2px at 25% 40%, var(--refine) 50%, transparent 100%);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* Blinking cursor on hero label */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-label::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--accent);
+}
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.flow-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 16px rgba(72, 216, 72, 0.15);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 0; }
+.pipe-stage:last-child  { border-radius: 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  font-size: 0.5rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 0;
+  border: 2px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 1rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: var(--capture-fill);
+  border-radius: 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  letter-spacing: 0.04em;
+  padding: 0.35em 0.7em;
+  border-radius: 0;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'Press Start 2P', monospace;
+  font-weight: 400;
+  font-size: 0.45rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'VT323', monospace;
+}
+
+/* ==============================
+   Health Bar (unique to Retro Game)
+   ============================== */
+
+.health-bar {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 1.25rem 1.5rem;
+}
+
+.health-bar .hp-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.health-bar .hp-label .hp-heart {
+  color: var(--execute);
+}
+
+.health-bar .hp-track {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  height: 24px;
+  display: flex;
+  gap: 2px;
+  padding: 2px;
+}
+
+.health-bar .hp-track .hp-segment {
+  flex: 1;
+  background: var(--capture);
+  transition: background 0.15s;
+}
+
+.health-bar .hp-track .hp-segment.empty {
+  background: var(--surface-2);
+}
+
+.health-bar .hp-track .hp-segment.critical {
+  background: var(--execute);
+  animation: blink 0.5s step-end infinite;
+}
+
+.health-bar .hp-values {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: var(--text-faint);
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* ==============================
+   Character Select Card (unique)
+   ============================== */
+
+.character-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.character-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.character-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 16px rgba(72, 216, 72, 0.15);
+}
+
+.character-card.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.character-card .char-portrait {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: var(--surface-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  border-bottom: 2px solid var(--border);
+  position: relative;
+}
+
+.character-card .char-portrait .char-class {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.4rem;
+  color: var(--accent);
+  background: var(--bg);
+  padding: 0.25em 0.5em;
+  border: 1px solid var(--accent-dim);
+}
+
+.character-card .char-info {
+  padding: 1rem;
+}
+
+.character-card .char-info .char-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.character-card .char-info .stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.character-card .stat-row .stat-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.35rem;
+  color: var(--text-faint);
+  width: 2.5rem;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.character-card .stat-row .stat-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg);
+  border: 1px solid var(--surface-3);
+  display: flex;
+  gap: 1px;
+  padding: 1px;
+}
+
+.character-card .stat-row .stat-bar .stat-fill {
+  background: var(--capture);
+  height: 100%;
+}
+
+.character-card .stat-row .stat-bar.bar-refine .stat-fill { background: var(--refine); }
+.character-card .stat-row .stat-bar.bar-execute .stat-fill { background: var(--execute); }
+.character-card .stat-row .stat-bar.bar-batch .stat-fill { background: var(--batch); }
+
+/* ==============================
+   Achievement Badge (unique)
+   ============================== */
+
+.achievement-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.achievement {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  transition: border-color 0.15s;
+}
+
+.achievement.unlocked {
+  border-color: var(--refine-dim);
+}
+
+.achievement.locked {
+  opacity: 0.5;
+}
+
+.achievement .ach-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  width: 3rem;
+  text-align: center;
+}
+
+.achievement.locked .ach-icon {
+  filter: grayscale(1);
+}
+
+.achievement .ach-info .ach-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+}
+
+.achievement .ach-info .ach-desc {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.achievement .ach-info .ach-stars {
+  margin-top: 0.35rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+
+.achievement .ach-info .ach-stars .star-on { color: var(--refine); }
+.achievement .ach-info .ach-stars .star-off { color: var(--surface-3); }
+
+/* ==============================
+   Continue Screen (unique)
+   ============================== */
+
+.continue-screen {
+  margin: 2.5rem 0;
+  padding: 3rem 2rem;
+  background: var(--bg);
+  border: 2px solid var(--execute);
+  text-align: center;
+  position: relative;
+}
+
+.continue-screen .continue-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.2rem;
+  color: var(--execute);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  animation: blink 1s step-end infinite;
+}
+
+.continue-screen .continue-count {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 3rem;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.continue-screen .continue-prompt {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.continue-screen .continue-coins {
+  margin-top: 1.5rem;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.45rem;
+  color: var(--refine);
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  background: var(--surface-2);
+  padding: 0.1em 0.4em;
+  border-radius: 0;
+  border: 1px solid var(--border);
+  color: var(--accent);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 2px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.95rem;
+  color: var(--text-faint);
+  font-family: 'VT323', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

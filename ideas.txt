@@ -349,3 +349,40 @@ Space Station / ISS
   indicators, orbital window viewport frames, mission elapsed time
   counters. Clinical and functional. Fonts: clean geometric sans for
   headings, clean sans for body, mono for telemetry.
+
+Aquarium / Fish Tank
+  Deep blue-black water backgrounds, soft caustic light ripples, neon
+  fish-color accents (clownfish orange, tang blue, anemone pink). Glass
+  panel card frames with refraction edges, water parameter gauge bars
+  (pH, temp, salinity), species info cards with silhouette icons, bubble
+  column dividers, feeding schedule timers. Fonts: rounded sans for
+  headings, clean sans for body, mono for measurements.
+
+Speakeasy / Prohibition
+  Dark mahogany and smoke-grey, art deco gold trim, whiskey amber
+  accents. Password card entry components, cocktail recipe cards with
+  ingredient lists, "Members Only" stamped callouts, cigarette smoke
+  wisp dividers, bootlegger ledger tables, jazz-age script headings.
+  Fonts: art deco display (like Poiret One) for headings, elegant
+  sans for body, mono for ledger entries.
+
+Operating Theatre / Surgical
+  Scrub green backgrounds, clinical steel borders, vital signs monitor
+  components with ECG wave dividers, surgical checklist cards, X-ray
+  lightbox image containers, triage priority tags (red/yellow/green),
+  sterile field panel frames. Fonts: clean geometric sans for headings,
+  clean sans for body, mono for vitals readouts.
+
+Toybox / Building Blocks
+  Bright primary backgrounds with thick black outlines, snap-together
+  brick card components, instruction manual step numbering, toy packaging
+  window-box frames, sticker sheet tag collections, wind-up key loading
+  indicators. Fonts: rounded bold sans for headings, clean sans for
+  body, mono for part numbers.
+
+Weather Station / Meteorology
+  Dark radar-screen backgrounds, Doppler gradient accents (green-yellow-
+  red), barometer gauge components, forecast card panels with condition
+  icons, isobar contour dividers, storm warning callout banners,
+  precipitation timeline charts. Fonts: clean geometric sans for
+  headings, clean sans for body, mono for readings.

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Video Game — 8-Bit Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 0;
+    border: 2px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'VT323', monospace;
+    font-size: 0.9rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.4rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.8;
+    text-transform: uppercase;
+  }
+  .font-sample-body {
+    font-family: 'VT323', monospace;
+    font-size: 1.3rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    text-decoration: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 16px rgba(72, 216, 72, 0.15);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: 0;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: var(--text-faint);
+    width: 7rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Retro</span> Game</h1>
+  <p>A pixelated design system inspired by 8-bit and 16-bit era video games &mdash; chunky pixel fonts, health bar gauges, character select cards, and arcade continue screens for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128190;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127918;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Player 1 Ready:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep CRT blue-black tones &mdash; the glow of a powered-on monitor in a dark arcade. Surfaces layer like UI panels stacking on screen.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0c0c18;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0c0c18</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #181828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#181828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #202038;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#202038</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #282840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#282840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #303050;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#303050</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of pixel-bright text create clear information hierarchy against the dark CRT backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 400;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, stat labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A vivid player-green primary accent plus four game-world semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #48d848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#48d848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #48d848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#48d848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8c840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#e8c840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e84848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#e84848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #4888e8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4888e8</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #288828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#288828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #288828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#288828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a89020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#a89020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a82828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#a82828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2858a8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#2858a8</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">health</span>
+    <span class="tag t-refine">gold</span>
+    <span class="tag t-execute">fire</span>
+    <span class="tag t-batch">magic</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Two Google Fonts, each with a distinct role. <strong>Chunky pixel font for headings and labels</strong>, <strong>retro terminal font for body text</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Press Start 2P &mdash; Headings, Labels, Tags</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">VT323 &mdash; Body text, descriptions, tables</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses VT323 for a retro CRT terminal feel. <strong>Strong text uses the primary text color</strong> to stand out from dim body copy.</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Press Start 2P</td><td>clamp(1.5rem, 5vw, 2.8rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Press Start 2P</td><td>1.1rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Press Start 2P</td><td>0.8rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Press Start 2P</td><td>0.55rem</td><td>400</td></tr>
+      <tr><td>Body paragraph</td><td>VT323</td><td>1.15rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>Press Start 2P</td><td>0.5rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>Press Start 2P</td><td>0.45rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and thick pixel-art borders.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128187;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128204;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 2px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>pixel label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards get a pixel-green glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#128154;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Health Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Coin Gold top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128165;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Fire Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128302;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Magic Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Spawn</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Loot</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Fight</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Heal</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Clear</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold pixel display numbers. Good for ordered rules, steps, or quest objectives.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Description text using .principle-num for the large pixel number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Numbers render in Press Start 2P at 1.2rem in --accent color (player green).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in player green.</p>
+
+  <div class="callout">
+    <p><strong>Pro Tip:</strong> This is a callout. It uses a 4px left border in --accent with a faint green-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with pixel headers and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar + glow color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Health Bar</td><td>.health-bar</td><td>Segmented HP gauge with fill blocks</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#181828" stroke="#48d848" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#48d848" font-size="14" font-weight="400">INPUT</text>
+      <text x="110" y="65" text-anchor="middle" fill="#585878" font-size="12">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#585878" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#181828" stroke="#e8c840" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#e8c840" font-size="14" font-weight="400">PROCESS</text>
+      <text x="350" y="65" text-anchor="middle" fill="#585878" font-size="12">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#585878" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#181828" stroke="#4888e8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4888e8" font-size="14" font-weight="400">OUTPUT</text>
+      <text x="590" y="65" text-anchor="middle" fill="#585878" font-size="12">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Game Components</div>
+  <h2>Health Bar</h2>
+  <p>A segmented HP gauge. Filled segments use <strong>--capture</strong> green, empty segments are dimmed. Add the <span class="inline-code">critical</span> class to a segment for a blinking red warning.</p>
+
+  <div class="health-bar">
+    <div class="hp-label"><span class="hp-heart">&#9829;</span> Player 1</div>
+    <div class="hp-track">
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+    </div>
+    <div class="hp-values">HP 070/100</div>
+  </div>
+
+  <p style="margin-top: 1.5rem;">Critical health with blinking segments:</p>
+
+  <div class="health-bar">
+    <div class="hp-label"><span class="hp-heart">&#9829;</span> Player 2</div>
+    <div class="hp-track">
+      <div class="hp-segment critical"></div>
+      <div class="hp-segment critical"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+      <div class="hp-segment empty"></div>
+    </div>
+    <div class="hp-values">HP 020/100</div>
+  </div>
+
+  <h2>Character Select</h2>
+  <p>RPG character cards with portrait area, class label, and stat bars. Add <span class="inline-code">selected</span> class to highlight the chosen character. Stat bars use color variants via <span class="inline-code">bar-refine</span>, <span class="inline-code">bar-execute</span>, <span class="inline-code">bar-batch</span>.</p>
+
+  <div class="character-grid">
+    <div class="character-card selected">
+      <div class="char-portrait">&#129399;<div class="char-class">Warrior</div></div>
+      <div class="char-info">
+        <div class="char-name">Knight</div>
+        <div class="stat-row"><span class="stat-label">STR</span><div class="stat-bar"><div class="stat-fill" style="width:85%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">DEF</span><div class="stat-bar bar-batch"><div class="stat-fill" style="width:70%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">SPD</span><div class="stat-bar bar-refine"><div class="stat-fill" style="width:40%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">MAG</span><div class="stat-bar bar-execute"><div class="stat-fill" style="width:20%"></div></div></div>
+      </div>
+    </div>
+    <div class="character-card">
+      <div class="char-portrait">&#129497;<div class="char-class">Mage</div></div>
+      <div class="char-info">
+        <div class="char-name">Wizard</div>
+        <div class="stat-row"><span class="stat-label">STR</span><div class="stat-bar"><div class="stat-fill" style="width:25%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">DEF</span><div class="stat-bar bar-batch"><div class="stat-fill" style="width:35%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">SPD</span><div class="stat-bar bar-refine"><div class="stat-fill" style="width:55%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">MAG</span><div class="stat-bar bar-execute"><div class="stat-fill" style="width:95%"></div></div></div>
+      </div>
+    </div>
+    <div class="character-card">
+      <div class="char-portrait">&#128737;<div class="char-class">Rogue</div></div>
+      <div class="char-info">
+        <div class="char-name">Thief</div>
+        <div class="stat-row"><span class="stat-label">STR</span><div class="stat-bar"><div class="stat-fill" style="width:50%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">DEF</span><div class="stat-bar bar-batch"><div class="stat-fill" style="width:30%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">SPD</span><div class="stat-bar bar-refine"><div class="stat-fill" style="width:90%"></div></div></div>
+        <div class="stat-row"><span class="stat-label">MAG</span><div class="stat-bar bar-execute"><div class="stat-fill" style="width:40%"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Achievement Badges</h2>
+  <p>Trophy badges with unlock states and star ratings. Use <span class="inline-code">unlocked</span> for earned achievements (gold border) and <span class="inline-code">locked</span> for hidden ones (dimmed, greyscale).</p>
+
+  <div class="achievement-grid">
+    <div class="achievement unlocked">
+      <div class="ach-icon">&#127942;</div>
+      <div class="ach-info">
+        <div class="ach-title">First Blood</div>
+        <p class="ach-desc">Defeat your first enemy</p>
+        <div class="ach-stars"><span class="star-on">&#9733;</span><span class="star-on">&#9733;</span><span class="star-on">&#9733;</span></div>
+      </div>
+    </div>
+    <div class="achievement unlocked">
+      <div class="ach-icon">&#128176;</div>
+      <div class="ach-info">
+        <div class="ach-title">Loot Goblin</div>
+        <p class="ach-desc">Collect 1000 gold coins</p>
+        <div class="ach-stars"><span class="star-on">&#9733;</span><span class="star-on">&#9733;</span><span class="star-off">&#9733;</span></div>
+      </div>
+    </div>
+    <div class="achievement locked">
+      <div class="ach-icon">&#128274;</div>
+      <div class="ach-info">
+        <div class="ach-title">??? Secret</div>
+        <p class="ach-desc">Complete all stages to unlock</p>
+        <div class="ach-stars"><span class="star-off">&#9733;</span><span class="star-off">&#9733;</span><span class="star-off">&#9733;</span></div>
+      </div>
+    </div>
+    <div class="achievement locked">
+      <div class="ach-icon">&#128274;</div>
+      <div class="ach-info">
+        <div class="ach-title">??? Secret</div>
+        <p class="ach-desc">Defeat the final boss</p>
+        <div class="ach-stars"><span class="star-off">&#9733;</span><span class="star-off">&#9733;</span><span class="star-off">&#9733;</span></div>
+      </div>
+    </div>
+  </div>
+
+  <h2>Continue Screen</h2>
+  <p>An arcade-style game over panel with blinking title, countdown number, and credit display. The title uses a blinking CSS animation and the border is in <span class="inline-code">--execute</span> red.</p>
+
+  <div class="continue-screen">
+    <div class="continue-title">Game Over</div>
+    <div class="continue-count">9</div>
+    <div class="continue-prompt">Press Start to Continue</div>
+    <div class="continue-coins">&#9679; Credits: 03</div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Retro Game system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>CRT Blue-Black</h4>
+        <p>Backgrounds use cool blue-tinted near-blacks like the glow of a powered-on CRT monitor in a dark arcade.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Player Green</h4>
+        <p>The primary accent is a vivid 8-bit green inspired by health bars, "GO" signals, and player-one indicators.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Game-World Semantics</h4>
+        <p>Four semantic colors map to game concepts: health green (HP/safe), coin gold (treasure/loot), fire red (damage/danger), magic blue (mana/shields).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Chunky Pixel Type</h4>
+        <p>Press Start 2P delivers authentic 8-bit title screen typography for headings and labels. VT323 gives body text a readable retro terminal feel.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Zero Border-Radius</h4>
+        <p>No rounded corners anywhere. Everything is sharp and blocky like pixel art, reinforcing the retro digital aesthetic.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Scanline Overlay</h4>
+        <p>A faint repeating horizontal line texture across the entire page simulates a CRT monitor, tying all elements together.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Game UI Components</h4>
+        <p>Health bars, character select cards, achievement badges, and continue screens bring video game HUD elements into the design language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Retro Game &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

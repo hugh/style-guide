@@ -25,6 +25,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `cassette/` — Mixtape analog theme (dark plastic, warm orange, handwritten tracklists, tape spools)
 - `cafe/` — Chalkboard menu theme (dark slate green, chalk lettering, latte brown, menu boards)
 - `vinyl/` — Record store theme (rich black, shelf amber, LP sleeves, groove dividers, crate tabs)
+- `retro-game/` — 8-bit arcade theme (CRT blue-black, pixel fonts, health bars, character select, achievements)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style
