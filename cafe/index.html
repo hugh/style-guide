@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cafe — Chalkboard Menu Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Kalam', cursive;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.1;
+  }
+  .font-sample-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(200, 160, 112, 0.12);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Open Daily &middot; 7am&ndash;6pm</div>
+  <h1>Chalkboard <span>Cafe</span></h1>
+  <p>A warm, inviting design system inspired by cafe chalkboard menus &mdash; hand-lettered chalk headings, latte brown accents, menu boards with dotted price lines, and coffee ring dividers for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9749;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Dark slate green tones &mdash; the color of a well-used chalkboard behind the counter. Surfaces layer like chalk dust settling on the board.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a3428;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#2a3428</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #323c30;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#323c30</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3a4438;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#3a4438</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #424c40;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#424c40</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #505848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#505848</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of chalk-white text create clear information hierarchy against the dark slate board.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A warm latte-brown primary accent plus four cafe-themed semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8a070;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#c8a070</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8a070;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#c8a070</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d89090;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d89090</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c85040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c85040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #58a088;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#58a088</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #907050;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#907050</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #907050;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#907050</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a06060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#a06060</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #883028;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#883028</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #387060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#387060</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">latte</span>
+    <span class="tag t-refine">pastry</span>
+    <span class="tag t-execute">espresso</span>
+    <span class="tag t-batch">herbal</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Chalk-style handwriting for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Kalam — Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">DM Sans — Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono — Labels, tags, section numbers, prices</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; v0.1 &middot; $4.50</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Kalam</td><td>clamp(3rem, 9vw, 6rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Kalam</td><td>2.2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Kalam</td><td>1.5rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>DM Sans</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>DM Sans</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>DM Sans</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and subtle separators on the dark chalkboard background.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128196;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9749;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a warm glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9749;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Latte Brown top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127856;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Pastry Pink top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Espresso Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127807;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Herbal Teal top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Order</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Brew</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Pour</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Garnish</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Serve</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for recipes, steps, or house rules.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>House Rule Title</h4>
+        <p>Description text using .principle-num for the large Kalam number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another House Rule</h4>
+        <p>Numbers render in Kalam at 2.2rem in --accent color (latte brown).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in latte brown.</p>
+
+  <div class="callout">
+    <p><strong>Barista Note:</strong> This is a callout. It uses a 3px left border in --accent with a faint latte-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Menu Board</td><td>.menu-board</td><td>Chalkboard menu with dotted prices</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#323c30" stroke="#c8a070" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#c8a070" font-size="10" font-weight="600">ORDER</text>
+      <text x="110" y="65" text-anchor="middle" fill="#787868" font-size="9">Take request</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#787868" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#323c30" stroke="#d89090" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d89090" font-size="10" font-weight="600">PREPARE</text>
+      <text x="350" y="65" text-anchor="middle" fill="#787868" font-size="9">Brew &amp; bake</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#787868" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#323c30" stroke="#58a088" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#58a088" font-size="10" font-weight="600">SERVE</text>
+      <text x="590" y="65" text-anchor="middle" fill="#787868" font-size="9">Enjoy!</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Cafe Components</div>
+  <h2>Menu Board</h2>
+  <p>A chalkboard-style menu card with hand-lettered item names, dotted leader lines, and monospace prices. The header includes a title and optional badge.</p>
+
+  <div class="menu-board">
+    <div class="board-header">
+      <span class="board-title">Hot Drinks</span>
+      <span class="board-badge">Seasonal</span>
+    </div>
+    <div class="board-body">
+      <div class="menu-item">
+        <span class="item-name">Espresso</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$3.50</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Flat White</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$4.50</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Chai Latte</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$5.00</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Pour Over</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$4.00</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Hot Chocolate</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$4.50</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Daily Special</h2>
+  <p>A featured item callout with a dashed border, highlighted badge, and centered layout. Use for promotions or featured content.</p>
+
+  <div class="daily-special">
+    <div class="special-badge">Today&rsquo;s Special</div>
+    <div class="special-name">Lavender Oat Latte</div>
+    <div class="special-desc">House-made lavender syrup, oat milk, double shot espresso</div>
+    <div class="special-price">$5.50</div>
+  </div>
+
+  <h2>Coffee Ring Divider</h2>
+  <p>A subtle circular stain mark used as a section separator. Evokes the ring left by a warm mug on a chalkboard ledge.</p>
+
+  <div class="coffee-ring-divider"></div>
+
+  <p>Use between content sections for thematic separation.</p>
+
+  <div class="coffee-ring-divider"></div>
+
+  <h2>Order Ticket</h2>
+  <p>A receipt-style card showing itemized content with quantities and a total. Styled like a cafe order slip.</p>
+
+  <div class="order-ticket">
+    <div class="ticket-header">
+      <span class="ticket-num">Order #042</span>
+      <span class="ticket-time">10:35 AM</span>
+    </div>
+    <div class="ticket-body">
+      <div class="ticket-item">
+        <span class="item-qty">1x</span>
+        <span class="item-label">Flat White</span>
+        <span class="item-cost">$4.50</span>
+      </div>
+      <div class="ticket-item">
+        <span class="item-qty">1x</span>
+        <span class="item-label">Almond Croissant</span>
+        <span class="item-cost">$3.80</span>
+      </div>
+      <div class="ticket-item">
+        <span class="item-qty">2x</span>
+        <span class="item-label">Blueberry Muffin</span>
+        <span class="item-cost">$7.00</span>
+      </div>
+      <div class="ticket-total">
+        <span class="total-label">Total</span>
+        <span class="total-amount">$15.30</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Cafe system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Slate Green Chalkboard</h4>
+        <p>Backgrounds use dark green-tinted tones like a real chalkboard, not cold greys or pure blacks. This creates warmth and familiarity.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Latte Brown Accent</h4>
+        <p>The primary accent is a warm latte brown inspired by steamed milk and wooden countertops. Cozy, inviting, and appetizing.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Cafe Semantics</h4>
+        <p>Four semantic colors map to cafe concepts: latte brown (warmth), pastry pink (sweet), espresso red (bold), herbal teal (fresh).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Chalk Lettering</h4>
+        <p>Kalam gives headings the feel of hand-lettered chalkboard menus, slightly imperfect and full of character, like a barista&rsquo;s handwriting.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Clean Body Text</h4>
+        <p>DM Sans provides clear readability for body content, like printed menus and cafe signage that complement the handwritten board.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Cafe Artifacts</h4>
+        <p>Menu boards, daily specials, coffee ring stains, and order tickets bring the physical experience of visiting a cafe into the design.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Chalk Dust Texture</h4>
+        <p>The hero section uses faint radial gradients and ruled lines evoking the dusty, smudged surface of a well-used chalkboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Cafe &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

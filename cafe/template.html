@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Open Daily &middot; 7am&ndash;6pm</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9749;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127856;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127807;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Barista Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Order</div>
+      <div class="pipe-desc">Take request</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Brew</div>
+      <div class="pipe-desc">Prepare drink</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Pour</div>
+      <div class="pipe-desc">Latte art</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Serve</div>
+      <div class="pipe-desc">Enjoy!</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAFE-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Menu</div>
+  <h2>Menu Board</h2>
+  <p>Chalkboard-style menu with dotted price lines.</p>
+
+  <div class="menu-board">
+    <div class="board-header">
+      <span class="board-title">Hot Drinks</span>
+      <span class="board-badge">Seasonal</span>
+    </div>
+    <div class="board-body">
+      <div class="menu-item">
+        <span class="item-name">Espresso</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$3.50</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Flat White</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$4.50</span>
+      </div>
+      <div class="menu-item">
+        <span class="item-name">Chai Latte</span>
+        <span class="item-dots"></span>
+        <span class="item-price">$5.00</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Daily Special</h3>
+  <p>Featured item callout with dashed border.</p>
+
+  <div class="daily-special">
+    <div class="special-badge">Today&rsquo;s Special</div>
+    <div class="special-name">Lavender Oat Latte</div>
+    <div class="special-desc">House-made lavender syrup, oat milk, double shot</div>
+    <div class="special-price">$5.50</div>
+  </div>
+
+  <h3>Coffee Ring Divider</h3>
+  <p>Section separator styled as a coffee cup ring stain.</p>
+
+  <div class="coffee-ring-divider"></div>
+
+  <h3>Order Ticket</h3>
+  <p>Receipt-style itemized card.</p>
+
+  <div class="order-ticket">
+    <div class="ticket-header">
+      <span class="ticket-num">Order #042</span>
+      <span class="ticket-time">10:35 AM</span>
+    </div>
+    <div class="ticket-body">
+      <div class="ticket-item">
+        <span class="item-qty">1x</span>
+        <span class="item-label">Flat White</span>
+        <span class="item-cost">$4.50</span>
+      </div>
+      <div class="ticket-item">
+        <span class="item-qty">1x</span>
+        <span class="item-label">Almond Croissant</span>
+        <span class="item-cost">$3.80</span>
+      </div>
+      <div class="ticket-total">
+        <span class="total-label">Total</span>
+        <span class="total-amount">$8.30</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; House Rules</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>House Rule Title</h4>
+        <p>Description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>House Rule Title</h4>
+        <p>Description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>House Rule Title</h4>
+        <p>Description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Bean</th><th>Origin</th><th>Roast</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>House Blend</td>
+        <td>Colombia / Ethiopia</td>
+        <td>Medium</td>
+      </tr>
+      <tr>
+        <td>Single Origin</td>
+        <td>Guatemala</td>
+        <td>Light</td>
+      </tr>
+      <tr>
+        <td>Decaf</td>
+        <td>Brazil</td>
+        <td>Dark</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">latte</span>
+    <span class="tag t-refine">pastry</span>
+    <span class="tag t-execute">espresso</span>
+    <span class="tag t-batch">herbal</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Brewing Process</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">GRIND</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Fresh beans</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--execute)" font-size="10" font-weight="600">BREW</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Extract flavor</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">SERVE</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Pour &amp; enjoy</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Cafe</p>
+  </div>
+</footer>
+
+</body>
+</html>

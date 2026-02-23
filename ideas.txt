@@ -310,3 +310,42 @@ Surveillance / CCTV
   boxes, facial recognition bounding-box card frames. Tight condensed
   mono for everything. Fonts: condensed mono for all text, with
   emphasis through weight and color rather than font variety.
+
+Greenhouse / Terrarium
+  Warm humid greens on dark loam backgrounds. Terracotta and moss
+  accents, botanical identification cards with Latin names, humidity
+  gauge progress bars, plant care tag components, propagation timeline
+  dividers, seed packet callout panels. Organic rounded shapes with
+  earthy textures. Fonts: rounded sans for headings, clean sans for
+  body, mono for measurements.
+
+Record Store / Vinyl
+  Rich black with warm amber shelf-light accents. LP sleeve card
+  components with track listings, turntable RPM selector knobs, groove-
+  line circular dividers, crate-dig category tabs, liner note callout
+  blocks, album spine section markers. Fonts: bold condensed sans for
+  headings, clean sans for body, mono for catalog numbers.
+
+Pirate / Treasure Map
+  Burnt parchment with charcoal ink and gold doubloon accents. Treasure
+  chest card components, X-marks-the-spot section markers, torn-edge
+  paper borders, ship's log callout entries with coordinates, compass
+  rose dividers, plank-walk pipeline stages. Weathered and adventurous.
+  Fonts: decorative serif (like Pirata One) for headings, clean serif
+  for body, mono for coordinates.
+
+Chalkboard Menu / Cafe
+  Dark slate green backgrounds with chalk-white hand-lettered headings,
+  warm latte brown and pastry pink accents. Menu board card components
+  with price tags, daily special callout banners, coffee cup ring
+  decorative stains, chalkboard eraser smudge dividers, order ticket
+  numbered lists. Fonts: handwritten chalk (like Caveat or Kalam) for
+  headings, clean sans for body, mono for prices.
+
+Space Station / ISS
+  Clean white module interiors with technical grey panels and status-
+  light accents (green/amber/red). Modular habitat card components,
+  life support gauge bars, crew manifest tables, airlock status
+  indicators, orbital window viewport frames, mission elapsed time
+  counters. Clinical and functional. Fonts: clean geometric sans for
+  headings, clean sans for body, mono for telemetry.

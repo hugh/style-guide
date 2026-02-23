@@ -23,6 +23,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `darkroom/` — Polaroid photography theme (warm charcoal, safelight red, film strips, contact sheets)
 - `dossier/` — Spy file theme (manila paper, classified stamps, redacted text, surveillance cards)
 - `cassette/` — Mixtape analog theme (dark plastic, warm orange, handwritten tracklists, tape spools)
+- `cafe/` — Chalkboard menu theme (dark slate green, chalk lettering, latte brown, menu boards)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style
