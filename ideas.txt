@@ -140,3 +140,50 @@ Underwater / Deep Sea
   decorative patterns, submarine instrument panel tables with depth/
   pressure readouts. Soft serif or rounded sans headings to evoke
   fluid motion.
+
+Cyberpunk / Neon
+  Rain-soaked dark streets. Near-black backgrounds with hot pink and
+  electric cyan neon accents, glitch/distortion effects on hover,
+  CJK-mixed typography fragments as decorative elements. Monospace
+  or condensed grotesque body text, futuristic geometric headings.
+  Neon sign glow on borders (box-shadow blur), rain-streak overlay
+  textures, corrupted-data callout blocks, neural-link connection
+  diagrams, holographic shimmer gradients on cards.
+
+Art Nouveau
+  Organic flowing curves and botanical elegance. Muted jewel tones —
+  deep teal, dusty rose, antique gold, sage green — on cream or soft
+  ivory backgrounds. Mucha-style decorative borders with sinuous
+  vine/tendril frames, ornamental header cartouches, flowing hairline
+  rules. Elegant serif headings (like Playfair Display), clean serif
+  body. Floral corner ornaments on cards, stained-glass panel dividers,
+  medallion section markers with organic motifs.
+
+Brutalist Web
+  Anti-design aesthetic. Raw concrete grey backgrounds, stark black
+  and white, one loud accent (construction orange or safety yellow).
+  Oversized type at intentionally awkward scales, system fonts (Arial,
+  Times New Roman, Courier), no border-radius anywhere, harsh grid
+  with visible structure. Thick raw borders, deliberately crude
+  spacing, exposed-grid layouts, monolithic block components, NO
+  hover transitions — everything static and heavy.
+
+Vaporwave
+  Nostalgic retro-futurism. Pastel pink-to-purple gradient backgrounds,
+  cyan and hot magenta accents, chrome/silver metallic text effects.
+  Receding perspective grid floor as hero background, Roman bust and
+  palm tree decorative elements, glitchy VHS tracking-line dividers,
+  Windows 95-style beveled card borders. Japanese text fragments as
+  decorative labels, sunset gradient bars, marble texture surfaces,
+  soft bloom/glow on everything.
+
+NASA Mission Control
+  1960s-70s space program aesthetic. Deep navy (#0a1020) backgrounds
+  with warm off-white text, mission-patch badge section markers,
+  telemetry readout components with live-updating number grids.
+  Countdown timer component (T-minus format), orbital trajectory
+  diagram containers, capsule communicator (CAPCOM) transmission-log
+  callouts with timestamp headers. Fonts: clean geometric sans (like
+  Space Grotesk or Outfit) for headings, monospace (IBM Plex Mono)
+  for telemetry/data. Red/white/blue semantic colors with NASA worm
+  logo energy — clean, confident, engineering-precise.

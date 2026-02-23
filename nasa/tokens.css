@@ -1,0 +1,888 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   NASA Mission Control — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #0a1020;
+  --surface: #101828;
+  --surface-2: #182030;
+  --surface-3: #202838;
+  --border: #2a3448;
+
+  /* Text */
+  --text: #e0dcd0;
+  --text-dim: #8890a0;
+  --text-faint: #505868;
+
+  /* Accent (Mission White) */
+  --accent: #e8e0d0;
+  --accent-dim: #8890a0;
+
+  /* Semantic: Capture (GO Green) */
+  --capture: #40c870;
+  --capture-dim: #208840;
+  --capture-fill: rgba(64, 200, 112, 0.10);
+
+  /* Semantic: Refine (Caution Amber) */
+  --refine: #e0a830;
+  --refine-dim: #987018;
+  --refine-fill: rgba(224, 168, 48, 0.10);
+
+  /* Semantic: Execute (Abort Red) */
+  --execute: #e04040;
+  --execute-dim: #a02020;
+  --execute-fill: rgba(224, 64, 64, 0.10);
+
+  /* Semantic: Batch (Flight Blue) */
+  --batch: #3880d0;
+  --batch-dim: #204890;
+  --batch-fill: rgba(56, 128, 208, 0.10);
+
+  /* Special: NASA Red for accents */
+  --nasa-red: #fc3d21;
+  --nasa-blue: #0b3d91;
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: clamp(3rem, 9vw, 6rem);
+  line-height: 1.0;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels (Telemetry Readout)
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--capture);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Subtle grid overlay — mission control screens */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(56, 128, 208, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 128, 208, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Horizon glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background:
+    radial-gradient(ellipse 800px 200px at 50% 100%, rgba(56, 128, 208, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 600px 150px at 50% 100%, rgba(64, 200, 112, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span { color: var(--capture); }
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+  border-color: var(--capture);
+  box-shadow: 0 0 12px rgba(64, 200, 112, 0.1);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--capture); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 6px 0 0 6px; }
+.pipe-stage:last-child  { border-radius: 0 6px 6px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--capture); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--capture);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 3px solid var(--capture);
+  background: rgba(64, 200, 112, 0.05);
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--capture); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.82rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ==============================
+   Mission Patch (unique to NASA)
+   ============================== */
+
+.mission-patch {
+  margin: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.patch-badge {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Outer ring text path simulation */
+.patch-badge::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px solid var(--surface-3);
+}
+
+.patch-badge .patch-mission {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.25rem;
+}
+
+.patch-badge .patch-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.patch-badge .patch-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--capture);
+}
+
+.patch-badge .patch-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.patch-details {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.patch-details .patch-crew {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ==============================
+   Countdown Timer (unique to NASA)
+   ============================== */
+
+.countdown {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.countdown .countdown-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+
+.countdown-display {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.countdown-display .cd-prefix {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.2rem;
+  color: var(--text-faint);
+  margin-right: 0.5rem;
+}
+
+.countdown-display .cd-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-display .cd-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: 0.05em;
+}
+
+.countdown-display .cd-unit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-top: 0.35rem;
+}
+
+.countdown-display .cd-sep {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 2.5rem;
+  color: var(--text-faint);
+  line-height: 1;
+  padding: 0 0.15rem;
+  align-self: flex-start;
+}
+
+.countdown .countdown-status {
+  margin-top: 1.25rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.countdown .countdown-status.go {
+  color: var(--capture);
+}
+
+.countdown .countdown-status.hold {
+  color: var(--refine);
+  animation: holdBlink 1.5s ease-in-out infinite;
+}
+
+.countdown .countdown-status.abort {
+  color: var(--execute);
+  animation: holdBlink 0.8s ease-in-out infinite;
+}
+
+@keyframes holdBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ==============================
+   Telemetry Readout (unique to NASA)
+   ============================== */
+
+.telemetry {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.telemetry .telemetry-header {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-2);
+}
+
+.telemetry .telemetry-header .telem-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.telemetry .telemetry-header .telem-status {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+}
+
+.telemetry .telem-status.nominal {
+  background: var(--capture-fill);
+  color: var(--capture);
+  border: 1px solid var(--capture-dim);
+}
+
+.telemetry .telem-status.caution {
+  background: var(--refine-fill);
+  color: var(--refine);
+  border: 1px solid var(--refine-dim);
+}
+
+.telemetry .telem-status.warning {
+  background: var(--execute-fill);
+  color: var(--execute);
+  border: 1px solid var(--execute-dim);
+}
+
+.telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0;
+}
+
+.telemetry-cell {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--surface-3);
+  border-right: 1px solid var(--surface-3);
+}
+
+.telemetry-cell .telem-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.telemetry-cell .telem-value {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+
+.telemetry-cell .telem-value.go      { color: var(--capture); }
+.telemetry-cell .telem-value.caution { color: var(--refine); }
+.telemetry-cell .telem-value.warning { color: var(--execute); }
+
+.telemetry-cell .telem-unit {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.6rem;
+  color: var(--text-faint);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ==============================
+   CAPCOM Log (unique to NASA)
+   ============================== */
+
+.capcom-log {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.capcom-log .capcom-header {
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.capcom-entries {
+  padding: 0;
+}
+
+.capcom-entry {
+  display: flex;
+  gap: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--surface-3);
+  font-size: 0.82rem;
+}
+
+.capcom-entry:last-child { border-bottom: none; }
+
+.capcom-entry .entry-time {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  flex-shrink: 0;
+  width: 6rem;
+  text-align: right;
+  padding-top: 0.1rem;
+}
+
+.capcom-entry .entry-source {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+  width: 5rem;
+  padding-top: 0.1rem;
+}
+
+.capcom-entry .entry-source.houston { color: var(--capture); }
+.capcom-entry .entry-source.crew    { color: var(--batch); }
+.capcom-entry .entry-source.flight  { color: var(--refine); }
+.capcom-entry .entry-source.alert   { color: var(--execute); }
+
+.capcom-entry .entry-msg {
+  color: var(--text-dim);
+  flex: 1;
+}
+
+.capcom-entry .entry-msg strong {
+  color: var(--text);
+}
+
+/* ==============================
+   Orbital Divider (unique to NASA)
+   ============================== */
+
+.orbital-divider {
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.orbital-divider svg {
+  width: 100%;
+  max-width: 600px;
+  height: 40px;
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--capture);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NASA Mission Control — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.2rem;
+    color: var(--text);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+  .font-sample-body {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--capture);
+    box-shadow: 0 0 12px rgba(64, 200, 112, 0.1);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.82rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-faint);
+    width: 6rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Houston // Design System Reference</div>
+  <h1>Mission <span>Control</span></h1>
+  <p>Clean, confident, engineering-precise. A design system inspired by 1960s&ndash;70s NASA mission control &mdash; telemetry readouts, countdown timers, CAPCOM logs, and mission patch badges for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#128640;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep navy tones &mdash; the darkness beyond the console glow at 3am in Building 30. Surfaces layer like stacked instrument panels.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0a1020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0a1020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #101828;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#101828</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #182030;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#182030</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #202838;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#202838</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2a3448;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2a3448</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of warm off-white create clear readability against the dark control room backdrop.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, annotations, labels</div>
+    </div>
+  </div>
+
+  <h3>Semantic Colors</h3>
+  <p>Four mission-operations colors modeled on flight controller console indicators. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #40c870;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture (GO)</div><div class="swatch-hex">#40c870</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e0a830;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine (Caution)</div><div class="swatch-hex">#e0a830</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e04040;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute (Abort)</div><div class="swatch-hex">#e04040</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #3880d0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch (Flight)</div><div class="swatch-hex">#3880d0</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #208840;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#208840</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #987018;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#987018</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #a02020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#a02020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #204890;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#204890</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">go</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">abort</span>
+    <span class="tag t-batch">flight</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Two Google Fonts, each with a clear role. <strong>Clean geometric sans for headings and body</strong>, <strong>technical monospace for telemetry data and labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Space Grotesk &mdash; Headings (h1, h2, h3) and body text (weights 400, 500, 600, 700)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Space Grotesk &mdash; Body text (weight 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, tags, telemetry data, timestamps, section numbers</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; T-00:09:00 &middot; ALL SYSTEMS GO</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Space Grotesk</td><td>clamp(3rem, 9vw, 6rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Space Grotesk</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Space Grotesk</td><td>1.3rem</td><td>600</td></tr>
+      <tr><td>Card title h4</td><td>Space Grotesk</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Space Grotesk</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Card body</td><td>Space Grotesk</td><td>0.82rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically like flight controller console stations in the MOCR.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128207;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9881;&#65039;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace telemetry label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong>. Cards gain a subtle GO-green glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9989;</div>
+      <h4>.flow-card.capture</h4>
+      <p>GO Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Caution Amber top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Abort Red top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128752;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Flight Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear mission sequence. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Pre-Flight</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Launch</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Orbit</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Rendezvous</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Re-Entry</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with bold display numbers. Good for ordered protocols, checklists, or mission directives.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Description text using .principle-num for the large Space Grotesk number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Directive</h4>
+        <p>Numbers render in Space Grotesk at 2rem in --capture color (GO green).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in GO green.</p>
+
+  <div class="callout">
+    <p><strong>Flight Note:</strong> This is a callout. It uses a 3px left border in --capture with a faint green-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with header borders and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Countdown</td><td>.countdown</td><td>T-minus format timer display</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#101828" stroke="#40c870" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#40c870" font-size="10" font-weight="600">LAUNCH</text>
+      <text x="110" y="65" text-anchor="middle" fill="#505868" font-size="9">stroke: --capture</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#505868" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#101828" stroke="#e0a830" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#e0a830" font-size="10" font-weight="600">ORBIT</text>
+      <text x="350" y="65" text-anchor="middle" fill="#505868" font-size="9">stroke: --refine</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#505868" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#101828" stroke="#3880d0" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#3880d0" font-size="10" font-weight="600">RECOVERY</text>
+      <text x="590" y="65" text-anchor="middle" fill="#505868" font-size="9">stroke: --batch</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Mission Components</div>
+  <h2>Mission Patch</h2>
+  <p>A circular mission badge displaying the mission designation, number, and crew. Inspired by the iconic embroidered patches worn on flight suits.</p>
+
+  <div class="mission-patch">
+    <div class="patch-badge">
+      <div class="patch-mission">Mission</div>
+      <div class="patch-icon">&#128640;</div>
+      <div class="patch-number">VII</div>
+      <div class="patch-name">Artemis</div>
+    </div>
+    <div class="patch-details">
+      <div class="patch-crew">CDR Martinez &middot; PLT Chen &middot; MS-1 Okafor</div>
+    </div>
+  </div>
+
+  <h2>Countdown Timer</h2>
+  <p>A T-minus countdown display with large monospace digits, unit labels, and a status indicator. The status can be <span class="inline-code">.go</span>, <span class="inline-code">.hold</span>, or <span class="inline-code">.abort</span>.</p>
+
+  <div class="countdown">
+    <div class="countdown-label">Time to Launch</div>
+    <div class="countdown-display">
+      <span class="cd-prefix">T&minus;</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Days</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">09</span>
+        <span class="cd-unit">Hours</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Min</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Sec</span>
+      </div>
+    </div>
+    <div class="countdown-status go">All Systems Go</div>
+  </div>
+
+  <p style="margin-top: 2rem;">Countdown in HOLD state:</p>
+
+  <div class="countdown">
+    <div class="countdown-label">Time to Launch</div>
+    <div class="countdown-display">
+      <span class="cd-prefix">T&minus;</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Days</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Hours</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">31</span>
+        <span class="cd-unit">Min</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Sec</span>
+      </div>
+    </div>
+    <div class="countdown-status hold">Hold &mdash; Weather Advisory</div>
+  </div>
+
+  <h2>Telemetry Readout</h2>
+  <p>An instrument panel grid showing live telemetry values with labels, units, and color-coded status. Values can be <span class="inline-code">.go</span>, <span class="inline-code">.caution</span>, or <span class="inline-code">.warning</span>.</p>
+
+  <div class="telemetry">
+    <div class="telemetry-header">
+      <span class="telem-title">Vehicle Telemetry &mdash; Stage 1</span>
+      <span class="telem-status nominal">Nominal</span>
+    </div>
+    <div class="telemetry-grid">
+      <div class="telemetry-cell">
+        <div class="telem-label">Altitude</div>
+        <div class="telem-value go">185.4</div>
+        <div class="telem-unit">km</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Velocity</div>
+        <div class="telem-value go">7,784</div>
+        <div class="telem-unit">m/s</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Fuel Pressure</div>
+        <div class="telem-value caution">2,847</div>
+        <div class="telem-unit">psi</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Cabin Temp</div>
+        <div class="telem-value go">21.4</div>
+        <div class="telem-unit">&deg;c</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">O2 Level</div>
+        <div class="telem-value go">98.2</div>
+        <div class="telem-unit">percent</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Heart Rate</div>
+        <div class="telem-value caution">118</div>
+        <div class="telem-unit">bpm</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>CAPCOM Log</h2>
+  <p>A capsule communicator transmission log showing timestamped exchanges between Houston and the crew. Sources are color-coded by role: <span class="inline-code">.houston</span>, <span class="inline-code">.crew</span>, <span class="inline-code">.flight</span>, <span class="inline-code">.alert</span>.</p>
+
+  <div class="capcom-log">
+    <div class="capcom-header">CAPCOM Transmission Log</div>
+    <div class="capcom-entries">
+      <div class="capcom-entry">
+        <span class="entry-time">03:14:22</span>
+        <span class="entry-source houston">Houston</span>
+        <span class="entry-msg"><strong>Artemis VII,</strong> you are GO for TLI burn. Standing by for your mark.</span>
+      </div>
+      <div class="capcom-entry">
+        <span class="entry-time">03:14:35</span>
+        <span class="entry-source crew">Crew</span>
+        <span class="entry-msg">Copy Houston. TLI parameters confirmed. Initiating burn sequence on my mark.</span>
+      </div>
+      <div class="capcom-entry">
+        <span class="entry-time">03:15:02</span>
+        <span class="entry-source flight">Flight</span>
+        <span class="entry-msg">All flight controllers confirm GO. FIDO, GUIDO, RETRO &mdash; we are nominal across the board.</span>
+      </div>
+      <div class="capcom-entry">
+        <span class="entry-time">03:15:18</span>
+        <span class="entry-source crew">Crew</span>
+        <span class="entry-msg"><strong>Ignition.</strong> We have good thrust on all engines. Looking good up here, Houston.</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Orbital Divider</h2>
+  <p>An SVG trajectory arc with a spacecraft dot, used as a thematic section separator. The path evokes an orbital transfer trajectory.</p>
+
+  <div class="orbital-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <!-- Orbital path -->
+      <path d="M0,30 Q150,0 300,20 Q450,40 600,10" fill="none" stroke="#2a3448" stroke-width="1" stroke-dasharray="4,3"/>
+      <!-- Spacecraft dot -->
+      <circle cx="300" cy="20" r="3" fill="#40c870"/>
+      <circle cx="300" cy="20" r="6" fill="none" stroke="#40c870" stroke-width="0.5" opacity="0.4"/>
+      <!-- Earth dot -->
+      <circle cx="40" cy="28" r="4" fill="#3880d0" opacity="0.3"/>
+      <!-- Moon dot -->
+      <circle cx="560" cy="12" r="3" fill="#505868" opacity="0.4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Mission Control system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Deep Navy, Not Black</h4>
+        <p>Backgrounds use blue-tinted dark tones reminiscent of the MOCR at night, not pure black. This creates the feel of instrument panel glow in a darkened room.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>GO/NO-GO Semantics</h4>
+        <p>Four semantic colors map directly to mission control console indicators: GO green (nominal), caution amber (advisory), abort red (critical), flight blue (procedural).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Engineering Precision</h4>
+        <p>IBM Plex Mono for all telemetry data, timestamps, and technical readouts. Every number is crisp, monospaced, and instantly scannable.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Clean Geometric Headings</h4>
+        <p>Space Grotesk delivers confident, modern geometric headings that echo the clean engineering aesthetic of NASA&rsquo;s worm logo era.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Instrument Panel Layout</h4>
+        <p>Telemetry grids, countdown displays, and CAPCOM logs bring the spatial organization of a real flight controller console into the design.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Mission Identity</h4>
+        <p>Mission patch badges provide a strong visual anchor, echoing the tradition of unique crew patches for every spaceflight since Gemini.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Subtle Grid Texture</h4>
+        <p>The hero section uses a faint grid overlay evoking the graph-paper precision of trajectory plotting boards and console CRT displays.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Mission Control &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

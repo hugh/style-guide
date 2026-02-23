@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Category or Context</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9989;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9888;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128680;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128752;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Flight Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear mission sequence.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Pre-Flight</div>
+      <div class="pipe-desc">Systems check</div>
+    </div>
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Launch</div>
+      <div class="pipe-desc">Liftoff sequence</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Orbit</div>
+      <div class="pipe-desc">Orbital insertion</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Recovery</div>
+      <div class="pipe-desc">Splashdown</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NASA-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Mission</div>
+  <h2>Mission Patch</h2>
+  <p>Circular badge displaying mission designation and crew.</p>
+
+  <div class="mission-patch">
+    <div class="patch-badge">
+      <div class="patch-mission">Mission</div>
+      <div class="patch-icon">&#128640;</div>
+      <div class="patch-number">I</div>
+      <div class="patch-name">Project Name</div>
+    </div>
+    <div class="patch-details">
+      <div class="patch-crew">CDR Name &middot; PLT Name &middot; MS-1 Name</div>
+    </div>
+  </div>
+
+  <h3>Countdown Timer</h3>
+  <p>T-minus countdown display with status indicator.</p>
+
+  <div class="countdown">
+    <div class="countdown-label">Time to Launch</div>
+    <div class="countdown-display">
+      <span class="cd-prefix">T&minus;</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Days</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">02</span>
+        <span class="cd-unit">Hours</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">30</span>
+        <span class="cd-unit">Min</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-group">
+        <span class="cd-value">00</span>
+        <span class="cd-unit">Sec</span>
+      </div>
+    </div>
+    <div class="countdown-status go">All Systems Go</div>
+  </div>
+
+  <h3>Telemetry Readout</h3>
+  <p>Instrument panel grid with telemetry values.</p>
+
+  <div class="telemetry">
+    <div class="telemetry-header">
+      <span class="telem-title">System Telemetry</span>
+      <span class="telem-status nominal">Nominal</span>
+    </div>
+    <div class="telemetry-grid">
+      <div class="telemetry-cell">
+        <div class="telem-label">Metric A</div>
+        <div class="telem-value go">100.0</div>
+        <div class="telem-unit">unit</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Metric B</div>
+        <div class="telem-value go">200.0</div>
+        <div class="telem-unit">unit</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Metric C</div>
+        <div class="telem-value caution">85.0</div>
+        <div class="telem-unit">unit</div>
+      </div>
+      <div class="telemetry-cell">
+        <div class="telem-label">Metric D</div>
+        <div class="telem-value go">99.8</div>
+        <div class="telem-unit">unit</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>CAPCOM Log</h3>
+  <p>Timestamped transmission log between ground and crew.</p>
+
+  <div class="capcom-log">
+    <div class="capcom-header">CAPCOM Transmission Log</div>
+    <div class="capcom-entries">
+      <div class="capcom-entry">
+        <span class="entry-time">00:00:00</span>
+        <span class="entry-source houston">Houston</span>
+        <span class="entry-msg">Transmission message here.</span>
+      </div>
+      <div class="capcom-entry">
+        <span class="entry-time">00:00:15</span>
+        <span class="entry-source crew">Crew</span>
+        <span class="entry-msg">Response message here.</span>
+      </div>
+      <div class="capcom-entry">
+        <span class="entry-time">00:00:30</span>
+        <span class="entry-source flight">Flight</span>
+        <span class="entry-msg">Flight director communication here.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Orbital Divider</h3>
+  <p>SVG trajectory arc section separator.</p>
+
+  <div class="orbital-divider">
+    <svg viewBox="0 0 600 40" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,30 Q150,0 300,20 Q450,40 600,10" fill="none" stroke="#2a3448" stroke-width="1" stroke-dasharray="4,3"/>
+      <circle cx="300" cy="20" r="3" fill="#40c870"/>
+      <circle cx="300" cy="20" r="6" fill="none" stroke="#40c870" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="40" cy="28" r="4" fill="#3880d0" opacity="0.3"/>
+      <circle cx="560" cy="12" r="3" fill="#505868" opacity="0.4"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Directives</div>
+  <h2>Numbered List</h2>
+  <p>Use the principle list for ordered items with detailed descriptions.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Directive description goes here. Keep it to one or two sentences.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Directive description goes here.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Directive Title</h4>
+        <p>Directive description goes here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <p>Tables use solid row borders with an uppercase header row.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Designation</th><th>Classification</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Subject Alpha</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+      <tr>
+        <td>Subject Beta</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+      <tr>
+        <td>Subject Gamma</td>
+        <td>Category description</td>
+        <td>Status detail</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Tags -->
+  <p>
+    Inline tags:
+    <span class="tag t-capture">go</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">abort</span>
+    <span class="tag t-batch">flight</span>
+  </p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <p>Wrap SVGs or visual content in the diagram container. Add <span class="inline-code">full-bleed</span> class to break out of the 900px container.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Mission Timeline</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">LAUNCH</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">T-0 ignition</text>
+
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">ORBIT</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Orbital insertion</text>
+
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">RECOVERY</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Splashdown</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Document Title &middot; v0.1 &middot; Mission Control</p>
+  </div>
+</footer>
+
+</body>
+</html>
