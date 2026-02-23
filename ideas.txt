@@ -228,3 +228,45 @@ Architect / Drafting
   precise lines, architectural hand-lettering style labels. Fonts:
   geometric sans (like Archivo) for headings, technical mono for
   dimensions and annotations.
+
+Spy / Dossier
+  Manila folder tan backgrounds, TOP SECRET rubber stamp headers,
+  paper clip attachments on cards, typewriter mono for everything,
+  passport photo frames, partially redacted paragraphs with visible
+  black bars, surveillance photo grids with timestamps, barcode
+  section markers, staple marks in corners. Warm manila/khaki base,
+  red stamp accents, ink-black text. Fonts: typewriter mono (like
+  Courier Prime or Special Elite) for body, stencil/stamp font for
+  classified headers.
+
+Western / Wanted Poster
+  Sun-bleached parchment, burnt sienna and dusty gold, wanted-poster
+  card frames with torn edges, branding-iron section dividers, sheriff
+  badge section markers, saloon-door panel components, rope lasso
+  border elements, weathered woodgrain texture. Fonts: slab serif
+  display (like Rye or Bree Serif) for headings, clean serif body.
+
+Cassette Tape / Mixtape
+  Dark plastic shell with warm analog tones, cassette label card
+  components with handwritten tracklist in cursive, rewind/fast-
+  forward progress indicators, side A/side B section dividers, Dolby
+  noise reduction badge markers, magnetic tape spooling animation,
+  boombox-dial knob selectors. Dark charcoal base, warm orange and
+  cream accents. Fonts: handwriting for tracklists, condensed sans
+  for labels.
+
+Laboratory / Research
+  Clinical white backgrounds, thin precise borders, lab notebook
+  grid paper textures, specimen jar cards, chemical formula callouts,
+  petri dish circular badges, microscope crosshair section markers,
+  gel electrophoresis band dividers, safety data sheet tables. Clean
+  white base with clinical blue and safety orange accents. Fonts:
+  clean sans for body, monospace for data and formulas.
+
+Steampunk
+  Brass and copper on dark leather, gear/cog decorative elements,
+  pressure gauge indicators, Victorian mechanical typeface headings,
+  pneumatic tube callout containers, rivet-studded panel borders,
+  telegraph ticker tape dividers, clockwork animation on hover. Deep
+  brown leather base, warm brass/copper accents. Fonts: ornate
+  Victorian serif for headings, clean serif body, mono for gauges.
