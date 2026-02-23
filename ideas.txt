@@ -158,13 +158,6 @@ Architect / Drafting
   geometric sans (like Archivo) for headings, technical mono for
   dimensions and annotations.
 
-Western / Wanted Poster
-  Sun-bleached parchment, burnt sienna and dusty gold, wanted-poster
-  card frames with torn edges, branding-iron section dividers, sheriff
-  badge section markers, saloon-door panel components, rope lasso
-  border elements, weathered woodgrain texture. Fonts: slab serif
-  display (like Rye or Bree Serif) for headings, clean serif body.
-
 Laboratory / Research
   Clinical white backgrounds, thin precise borders, lab notebook
   grid paper textures, specimen jar cards, chemical formula callouts,
@@ -395,3 +388,6 @@ Cartographer
 
 Cartoon Network / Animated
   → cartoon/
+
+Western / Wanted Poster
+  → western/

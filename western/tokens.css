@@ -1,0 +1,805 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   Western / Wanted Poster — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #f0e4d0;
+  --surface: #e6dac4;
+  --surface-2: #dcd0b4;
+  --surface-3: #d0c4a4;
+  --border: #b8a880;
+
+  /* Text */
+  --text: #2c2014;
+  --text-dim: #5c4830;
+  --text-faint: #907860;
+
+  /* Accent (Burnt Sienna — branding iron) */
+  --accent: #8b3010;
+  --accent-dim: #6a2408;
+
+  /* Semantic: Capture (Cactus Green — desert, money) */
+  --capture: #4a7848;
+  --capture-dim: #345834;
+  --capture-fill: rgba(74, 120, 72, 0.10);
+
+  /* Semantic: Refine (Dusty Gold — badge, treasure) */
+  --refine: #c89020;
+  --refine-dim: #a07018;
+  --refine-fill: rgba(200, 144, 32, 0.10);
+
+  /* Semantic: Execute (Wanted Red — danger, bounty) */
+  --execute: #a82818;
+  --execute-dim: #801c10;
+  --execute-fill: rgba(168, 40, 24, 0.10);
+
+  /* Semantic: Batch (Denim Blue — sky, water) */
+  --batch: #4870a0;
+  --batch-dim: #305478;
+  --batch-fill: rgba(72, 112, 160, 0.10);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Lora', 'Georgia', serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  overflow-x: hidden;
+}
+
+/* Subtle weathered texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 25%, rgba(139, 48, 16, 0.03) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 75%, rgba(139, 48, 16, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(44, 32, 20, 0.01) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Rye', serif;
+  font-weight: 400;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Lora', serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 2px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Woodgrain-like horizontal lines */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 18px,
+    rgba(184, 168, 128, 0.2) 18px,
+    rgba(184, 168, 128, 0.2) 19px,
+    transparent 19px,
+    transparent 24px,
+    rgba(184, 168, 128, 0.12) 24px,
+    rgba(184, 168, 128, 0.12) 25px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Sun-bleached vignette */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(44, 32, 20, 0.08) 70%,
+    rgba(44, 32, 20, 0.18) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+
+.flow-card:hover {
+  box-shadow: 0 3px 12px rgba(44, 32, 20, 0.1);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 2px 0 0 2px; }
+.pipe-stage:last-child  { border-radius: 0 2px 2px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Rye', serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 2px;
+  border: 2px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Rye', serif;
+  font-size: 2.2rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: rgba(139, 48, 16, 0.06);
+  border-radius: 0 2px 2px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags / Pills
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.3em 0.7em;
+  border-radius: 2px;
+  border: 1px solid;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.88rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Lora', serif;
+}
+
+/* ==============================
+   Wanted Poster (unique)
+   ============================== */
+
+.wanted-poster {
+  margin: 2.5rem 0;
+  background: var(--surface);
+  border: 4px solid var(--border);
+  border-radius: 2px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Double border effect */
+.wanted-poster::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 2px solid var(--border);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wanted-poster .wanted-header {
+  font-family: 'Rye', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--execute);
+  letter-spacing: 0.1em;
+  padding: 1.5rem 2rem 0.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-subheader {
+  font-family: 'Rye', serif;
+  font-size: 0.85rem;
+  color: var(--text);
+  letter-spacing: 0.15em;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border);
+  margin: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-portrait {
+  width: 140px;
+  height: 140px;
+  background: var(--surface-2);
+  border: 3px solid var(--border);
+  margin: 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-name {
+  font-family: 'Rye', serif;
+  font-size: 1.3rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-desc {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-reward {
+  font-family: 'Rye', serif;
+  font-size: 1.6rem;
+  color: var(--refine);
+  padding: 1.25rem 2rem 1.5rem;
+  border-top: 2px solid var(--border);
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.wanted-poster .wanted-reward .reward-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* ==============================
+   Sheriff Badge (unique)
+   ============================== */
+
+.sheriff-badge {
+  margin: 2.5rem auto;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Star shape via rotated squares */
+.sheriff-badge::before,
+.sheriff-badge::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--refine);
+  border: 2px solid var(--refine-dim);
+}
+
+.sheriff-badge::before {
+  transform: rotate(0deg);
+}
+
+.sheriff-badge::after {
+  transform: rotate(45deg);
+}
+
+.sheriff-badge .badge-center {
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 2px solid var(--refine-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.sheriff-badge .badge-center .badge-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.5rem;
+  font-weight: 600;
+  color: var(--refine-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ==============================
+   Branding Divider (unique)
+   ============================== */
+
+.brand-divider {
+  margin: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.brand-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border);
+}
+
+.brand-divider .brand-mark {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  padding: 0 1.5rem;
+  font-family: 'Rye', serif;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+/* ==============================
+   Saloon Panel (unique)
+   ============================== */
+
+.saloon-panel {
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+@media (max-width: 640px) {
+  .saloon-panel { grid-template-columns: 1fr; }
+}
+
+.saloon-panel .saloon-door {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.saloon-panel .saloon-door:first-child {
+  border-radius: 2px 0 0 2px;
+  border-right: 1px solid var(--border);
+}
+
+.saloon-panel .saloon-door:last-child {
+  border-radius: 0 2px 2px 0;
+  border-left: 1px solid var(--border);
+}
+
+/* Hinge dots */
+.saloon-panel .saloon-door::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  background: var(--refine);
+  border: 1px solid var(--refine-dim);
+  border-radius: 50%;
+}
+
+.saloon-panel .saloon-door:first-child::before { right: -5px; }
+.saloon-panel .saloon-door:last-child::before { left: -5px; }
+
+.saloon-panel .saloon-door::after {
+  content: '';
+  position: absolute;
+  bottom: 12px;
+  width: 8px;
+  height: 8px;
+  background: var(--refine);
+  border: 1px solid var(--refine-dim);
+  border-radius: 50%;
+}
+
+.saloon-panel .saloon-door:first-child::after { right: -5px; }
+.saloon-panel .saloon-door:last-child::after { left: -5px; }
+
+.saloon-panel .saloon-title {
+  font-family: 'Rye', serif;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.saloon-panel .saloon-body {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 2px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Frontier Dispatch &middot; Est. 1872</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127797;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128293;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#127787;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Note:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Trail</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">I</div><div class="pipe-name">Scout</div><div class="pipe-desc">Survey the trail</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">II</div><div class="pipe-name">Ride</div><div class="pipe-desc">Head out west</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">III</div><div class="pipe-name">Draw</div><div class="pipe-desc">High noon</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">IV</div><div class="pipe-name">Claim</div><div class="pipe-desc">Stake your land</div></div>
+  </div>
+</section>
+
+<!-- ============ WESTERN-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Frontier</div>
+  <h2>Wanted Poster</h2>
+  <p>A classic wanted poster card with portrait, description, and reward.</p>
+
+  <div class="wanted-poster">
+    <div class="wanted-header">Wanted</div>
+    <div class="wanted-subheader">Dead or Alive</div>
+    <div class="wanted-portrait">&#129312;</div>
+    <div class="wanted-name">Billy the Kid</div>
+    <p class="wanted-desc">Cattle rustling, bank robbery, and general lawlessness across three territories.</p>
+    <div class="wanted-reward"><span class="reward-label">Reward</span>$5,000</div>
+  </div>
+
+  <h3>Sheriff Badge</h3>
+  <div class="sheriff-badge">
+    <div class="badge-center"><div class="badge-text">Law</div></div>
+  </div>
+
+  <h3>Branding Divider</h3>
+  <div class="brand-divider">
+    <span class="brand-mark">&#9734; &#9734; &#9734;</span>
+  </div>
+
+  <h3>Saloon Panel</h3>
+  <div class="saloon-panel">
+    <div class="saloon-door">
+      <div class="saloon-title">Left Side</div>
+      <p class="saloon-body">Use saloon panels for side-by-side comparisons, before/after content, or paired information with a swinging-door aesthetic.</p>
+    </div>
+    <div class="saloon-door">
+      <div class="saloon-title">Right Side</div>
+      <p class="saloon-body">The gold hinge dots between panels evoke the brass hinges of a saloon's swinging doors. Panels collapse on mobile.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Code</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Ledger</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Outlaw</th><th>Crime</th><th>Bounty</th></tr></thead>
+    <tbody>
+      <tr><td>Billy the Kid</td><td>Cattle rustling</td><td>$5,000</td></tr>
+      <tr><td>Jesse James</td><td>Train robbery</td><td>$10,000</td></tr>
+      <tr><td>Butch Cassidy</td><td>Bank heist</td><td>$8,000</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">frontier</span> <span class="tag t-refine">gold</span> <span class="tag t-execute">wanted</span> <span class="tag t-batch">territory</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Trail Route</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">DEPARTURE</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">East coast</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600">FRONTIER</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">The territories</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="600">SETTLEMENT</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Stake the claim</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Western</p></div></footer>
+
+</body>
+</html>
