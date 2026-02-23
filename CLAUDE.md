@@ -28,6 +28,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `retro-game/` — 8-bit arcade theme (CRT blue-black, pixel fonts, health bars, character select, achievements)
 - `board-game/` — Tabletop theme (felt-green table, wooden tokens, player cards, dice, score tracks)
 - `musician/` — Classical score theme (manuscript cream, staff dividers, dynamic markings, rehearsal marks)
+- `pinball/` — Arcade pinball theme (glossy black, neon pink, backglass panels, tilt warnings, bumper targets)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

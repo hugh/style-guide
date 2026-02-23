@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pinball Machine — Neon Arcade Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .swatch {
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+  }
+  .font-sample .sample-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.4rem;
+    color: var(--text);
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .font-sample-body {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .font-sample-mono {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .file-link:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px rgba(255, 32, 128, 0.15);
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 1px solid var(--surface-3);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    width: 7rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Pinball</span> Machine</h1>
+  <p>A neon-drenched design system inspired by arcade pinball machines &mdash; glossy black playfields, chrome bumper borders, backglass art panels, tilt warnings, and multi-player score displays for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize. The stylesheet has all variables, resets, and component styles.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#127922;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127918;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Insert Coin:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Deep glossy black tones &mdash; the polished playfield of an arcade machine under glass. Surfaces layer like chrome rails and plastic ramps.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #08080c;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#08080c</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #12121a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#12121a</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1c1c26;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#1c1c26</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #262630;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#262630</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #38384a;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#38384a</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Three tiers of neon-bright text against the dark playfield, like illuminated inserts and backlit score panels.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 500;">Primary text &mdash; headings, strong emphasis, key labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, score labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A vivid neon pink primary accent plus four arcade semantic colors. Each has a <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variant. Map them to whatever domain concepts fit your document.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff2080;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#ff2080</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #40e868;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#40e868</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ffe020;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#ffe020</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff2080;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#ff2080</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #20a0ff;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#20a0ff</div></div>
+    </div>
+  </div>
+
+  <p>Dim variants for muted strokes and labels:</p>
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b81060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent-dim</div><div class="swatch-hex">#b81060</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #28a848;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture-dim</div><div class="swatch-hex">#28a848</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8a810;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine-dim</div><div class="swatch-hex">#c8a810</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b81060;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute-dim</div><div class="swatch-hex">#b81060</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1070c0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch-dim</div><div class="swatch-hex">#1070c0</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">jackpot</span>
+    <span class="tag t-refine">bonus</span>
+    <span class="tag t-execute">tilt</span>
+    <span class="tag t-batch">lock</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts, each with a distinct role. <strong>Bold condensed display for headings</strong>, <strong>clean sans for body text</strong>, <strong>monospace for scores and labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Russo One &mdash; Headings</div>
+    <div class="font-sample-heading">The Quick Brown Fox Jumps Over The Lazy Dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Inter &mdash; Body text, descriptions, cards</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses Inter for clean, modern readability against the dark playfield. <strong>Strong text uses the primary text color</strong> to stand out from dim body copy.</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono &mdash; Labels, scores, tags</div>
+    <div class="font-sample-mono">12,750,000 &middot; BALL 3 OF 5 &middot; 5X MULTIPLIER</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Russo One</td><td>clamp(2.2rem, 6vw, 4rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Russo One</td><td>1.6rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Russo One</td><td>1rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.8rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container. Sections stack vertically with generous spacing and chrome-trimmed borders.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#128187;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, with 2rem horizontal padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128204;</div>
+      <h4>Sections</h4>
+      <p>5rem vertical padding. Separated by 1px solid border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#8596;&#65039;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams can break out to 1100px max-width with the full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#128241;</div>
+      <h4>Responsive</h4>
+      <p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+
+  <h3>Section Pattern</h3>
+  <p>Every section follows the same structure: a <strong>monospace label</strong> in the format <span class="inline-code">01 &mdash; Label</span>, followed by an h2 heading, then body content and components.</p>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid of cards with a <strong>colored top accent bar</strong> that glows. Cards get a neon pink glow on hover.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127922;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Neon Green top bar. Use class <span class="inline-code">capture</span> on the card element.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#11088;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Hot Yellow top bar. Use class <span class="inline-code">refine</span> on the card element.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9889;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Neon Pink top bar. Use class <span class="inline-code">execute</span> on the card element.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128309;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Electric Blue top bar. Use class <span class="inline-code">batch</span> on the card element.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal connected stages for showing a linear process. Stages use <span class="inline-code">s-</span> prefixed classes for top border color.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Plunge</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Ramp</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Multiball</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Lock</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Jackpot</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Numbered items with neon-glow display numbers. Good for ordered rules, steps, or objectives.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Description text using .principle-num for the large display number and standard h4 + p inside the content div.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Numbers render in Russo One at 2rem in --accent color (neon pink) with a subtle glow.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered aside for important notes. Strong text inside callouts renders in neon pink.</p>
+
+  <div class="callout">
+    <p><strong>Multiball Ready:</strong> This is a callout. It uses a 3px left border in --accent with a faint pink-tinted background.</p>
+  </div>
+
+  <h2>Table</h2>
+  <p>Data tables with monospace headers and clean row separators.</p>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar + glow color</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>Tag</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>Backglass</td><td>.backglass</td><td>Neon gradient header art panel</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <p>Panel for wrapping SVGs. Add <span class="inline-code">full-bleed</span> class to expand to 1100px.</p>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Playfield Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#12121a" stroke="#ff2080" stroke-width="2"/>
+      <text x="110" y="42" text-anchor="middle" fill="#ff2080" font-size="11" font-weight="600">PLUNGER</text>
+      <text x="110" y="60" text-anchor="middle" fill="#585068" font-size="9">Ball launch</text>
+
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#12121a" stroke="#ffe020" stroke-width="2"/>
+      <text x="350" y="42" text-anchor="middle" fill="#ffe020" font-size="11" font-weight="600">BUMPERS</text>
+      <text x="350" y="60" text-anchor="middle" fill="#585068" font-size="9">Score targets</text>
+
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#585068" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#12121a" stroke="#20a0ff" stroke-width="2"/>
+      <text x="590" y="42" text-anchor="middle" fill="#20a0ff" font-size="11" font-weight="600">JACKPOT</text>
+      <text x="590" y="60" text-anchor="middle" fill="#585068" font-size="9">Big payout</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Arcade Components</div>
+  <h2>Backglass Panel</h2>
+  <p>A decorative art card mimicking the lit backglass artwork of a pinball machine. The gradient header glows from <strong>neon pink</strong> to <strong>electric blue</strong>, with decorative light dots along the top edge and a large score readout.</p>
+
+  <div class="backglass">
+    <div class="backglass-header">
+      <div class="backglass-title">Cosmic Clash</div>
+      <div class="backglass-subtitle">Limited Edition &middot; 1 of 500</div>
+    </div>
+    <div class="backglass-body">
+      <div class="backglass-score">12,750,000</div>
+      <p class="backglass-desc">Grand Champion &mdash; highest score recorded on this table</p>
+    </div>
+  </div>
+
+  <p style="margin-top:1.5rem;">Another backglass with different colors:</p>
+
+  <div class="backglass">
+    <div class="backglass-header" style="background: linear-gradient(135deg, var(--refine), var(--capture));">
+      <div class="backglass-title">Neon Nights</div>
+      <div class="backglass-subtitle">Pro Edition &middot; Tournament Ready</div>
+    </div>
+    <div class="backglass-body">
+      <div class="backglass-score">8,430,200</div>
+      <p class="backglass-desc">Current champion &mdash; beat this score for the high score table</p>
+    </div>
+  </div>
+
+  <h2>Tilt Warning</h2>
+  <p>An alert panel with hazard stripes for danger states. Use the <span class="inline-code">tilting</span> class to trigger a blinking animation on the label text.</p>
+
+  <div class="tilt-warning">
+    <div class="tilt-content">
+      <div class="tilt-label">Danger</div>
+      <p class="tilt-message"><strong>Warning:</strong> Machine nudge detected. One more tilt and the ball is forfeit.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:1.5rem;">Active tilt state with blinking animation:</p>
+
+  <div class="tilt-warning tilting">
+    <div class="tilt-content">
+      <div class="tilt-label">Tilt</div>
+      <p class="tilt-message"><strong>Game Over:</strong> Ball forfeited. All bonus points lost for this ball.</p>
+    </div>
+  </div>
+
+  <h2>Score Display</h2>
+  <p>A multi-player scoreboard like a pinball DMD (dot matrix display). Ball indicators show progress, and the <span class="inline-code">active-player</span> class highlights the current player with a neon glow.</p>
+
+  <div class="score-display">
+    <div class="score-header">
+      <div class="score-title">High Scores</div>
+      <div class="score-balls">
+        <div class="ball active"></div>
+        <div class="ball active"></div>
+        <div class="ball active"></div>
+        <div class="ball"></div>
+        <div class="ball"></div>
+      </div>
+    </div>
+    <div class="score-players">
+      <div class="score-player active-player">
+        <div class="player-label">Player 1</div>
+        <div class="player-score">4,280,500</div>
+      </div>
+      <div class="score-player">
+        <div class="player-label">Player 2</div>
+        <div class="player-score">3,150,200</div>
+      </div>
+      <div class="score-player">
+        <div class="player-label">Player 3</div>
+        <div class="player-score">1,820,000</div>
+      </div>
+      <div class="score-player">
+        <div class="player-label">Player 4</div>
+        <div class="player-score">950,400</div>
+      </div>
+    </div>
+    <div class="score-multiplier">&#9733; 5x Bonus Multiplier Active &#9733;</div>
+  </div>
+
+  <h2>Bumper Targets</h2>
+  <p>Circular bumper-shaped elements with neon glow in four color variants. Bumpers scale up on hover with an intensified glow. Use <span class="inline-code">b-pink</span>, <span class="inline-code">b-blue</span>, <span class="inline-code">b-yellow</span>, or <span class="inline-code">b-green</span> for the color.</p>
+
+  <div class="bumper-grid">
+    <div class="bumper b-pink">
+      <div class="bumper-value">5K</div>
+      <div class="bumper-label">Points</div>
+    </div>
+    <div class="bumper b-blue">
+      <div class="bumper-value">10K</div>
+      <div class="bumper-label">Points</div>
+    </div>
+    <div class="bumper b-yellow">
+      <div class="bumper-value">25K</div>
+      <div class="bumper-label">Bonus</div>
+    </div>
+    <div class="bumper b-green">
+      <div class="bumper-value">50K</div>
+      <div class="bumper-label">Jackpot</div>
+    </div>
+    <div class="bumper b-pink">
+      <div class="bumper-value">2X</div>
+      <div class="bumper-label">Multi</div>
+    </div>
+    <div class="bumper b-blue">
+      <div class="bumper-value">100K</div>
+      <div class="bumper-label">Super</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <p>These patterns define the visual identity of the Pinball Machine system.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Glossy Black Playfield</h4>
+        <p>Backgrounds use deep near-black tones like the polished surface of a pinball table under glass.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Neon Pink Accent</h4>
+        <p>The primary accent is a vivid neon pink inspired by hot neon tubes and playfield insert lights.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>Arcade Semantics</h4>
+        <p>Four semantic colors map to pinball concepts: neon green (jackpot), hot yellow (bonus/score), neon pink (tilt/danger), electric blue (lock/target).</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Bold Condensed Type</h4>
+        <p>Russo One delivers the punchy, all-caps energy of pinball backglass art. Inter gives body text clean modern readability.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>Chrome Bumper Radius</h4>
+        <p>6px border-radius on cards and panels evokes the rounded chrome rails and bumper caps of a real machine.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Neon Glow Effects</h4>
+        <p>Box-shadow and text-shadow create the characteristic neon light bloom found on playfield inserts and backglass artwork.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Pinball Artifacts</h4>
+        <p>Backglass panels, tilt warnings, score displays, and bumper targets bring the physical arcade machine into the design language.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">8</div>
+      <div>
+        <h4>Playfield Lights</h4>
+        <p>Scattered neon-colored dots in the hero section simulate the insert lights embedded in a pinball playfield.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Pinball Machine &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

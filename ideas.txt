@@ -1,17 +1,14 @@
 Style Guide Theme Ideas
 =======================
 
+TODO
+----
+
 Cartographer
   Aged parchment background, sepia and burnt umber tones, topographic
   contour-line patterns as decorative elements, coordinate grids, legend
   boxes, compass-rose section markers. Fonts: something old-map like
   Cormorant Garamond + a clean body serif.
-
-Terminal
-  Pure CRT aesthetic. Black background, phosphor green (or amber) monospace
-  text for everything. Scanline overlay texture, command-prompt style section
-  headers ($ section --name "Colors"), blinking cursor accents, ASCII
-  box-drawing characters for borders instead of CSS borders.
 
 Noir
   Film noir / case file. High-contrast black and white, single red accent.
@@ -42,12 +39,6 @@ Alchemist
   accents, ornamental drop caps, ingredient/recipe cards, transmutation
   pipeline (lead → ... → gold), symbol-heavy labels, illuminated manuscript-
   style section openers.
-
-Musician
-  Score-inspired. Cream paper, staff lines as horizontal rules, dynamic
-  markings as emphasis levels (pp, mp, f, ff), measure/bar components, tempo
-  annotations on sections (Allegro — §3), rehearsal-mark section numbering
-  (boxed letters), fermata pause symbols for callouts.
 
 Mid-Century Modern
   Warm mustard/teal/coral, atomic-age geometry, retro illustration feel.
@@ -100,36 +91,6 @@ Modern Cinematic / MCU
   sans-serif. Movie title sequence feel rather than printed page.
   Widescreen aspect-ratio hero panels.
 
-Retro Video Game
-  Pixel-art inspired. Chunky pixel fonts, 8-bit color palette, scanline
-  overlays, tile-grid layouts. NES/SNES-era title screens. Press-start
-  monospace font, health-bar progress indicators, coin/gem counters as
-  metric components.
-
-Kaiju / Monster Movie
-  Japanese monster movie posters. Bold brushstroke headings, destroyed-
-  city textures, radiation-green accents on dark backgrounds, dramatic
-  scale contrast between elements. Warning-stripe borders, emergency
-  broadcast callouts, seismograph line dividers.
-
-Sci-Fi / Space Opera
-  Deep space black backgrounds with star-field particle textures, cool
-  blue-white primary text, holographic cyan/magenta accents. Thin-weight
-  geometric sans-serif (like Exo 2 or Orbitron) for headings, clean
-  sans for body. HUD-style borders with corner brackets instead of full
-  outlines, targeting-reticle section markers, star-chart grid diagrams.
-  Loading-bar progress components, ship-manifest tables, transmission-
-  log callouts with timestamp headers.
-
-Aliens / Xenomorph
-  Claustrophobic and industrial. Near-black with sickly yellow-green
-  accent (acid blood). Corrugated metal surface textures, moisture/
-  condensation overlays, exposed-rivet borders. Monospace readout font
-  for everything (like the Nostromo terminals). Motion-tracker radar
-  sweep as a loading/progress component, airlock warning panels,
-  bio-scan specimen cards, stencil-stamped section headers (WEYLAND-
-  YUTANI corporate style). Dripping/melting divider SVGs.
-
 Underwater / Deep Sea
   Dark abyssal navy-to-black gradient backgrounds, bioluminescent
   accents in electric blue, soft teal, and pale violet. Gentle
@@ -177,26 +138,6 @@ Vaporwave
   decorative labels, sunset gradient bars, marble texture surfaces,
   soft bloom/glow on everything.
 
-NASA Mission Control
-  1960s-70s space program aesthetic. Deep navy (#0a1020) backgrounds
-  with warm off-white text, mission-patch badge section markers,
-  telemetry readout components with live-updating number grids.
-  Countdown timer component (T-minus format), orbital trajectory
-  diagram containers, capsule communicator (CAPCOM) transmission-log
-  callouts with timestamp headers. Fonts: clean geometric sans (like
-  Space Grotesk or Outfit) for headings, monospace (IBM Plex Mono)
-  for telemetry/data. Red/white/blue semantic colors with NASA worm
-  logo energy — clean, confident, engineering-precise.
-
-Polaroid / Darkroom
-  Dark charcoal with chemical-red safelight accents, instant-photo
-  card components with white borders and slight rotation, contact
-  sheet grids, developer-tray progress bars, handwritten caption
-  labels (cursive font), film-strip dividers, light-leak gradient
-  overlays. Warm grain texture on surfaces, timestamp metadata in
-  the style of photo EXIF data. Fonts: a handwriting/cursive font
-  for captions (like Caveat), clean sans for body.
-
 Nautical / Maritime
   Navy and brass, rope-knot dividers, porthole-framed cards, signal
   flag tag components, lighthouse beacon loading indicator, ship's
@@ -229,31 +170,12 @@ Architect / Drafting
   geometric sans (like Archivo) for headings, technical mono for
   dimensions and annotations.
 
-Spy / Dossier
-  Manila folder tan backgrounds, TOP SECRET rubber stamp headers,
-  paper clip attachments on cards, typewriter mono for everything,
-  passport photo frames, partially redacted paragraphs with visible
-  black bars, surveillance photo grids with timestamps, barcode
-  section markers, staple marks in corners. Warm manila/khaki base,
-  red stamp accents, ink-black text. Fonts: typewriter mono (like
-  Courier Prime or Special Elite) for body, stencil/stamp font for
-  classified headers.
-
 Western / Wanted Poster
   Sun-bleached parchment, burnt sienna and dusty gold, wanted-poster
   card frames with torn edges, branding-iron section dividers, sheriff
   badge section markers, saloon-door panel components, rope lasso
   border elements, weathered woodgrain texture. Fonts: slab serif
   display (like Rye or Bree Serif) for headings, clean serif body.
-
-Cassette Tape / Mixtape
-  Dark plastic shell with warm analog tones, cassette label card
-  components with handwritten tracklist in cursive, rewind/fast-
-  forward progress indicators, side A/side B section dividers, Dolby
-  noise reduction badge markers, magnetic tape spooling animation,
-  boombox-dial knob selectors. Dark charcoal base, warm orange and
-  cream accents. Fonts: handwriting for tracklists, condensed sans
-  for labels.
 
 Laboratory / Research
   Clinical white backgrounds, thin precise borders, lab notebook
@@ -319,13 +241,6 @@ Greenhouse / Terrarium
   earthy textures. Fonts: rounded sans for headings, clean sans for
   body, mono for measurements.
 
-Record Store / Vinyl
-  Rich black with warm amber shelf-light accents. LP sleeve card
-  components with track listings, turntable RPM selector knobs, groove-
-  line circular dividers, crate-dig category tabs, liner note callout
-  blocks, album spine section markers. Fonts: bold condensed sans for
-  headings, clean sans for body, mono for catalog numbers.
-
 Pirate / Treasure Map
   Burnt parchment with charcoal ink and gold doubloon accents. Treasure
   chest card components, X-marks-the-spot section markers, torn-edge
@@ -333,14 +248,6 @@ Pirate / Treasure Map
   rose dividers, plank-walk pipeline stages. Weathered and adventurous.
   Fonts: decorative serif (like Pirata One) for headings, clean serif
   for body, mono for coordinates.
-
-Chalkboard Menu / Cafe
-  Dark slate green backgrounds with chalk-white hand-lettered headings,
-  warm latte brown and pastry pink accents. Menu board card components
-  with price tags, daily special callout banners, coffee cup ring
-  decorative stains, chalkboard eraser smudge dividers, order ticket
-  numbered lists. Fonts: handwritten chalk (like Caveat or Kalam) for
-  headings, clean sans for body, mono for prices.
 
 Space Station / ISS
   Clean white module interiors with technical grey panels and status-
@@ -387,13 +294,6 @@ Weather Station / Meteorology
   precipitation timeline charts. Fonts: clean geometric sans for
   headings, clean sans for body, mono for readings.
 
-Pinball Machine
-  Glossy black playfield with chrome bumper borders, backglass art
-  panels, tilt warning callouts, multiball score counters, flipper-
-  shaped navigation tabs, ramp trajectory SVG diagrams. Neon pink,
-  electric blue, and hot yellow accents on deep black. Fonts: bold
-  condensed display for headings, clean sans for body, mono for scores.
-
 Botanical Garden / Herbarium
   Pressed-flower muted palette on dark forest backgrounds. Herbarium
   specimen sheet cards with collection data labels, garden map grid
@@ -408,13 +308,6 @@ Radio Station / FM Broadcast
   dividers, request line ticker components. Fonts: bold condensed sans
   for headings, clean sans for body, mono for frequencies/timestamps.
 
-Board Game / Tabletop
-  Felt-green table backgrounds with wooden token accents. Game board
-  grid containers, player turn cards, dice roll result badges, rulebook
-  sidebar callouts, score track components, card deck shuffler
-  animations. Fonts: rounded sans for headings, clean sans for body,
-  mono for scores/rules.
-
 Observatory / Astronomy
   Deep midnight blue-black with nebula purple and stellar white accents.
   Star chart grid containers, constellation diagram SVGs, celestial
@@ -422,3 +315,89 @@ Observatory / Astronomy
   pollution gauge bars, telescope aperture circular frames. Fonts:
   clean geometric sans for headings, clean sans for body, mono for
   coordinates.
+
+Haunted House / Gothic Horror
+  Deep charcoal and mildew grey backgrounds, flickering candle amber
+  and blood crimson accents. Cobweb corner ornaments on cards, creaking
+  door panel transitions, tombstone-shaped section markers, spirit
+  board letter callouts, cracked mirror dividers, fog-drift overlay
+  textures. Fonts: gothic serif (like Nosifer or Creepster) for
+  headings, clean serif body, mono for dates/epitaphs.
+
+Subway / Metro Transit
+  Dark tunnel grey backgrounds, route-color stripe accents (like NYC
+  MTA or London Tube lines). Station sign card components with rounded
+  rectangle frames, route map SVG diagrams, arrival countdown boards,
+  turnstile gate dividers, transfer connection badges, wayfinding
+  arrow callouts. Fonts: transport sans (like Overpass) for headings,
+  clean sans for body, mono for schedules/times.
+
+Bakery / Patisserie
+  Warm vanilla cream backgrounds with powdered sugar white and caramel
+  brown accents. Recipe card components with ingredient checklists,
+  timer countdown badges, layered cake cross-section dividers, rolling
+  pin progress bars, pastry box packaging frames. Warm and inviting.
+  Fonts: rounded script (like Satisfy) for headings, clean sans for
+  body, mono for measurements/temps.
+
+Wrestling / Lucha Libre
+  Hot bold backgrounds with neon accent combos (lime green + hot pink,
+  electric blue + orange). Mask-shaped card frames, championship belt
+  score components, ring rope dividers, entrance ramp pipeline stages,
+  match card poster callouts with VS badges. Maximum energy and drama.
+  Fonts: impact/condensed bold for headings, clean sans for body,
+  mono for stats.
+
+Pottery / Ceramics Studio
+  Warm terracotta and clay backgrounds with glaze-color accents (celadon
+  green, cobalt blue, iron red, ash white). Kiln temperature gauge
+  components, glaze recipe cards with firing schedules, coil-built
+  texture dividers, wheel-thrown circular section markers, pottery mark
+  stamp badges. Earthy and handmade. Fonts: organic sans for headings,
+  clean sans for body, mono for temperatures/measurements.
+
+
+DONE
+----
+
+Terminal
+  → terminal/
+
+Kaiju / Monster Movie
+  → kaiju/
+
+Sci-Fi / Space Opera
+  → space-opera/
+
+Aliens / Xenomorph
+  → aliens/
+
+NASA Mission Control
+  → nasa/
+
+Polaroid / Darkroom
+  → darkroom/
+
+Spy / Dossier
+  → dossier/
+
+Cassette Tape / Mixtape
+  → cassette/
+
+Chalkboard Menu / Cafe
+  → cafe/
+
+Record Store / Vinyl
+  → vinyl/
+
+Retro Video Game
+  → retro-game/
+
+Board Game / Tabletop
+  → board-game/
+
+Musician
+  → musician/
+
+Pinball Machine
+  → pinball/
