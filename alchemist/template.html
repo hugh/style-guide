@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Arcanum &middot; Opus Magnum</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences in the manner of a scholarly treatise.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+
+  <div class="drop-cap"><span class="cap-letter">I</span></div>
+  <p>Body text goes here, beginning with an illuminated drop cap. Use <strong>strong tags</strong> to highlight key phrases. Body text renders in the dim color by default, using Crimson Pro for a scholarly, manuscript feel.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content follows naturally from the heading above.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>Card Title</h4><p>Card description text.</p></div>
+  </div>
+
+  <div class="callout"><p><strong>Nota Bene:</strong> Callouts are used for important asides and scholarly annotations.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Transmutation</div>
+  <h2>The Great Work</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-batch"><div class="pipe-num">I</div><div class="pipe-name">Nigredo</div><div class="pipe-desc">Blackening</div></div>
+    <div class="pipe-stage s-capture"><div class="pipe-num">II</div><div class="pipe-name">Albedo</div><div class="pipe-desc">Whitening</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">III</div><div class="pipe-name">Citrinitas</div><div class="pipe-desc">Yellowing</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">IV</div><div class="pipe-name">Rubedo</div><div class="pipe-desc">Reddening</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Arcane Elements</div>
+  <h2>Transmutation Circle</h2>
+  <div class="transmutation-circle">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="rgba(200,160,48,0.15)" stroke-width="1"/>
+      <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(200,160,48,0.12)" stroke-width="1"/>
+      <polygon points="100,20 178,140 22,140" fill="none" stroke="rgba(200,160,48,0.3)" stroke-width="1.5"/>
+      <polygon points="100,180 22,60 178,60" fill="none" stroke="rgba(200,160,48,0.2)" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="8" fill="rgba(200,160,48,0.3)" stroke="var(--accent)" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h3>Recipe Card</h3>
+  <div class="recipe-card">
+    <div class="recipe-header">
+      <span class="recipe-name">Philosopher's Stone</span>
+      <span class="recipe-symbol">&#9788;</span>
+    </div>
+    <div class="recipe-body">
+      <ul>
+        <li><span>Prima Materia</span><span class="ingredient-qty">1 part</span></li>
+        <li><span>Sulphur of the Wise</span><span class="ingredient-qty">3 drachms</span></li>
+        <li><span>Philosophical Mercury</span><span class="ingredient-qty">7 measures</span></li>
+        <li><span>Salt of the Earth</span><span class="ingredient-qty">2 grains</span></li>
+      </ul>
+    </div>
+    <div class="recipe-footer">Calcination &middot; 40 Days &middot; Sealed Vessel &middot; Lunar Phase: Full</div>
+  </div>
+
+  <h3>Manuscript Divider</h3>
+  <div class="manuscript-divider">
+    <svg viewBox="0 0 400 30" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="15" x2="170" y2="15" stroke="rgba(200,160,48,0.2)" stroke-width="1"/>
+      <circle cx="185" cy="15" r="3" fill="rgba(200,160,48,0.3)"/>
+      <circle cx="200" cy="15" r="5" fill="var(--accent)"/>
+      <circle cx="215" cy="15" r="3" fill="rgba(200,160,48,0.3)"/>
+      <line x1="230" y1="15" x2="400" y2="15" stroke="rgba(200,160,48,0.2)" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <h3>Sigil Badges</h3>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 3rem;">
+    <div class="sigil-badge"><span class="sigil-text">Au</span></div>
+    <div class="sigil-badge"><span class="sigil-text">Hg</span></div>
+    <div class="sigil-badge"><span class="sigil-text">Pb</span></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Principles</div>
+  <h2>Laws of Alchemy</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Principle Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Principle Title</h4><p>Description.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Principle Title</h4><p>Description.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Materia</div>
+  <h2>Substances Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Substance</th><th>Symbol</th><th>Property</th></tr></thead>
+    <tbody>
+      <tr><td>Gold</td><td>Au &#9788;</td><td>Perfection, solar</td></tr>
+      <tr><td>Silver</td><td>Ag &#9789;</td><td>Purity, lunar</td></tr>
+      <tr><td>Mercury</td><td>Hg &#9791;</td><td>Fluidity, transformation</td></tr>
+    </tbody>
+  </table>
+  <p>Tags: <span class="tag t-capture">viridian</span> <span class="tag t-refine">gold</span> <span class="tag t-execute">cinnabar</span> <span class="tag t-batch">lapis</span></p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Process Diagram</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Transmutation Stages</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="4" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600">NIGREDO</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Dissolution</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="4" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="11" font-weight="600">CITRINITAS</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Yellowing</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="4" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--execute)" font-size="11" font-weight="600">RUBEDO</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Completion</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Alchemist</p></div></footer>
+
+</body>
+</html>

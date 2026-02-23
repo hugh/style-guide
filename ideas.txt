@@ -28,12 +28,6 @@ Librarian
   (025.4 — Reference), bookplate-style headers, library stamp marks,
   due-date grid tables.
 
-Alchemist
-  Medieval manuscript meets mystical. Dark parchment (#1a1510), gold leaf
-  accents, ornamental drop caps, ingredient/recipe cards, transmutation
-  pipeline (lead → ... → gold), symbol-heavy labels, illuminated manuscript-
-  style section openers.
-
 Manga / Anime
   Speed lines, screentone dot patterns (finer than halftone), dramatic
   diagonal compositions, condensed sans-serif type, selective color pops
@@ -359,6 +353,9 @@ Weather Station / Meteorology
 
 Pottery / Ceramics Studio
   → pottery/
+
+Alchemist
+  → alchemist/
 
 Mid-Century Modern
   → mid-century/

@@ -39,6 +39,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `pottery/` — Ceramics studio theme (warm clay linen, terracotta accents, kiln gauges, glaze recipe cards, potter's marks)
 - `victorian/` — Antique theme (aged parchment, ornate serifs, wax seals, filigree dividers, ribbon banners, medallions)
 - `mid-century/` — Atomic-age theme (warm cream, mustard/teal/coral, starburst dividers, boomerang cards, Googie panels)
+- `alchemist/` — Medieval mystical theme (dark parchment, gold leaf accents, drop caps, recipe cards, transmutation circles)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style
