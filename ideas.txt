@@ -44,11 +44,6 @@ Victorian / Antique
   accents. Heavy decorative rules, engraving-style illustrations, gothic
   drop caps, ribbon banners, medallion section markers.
 
-Retro Americana / 1950s
-  Diner red/cream/navy, chrome accents, retro signage typography.
-  Checkerboard patterns, jukebox-inspired cards, neon-glow callouts,
-  Route 66 badge section markers, soda-fountain pastel highlights.
-
 Manga / Anime
   Speed lines, screentone dot patterns (finer than halftone), dramatic
   diagonal compositions, condensed sans-serif type, selective color pops
@@ -391,3 +386,6 @@ Cartoon Network / Animated
 
 Western / Wanted Poster
   → western/
+
+Retro Americana / 1950s
+  → retro-americana/

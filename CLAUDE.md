@@ -32,6 +32,7 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `cartographer/` — Antique map theme (aged parchment, burnt umber, contour lines, legend boxes, compass rose)
 - `cartoon/` — Animated TV theme (bright white, thick outlines, candy colors, bouncy animations, speech bubbles)
 - `western/` — Wanted poster theme (sun-bleached parchment, burnt sienna, sheriff badges, saloon doors)
+- `retro-americana/` — 1950s diner theme (warm cream, diner red, chrome gold, neon signs, checkerboard panels)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style
