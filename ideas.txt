@@ -246,13 +246,6 @@ Toybox / Building Blocks
   indicators. Fonts: rounded bold sans for headings, clean sans for
   body, mono for part numbers.
 
-Weather Station / Meteorology
-  Dark radar-screen backgrounds, Doppler gradient accents (green-yellow-
-  red), barometer gauge components, forecast card panels with condition
-  icons, isobar contour dividers, storm warning callout banners,
-  precipitation timeline charts. Fonts: clean geometric sans for
-  headings, clean sans for body, mono for readings.
-
 Botanical Garden / Herbarium
   Pressed-flower muted palette on dark forest backgrounds. Herbarium
   specimen sheet cards with collection data labels, garden map grid
@@ -378,3 +371,6 @@ Brutalist Web
 
 Aviation / Cockpit
   → aviation/
+
+Weather Station / Meteorology
+  → weather/
