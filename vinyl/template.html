@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Now Spinning &middot; 33&#8531; RPM</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#127926;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#127925;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#128308;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#128309;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Staff Pick:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Record</div><div class="pipe-desc">Capture audio</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Master</div><div class="pipe-desc">Cut lacquer</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Press</div><div class="pipe-desc">Stamp vinyl</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">04</div><div class="pipe-name">Spin</div><div class="pipe-desc">Drop the needle</div></div>
+  </div>
+</section>
+
+<!-- ============ VINYL-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Collection</div>
+  <h2>LP Sleeves</h2>
+  <p>Album art cards with vinyl peeking out on hover.</p>
+
+  <div class="sleeve-grid">
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127926;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Album Title</div><div class="sleeve-artist">Artist Name</div><div class="sleeve-meta">CAT-001 &middot; 2024 &middot; LP</div></div>
+    </div>
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127911;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Album Title</div><div class="sleeve-artist">Artist Name</div><div class="sleeve-meta">CAT-002 &middot; 2024 &middot; LP</div></div>
+    </div>
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127928;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Album Title</div><div class="sleeve-artist">Artist Name</div><div class="sleeve-meta">CAT-003 &middot; 2024 &middot; 12&quot;</div></div>
+    </div>
+  </div>
+
+  <h3>Groove Divider</h3>
+  <div class="groove-divider"></div>
+
+  <h3>Crate Tabs</h3>
+  <div class="crate-tabs">
+    <div class="crate-tab active">Jazz</div>
+    <div class="crate-tab">Rock</div>
+    <div class="crate-tab">Soul</div>
+    <div class="crate-tab">Electronic</div>
+  </div>
+
+  <h3>Liner Notes</h3>
+  <div class="liner-notes">
+    <div class="notes-header"><span class="notes-title">Album Title</span><span class="notes-cat">CAT: VNL-001</span></div>
+    <div class="notes-body">
+      <div class="track-row"><span class="track-num">01</span><span class="track-name">First Track</span><span class="track-dur">3:42</span></div>
+      <div class="track-row"><span class="track-num">02</span><span class="track-name">Second Track</span><span class="track-dur">4:18</span></div>
+      <div class="track-row"><span class="track-num">03</span><span class="track-name">Third Track</span><span class="track-dur">3:55</span></div>
+    </div>
+    <div class="notes-footer">Recorded at Studio Name &middot; &copy; 2024</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; House Rules</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Reference</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Format</th><th>Speed</th><th>Duration</th></tr></thead>
+    <tbody>
+      <tr><td>LP (12")</td><td>33&#8531; RPM</td><td>~22 min/side</td></tr>
+      <tr><td>Single (7")</td><td>45 RPM</td><td>~4.5 min/side</td></tr>
+      <tr><td>Maxi (12")</td><td>45 RPM</td><td>~12 min/side</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">jazz</span> <span class="tag t-refine">funk</span> <span class="tag t-execute">punk</span> <span class="tag t-batch">blues</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Production Chain</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">RECORD</text>
+      <text x="120" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Capture audio</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">MASTER</text>
+      <text x="380" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Cut lacquer</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="10" font-weight="600">PRESS</text>
+      <text x="610" y="75" text-anchor="middle" fill="var(--text-faint)" font-size="9">Stamp vinyl</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Vinyl</p></div></footer>
+
+</body>
+</html>

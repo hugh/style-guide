@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinyl — Record Store Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 4px; border: 1px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--text); line-height: 1.0; text-transform: uppercase; letter-spacing: 0.04em; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; }
+  .file-link:hover { border-color: var(--accent); box-shadow: 0 0 12px rgba(216, 160, 48, 0.12); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Now Spinning &middot; 33&#8531; RPM</div>
+  <h1>Record <span>Store</span></h1>
+  <p>A rich, warm design system inspired by vinyl record shops &mdash; LP sleeve cards, groove-line dividers, crate-dig tabs, and liner note tracklists for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component ready to customize.</p>
+
+  <div class="flow-grid">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#128196;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component wired up</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#127926;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; variables, reset, all components</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head and use the class names documented below. No build step required.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Rich black tones &mdash; the color of vinyl wax under warm shelf-light. Surfaces layer like stacked records in a dimly lit store.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #0e0e0c;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#0e0e0c</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #1a1918;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#1a1918</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #242220;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#242220</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #2e2c28;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#2e2c28</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #3a3830;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#3a3830</div></div></div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color: var(--text); font-weight: 600;">Primary text &mdash; headings, strong emphasis, key labels</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color: var(--text-dim);">Dim text &mdash; body paragraphs, descriptions, secondary content</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color: var(--text-faint);">Faint text &mdash; captions, metadata, catalog numbers</div></div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>A warm amber primary accent plus four record-store semantic colors. Each has <strong>full</strong>, <strong>dim</strong>, and <strong>transparent fill</strong> variants.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background: #d8a030;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#d8a030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #d8a030;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#d8a030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #e07830;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#e07830</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #c83030;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#c83030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background: #4080b8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#4080b8</div></div></div>
+  </div>
+
+  <p>Inline tags with semantic colors:
+    <span class="tag t-capture">jazz</span>
+    <span class="tag t-refine">funk</span>
+    <span class="tag t-execute">punk</span>
+    <span class="tag t-batch">blues</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three Google Fonts. <strong>Bold condensed display for headings</strong>, <strong>clean sans for body</strong>, <strong>technical mono for labels</strong>.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Bebas Neue — Headings (h1, h2, h3)</div>
+    <div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div>
+  </div>
+  <div class="font-sample">
+    <div class="sample-label">Inter — Body text, card titles, tables (weights 300, 400, 500, 600)</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses weight 400 by default. <strong>Strong text uses weight 600</strong> and the primary text color.</div>
+  </div>
+  <div class="font-sample">
+    <div class="sample-label">IBM Plex Mono — Labels, tags, catalog numbers, metadata</div>
+    <div class="font-sample-mono">01 &mdash; SECTION LABEL &middot; CAT: VNL-001 &middot; 33&#8531; RPM</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Bebas Neue</td><td>clamp(3.5rem, 10vw, 7rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Bebas Neue</td><td>2.4rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Bebas Neue</td><td>1.6rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.85rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+      <tr><td>Tag</td><td>IBM Plex Mono</td><td>0.7rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Documents use a <strong>single-column layout</strong> with a centered container.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128196;</div><h4>Container</h4><p>Max-width 900px, centered, with 2rem horizontal padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#127926;</div><h4>Sections</h4><p>5rem vertical padding. Separated by 1px solid border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams can break out to 1100px max-width with the full-bleed class.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128241;</div><h4>Responsive</h4><p>Fluid hero type with clamp(). Card grids collapse to 1 column below 640px.</p></div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#127926;</div><h4>.flow-card.capture</h4><p>Shelf Amber top bar. Use class <span class="inline-code">capture</span>.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#127925;</div><h4>.flow-card.refine</h4><p>Sleeve Orange top bar. Use class <span class="inline-code">refine</span>.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#128308;</div><h4>.flow-card.execute</h4><p>Label Red top bar. Use class <span class="inline-code">execute</span>.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#128309;</div><h4>.flow-card.batch</h4><p>Cool Wax Blue top bar. Use class <span class="inline-code">batch</span>.</p></div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Press</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Sleeve</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Label</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Ship</div><div class="pipe-desc">.s-batch</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">05</div><div class="pipe-name">Spin</div><div class="pipe-desc">.s-accent</div></div>
+  </div>
+
+  <h2>Principle List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Crate Rule</h4><p>Description text. Numbers render in Bebas Neue at 2.2rem in amber.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Another Rule</h4><p>Good for store policies, listening notes, or genre guides.</p></div></div>
+  </div>
+
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Staff Pick:</strong> This is a callout with a 3px left border in --accent and faint amber-tinted background.</p></div>
+
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic class sets top bar color + glow</td></tr>
+      <tr><td>Pipeline</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>LP Sleeve</td><td>.lp-sleeve</td><td>Album art card with vinyl peek</td></tr>
+      <tr><td>Crate Tab</td><td>.crate-tab .active</td><td>Genre/category selector</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Example Diagram</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#d8a030" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#d8a030" font-size="10" font-weight="600">RECORD</text>
+      <text x="110" y="65" text-anchor="middle" fill="#686050" font-size="9">Capture audio</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#686050" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#e07830" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#e07830" font-size="10" font-weight="600">MASTER</text>
+      <text x="350" y="65" text-anchor="middle" fill="#686050" font-size="9">Cut lacquer</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#686050" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="12" fill="#1a1918" stroke="#4080b8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#4080b8" font-size="10" font-weight="600">PRESS</text>
+      <text x="590" y="65" text-anchor="middle" fill="#686050" font-size="9">Stamp vinyl</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Vinyl Components</div>
+  <h2>LP Sleeves</h2>
+  <p>Album sleeve cards with square art area and a vinyl disc peeking out on hover. Use for showcasing items, projects, or collections.</p>
+
+  <div class="sleeve-grid">
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127926;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Midnight Sessions</div><div class="sleeve-artist">The Groove Collective</div><div class="sleeve-meta">VNL-001 &middot; 2024 &middot; LP</div></div>
+    </div>
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127911;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Electric Dreams</div><div class="sleeve-artist">Neon Wave</div><div class="sleeve-meta">VNL-002 &middot; 2024 &middot; LP</div></div>
+    </div>
+    <div class="lp-sleeve">
+      <div class="sleeve-art"><span class="art-icon">&#127928;</span></div>
+      <div class="sleeve-info"><div class="sleeve-title">Analog Heart</div><div class="sleeve-artist">The Warm Tones</div><div class="sleeve-meta">VNL-003 &middot; 2024 &middot; 12&quot;</div></div>
+    </div>
+  </div>
+
+  <h2>Groove Divider</h2>
+  <p>A circular section separator styled like the grooves on a vinyl record, with a center-label dot in the accent color.</p>
+
+  <div class="groove-divider"></div>
+
+  <h2>Crate Tabs</h2>
+  <p>Genre/category selectors styled like the divider tabs in a record store crate. Add <span class="inline-code">active</span> class to highlight the selected tab.</p>
+
+  <div class="crate-tabs">
+    <div class="crate-tab active">Jazz</div>
+    <div class="crate-tab">Rock</div>
+    <div class="crate-tab">Soul</div>
+    <div class="crate-tab">Electronic</div>
+    <div class="crate-tab">Hip-Hop</div>
+    <div class="crate-tab">Classical</div>
+  </div>
+
+  <h2>Liner Notes</h2>
+  <p>A tracklist component styled like the back of an LP sleeve. Includes header with title and catalog number, numbered tracks with durations, and a footer for credits.</p>
+
+  <div class="liner-notes">
+    <div class="notes-header">
+      <span class="notes-title">Midnight Sessions</span>
+      <span class="notes-cat">CAT: VNL-001</span>
+    </div>
+    <div class="notes-body">
+      <div class="track-row"><span class="track-num">01</span><span class="track-name">Opening Take</span><span class="track-dur">4:12</span></div>
+      <div class="track-row"><span class="track-num">02</span><span class="track-name">Blue Hour</span><span class="track-dur">5:38</span></div>
+      <div class="track-row"><span class="track-num">03</span><span class="track-name">Crossfade</span><span class="track-dur">3:45</span></div>
+      <div class="track-row"><span class="track-num">04</span><span class="track-name">Deep Cut</span><span class="track-dur">6:22</span></div>
+      <div class="track-row"><span class="track-num">05</span><span class="track-name">Last Call</span><span class="track-dur">4:50</span></div>
+    </div>
+    <div class="notes-footer">Recorded at Analog Studios &middot; Mastered by Warm Tones Audio &middot; &copy; 2024</div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rich Black Wax</h4><p>Backgrounds use warm brown-tinted near-blacks like the surface of a vinyl record, not cold greys or pure #000.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Shelf-Light Amber</h4><p>The primary accent is a warm amber inspired by the incandescent shelf-lighting in a record store that makes everything glow.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Record Store Semantics</h4><p>Four semantic colors map to vinyl culture: shelf amber (discovery), sleeve orange (packaging), label red (branding), cool wax blue (pressing).</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Bold Condensed Headings</h4><p>Bebas Neue delivers tall, narrow uppercase headings that echo album title typography on record spines and posters.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Clean Body Text</h4><p>Inter provides crisp readability for body content, like the well-typeset liner notes inside a gatefold sleeve.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Vinyl Artifacts</h4><p>LP sleeves, groove dividers, crate tabs, and liner notes bring the physical experience of digging through a record store into the design.</p></div></div>
+    <div class="principle"><div class="principle-num">7</div><div><h4>Groove Texture</h4><p>The hero section features a concentric-circle pattern evoking the micro-grooves on a vinyl record, with warm amber light spilling across the surface.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Vinyl &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>
