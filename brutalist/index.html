@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brutalist Web — Raw Concrete Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  /* === Index-specific styles === */
+  .swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0;
+    margin: 2rem 0;
+    border: 3px solid var(--border);
+  }
+  .swatch {
+    border: 2px solid var(--border);
+    overflow: hidden;
+  }
+  .swatch-color {
+    height: 56px;
+  }
+  .swatch-info {
+    padding: 0.6rem 0.75rem;
+    background: var(--surface);
+    border-top: 2px solid var(--border);
+  }
+  .swatch-info .swatch-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.15rem;
+  }
+  .swatch-info .swatch-hex {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.7rem;
+    color: var(--text-faint);
+  }
+
+  .font-sample {
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    margin-bottom: -3px;
+  }
+  .font-sample .sample-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 0.75rem;
+  }
+  .font-sample-heading {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+    line-height: 1.0;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  .font-sample-body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    color: var(--text-dim);
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .font-sample-mono {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.6;
+  }
+
+  .file-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    text-decoration: none;
+    /* No border-radius. No transitions. */
+  }
+  .file-link .file-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .file-link h4 {
+    margin-bottom: 0.2rem;
+  }
+  .file-link p {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .text-tier-demo {
+    padding: 1.25rem;
+    background: var(--surface);
+    border: 3px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  .text-tier-demo .tier {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  .text-tier-demo .tier + .tier {
+    border-top: 2px solid var(--border);
+  }
+  .text-tier-demo .tier-label {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-faint);
+    width: 7rem;
+    flex-shrink: 0;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1><span>Brutalist</span> Web</h1>
+  <p>An anti-design system that rejects decoration. System fonts, zero border-radius, thick black borders, no transitions. Raw concrete aesthetics for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 // <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<!-- ============ QUICK START ============ -->
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. The template includes every component. The stylesheet has all variables, resets, and component styles. No Google Fonts needed &mdash; system fonts only.</p>
+
+  <div class="flow-grid" style="border: none;">
+    <a href="template.html" class="file-link">
+      <div class="file-icon">&#9632;</div>
+      <div>
+        <h4>template.html</h4>
+        <p>Starter document with every component</p>
+      </div>
+    </a>
+    <a href="tokens.css" class="file-link">
+      <div class="file-icon">&#9632;</div>
+      <div>
+        <h4>tokens.css</h4>
+        <p>Drop-in stylesheet &mdash; no dependencies</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="callout">
+    <p><strong>No build step.</strong> No fonts to load. No JavaScript. Link <span class="inline-code">tokens.css</span> and go. That's it.</p>
+  </div>
+</section>
+
+<!-- ============ COLORS ============ -->
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Flat concrete greys. No gradients. No warmth. Surfaces are lighter blocks on a grey slab.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c8c8c8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#c8c8c8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e0e0e0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e0e0e0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d0d0d0;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#d0d0d0</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b8b8b8;"></div>
+      <div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#b8b8b8</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #000000;"></div>
+      <div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#000000</div></div>
+    </div>
+  </div>
+
+  <h3>Text Hierarchy</h3>
+  <p>Pure black to medium grey. No subtlety. High contrast against concrete.</p>
+
+  <div class="text-tier-demo">
+    <div class="tier">
+      <div class="tier-label">--text</div>
+      <div style="color: var(--text); font-weight: 900; font-family: Arial, sans-serif; text-transform: uppercase;">Primary &mdash; headings, strong, labels</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-dim</div>
+      <div style="color: var(--text-dim);">Dim &mdash; body paragraphs, descriptions</div>
+    </div>
+    <div class="tier">
+      <div class="tier-label">--text-faint</div>
+      <div style="color: var(--text-faint);">Faint &mdash; captions, metadata, labels</div>
+    </div>
+  </div>
+
+  <h3>Accent &amp; Semantic Colors</h3>
+  <p>One loud accent. Four industrial semantic colors. Maximum saturation. No dim fills on backgrounds &mdash; just raw color.</p>
+
+  <div class="swatch-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ff5500;"></div>
+      <div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#ff5500</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #00aa00;"></div>
+      <div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#00aa00</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #ccaa00;"></div>
+      <div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#ccaa00</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #dd0000;"></div>
+      <div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#dd0000</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0044cc;"></div>
+      <div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#0044cc</div></div>
+    </div>
+  </div>
+
+  <p>Inline tags:
+    <span class="tag t-capture">safe</span>
+    <span class="tag t-refine">caution</span>
+    <span class="tag t-execute">danger</span>
+    <span class="tag t-batch">info</span>
+  </p>
+</section>
+
+<!-- ============ TYPOGRAPHY ============ -->
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p>Three system fonts. No imports. No web fonts. <strong>Arial for impact.</strong> <strong>Times New Roman for body.</strong> <strong>Courier New for data.</strong> The deliberate mismatch is the point.</p>
+
+  <div class="font-sample">
+    <div class="sample-label">Arial &mdash; Headings (weight 900, uppercase)</div>
+    <div class="font-sample-heading">The Quick Brown Fox Jumps Over The Lazy Dog</div>
+  </div>
+
+  <div class="font-sample">
+    <div class="sample-label">Times New Roman &mdash; Body text, descriptions</div>
+    <div class="font-sample-body">The quick brown fox jumps over the lazy dog. Body text uses Times New Roman &mdash; a serif among sans-serif headings. <strong>The contrast is deliberate.</strong> This is not a mistake. This is a choice.</div>
+  </div>
+
+  <div class="font-sample" style="margin-bottom: 0;">
+    <div class="sample-label">Courier New &mdash; Labels, tags, metadata</div>
+    <div class="font-sample-mono">01 &mdash; MODULE // REF. 4401 // STATUS: ACTIVE // 240 KG</div>
+  </div>
+
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead>
+      <tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>HERO H1</td><td>Arial</td><td>clamp(3.5rem, 12vw, 8rem)</td><td>900</td></tr>
+      <tr><td>SECTION H2</td><td>Arial</td><td>2.4rem</td><td>900</td></tr>
+      <tr><td>SUBSECTION H3</td><td>Arial</td><td>1.2rem</td><td>900</td></tr>
+      <tr><td>CARD TITLE H4</td><td>Arial</td><td>0.75rem</td><td>900</td></tr>
+      <tr><td>BODY</td><td>Times New Roman</td><td>1rem</td><td>400</td></tr>
+      <tr><td>LABEL</td><td>Courier New</td><td>0.8rem</td><td>700</td></tr>
+      <tr><td>TAG</td><td>Courier New</td><td>0.75rem</td><td>700</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ LAYOUT ============ -->
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <p>Single-column. Centered container. Thick borders between sections. The grid is not hidden &mdash; it is the design.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card accent">
+      <div class="card-icon">&#9632;</div>
+      <h4>Container</h4>
+      <p>Max-width 900px, centered, 2rem padding.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9632;</div>
+      <h4>Sections</h4>
+      <p>4rem vertical padding. 4px solid black border-top.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9632;</div>
+      <h4>Full-Bleed</h4>
+      <p>Diagrams expand to 1100px with full-bleed class.</p>
+    </div>
+    <div class="flow-card accent">
+      <div class="card-icon">&#9632;</div>
+      <h4>Responsive</h4>
+      <p>Grids collapse to 1 column below 640px.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPONENTS ============ -->
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <p>Two-column grid with <strong>6px top accent bars</strong>. Cards share a 3px outer grid border. No gap between cards &mdash; the structure is visible.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9632;</div>
+      <h4>.flow-card.capture</h4>
+      <p>Safety Green top bar. Use class <span class="inline-code">capture</span>.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9650;</div>
+      <h4>.flow-card.refine</h4>
+      <p>Warning Yellow top bar. Use class <span class="inline-code">refine</span>.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9679;</div>
+      <h4>.flow-card.execute</h4>
+      <p>Danger Red top bar. Use class <span class="inline-code">execute</span>.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9644;</div>
+      <h4>.flow-card.batch</h4>
+      <p>Industrial Blue top bar. Use class <span class="inline-code">batch</span>.</p>
+    </div>
+  </div>
+
+  <h2>Pipeline</h2>
+  <p>Horizontal stages with thick borders and 6px top color bars. Stages share walls &mdash; no gaps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture">
+      <div class="pipe-num">01</div>
+      <div class="pipe-name">Input</div>
+      <div class="pipe-desc">.s-capture</div>
+    </div>
+    <div class="pipe-stage s-refine">
+      <div class="pipe-num">02</div>
+      <div class="pipe-name">Process</div>
+      <div class="pipe-desc">.s-refine</div>
+    </div>
+    <div class="pipe-stage s-execute">
+      <div class="pipe-num">03</div>
+      <div class="pipe-name">Build</div>
+      <div class="pipe-desc">.s-execute</div>
+    </div>
+    <div class="pipe-stage s-batch">
+      <div class="pipe-num">04</div>
+      <div class="pipe-name">Test</div>
+      <div class="pipe-desc">.s-batch</div>
+    </div>
+    <div class="pipe-stage s-accent">
+      <div class="pipe-num">05</div>
+      <div class="pipe-name">Output</div>
+      <div class="pipe-desc">.s-accent</div>
+    </div>
+  </div>
+
+  <h2>Principle List</h2>
+  <p>Stacked blocks with oversized numbers. Items share borders &mdash; no gap between them.</p>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Rule Title</h4>
+        <p>Numbers render in Arial at 3rem, weight 900, in construction orange.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Another Rule</h4>
+        <p>Items share borders with no spacing. The list is a single monolithic block.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Callout</h2>
+  <p>Left-bordered block. 8px orange bar. 3px black borders on all other sides.</p>
+
+  <div class="callout">
+    <p><strong>Warning:</strong> This is a callout. Strong text renders in construction orange. The thick left border is the primary visual signal.</p>
+  </div>
+
+  <h2>Table</h2>
+
+  <table class="info-table">
+    <thead>
+      <tr><th>Component</th><th>Class</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>FLOW CARD</td><td>.flow-card .capture</td><td>Semantic class sets top bar</td></tr>
+      <tr><td>PIPELINE</td><td>.pipe-stage .s-refine</td><td>s- prefix for stage color</td></tr>
+      <tr><td>TAG</td><td>.tag .t-execute</td><td>t- prefix for tag color</td></tr>
+      <tr><td>MONOLITH</td><td>.monolith</td><td>Inverted high-impact block</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Diagram Container</h2>
+
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; System Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="#e0e0e0" stroke="#00aa00" stroke-width="3"/>
+      <text x="120" y="55" text-anchor="middle" fill="#00aa00" font-size="12" font-weight="900">INPUT</text>
+      <text x="120" y="72" text-anchor="middle" fill="#555555" font-size="9">Raw data</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="#555555" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="#e0e0e0" stroke="#ccaa00" stroke-width="3"/>
+      <text x="380" y="55" text-anchor="middle" fill="#ccaa00" font-size="12" font-weight="900">PROCESS</text>
+      <text x="380" y="72" text-anchor="middle" fill="#555555" font-size="9">Transform</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="#555555" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="#e0e0e0" stroke="#ff5500" stroke-width="3"/>
+      <text x="610" y="55" text-anchor="middle" fill="#ff5500" font-size="12" font-weight="900">OUTPUT</text>
+      <text x="610" y="72" text-anchor="middle" fill="#555555" font-size="9">Deliver</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ UNIQUE COMPONENTS ============ -->
+<section>
+  <div class="section-num">05 &mdash; Raw Elements</div>
+  <h2>Monolith Block</h2>
+  <p>A massive inverted-color block. Black background, light text, construction orange accent. For high-impact statements that demand attention through sheer visual mass.</p>
+
+  <div class="monolith">
+    <div class="monolith-title">This is a <em>monolith</em> block</div>
+    <div class="monolith-body">Use it for key figures, bold statements, or section openers. The <code style="color: var(--accent); font-family: 'Courier New', monospace;">&lt;em&gt;</code> tag inside the title renders in construction orange without italics.</div>
+  </div>
+
+  <div class="monolith">
+    <div class="monolith-title"><em>47,000</em> tonnes</div>
+    <div class="monolith-body">Monoliths also work for displaying large data points or key metrics at maximum scale.</div>
+  </div>
+
+  <h2>Exposed Grid</h2>
+  <p>A 3-column grid where the structure is the design. Thick black borders on every cell. Content is secondary to the grid itself.</p>
+
+  <div class="exposed-grid">
+    <div class="grid-cell"><div class="cell-label">Module A</div><div class="cell-value">240 kg</div><div class="cell-desc">Structural steel</div></div>
+    <div class="grid-cell"><div class="cell-label">Module B</div><div class="cell-value">180 kg</div><div class="cell-desc">Reinforced concrete</div></div>
+    <div class="grid-cell"><div class="cell-label">Module C</div><div class="cell-value">320 kg</div><div class="cell-desc">Aggregate fill</div></div>
+    <div class="grid-cell"><div class="cell-label">Module D</div><div class="cell-value">150 kg</div><div class="cell-desc">Rebar mesh</div></div>
+    <div class="grid-cell"><div class="cell-label">Module E</div><div class="cell-value">210 kg</div><div class="cell-desc">Cinder block</div></div>
+    <div class="grid-cell"><div class="cell-label">Module F</div><div class="cell-value">290 kg</div><div class="cell-desc">Foundation pour</div></div>
+  </div>
+
+  <h2>Hazard Stripe</h2>
+  <p>Construction warning stripe dividers. Orange/black default, yellow/black variant with <span class="inline-code">.stripe-yellow</span>.</p>
+
+  <div class="hazard-stripe"></div>
+  <div class="hazard-stripe stripe-yellow" style="margin-top: -3px;"></div>
+
+  <h2>Stencil Stamp</h2>
+  <p>Construction-site stencil labels with a slight rotation for a hand-stamped feel. Four semantic variants.</p>
+
+  <div style="margin: 1.5rem 0;">
+    <div class="stencil-stamp stamp-approved">Approved</div>
+    <div class="stencil-stamp stamp-rejected">Rejected</div>
+    <div class="stencil-stamp stamp-review">Under Review</div>
+    <div class="stencil-stamp stamp-urgent">Urgent</div>
+  </div>
+</section>
+
+<!-- ============ KEY PATTERNS ============ -->
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+
+  <div class="principle-list">
+    <div class="principle">
+      <div class="principle-num">1</div>
+      <div>
+        <h4>Raw Concrete</h4>
+        <p>Flat grey backgrounds. No gradients, no warmth, no texture overlays. The surface is what it is.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">2</div>
+      <div>
+        <h4>Construction Orange</h4>
+        <p>One loud accent color. It demands attention like a safety vest on a building site. Everything else is black, white, and grey.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">3</div>
+      <div>
+        <h4>System Fonts Only</h4>
+        <p>Arial. Times New Roman. Courier. No imports. No web fonts. The deliberate mismatch between serif body and sans headings is intentional.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">4</div>
+      <div>
+        <h4>Zero Border-Radius</h4>
+        <p>Every corner is sharp. No rounded corners, ever. No exceptions. The rawness is the aesthetic.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">5</div>
+      <div>
+        <h4>No Hover Transitions</h4>
+        <p>Nothing moves. Nothing fades. Nothing lifts. Everything is static and monolithic. The weight is the point.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">6</div>
+      <div>
+        <h4>Thick Black Borders</h4>
+        <p>3-4px pure black on every component. The structure is exposed, not hidden behind subtle hairlines.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">7</div>
+      <div>
+        <h4>Jarring Scale</h4>
+        <p>Hero text at 8rem. Body in Times New Roman at 1rem. The contrast between massive and modest is deliberate discomfort.</p>
+      </div>
+    </div>
+    <div class="principle">
+      <div class="principle-num">8</div>
+      <div>
+        <h4>Industrial Artifacts</h4>
+        <p>Monolith blocks, exposed grids, hazard stripes, and stencil stamps. The construction site is the metaphor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <p>Brutalist Web // <a href="template.html">Starter Template</a> // <a href="tokens.css">tokens.css</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

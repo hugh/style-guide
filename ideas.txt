@@ -103,15 +103,6 @@ Art Nouveau
   body. Floral corner ornaments on cards, stained-glass panel dividers,
   medallion section markers with organic motifs.
 
-Brutalist Web
-  Anti-design aesthetic. Raw concrete grey backgrounds, stark black
-  and white, one loud accent (construction orange or safety yellow).
-  Oversized type at intentionally awkward scales, system fonts (Arial,
-  Times New Roman, Courier), no border-radius anywhere, harsh grid
-  with visible structure. Thick raw borders, deliberately crude
-  spacing, exposed-grid layouts, monolithic block components, NO
-  hover transitions — everything static and heavy.
-
 Vaporwave
   Nostalgic retro-futurism. Pastel pink-to-purple gradient backgrounds,
   cyan and hot magenta accents, chrome/silver metallic text effects.
@@ -389,3 +380,6 @@ Western / Wanted Poster
 
 Retro Americana / 1950s
   → retro-americana/
+
+Brutalist Web
+  → brutalist/

@@ -1,0 +1,649 @@
+/* ==============================
+   Brutalist Web — Design Tokens
+   No Google Fonts. System fonts only.
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #c8c8c8;
+  --surface: #e0e0e0;
+  --surface-2: #d0d0d0;
+  --surface-3: #b8b8b8;
+  --border: #000000;
+
+  /* Text */
+  --text: #000000;
+  --text-dim: #1a1a1a;
+  --text-faint: #555555;
+
+  /* Accent (Construction Orange) */
+  --accent: #ff5500;
+  --accent-dim: #cc4400;
+
+  /* Semantic: Capture (Safety Green) */
+  --capture: #00aa00;
+  --capture-dim: #008800;
+  --capture-fill: rgba(0, 170, 0, 0.12);
+
+  /* Semantic: Refine (Warning Yellow) */
+  --refine: #ccaa00;
+  --refine-dim: #aa8800;
+  --refine-fill: rgba(204, 170, 0, 0.12);
+
+  /* Semantic: Execute (Danger Red) */
+  --execute: #dd0000;
+  --execute-dim: #aa0000;
+  --execute-fill: rgba(221, 0, 0, 0.12);
+
+  /* Semantic: Batch (Industrial Blue) */
+  --batch: #0044cc;
+  --batch-dim: #003399;
+  --batch-fill: rgba(0, 68, 204, 0.12);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2.4rem;
+  line-height: 1.0;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  letter-spacing: 0.02em;
+}
+
+h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 900;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 4rem 0;
+  border-top: 4px solid var(--border);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  margin-bottom: 2rem;
+}
+
+.hero h1 span {
+  color: var(--accent);
+  display: block;
+}
+
+.hero p {
+  max-width: 500px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+}
+
+/* No animations. Static. */
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 2.5rem 0;
+  border: 3px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 3px solid var(--border);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  /* No border-radius. No transitions. No hover effects. */
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+  border: 3px solid var(--border);
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border-right: 3px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:last-child { border-right: none; }
+
+.pipe-stage.s-capture { border-top: 6px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 6px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 6px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 6px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 6px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 3px solid var(--border);
+}
+
+.principle + .principle {
+  border-top: none;
+}
+
+.principle-num {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 3rem;
+  text-align: center;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 8px solid var(--accent);
+  border-top: 3px solid var(--border);
+  border-right: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  background: var(--surface);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); font-weight: 900; }
+
+/* ==============================
+   Tags / Pills (no pills — blocks)
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 0.25em 0.6em;
+  border: 2px solid;
+  text-transform: uppercase;
+  /* No border-radius. */
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+  border: 3px solid var(--border);
+}
+
+.info-table th {
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid var(--border);
+  background: var(--surface-3);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 700;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==============================
+   Monolith Block (unique)
+   ============================== */
+
+.monolith {
+  margin: 2.5rem 0;
+  background: var(--text);
+  border: 4px solid var(--border);
+  padding: 3rem 2.5rem;
+  color: var(--bg);
+}
+
+.monolith .monolith-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--surface);
+  margin-bottom: 1rem;
+}
+
+.monolith .monolith-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.monolith .monolith-body {
+  font-size: 1rem;
+  color: var(--surface-3);
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+/* ==============================
+   Exposed Grid (unique)
+   ============================== */
+
+.exposed-grid {
+  margin: 2.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 4px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .exposed-grid { grid-template-columns: 1fr; }
+}
+
+.grid-cell {
+  padding: 1.5rem;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.grid-cell .cell-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.5rem;
+}
+
+.grid-cell .cell-value {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.grid-cell .cell-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+/* ==============================
+   Hazard Stripe (unique)
+   ============================== */
+
+.hazard-stripe {
+  margin: 3rem 0;
+  height: 24px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--accent) 0px,
+    var(--accent) 12px,
+    var(--text) 12px,
+    var(--text) 24px
+  );
+  border-top: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+}
+
+.hazard-stripe.stripe-yellow {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--refine) 0px,
+    var(--refine) 12px,
+    var(--text) 12px,
+    var(--text) 24px
+  );
+}
+
+/* ==============================
+   Stencil Stamp (unique)
+   ============================== */
+
+.stencil-stamp {
+  display: inline-block;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  padding: 0.5rem 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: 4px solid;
+  transform: rotate(-2deg);
+}
+
+.stencil-stamp.stamp-approved {
+  color: var(--capture);
+  border-color: var(--capture);
+}
+
+.stencil-stamp.stamp-rejected {
+  color: var(--execute);
+  border-color: var(--execute);
+}
+
+.stencil-stamp.stamp-review {
+  color: var(--refine);
+  border-color: var(--refine);
+}
+
+.stencil-stamp.stamp-urgent {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border: 2px solid var(--border);
+  color: var(--text);
+  /* No border-radius. */
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 4px solid var(--border);
+  padding: 3rem 0;
+  text-align: left;
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-label">Dept. of Information &middot; Ref. 001</div>
+  <h1>Document <span>Title</span></h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 // draft</div>
+</div>
+
+<!-- ============ SECTION ============ -->
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases within paragraphs. Body text renders in the dim color by default while strong text uses the primary text color.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content. Keep paragraphs concise and scannable.</p>
+
+  <!-- Flow Cards -->
+  <div class="flow-grid">
+    <div class="flow-card capture">
+      <div class="card-icon">&#9632;</div>
+      <h4>Card Title</h4>
+      <p>Card description text. Use semantic class names (capture, refine, execute, batch, accent) to set the top accent bar color.</p>
+    </div>
+    <div class="flow-card refine">
+      <div class="card-icon">&#9650;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card execute">
+      <div class="card-icon">&#9679;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+    <div class="flow-card batch">
+      <div class="card-icon">&#9644;</div>
+      <h4>Card Title</h4>
+      <p>Card description text.</p>
+    </div>
+  </div>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p><strong>Warning:</strong> Callouts are used for important asides. The strong tag within a callout renders in the accent color.</p>
+  </div>
+</section>
+
+<!-- ============ PIPELINE EXAMPLE ============ -->
+<section>
+  <div class="section-num">02 &mdash; Process</div>
+  <h2>Pipeline Stages</h2>
+  <p>Use the pipeline component to show a linear sequence of steps.</p>
+
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Input</div><div class="pipe-desc">Raw material</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Process</div><div class="pipe-desc">Transform</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Build</div><div class="pipe-desc">Construct</div></div>
+    <div class="pipe-stage s-accent"><div class="pipe-num">04</div><div class="pipe-name">Output</div><div class="pipe-desc">Deliver</div></div>
+  </div>
+</section>
+
+<!-- ============ BRUTALIST-SPECIFIC COMPONENTS ============ -->
+<section>
+  <div class="section-num">03 &mdash; Structure</div>
+  <h2>Monolith Block</h2>
+  <p>A massive inverted block for high-impact statements.</p>
+
+  <div class="monolith">
+    <div class="monolith-title">This is a <em>monolith</em> block</div>
+    <div class="monolith-body">Use it for high-impact statements, key figures, or section openers that demand attention through sheer mass.</div>
+  </div>
+
+  <h3>Exposed Grid</h3>
+  <div class="exposed-grid">
+    <div class="grid-cell"><div class="cell-label">Cell A1</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+    <div class="grid-cell"><div class="cell-label">Cell A2</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+    <div class="grid-cell"><div class="cell-label">Cell A3</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+    <div class="grid-cell"><div class="cell-label">Cell B1</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+    <div class="grid-cell"><div class="cell-label">Cell B2</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+    <div class="grid-cell"><div class="cell-label">Cell B3</div><div class="cell-value">Data</div><div class="cell-desc">Description text</div></div>
+  </div>
+
+  <h3>Hazard Stripe</h3>
+  <div class="hazard-stripe"></div>
+
+  <h3>Stencil Stamps</h3>
+  <div>
+    <div class="stencil-stamp stamp-approved">Approved</div>
+    <div class="stencil-stamp stamp-rejected">Rejected</div>
+    <div class="stencil-stamp stamp-review">Under Review</div>
+    <div class="stencil-stamp stamp-urgent">Urgent</div>
+  </div>
+</section>
+
+<!-- ============ NUMBERED LIST EXAMPLE ============ -->
+<section>
+  <div class="section-num">04 &mdash; Rules</div>
+  <h2>Numbered List</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Rule Title</h4><p>Description goes here.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ TABLE EXAMPLE ============ -->
+<section>
+  <div class="section-num">05 &mdash; Data</div>
+  <h2>Data Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Module</th><th>Status</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>BLOCK-A</td><td>Active</td><td>240 kg</td></tr>
+      <tr><td>BLOCK-B</td><td>Pending</td><td>180 kg</td></tr>
+      <tr><td>BLOCK-C</td><td>Decommissioned</td><td>320 kg</td></tr>
+    </tbody>
+  </table>
+  <p>Inline tags: <span class="tag t-capture">safe</span> <span class="tag t-refine">caution</span> <span class="tag t-execute">danger</span> <span class="tag t-batch">info</span></p>
+</section>
+
+<!-- ============ DIAGRAM EXAMPLE ============ -->
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Diagram Containers</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; System Flow</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--capture)" stroke-width="3"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="12" font-weight="900">INPUT</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Raw data</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="280" y="20" width="200" height="80" rx="0" fill="var(--surface)" stroke="var(--refine)" stroke-width="3"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--refine)" font-size="12" font-weight="900">PROCESS</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Transform</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="2" stroke-dasharray="6,4"/>
+      <rect x="540" y="20" width="140" height="80" rx="0" fill="var(--surface)" stroke="var(--accent)" stroke-width="3"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="900">OUTPUT</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Deliver</text>
+    </svg>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title // v0.1 // Brutalist</p></div></footer>
+
+</body>
+</html>
