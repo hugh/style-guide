@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rougher Woodworking &mdash; Style Guide</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem; margin: 1.5rem 0; }
+  .swatch { border: 2px solid var(--border); overflow: hidden; }
+  .swatch:nth-child(1) { transform: rotate(-0.8deg); }
+  .swatch:nth-child(2) { transform: rotate(0.5deg); }
+  .swatch:nth-child(3) { transform: rotate(-0.3deg); }
+  .swatch:nth-child(4) { transform: rotate(1deg); }
+  .swatch:nth-child(5) { transform: rotate(-0.6deg); }
+  .swatch:nth-child(6) { transform: rotate(0.4deg); }
+  .swatch:nth-child(7) { transform: rotate(-1deg); }
+  .swatch-color { height: 50px; }
+  .swatch-info { padding: 0.5rem 0.6rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text); margin-bottom: 0.1rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-faint); }
+  .font-sample { padding: 1.25rem; border: 2px solid var(--border); margin-bottom: 0.8rem; }
+  .font-sample:nth-child(odd) { background: var(--warm-1); }
+  .font-sample:nth-child(even) { background: var(--warm-6); }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
+  .font-sample-heading { font-family: 'Bitter', serif; font-size: 1.8rem; color: var(--text); line-height: 1.2; font-weight: 700; }
+  .font-sample-body { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); }
+  .font-sample-scrawl { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--accent); line-height: 1.4; }
+  .text-tier-demo { padding: 1rem; background: var(--warm-7); border: 2px solid var(--border); margin: 1.25rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.4rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--text-faint); width: 5.5rem; flex-shrink: 0; text-align: right; }
+  .demo-box { position: relative; background: var(--warm-1); border: 2px solid var(--border); padding: 2rem 1.5rem; margin: 1.25rem 0; min-height: 100px; }
+  .demo-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
+  .demo-item { flex: 1; min-width: 200px; position: relative; background: var(--warm-3); border: 2px solid var(--border); padding: 1.5rem; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">a rougher kind of style guide (level 2)</div>
+  <h1>The <span>Rougher</span> Workshop</h1>
+  <p class="hero-subtitle">One step past rough. Cards rotate. Tape holds things down. There's a coffee ring on the plans. Some borders are dashed. The workshop is truly lived-in now.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color:var(--text-faint);text-decoration:underline;">starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; what changed</div>
+  <h2>Rough vs Rougher</h2>
+  <p>The <code>rough-woodworking/</code> theme added handwritten annotations, card warmth variation, and slight rotations. This <strong>rougher</strong> version turns all those knobs further and adds new physical-artifact classes: tape, coffee rings, pushpins, dog-ears.</p>
+
+  <table class="info-table">
+    <thead><tr><th>Property</th><th>Rough (Level 1)</th><th>Rougher (Level 2)</th></tr></thead>
+    <tbody>
+      <tr><td>Container width</td><td>880px</td><td>860px</td></tr>
+      <tr><td>Card rotation</td><td>None</td><td>1&ndash;2&deg; via nth-child</td></tr>
+      <tr><td>Stamp rotation</td><td>0.5&ndash;3&deg;</td><td>3&ndash;6&deg;</td></tr>
+      <tr><td>Callout rotation</td><td>-0.3&deg;</td><td>-0.8&deg;</td></tr>
+      <tr><td>Tag rotation</td><td>&plusmn;0.8&deg;</td><td>&plusmn;1.5&ndash;2&deg;</td></tr>
+      <tr><td>Section padding</td><td>4rem / 4.5rem</td><td>3rem&ndash;5.5rem, wildly varied</td></tr>
+      <tr><td>Border widths</td><td>2px / 3px</td><td>1.5px, 2px, 3px, 4px + dashed</td></tr>
+      <tr><td>Card padding</td><td>1.5rem uniform</td><td>1.25&ndash;1.75rem per card</td></tr>
+      <tr><td>Margin note font</td><td>1.05rem, 0.85 opacity</td><td>1.2rem, 0.9 opacity, negative margin</td></tr>
+      <tr><td>Principle numbers</td><td>2.8rem</td><td>3.5rem, some rotated</td></tr>
+      <tr><td>Body grain</td><td>2 layers</td><td>3 layers + knot marks</td></tr>
+      <tr><td>Warm variants</td><td>5 (warm-1 through warm-5)</td><td>7 (+ warm-6, warm-7)</td></tr>
+      <tr><td>Table rows</td><td>Alternating tint</td><td>+ slight rotation, uneven padding</td></tr>
+      <tr><td>Stamps</td><td>Some faded</td><td>+ double-border variant, wider fading</td></tr>
+      <tr><td>Blueprint cards</td><td>-0.2&deg;</td><td>-1&deg; / +0.8&deg;</td></tr>
+      <tr><td>New classes</td><td>&mdash;</td><td>.coffee-ring, .taped, .pinned, .dog-ear, .pencil-underline</td></tr>
+    </tbody>
+  </table>
+
+  <div class="margin-note">The rough version felt human. The rougher version feels like you found someone's actual workbench and started reading their notes while they were out getting coffee.</div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; palette</div>
+  <h2>Colors</h2>
+  <p>Same base palette as rough-woodworking, plus two new warm variants and two special-purpose tokens for physical artifacts.</p>
+
+  <h3>Core Surfaces</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f2e8d8;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f2e8d8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e6d8c2;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e6d8c2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dac8ae;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#dac8ae</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#cebea0;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#cebea0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b09878;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#b09878</div></div></div>
+  </div>
+
+  <h3>Seven Warm Variants</h3>
+  <p>Cards, principles, and panels draw from seven different tones now. <span class="scrawl">Like seven boards from the same slab.</span></p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f0e4ce;"></div><div class="swatch-info"><div class="swatch-name">--warm-1</div><div class="swatch-hex">#f0e4ce</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ecdcc4;"></div><div class="swatch-info"><div class="swatch-name">--warm-2</div><div class="swatch-hex">#ecdcc4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8d6bc;"></div><div class="swatch-info"><div class="swatch-name">--warm-3</div><div class="swatch-hex">#e8d6bc</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e4d0b6;"></div><div class="swatch-info"><div class="swatch-name">--warm-4</div><div class="swatch-hex">#e4d0b6</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f2e6d0;"></div><div class="swatch-info"><div class="swatch-name">--warm-5</div><div class="swatch-hex">#f2e6d0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e0caa8;"></div><div class="swatch-info"><div class="swatch-name">--warm-6</div><div class="swatch-hex">#e0caa8 (new)</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f4e8d4;"></div><div class="swatch-info"><div class="swatch-name">--warm-7</div><div class="swatch-hex">#f4e8d4 (new)</div></div></div>
+  </div>
+
+  <h3>Artifact Tokens</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:rgba(240,230,200,0.7);"></div><div class="swatch-info"><div class="swatch-name">--tape</div><div class="swatch-hex">rgba(240,230,200,0.7)</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:rgba(120,70,20,0.12);"></div><div class="swatch-info"><div class="swatch-name">--coffee</div><div class="swatch-hex">rgba(120,70,20,0.12)</div></div></div>
+  </div>
+
+  <h3>Text Tiers</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Headings and bold stuff</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Body text, most paragraphs</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Labels, measurements, the quiet stuff</div></div>
+  </div>
+
+  <h3>Stain Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#8b4520;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b4520</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a7a38;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#4a7a38</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c89030;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3868a0;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3868a0</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">pine</span> <span class="tag t-refine">maple</span> <span class="tag t-execute">cherry</span> <span class="tag t-batch">steel</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; type</div>
+  <h2>Fonts</h2>
+  <p>Same four families. Caveat is louder in this version &mdash; bigger sizes, used in more places.</p>
+  <div class="font-sample"><div class="sample-label">Bitter &mdash; Headings</div><div class="font-sample-heading">Measure twice, cut once. Or don't.</div></div>
+  <div class="font-sample"><div class="sample-label">Source Sans 3 &mdash; Body</div><div class="font-sample-body">Good woodworking isn't about expensive tools or exotic wood. It's about patience, practice, and understanding the material you're working with. Also coffee. Lots of coffee.</div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels &amp; measurements</div><div class="font-sample-mono">01 &mdash; CHERRY &middot; 4/4 &middot; 28 BF &middot; KD &middot; FAS &middot; $12.50/BF</div></div>
+  <div class="font-sample"><div class="sample-label">Caveat &mdash; Handwritten notes (bigger in Level 2)</div><div class="font-sample-scrawl">Louder now. The annotations are harder to ignore. Like someone wrote in the margins with a thick pencil and actually meant it.</div></div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; standard components</div>
+  <h2>Flow Cards (Now Rotating)</h2>
+  <p>Each card now rotates to its own angle, has its own padding, and some have dashed borders. Notice the cards aren't sitting flat anymore.</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#128296;</div><h4>Rotating Cards</h4><p>Each card tilts 0.5&ndash;2&deg; via nth-child. They pull from 7 warm variants now instead of 5. Some borders are dashed.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9999;&#65039;</div><h4>Varied Padding</h4><p>Card padding varies: 1.25rem, 1.75rem, 1.4rem, 1.6rem. You can feel the inconsistency but it doesn't look broken.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#128208;</div><h4>Dashed Borders</h4><p>Some cards get dashed borders via nth-child. It looks like someone drew the border by hand with a ruler that kept slipping.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#127794;</div><h4>More Warmth Range</h4><p>warm-6 and warm-7 added to the pool. The color temperature spread is wider &mdash; some cards clearly cooler, some warmer.</p></div>
+  </div>
+
+  <h3>Pipeline</h3>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Select</div><div class="pipe-desc">Pick your stock</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Mill</div><div class="pipe-desc">Joint &amp; plane</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Join</div><div class="pipe-desc">Cut joinery</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Finish</div><div class="pipe-desc">Sand &amp; oil</div></div>
+  </div>
+
+  <h3>Callout (Rotated -0.8&deg;)</h3>
+  <div class="callout"><p><strong>Shop tip:</strong> The callout rotates more than in Level 1. It's -0.8&deg; now instead of -0.3&deg;. <span class="scrawl">Barely noticeable but your brain registers it.</span></p></div>
+
+  <h3>Table (Row Rotation + Uneven Padding)</h3>
+  <p>Odd rows rotate 0.2&deg;, even rows rotate -0.1&deg;. Cell padding varies between rows. It feels like the table was printed on paper that buckled slightly.</p>
+  <table class="info-table">
+    <thead><tr><th>What changed</th><th>Level 1</th><th>Level 2</th></tr></thead>
+    <tbody>
+      <tr><td>Card rotation</td><td>None</td><td>1&ndash;2&deg;</td></tr>
+      <tr><td>Section borders</td><td>2px / 3px</td><td>1.5&ndash;4px + dashed</td></tr>
+      <tr><td>Stamp range</td><td>0.5&ndash;3&deg;</td><td>3&ndash;6&deg;</td></tr>
+      <tr><td>Table rows</td><td>Flat</td><td>Slightly rotated</td></tr>
+      <tr><td>New artifacts</td><td>None</td><td>Coffee ring, tape, pushpin, dog-ear</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; new rougher components</div>
+  <h2>Coffee Ring</h2>
+  <p>Add <code>.coffee-ring</code> to any positioned element. A faint brown ring appears in the top-right corner &mdash; like someone set down a mug on the plans.</p>
+  <div class="demo-box coffee-ring">
+    <h4>A Card With a Coffee Ring</h4>
+    <p>The ring is an 80px radial-gradient circle, very low opacity. It's decorative only &mdash; doesn't affect layout. The ring is positioned via <code>::after</code> so the element needs <code>position: relative</code> (or any positioned value).</p>
+  </div>
+
+  <h2>Masking Tape</h2>
+  <p>Add <code>.taped</code> to stick a small masking tape strip across the top of any element. Uses <code>::before</code> with a clip-path for rough edges.</p>
+  <div class="demo-box taped" style="margin-top: 1.75rem;">
+    <h4>A Taped-On Note</h4>
+    <p>The tape strip is about 90px wide, slightly off-white and transparent (uses <code>--tape</code> token), rotated -2.5&deg;. It sits on top of the card, extending above it by a few pixels.</p>
+  </div>
+
+  <h2>Pushpin</h2>
+  <p>Add <code>.pinned</code> for a small red pushpin dot in the top-left corner. Uses <code>::before</code>.</p>
+  <div class="demo-box pinned">
+    <h4>A Pinned Card</h4>
+    <p>The pushpin is a 12px circle with a subtle gradient and drop shadow. It looks like someone tacked this card to a corkboard.</p>
+  </div>
+
+  <h2>Dog-Ear</h2>
+  <p>Add <code>.dog-ear</code> for a folded corner triangle in the top-right. Uses <code>::after</code> with a CSS triangle. Note: the element needs <code>overflow: hidden</code> (which the class applies).</p>
+  <div class="demo-box dog-ear">
+    <h4>A Dog-Eared Card</h4>
+    <p>The triangle is 24px. The fold color matches <code>--bg</code> so it looks like the corner has been bent back to reveal the background behind the card.</p>
+  </div>
+
+  <h2>Pencil Underline</h2>
+  <p>Add <code>.pencil-underline</code> to any inline text for a wavy underline effect in the accent color.</p>
+  <p>Here is some text with a <span class="pencil-underline">pencil underline applied to it</span> and then the sentence continues normally. Good for <span class="pencil-underline">drawing attention</span> to specific words.</p>
+
+  <h2>Combining Classes</h2>
+  <p>These classes can be combined. Here's a card that's taped, coffee-ringed, <em>and</em> dog-eared:</p>
+  <div class="demo-box taped coffee-ring dog-ear" style="margin-top: 1.75rem;">
+    <h4>The Full Treatment</h4>
+    <p>Tape on top, coffee ring in the corner, dog-ear fold. This is what a real workshop note looks like after a week on the bench.</p>
+    <p class="scrawl">Don't use all of these on every element. Pick one or two. This demo is intentionally over the top.</p>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; existing rough components (escalated)</div>
+  <h2>Blueprint Card (Rotated -1&deg;)</h2>
+  <p>Blueprint cards rotate more now: -1&deg; for odd cards, +0.8&deg; for even. The grid lines are denser and the border is thicker.</p>
+  <div class="blueprint-card">
+    <div class="blueprint-title">Sketch 01 &mdash; Rougher Blueprint</div>
+    <h3>More Tilted Than Before</h3>
+    <p>The grid is 16px instead of 18px. The border is 2.5px. The rotation is -1&deg; instead of -0.2&deg;. Small changes, big feel.</p>
+    <div>
+      <span class="blueprint-measurement">36&Prime; &times; 24&Prime;</span>
+      <span class="blueprint-measurement">3/4&Prime; stock</span>
+      <span class="blueprint-measurement">Cherry</span>
+    </div>
+  </div>
+
+  <h2>Margin Notes (Louder)</h2>
+  <p>Margin notes are bigger now (1.2rem), more opaque (0.9), and intrude into the content area with a small negative left margin.</p>
+  <div class="margin-note">This note is harder to ignore than the Level 1 version. It practically elbows its way into the paragraph. The border is thicker too &mdash; 3px instead of 2px.</div>
+  <p>Inline: <span class="scrawl">scrawl text is 1.2rem now instead of 1.15rem</span>. And you can mark things as <span class="struck">wrong</span> <span class="amended">corrected</span> with the same utility classes.</p>
+
+  <h2>Lumber Stamps (Wilder Rotation, Double-Border)</h2>
+  <p>Stamps rotate 3&ndash;6&deg; now (was 0.5&ndash;3&deg;). Some are more faded (40% vs 55%). New <code>.double-border</code> variant adds an outline.</p>
+  <div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;margin:1.5rem 0;">
+    <span class="lumber-stamp">Grade A</span>
+    <span class="lumber-stamp stamp-green double-border">Kiln Dried</span>
+    <span class="lumber-stamp stamp-honey">Select</span>
+    <span class="lumber-stamp stamp-cherry faded">Reject</span>
+    <span class="lumber-stamp stamp-steel double-border">S4S</span>
+    <span class="lumber-stamp faded">Mill Run</span>
+  </div>
+
+  <h2>Principle Numbers (3.5rem, Rotated)</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Bigger Numbers</h4><p>Principle numbers are 3.5rem in Caveat now (was 2.8rem). They take up more space and demand more attention.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Alternating Rotation</h4><p>Odd numbers rotate -2&deg;, even numbers rotate 1.5&deg;. The numbers look hand-scrawled, not typeset.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>More Border Variety</h4><p>Principles get different border widths and some are dashed. Each principle row looks like a different scrap of paper.</p></div></div>
+  </div>
+
+  <h2>Dovetail Divider (Rotated 0.5&deg;)</h2>
+  <div class="dovetail-divider">
+    <svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,14 L50,14 L57,2 L78,2 L85,14 L135,14 L142,2 L163,2 L170,14 L220,14 L227,2 L248,2 L255,14 L305,14 L312,2 L333,2 L340,14 L390,14 L397,2 L418,2 L425,14 L500,14"
+        fill="none" stroke="#8b4520" stroke-width="2"/>
+      <path d="M0,16 L50,16 L57,28 L78,28 L85,16 L135,16 L142,28 L163,28 L170,16 L220,16 L227,28 L248,28 L255,16 L305,16 L312,28 L333,28 L340,16 L390,16 L397,28 L418,28 L425,16 L500,16"
+        fill="none" stroke="#b09878" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h2>Tool Rack</h2>
+  <div class="tool-rack">
+    <div class="rack-rail"></div>
+    <div class="rack-items">
+      <div class="rack-item"><div class="rack-icon">&#128296;</div><div class="rack-label">Chisel</div><div class="rack-value">1/2&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128207;</div><div class="rack-label">Saw</div><div class="rack-value">Dovetail</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128208;</div><div class="rack-label">Square</div><div class="rack-value">12&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128295;</div><div class="rack-label">Mallet</div><div class="rack-value">16oz</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; diagram</div>
+  <h2>SVG Diagram</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Build Process (rougher sketch)</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="170" height="80" rx="2" fill="var(--warm-1)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="105" y="42" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">ROUGH LUMBER</text>
+      <text x="105" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">pick the good stuff</text>
+      <line x1="190" y1="50" x2="245" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="245" y="10" width="170" height="80" rx="2" fill="var(--warm-6)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="330" y="42" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">MILLING</text>
+      <text x="330" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the noisy part</text>
+      <line x1="415" y1="50" x2="470" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="470" y="10" width="210" height="80" rx="2" fill="var(--warm-7)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="575" y="42" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">ASSEMBLY &amp; FINISH</text>
+      <text x="575" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the satisfying part</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">07 &mdash; utility class reference</div>
+  <h2>All Utility Classes</h2>
+
+  <table class="info-table">
+    <thead><tr><th>Class</th><th>What It Does</th><th>Level</th></tr></thead>
+    <tbody>
+      <tr><td><code>.scrawl</code></td><td>Inline Caveat handwriting, accent color</td><td>1 + 2</td></tr>
+      <tr><td><code>.margin-note</code></td><td>Block annotation, left border, rotated</td><td>1 + 2</td></tr>
+      <tr><td><code>.struck</code></td><td>Strikethrough with reduced opacity</td><td>1 + 2</td></tr>
+      <tr><td><code>.amended</code></td><td>Accent-colored bold correction text</td><td>1 + 2</td></tr>
+      <tr><td><code>.faded</code></td><td>Reduced opacity on stamps (40%)</td><td>1 + 2</td></tr>
+      <tr><td><code>.double-border</code></td><td>Outline + border on stamps</td><td>2 only</td></tr>
+      <tr><td><code>.coffee-ring</code></td><td>Faint brown mug ring via ::after</td><td>2 only</td></tr>
+      <tr><td><code>.taped</code></td><td>Masking tape strip via ::before</td><td>2 only</td></tr>
+      <tr><td><code>.pinned</code></td><td>Red pushpin dot via ::before</td><td>2 only</td></tr>
+      <tr><td><code>.dog-ear</code></td><td>Folded corner triangle via ::after</td><td>2 only</td></tr>
+      <tr><td><code>.pencil-underline</code></td><td>Wavy underline in accent color</td><td>2 only</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout"><p><strong>Pseudo-element conflicts:</strong> <code>.coffee-ring</code> and <code>.dog-ear</code> both use <code>::after</code>. <code>.taped</code> and <code>.pinned</code> both use <code>::before</code>. Combining two classes that use the same pseudo-element will cause one to override the other. Plan accordingly.</p></div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>rougher woodworking &middot; an experiment in further imperfection</p></div></footer>
+
+</body>
+</html>

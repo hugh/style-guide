@@ -1,0 +1,1185 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ==============================
+   Extra-Rough Woodworking — Design Tokens
+   Level 3: MAXIMUM roughness.
+
+   This looks like someone's actual workshop
+   notebook that got coffee spilled on it, sat
+   under a miter saw, and has been added to
+   for months. Still functional. Barely.
+   ============================== */
+
+:root {
+  --bg: #f2e8d8;
+  --surface: #e6d8c2;
+  --surface-2: #dac8ae;
+  --surface-3: #cebea0;
+  --border: #b09878;
+
+  --text: #2a1c0e;
+  --text-dim: #584830;
+  --text-faint: #8a7858;
+
+  --accent: #8b4520;
+  --accent-dim: #6a3418;
+
+  --capture: #4a7a38;
+  --capture-dim: #386028;
+  --capture-fill: rgba(74, 122, 56, 0.1);
+
+  --refine: #c89030;
+  --refine-dim: #a07020;
+  --refine-fill: rgba(200, 144, 48, 0.1);
+
+  --execute: #a83020;
+  --execute-dim: #882418;
+  --execute-fill: rgba(168, 48, 32, 0.1);
+
+  --batch: #3868a0;
+  --batch-dim: #285088;
+  --batch-fill: rgba(56, 104, 160, 0.1);
+
+  /* 9 warm variants — chaotic temperature */
+  --warm-1: #f0e4ce;
+  --warm-2: #ecdcc4;
+  --warm-3: #e8d6bc;
+  --warm-4: #e4d0b6;
+  --warm-5: #f2e6d0;
+  --warm-6: #e0caa8;
+  --warm-7: #e6d2b4;
+  --warm-8: #ead8c0;
+  --warm-9: #dcc4a0;
+
+  /* extra-rough specific */
+  --sticky-yellow: #fff8a0;
+  --sticky-pink: #ffc0c8;
+  --sticky-blue: #c0e0ff;
+  --tape: rgba(235, 220, 180, 0.8);
+  --coffee: rgba(100, 50, 10, 0.15);
+  --coffee-dark: rgba(80, 35, 5, 0.2);
+  --ink: rgba(40, 20, 5, 0.1);
+  --sawdust: rgba(180, 140, 80, 0.03);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  overflow-x: hidden;
+  /* HEAVY grain + sawdust scatter */
+  background-image:
+    repeating-linear-gradient(
+      86deg,
+      transparent 0px, transparent 1.5px,
+      rgba(120, 70, 30, 0.035) 1.5px, rgba(120, 70, 30, 0.035) 4px
+    ),
+    repeating-linear-gradient(
+      2deg,
+      transparent 0px, transparent 10px,
+      rgba(100, 60, 20, 0.025) 10px, rgba(100, 60, 20, 0.025) 11.5px
+    ),
+    repeating-linear-gradient(
+      91deg,
+      transparent 0px, transparent 30px,
+      rgba(140, 90, 40, 0.015) 30px, rgba(140, 90, 40, 0.015) 31px
+    ),
+    /* sawdust dots */
+    radial-gradient(circle 1px at 15% 20%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 0.5px at 45% 60%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 1px at 70% 35%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 0.8px at 25% 80%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 1.2px at 85% 15%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 0.6px at 55% 90%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 1px at 10% 50%, var(--sawdust) 100%, transparent 100%),
+    radial-gradient(circle 0.7px at 90% 70%, var(--sawdust) 100%, transparent 100%);
+}
+
+/* ==============================
+   Typography — chaotic
+   Caveat creeping in everywhere
+   ============================== */
+
+h1, h2 {
+  font-family: 'Bitter', serif;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* some h3s are in Caveat now */
+h3 {
+  font-family: 'Bitter', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  margin-top: 2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+h3:nth-of-type(odd) {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transform: rotate(-0.5deg);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6.5vw, 4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin-bottom: 1.25rem;
+}
+
+h4 {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p { color: var(--text-dim); margin-bottom: 1rem; }
+p strong { color: var(--text); font-weight: 600; }
+
+/* handwritten annotations — used EVERYWHERE at Level 3 */
+.scrawl {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--accent);
+  line-height: 1.4;
+}
+
+.margin-note {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--accent-dim);
+  border-left: 3px solid var(--accent);
+  padding-left: 0.75rem;
+  margin: 1.5rem 0 1.5rem 1rem;
+  opacity: 0.85;
+  transform: rotate(-1deg);
+}
+
+/* margin notes that contradict each other */
+.margin-note.contradicts {
+  border-left-color: var(--execute);
+  color: var(--execute-dim);
+  transform: rotate(0.8deg);
+}
+
+.struck { text-decoration: line-through; opacity: 0.45; }
+.amended { color: var(--accent); font-weight: 600; }
+
+/* crossed-out whole sections */
+.crossed-out {
+  position: relative;
+  opacity: 0.4;
+}
+.crossed-out::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 3px;
+  background: var(--execute);
+  transform: rotate(-1.5deg);
+}
+
+/* ==============================
+   Layout — chaotic, 840px
+   ============================== */
+
+.container {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 4rem 0 4.5rem;
+  border-top: 2px solid var(--border);
+}
+
+/* chaotic section padding via nth-child */
+section:nth-child(1) { padding: 3rem 0 6rem; }
+section:nth-child(2) { padding: 5.5rem 0 2.5rem; }
+section:nth-child(3) { padding: 4rem 0 5rem; }
+section:nth-child(4) { padding: 2.5rem 0 5.5rem; }
+section:nth-child(5) { padding: 5rem 0 3rem; }
+section:nth-child(6) { padding: 3.5rem 0 4.5rem; }
+section:nth-child(7) { padding: 4.5rem 0 3.5rem; }
+section:nth-child(8) { padding: 6rem 0 2rem; }
+section:nth-child(9) { padding: 3rem 0 5rem; }
+section:nth-child(10) { padding: 4rem 0 4rem; }
+
+/* mix of border styles */
+section:nth-child(1) { border-top: 3px solid var(--border); }
+section:nth-child(2) { border-top: 1px dashed var(--border); }
+section:nth-child(3) { border-top: 5px double var(--border); }
+section:nth-child(4) { border-top: none; }
+section:nth-child(5) { border-top: 2px dotted var(--border); }
+section:nth-child(6) { border-top: 5px solid var(--border); }
+section:nth-child(7) { border-top: 1px solid var(--border); }
+section:nth-child(8) { border-top: 3px dashed var(--border); }
+section:nth-child(9) { border-top: none; }
+section:nth-child(10) { border-top: 2px double var(--border); }
+
+/* ==============================
+   Labels — ALL Caveat, large, messy
+   ============================== */
+
+.section-num {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+  transform: rotate(-0.5deg);
+  display: inline-block;
+}
+
+.diagram-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  color: var(--text-faint);
+}
+
+.hero-label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+/* ==============================
+   Hero — messy, all Caveat label/version
+   ============================== */
+
+.hero {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  align-items: flex-start;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+/* rougher top bar — very uneven */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(90deg,
+    var(--capture) 0%, var(--capture) 12%,
+    var(--refine) 12%, var(--refine) 38%,
+    var(--accent) 38%, var(--accent) 55%,
+    var(--execute) 55%, var(--execute) 78%,
+    var(--batch) 78%, var(--batch) 100%
+  );
+  transform: rotate(0.2deg);
+}
+
+/* very heavy grain */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      87deg,
+      transparent 0px, transparent 2px,
+      rgba(120, 60, 20, 0.04) 2px, rgba(120, 60, 20, 0.04) 5px
+    );
+  pointer-events: none;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  max-width: 500px;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 2.5rem;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  position: relative;
+  z-index: 2;
+  transform: rotate(-0.5deg);
+}
+
+/* ==============================
+   Flow Cards — wild rotations, overlapping
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 1px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* wild rotations + overlapping margins */
+.flow-card:nth-child(1) { background: var(--warm-1); transform: rotate(-2.5deg); margin-bottom: -0.25rem; }
+.flow-card:nth-child(2) { background: var(--warm-6); transform: rotate(3deg); margin-left: -0.25rem; }
+.flow-card:nth-child(3) { background: var(--warm-3); transform: rotate(2deg); margin-right: -0.25rem; }
+.flow-card:nth-child(4) { background: var(--warm-9); transform: rotate(-3.5deg); margin-top: -0.25rem; }
+.flow-card:nth-child(5) { background: var(--warm-5); transform: rotate(2.8deg); }
+.flow-card:nth-child(6) { background: var(--warm-7); transform: rotate(-2deg); }
+.flow-card:nth-child(7) { background: var(--warm-4); transform: rotate(3.2deg); }
+.flow-card:nth-child(8) { background: var(--warm-8); transform: rotate(-2.8deg); }
+
+/* varied borders on cards */
+.flow-card:nth-child(1) { border-width: 2px; border-style: solid; }
+.flow-card:nth-child(2) { border-width: 3px; border-style: solid; }
+.flow-card:nth-child(3) { border-width: 2px; border-style: dashed; }
+.flow-card:nth-child(4) { border-width: 1px; border-style: solid; }
+.flow-card:nth-child(5) { border-width: 2px; border-style: dotted; }
+.flow-card:nth-child(6) { border-width: 4px; border-style: double; }
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.flow-card h4 { margin-bottom: 0.4rem; }
+.flow-card p { font-size: 0.88rem; line-height: 1.55; color: var(--text-dim); margin-bottom: 0; }
+
+/* ==============================
+   Pipeline — uneven
+   ============================== */
+
+.pipeline {
+  display: flex;
+  gap: 0;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 110px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  border: 2px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:nth-child(1) { background: var(--warm-1); transform: rotate(-0.5deg); }
+.pipe-stage:nth-child(2) { background: var(--warm-6); transform: rotate(0.3deg); }
+.pipe-stage:nth-child(3) { background: var(--warm-3); transform: rotate(-0.8deg); }
+.pipe-stage:nth-child(4) { background: var(--warm-9); transform: rotate(0.4deg); }
+.pipe-stage:nth-child(5) { background: var(--warm-7); transform: rotate(-0.3deg); }
+
+.pipe-stage:first-child { border-radius: 2px 0 0 2px; }
+.pipe-stage:last-child  { border-radius: 0 2px 2px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 4px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 4px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 4px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 4px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-num { font-family: 'Caveat', cursive; font-size: 1rem; color: var(--text-faint); margin-bottom: 0.35rem; }
+.pipe-name { font-family: 'Bitter', serif; font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--text); }
+.pipe-desc { font-size: 0.82rem; color: var(--text-dim); line-height: 1.4; }
+
+/* ==============================
+   Principle List
+   ============================== */
+
+.principle-list {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 1px;
+}
+
+.principle:nth-child(1) { background: var(--warm-1); transform: rotate(-0.5deg); }
+.principle:nth-child(2) { background: var(--warm-6); transform: rotate(0.8deg); }
+.principle:nth-child(3) { background: var(--warm-3); transform: rotate(-0.3deg); }
+.principle:nth-child(4) { background: var(--warm-9); transform: rotate(0.6deg); }
+.principle:nth-child(5) { background: var(--warm-5); transform: rotate(-0.7deg); }
+.principle:nth-child(6) { background: var(--warm-7); transform: rotate(0.4deg); }
+
+.principle-num {
+  font-family: 'Caveat', cursive;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+}
+
+.principle h4 { margin-bottom: 0.25rem; }
+.principle p { font-size: 0.88rem; color: var(--text-dim); margin: 0; line-height: 1.55; }
+
+/* ==============================
+   Callout — heavily rotated
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 5px solid var(--accent);
+  background: rgba(139, 69, 32, 0.07);
+  border-radius: 0 3px 3px 0;
+  transform: rotate(-1.5deg);
+}
+
+.callout p { margin: 0; font-size: 0.9rem; color: var(--text-dim); }
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.25em 0.7em;
+  border-radius: 1px;
+  border: 2px solid;
+  text-transform: uppercase;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* wilder tag rotations */
+.tag:nth-child(1) { transform: rotate(-2deg); }
+.tag:nth-child(2) { transform: rotate(1.5deg); }
+.tag:nth-child(3) { transform: rotate(-1deg); }
+.tag:nth-child(4) { transform: rotate(2.5deg); }
+.tag:nth-child(5) { transform: rotate(-1.8deg); }
+
+/* ==============================
+   Tables — rows rotate, Caveat cells, uneven padding
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.88rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--accent);
+  padding: 0.5rem 0.8rem;
+  border-bottom: 3px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* rows rotate and have uneven padding */
+.info-table tr:nth-child(odd) td {
+  background: rgba(139, 69, 32, 0.03);
+  transform: rotate(0.5deg);
+}
+.info-table tr:nth-child(even) td {
+  transform: rotate(-0.5deg);
+}
+.info-table tr:nth-child(3) td {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  padding: 0.7rem 0.6rem;
+}
+.info-table tr:nth-child(5) td {
+  padding: 0.4rem 1rem;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 2.5rem 0;
+  background: var(--warm-1);
+  border: 2px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text { font-family: 'Source Sans 3', sans-serif; }
+
+/* ==============================
+   Blueprint Card — 2deg rotation, coffee ring
+   ============================== */
+
+.blueprint-card {
+  margin: 2rem 0;
+  background: var(--warm-6);
+  border: 2px solid var(--accent);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-2deg);
+  background-image:
+    linear-gradient(rgba(139, 69, 32, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 69, 32, 0.1) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.blueprint-card::before {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px; right: 8px; bottom: 8px;
+  border: 1px dashed var(--border);
+  pointer-events: none;
+}
+
+/* pushpin — off-center */
+.blueprint-card::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--execute);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.blueprint-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.blueprint-measurement {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  background: rgba(139, 69, 32, 0.05);
+  border: 1px solid var(--border);
+  margin: 0.2rem 0.2rem 0.2rem 0;
+}
+
+.blueprint-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  font-family: 'Bitter', serif !important;
+  transform: none !important;
+}
+.blueprint-card p { font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+/* ==============================
+   Dovetail Divider
+   ============================== */
+
+.dovetail-divider {
+  margin: 2.5rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.dovetail-divider svg { width: 100%; height: auto; display: block; }
+
+/* ==============================
+   Lumber Stamp — VERY messy
+   Some barely readable, wild rotations, double borders
+   ============================== */
+
+.lumber-stamp {
+  display: inline-block;
+  font-family: 'Bitter', serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3em 0.65em;
+  border: 3px solid var(--accent);
+  color: var(--accent);
+  transform: rotate(-4deg);
+  margin: 0.3rem;
+  position: relative;
+  text-shadow: 0 0 2px currentColor;
+}
+
+/* wild stamp rotations */
+.lumber-stamp:nth-child(1) { transform: rotate(-5deg); }
+.lumber-stamp:nth-child(2) { transform: rotate(6deg); }
+.lumber-stamp:nth-child(3) { transform: rotate(-3.5deg); }
+.lumber-stamp:nth-child(4) { transform: rotate(7deg); }
+.lumber-stamp:nth-child(5) { transform: rotate(-2deg); }
+.lumber-stamp:nth-child(6) { transform: rotate(4.5deg); }
+.lumber-stamp:nth-child(7) { transform: rotate(-8deg); }
+.lumber-stamp:nth-child(8) { transform: rotate(5deg); }
+
+.lumber-stamp.stamp-green  { border-color: var(--capture); color: var(--capture); }
+.lumber-stamp.stamp-honey  { border-color: var(--refine);  color: var(--refine); }
+.lumber-stamp.stamp-cherry { border-color: var(--execute); color: var(--execute); }
+.lumber-stamp.stamp-steel  { border-color: var(--batch);   color: var(--batch); }
+
+/* faded: barely readable */
+.lumber-stamp.faded { opacity: 0.25; }
+
+/* double-border misaligned stamps */
+.lumber-stamp.double-border {
+  box-shadow: 2px 1px 0 0 currentColor, -1px 2px 0 0 currentColor;
+}
+
+/* ==============================
+   Tool Rack
+   ============================== */
+
+.tool-rack {
+  margin: 2rem 0;
+  background: var(--warm-7);
+  border: 2px solid var(--border);
+  overflow: hidden;
+  transform: rotate(-0.3deg);
+}
+
+.rack-rail {
+  height: 6px;
+  background: var(--accent);
+}
+
+.rack-items {
+  display: flex;
+  justify-content: space-around;
+  padding: 1.25rem 0.75rem 1rem;
+  gap: 0.25rem;
+}
+
+.rack-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+  padding-top: 0.8rem;
+}
+
+.rack-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 10px; height: 10px;
+  background: var(--surface-3);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+}
+
+.rack-item::after {
+  content: '';
+  position: absolute;
+  top: 10px; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 10px;
+  background: var(--border);
+}
+
+.rack-icon { font-size: 1.6rem; margin-bottom: 0.4rem; margin-top: 0.4rem; }
+.rack-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
+.rack-value { font-family: 'Bitter', serif; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-top: 0.15rem; }
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+code, .inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 1px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ==============================
+   Footer — entirely handwritten
+   ============================== */
+
+footer {
+  border-top: 2px dashed var(--border);
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+  transform: rotate(-0.8deg);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ============================================================
+   NEW UTILITY CLASSES — Level 3 Exclusives
+   ============================================================ */
+
+/* ==============================
+   Sticky Notes — Post-it overlays
+   ============================== */
+
+.sticky-note {
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  padding: 1rem 1.2rem 1.5rem;
+  position: relative;
+  display: inline-block;
+  margin: 1rem 0.5rem;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  /* torn bottom */
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 92%,
+    97% 94%, 93% 91%, 88% 95%, 83% 92%,
+    78% 96%, 72% 93%, 67% 95%, 62% 91%,
+    56% 94%, 50% 92%, 44% 96%, 38% 93%,
+    32% 95%, 26% 91%, 20% 94%, 14% 92%,
+    8% 96%, 3% 93%, 0% 95%
+  );
+}
+
+.sticky-note.sticky-yellow,
+.sticky-note:not(.sticky-pink):not(.sticky-blue) {
+  background: var(--sticky-yellow);
+  color: #5a4000;
+  transform: rotate(3deg);
+}
+
+.sticky-note.sticky-pink {
+  background: var(--sticky-pink);
+  color: #6a2030;
+  transform: rotate(-4deg);
+}
+
+.sticky-note.sticky-blue {
+  background: var(--sticky-blue);
+  color: #1a4060;
+  transform: rotate(2.5deg);
+}
+
+.sticky-note:nth-child(even) {
+  transform: rotate(-3.5deg);
+}
+
+/* ==============================
+   Paper Clip
+   ============================== */
+
+.paper-clipped {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.paper-clipped::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  right: 30px;
+  width: 20px;
+  height: 50px;
+  border: 3px solid #a0a0a0;
+  border-radius: 10px 10px 0 0;
+  border-bottom: none;
+  transform: rotate(8deg);
+  z-index: 10;
+}
+
+.paper-clipped::after {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 34px;
+  width: 12px;
+  height: 30px;
+  border: 2px solid #b8b8b8;
+  border-radius: 6px 6px 0 0;
+  border-bottom: none;
+  transform: rotate(8deg);
+  z-index: 11;
+}
+
+/* ==============================
+   Torn Edge
+   ============================== */
+
+.torn {
+  clip-path: polygon(
+    0% 0%, 100% 0%, 100% 85%,
+    98% 88%, 95% 84%, 92% 90%, 88% 85%,
+    85% 92%, 82% 87%, 78% 93%, 74% 86%,
+    70% 91%, 66% 84%, 62% 89%, 58% 85%,
+    54% 92%, 50% 86%, 46% 90%, 42% 84%,
+    38% 88%, 34% 83%, 30% 90%, 26% 85%,
+    22% 91%, 18% 86%, 14% 92%, 10% 87%,
+    6% 93%, 3% 86%, 0% 90%
+  );
+  padding-bottom: 2rem;
+}
+
+/* ==============================
+   Ink Blot
+   ============================== */
+
+.ink-blot {
+  position: relative;
+}
+
+.ink-blot::before {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  background: radial-gradient(ellipse at 40% 50%, var(--ink) 0%, transparent 70%),
+              radial-gradient(ellipse at 65% 40%, var(--ink) 0%, transparent 60%),
+              radial-gradient(ellipse at 30% 70%, rgba(40, 20, 5, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+  top: 10px;
+  left: 10px;
+  transform: rotate(-15deg);
+  z-index: 1;
+}
+
+/* ==============================
+   Sideways Note — rotated 90deg in margin
+   ============================== */
+
+.sideways {
+  font-family: 'Caveat', cursive;
+  font-size: 0.9rem;
+  color: var(--accent-dim);
+  transform: rotate(-90deg);
+  transform-origin: left top;
+  position: absolute;
+  left: -2rem;
+  white-space: nowrap;
+  opacity: 0.65;
+}
+
+/* ==============================
+   Sketch Arrow — hand-drawn SVG style
+   ============================== */
+
+.sketch-arrow {
+  display: inline-block;
+}
+
+.sketch-arrow svg {
+  width: 80px;
+  height: 30px;
+}
+
+/* ==============================
+   Splatter — scattered dots/drips
+   ============================== */
+
+.splatter {
+  position: relative;
+}
+
+.splatter::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 2px at 20% 30%, rgba(100, 50, 10, 0.12) 100%, transparent 100%),
+    radial-gradient(circle 1px at 35% 70%, rgba(100, 50, 10, 0.1) 100%, transparent 100%),
+    radial-gradient(circle 3px at 55% 20%, rgba(100, 50, 10, 0.08) 100%, transparent 100%),
+    radial-gradient(circle 1.5px at 75% 55%, rgba(100, 50, 10, 0.1) 100%, transparent 100%),
+    radial-gradient(circle 2px at 85% 35%, rgba(100, 50, 10, 0.06) 100%, transparent 100%),
+    radial-gradient(circle 1px at 10% 80%, rgba(100, 50, 10, 0.09) 100%, transparent 100%),
+    radial-gradient(circle 2.5px at 45% 45%, rgba(100, 50, 10, 0.07) 100%, transparent 100%),
+    radial-gradient(circle 1px at 65% 85%, rgba(100, 50, 10, 0.11) 100%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==============================
+   Dog Ear — folded corner triangle
+   ============================== */
+
+.dog-ear {
+  position: relative;
+  overflow: hidden;
+}
+
+.dog-ear::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 35px 35px 0;
+  border-color: transparent var(--bg) transparent transparent;
+  filter: drop-shadow(-2px 2px 2px rgba(0,0,0,0.1));
+}
+
+/* shadow under the fold */
+.dog-ear::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(225deg, transparent 50%, rgba(0,0,0,0.06) 50%);
+  z-index: 2;
+}
+
+/* ==============================
+   Coffee Ring — bigger, more visible
+   ============================== */
+
+.coffee-ring {
+  position: relative;
+}
+
+.coffee-ring::before {
+  content: '';
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 6px solid var(--coffee);
+  background: radial-gradient(circle, var(--coffee-dark) 0%, transparent 45%, transparent 60%, var(--coffee) 65%, transparent 72%);
+  pointer-events: none;
+  z-index: 3;
+  top: -20px;
+  right: 25px;
+  opacity: 0.8;
+}
+
+/* alternate placement */
+.coffee-ring.coffee-left::before {
+  right: auto;
+  left: -15px;
+  top: 10px;
+}
+
+.coffee-ring.coffee-bottom::before {
+  top: auto;
+  bottom: -15px;
+  right: 50px;
+}
+
+/* small coffee ring */
+.coffee-ring.coffee-sm::before {
+  width: 70px;
+  height: 70px;
+  border-width: 4px;
+}
+
+/* ==============================
+   Taped — rougher masking tape
+   ============================== */
+
+.taped {
+  position: relative;
+}
+
+.taped::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 90px;
+  height: 24px;
+  background: var(--tape);
+  border-top: 1px solid rgba(180, 160, 120, 0.5);
+  border-bottom: 1px solid rgba(180, 160, 120, 0.5);
+  z-index: 10;
+  /* slightly torn ends */
+  clip-path: polygon(
+    2% 0%, 98% 2%, 100% 15%, 99% 85%, 97% 100%,
+    3% 98%, 0% 88%, 1% 12%
+  );
+}
+
+/* second tape strip variant */
+.taped.taped-corner::before {
+  top: -8px;
+  left: auto;
+  right: 15px;
+  transform: rotate(25deg);
+  width: 70px;
+  height: 20px;
+}
+
+/* yellowed extra tape variant */
+.taped.taped-old::before {
+  background: rgba(220, 200, 140, 0.85);
+  border-color: rgba(160, 140, 100, 0.5);
+}
+
+/* ==============================
+   Pushpin
+   ============================== */
+
+.pushpin {
+  position: relative;
+}
+
+.pushpin::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 40% 35%, #e85040, #a02020);
+  border-radius: 50%;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.pushpin.pushpin-right::after {
+  left: auto;
+  right: 15px;
+  transform: none;
+}
+
+.pushpin.pushpin-left::after {
+  left: 15px;
+  transform: none;
+}
+
+/* ==============================
+   Date Stamp — handwritten date
+   ============================== */
+
+.date-stamp {
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  color: var(--text-faint);
+  transform: rotate(-1deg);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+
+@media (max-width: 640px) {
+  .container { padding: 0 1.25rem; }
+  .flow-grid { grid-template-columns: 1fr; }
+  .flow-card { transform: rotate(0) !important; margin: 0 !important; }
+  .pipeline { flex-direction: column; }
+  .pipe-stage { transform: rotate(0) !important; }
+  .sticky-note { display: block; margin: 1rem 0; }
+  .sideways { display: none; }
+}

@@ -65,6 +65,8 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `fairy-tale/` — Storybook theme (warm parchment, gilt gold, jewel tones, illuminated drop caps, enchanted mirror cards, scroll callouts)
 - `horror-vhs/` — Found footage VHS horror theme (CRT black, night-vision green, tracking glitches, REC indicators, static blocks)
 - `rough-woodworking/` — Rougher woodworking variant (uneven card warmth, handwritten Caveat annotations, slight rotations, personal voice)
+- `rougher-woodworking/` — Level 2 roughness woodworking (coffee rings, tape strips, pushpins, dog-ears, bigger rotations, very personal voice)
+- `extra-rough-woodworking/` — Maximum roughness woodworking (Level 3: coffee rings, sticky notes, torn edges, wild rotations, chaotic spacing, paper clips, ink blots)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

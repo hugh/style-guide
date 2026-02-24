@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Extra-Rough Woodworking &mdash; Style Guide (Level 3)</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 0.8rem; margin: 1.5rem 0; }
+  .swatch { border: 2px solid var(--border); overflow: hidden; }
+  .swatch:nth-child(1) { transform: rotate(-1.5deg); }
+  .swatch:nth-child(2) { transform: rotate(2deg); }
+  .swatch:nth-child(3) { transform: rotate(-0.5deg); }
+  .swatch:nth-child(4) { transform: rotate(1.8deg); }
+  .swatch:nth-child(5) { transform: rotate(-2.2deg); }
+  .swatch:nth-child(6) { transform: rotate(0.8deg); }
+  .swatch:nth-child(7) { transform: rotate(-1.2deg); }
+  .swatch:nth-child(8) { transform: rotate(2.5deg); }
+  .swatch:nth-child(9) { transform: rotate(-0.3deg); }
+  .swatch-color { height: 48px; }
+  .swatch-info { padding: 0.5rem 0.6rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text); margin-bottom: 0.1rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.55rem; color: var(--text-faint); }
+  .font-sample { padding: 1.25rem; border: 2px solid var(--border); margin-bottom: 0.8rem; }
+  .font-sample:nth-child(1) { background: var(--warm-1); transform: rotate(-0.5deg); }
+  .font-sample:nth-child(2) { background: var(--warm-6); transform: rotate(0.3deg); }
+  .font-sample:nth-child(3) { background: var(--warm-3); transform: rotate(-0.8deg); }
+  .font-sample:nth-child(4) { background: var(--warm-9); transform: rotate(1deg); }
+  .font-sample .sample-label { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--accent); margin-bottom: 0.6rem; }
+  .font-sample-heading { font-family: 'Bitter', serif; font-size: 1.8rem; color: var(--text); line-height: 1.2; font-weight: 700; }
+  .font-sample-body { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); }
+  .font-sample-scrawl { font-family: 'Caveat', cursive; font-size: 1.5rem; color: var(--accent); line-height: 1.4; }
+
+  .text-tier-demo { padding: 1rem; background: var(--warm-1); border: 2px solid var(--border); margin: 1.25rem 0; transform: rotate(-0.3deg); }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.4rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--text-faint); width: 5.5rem; flex-shrink: 0; text-align: right; }
+
+  .utility-demo { margin: 2rem 0; padding: 1.5rem; background: var(--warm-1); border: 2px solid var(--border); position: relative; }
+
+  .comparison-table { font-size: 0.82rem; }
+  .comparison-table th { font-family: 'Caveat', cursive !important; font-size: 1.1rem !important; }
+  .comparison-table td { vertical-align: top; }
+  .comparison-table .level-label { font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="hero coffee-ring">
+  <div class="hero-label">the messiest style guide yet</div>
+  <h1>Extra-Rough <span>Workshop</span></h1>
+  <p>Level 3 of the woodworking theme. This is the version that got left open on the bench, has coffee stains, and sawdust in the spine. Everything still works, but nothing is neat.</p>
+  <div class="hero-version">v0.3 &middot; things got out of hand &middot; <a href="template.html" style="color:var(--text-faint);text-decoration:underline;">starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; the progression</div>
+  <h2>How We Got Here</h2>
+  <p>This is the third level of roughness in the woodworking theme family. Here is how it escalated:</p>
+
+  <table class="info-table comparison-table">
+    <thead><tr><th>Aspect</th><th>Rough (L1)</th><th>Rougher (L2)</th><th>Extra-Rough (L3)</th></tr></thead>
+    <tbody>
+      <tr><td>Container</td><td>880px</td><td>860px</td><td>840px</td></tr>
+      <tr><td>Card rotations</td><td>0.3&ndash;3&deg;</td><td>1&ndash;6&deg;</td><td>2&ndash;4&deg;, overlapping</td></tr>
+      <tr><td>Stamp rotations</td><td>0.5&ndash;3&deg;</td><td>2&ndash;6&deg;</td><td>4&ndash;8&deg;, some 25% opacity</td></tr>
+      <tr><td>Section borders</td><td>2px/3px solid</td><td>Varied widths</td><td>Solid, dashed, dotted, double, none</td></tr>
+      <tr><td>Section padding</td><td>4rem/4.5rem</td><td>Slightly varied</td><td>Chaotic via nth-child (2rem&ndash;6rem)</td></tr>
+      <tr><td>Warm variants</td><td>5</td><td>7</td><td>9</td></tr>
+      <tr><td>Coffee rings</td><td>&mdash;</td><td>Subtle</td><td>Large, visible, dark</td></tr>
+      <tr><td>Tape strips</td><td>&mdash;</td><td>Clean tape</td><td>Yellowed, torn-edge tape</td></tr>
+      <tr><td>Sticky notes</td><td>&mdash;</td><td>&mdash;</td><td>3 colors, heavily rotated, torn bottom</td></tr>
+      <tr><td>Paper clips</td><td>&mdash;</td><td>&mdash;</td><td>CSS wire shape in corner</td></tr>
+      <tr><td>Torn edges</td><td>&mdash;</td><td>&mdash;</td><td>clip-path jagged bottom</td></tr>
+      <tr><td>Ink blots</td><td>&mdash;</td><td>&mdash;</td><td>Radial gradient splotches</td></tr>
+      <tr><td>Sideways notes</td><td>&mdash;</td><td>&mdash;</td><td>90&deg; rotated margin text</td></tr>
+      <tr><td>Section numbers</td><td>IBM Plex Mono</td><td>Partially Caveat</td><td>ALL Caveat, large</td></tr>
+      <tr><td>Some h3s</td><td>Bitter</td><td>Bitter</td><td>Caveat on odd h3s</td></tr>
+      <tr><td>Table headers</td><td>Mono, uppercase</td><td>Mono, uppercase</td><td>Caveat, handwritten</td></tr>
+      <tr><td>Table rows</td><td>Straight</td><td>Slight color</td><td>0.5&deg; alternating rotation, Caveat cells</td></tr>
+      <tr><td>Footer</td><td>Caveat</td><td>Caveat</td><td>All Caveat, rotated</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sticky-note sticky-yellow" style="margin-left:2rem;">This table is itself demonstrating the messy table style. Look at how the rows aren't straight.</div>
+
+  <div class="margin-note">Each level builds on the last. The class names are compatible &mdash; swap tokens.css and everything still works, just rougher.</div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; colors</div>
+  <h2>Palette</h2>
+  <p>Same base palette as the other woodworking themes, plus 4 additional warm variants (9 total) and new utility colors for sticky notes, tape, coffee, ink, and sawdust.</p>
+
+  <h3>Base Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f2e8d8;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f2e8d8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e6d8c2;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e6d8c2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dac8ae;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#dac8ae</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#cebea0;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#cebea0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b09878;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#b09878</div></div></div>
+  </div>
+
+  <h3>All 9 Warm Variants</h3>
+  <p>Cards, principles, pipe stages, table rows &mdash; everything pulls from these. <span class="scrawl">No two adjacent things should be the same temperature.</span></p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f0e4ce;"></div><div class="swatch-info"><div class="swatch-name">--warm-1</div><div class="swatch-hex">#f0e4ce</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ecdcc4;"></div><div class="swatch-info"><div class="swatch-name">--warm-2</div><div class="swatch-hex">#ecdcc4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8d6bc;"></div><div class="swatch-info"><div class="swatch-name">--warm-3</div><div class="swatch-hex">#e8d6bc</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e4d0b6;"></div><div class="swatch-info"><div class="swatch-name">--warm-4</div><div class="swatch-hex">#e4d0b6</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f2e6d0;"></div><div class="swatch-info"><div class="swatch-name">--warm-5</div><div class="swatch-hex">#f2e6d0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e0caa8;"></div><div class="swatch-info"><div class="swatch-name">--warm-6</div><div class="swatch-hex">#e0caa8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e6d2b4;"></div><div class="swatch-info"><div class="swatch-name">--warm-7</div><div class="swatch-hex">#e6d2b4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ead8c0;"></div><div class="swatch-info"><div class="swatch-name">--warm-8</div><div class="swatch-hex">#ead8c0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dcc4a0;"></div><div class="swatch-info"><div class="swatch-name">--warm-9</div><div class="swatch-hex">#dcc4a0</div></div></div>
+  </div>
+
+  <h3>Sticky Note Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#fff8a0;"></div><div class="swatch-info"><div class="swatch-name">--sticky-yellow</div><div class="swatch-hex">#fff8a0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ffc0c8;"></div><div class="swatch-info"><div class="swatch-name">--sticky-pink</div><div class="swatch-hex">#ffc0c8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c0e0ff;"></div><div class="swatch-info"><div class="swatch-name">--sticky-blue</div><div class="swatch-hex">#c0e0ff</div></div></div>
+  </div>
+
+  <h3>Text</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Headings and bold stuff</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Body text, most paragraphs</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Labels, measurements, quiet things</div></div>
+  </div>
+
+  <h3>Stain Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#8b4520;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b4520</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a7a38;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#4a7a38</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c89030;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3868a0;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3868a0</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">pine</span> <span class="tag t-refine">maple</span> <span class="tag t-execute">cherry</span> <span class="tag t-batch">steel</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; type</div>
+  <h2>Fonts</h2>
+  <p>Same four families. But at Level 3, <strong>Caveat has taken over</strong>. It's on section numbers, some h3s, table headers, the hero label, the footer, all sticky notes, all margin notes. It's almost the primary font.</p>
+  <div class="font-sample"><div class="sample-label">Bitter &mdash; Headings</div><div class="font-sample-heading">Measure twice, cut once (or three times)</div></div>
+  <div class="font-sample"><div class="sample-label">Source Sans 3 &mdash; Body</div><div class="font-sample-body">Good woodworking isn't about expensive tools or exotic wood. It's about patience, practice, and understanding that nothing in your shop is actually flat.</div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels &amp; measurements</div><div class="font-sample-mono">01 &mdash; WALNUT &middot; 8/4 &middot; 40 BF &middot; KD &middot; FAS</div></div>
+  <div class="font-sample"><div class="sample-label">Caveat &mdash; EVERYTHING ELSE (basically)</div><div class="font-sample-scrawl">Section numbers, sticky notes, some headings, table headers, margin notes, the footer, date stamps... Caveat is everywhere now. It ate the other fonts.</div></div>
+
+  <div class="sticky-note sticky-pink">Caveat went from "accent font" at Level 1 to "co-primary font" at Level 3. That's the progression.</div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; standard components</div>
+  <h2>Inherited Components</h2>
+  <p>Same components as the other levels &mdash; cards, pipeline, callout, table, stamps &mdash; but everything is wilder.</p>
+
+  <h3>Flow Cards</h3>
+  <p>Cards now have wild rotations (2&ndash;4&deg;), varied border styles, and slight overlapping via negative margins.</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#128296;</div><h4>Wild Rotations</h4><p>Each card rotates to its own angle. Some positive, some negative. They look like cards scattered on a bench.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9999;&#65039;</div><h4>Varied Borders</h4><p>Solid, dashed, dotted, double. Different widths. No two cards have the same border treatment.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#128208;</div><h4>Overlapping</h4><p>Negative margins (-0.25rem) let cards overlap slightly, like papers stacked loosely on a desk.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#127794;</div><h4>9 Warm Variants</h4><p>More temperature variation than ever. Each card is a different shade from the expanded warm palette.</p></div>
+  </div>
+
+  <h3>Pipeline</h3>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Select</div><div class="pipe-desc">Pick your stock</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Mill</div><div class="pipe-desc">Joint &amp; plane</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Join</div><div class="pipe-desc">Cut joinery</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Finish</div><div class="pipe-desc">Sand &amp; oil</div></div>
+  </div>
+  <div class="margin-note">Pipeline numbers are now in Caveat instead of monospace. Everything is getting handwritten.</div>
+
+  <h3>Callout</h3>
+  <div class="callout"><p><strong>Shop tip:</strong> The callout rotation at Level 3 is -1.5&deg; (compared to -0.3&deg; at Level 1). It's noticeably crooked. <span class="scrawl">Because real notes on a bench are never straight.</span></p></div>
+
+  <h3>Stamps</h3>
+  <p>Stamps are now wildly rotated (4&ndash;8&deg;), some are barely readable at 25% opacity, and the <code>.double-border</code> variant has misaligned shadows.</p>
+  <div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;margin:1.5rem 0;">
+    <span class="lumber-stamp">Grade A</span>
+    <span class="lumber-stamp stamp-green">Kiln Dried</span>
+    <span class="lumber-stamp stamp-honey double-border">Select</span>
+    <span class="lumber-stamp stamp-cherry">FAS</span>
+    <span class="lumber-stamp stamp-steel">S4S</span>
+    <span class="lumber-stamp faded">Barely There</span>
+    <span class="lumber-stamp double-border">Double</span>
+  </div>
+
+  <h3>Table</h3>
+  <p>Headers are Caveat. Rows alternate rotation (0.5&deg;). Some cells randomly switch to Caveat too.</p>
+  <table class="info-table">
+    <thead><tr><th>Feature</th><th>Level 1</th><th>Level 3</th></tr></thead>
+    <tbody>
+      <tr><td>Stamp rotation</td><td>0.5&ndash;3&deg;</td><td>4&ndash;8&deg;</td></tr>
+      <tr><td>Card rotation</td><td>0.3&ndash;3&deg;</td><td>2&ndash;4&deg;</td></tr>
+      <tr><td>Section borders</td><td>Alternating 2/3px</td><td>Chaotic mixed</td></tr>
+      <tr><td>Warm variants</td><td>5</td><td>9</td></tr>
+      <tr><td>New classes</td><td>5</td><td>15+</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; new utility classes</div>
+  <h2>Level 3 Exclusives</h2>
+  <p>These classes only exist at Level 3. They're the physical artifacts of a messy workshop: sticky notes, tape, coffee rings, torn paper, ink blots.</p>
+
+  <h3>Sticky Notes</h3>
+  <p>Three color variants: <code>.sticky-yellow</code>, <code>.sticky-pink</code>, <code>.sticky-blue</code>. All in Caveat, heavily rotated, with a torn bottom edge via clip-path.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin:1.5rem 0;">
+    <div class="sticky-note sticky-yellow">This is a yellow sticky. Default if no color class is given.</div>
+    <div class="sticky-note sticky-pink">Pink sticky. Good for warnings or urgent notes.</div>
+    <div class="sticky-note sticky-blue">Blue sticky. For cool, calm afterthoughts.</div>
+  </div>
+
+  <h3>Coffee Ring</h3>
+  <p>Add <code>.coffee-ring</code> to any element. Variants: <code>.coffee-left</code>, <code>.coffee-bottom</code>, <code>.coffee-sm</code>.</p>
+  <div class="utility-demo coffee-ring">
+    <p style="margin:0;">This box has a big coffee ring stain in the upper right. Somebody set their mug down on these notes. As one does.</p>
+  </div>
+  <div class="utility-demo coffee-ring coffee-left coffee-sm" style="margin-top:1.5rem;">
+    <p style="margin:0;">This one has a smaller ring on the left side.</p>
+  </div>
+
+  <h3>Taped</h3>
+  <p>Add <code>.taped</code> for a masking tape strip centered on top. <code>.taped-corner</code> puts it at an angle in the corner. <code>.taped-old</code> for yellowed tape.</p>
+  <div class="utility-demo taped" style="margin-top:2rem;">
+    <p style="margin:0;">This element is held in place with a strip of masking tape across the top.</p>
+  </div>
+  <div class="utility-demo taped taped-corner taped-old" style="margin-top:2.5rem;">
+    <p style="margin:0;">This one has yellowed, aged tape at an angle in the corner.</p>
+  </div>
+
+  <h3>Paper Clipped</h3>
+  <p>Add <code>.paper-clipped</code> for a silver paper clip shape in the upper right corner, built from CSS borders.</p>
+  <div class="utility-demo paper-clipped" style="margin-top:2rem;">
+    <p style="margin:0;">Look at the paper clip shape in the upper right. It's made entirely with CSS pseudo-elements and border-radius. No images needed.</p>
+  </div>
+
+  <h3>Torn Edge</h3>
+  <p>Add <code>.torn</code> for a jagged bottom edge via clip-path polygon. Good for elements that should look ripped.</p>
+  <div class="utility-demo torn" style="background:var(--warm-6);">
+    <p style="margin:0;">The bottom of this element has a torn paper effect. The jagged polygon simulates a ripped edge. You'll want to add <code>padding-bottom: 2rem</code> to compensate for the clipped area.</p>
+  </div>
+
+  <h3>Ink Blot</h3>
+  <p>Add <code>.ink-blot</code> for a decorative radial-gradient splotch in the upper-left area. Subtle but visible.</p>
+  <div class="utility-demo ink-blot">
+    <p style="margin:0;">There's a faint ink splotch in the upper left of this element. It uses multiple radial gradients to create an organic blob shape.</p>
+  </div>
+
+  <h3>Dog Ear</h3>
+  <p>Add <code>.dog-ear</code> for a folded corner triangle in the upper right.</p>
+  <div class="utility-demo dog-ear" style="background:var(--warm-3);">
+    <p style="margin:0;">The upper-right corner is folded down, like someone dog-eared a page in their notebook.</p>
+  </div>
+
+  <h3>Splatter</h3>
+  <p>Add <code>.splatter</code> for scattered dots overlay. Like sawdust or wood stain drips.</p>
+  <div class="utility-demo splatter" style="min-height:80px;">
+    <p style="margin:0;">Faint scattered dots across this element. Meant to simulate sawdust particles or stain drips that have dried onto the page.</p>
+  </div>
+
+  <h3>Pushpin</h3>
+  <p>Add <code>.pushpin</code> for a red pin at top center. Variants: <code>.pushpin-left</code>, <code>.pushpin-right</code>.</p>
+  <div class="utility-demo pushpin" style="margin-top:1.5rem;">
+    <p style="margin:0;">This element is pinned to the board with a red pushpin at the top.</p>
+  </div>
+
+  <h3>Crossed Out</h3>
+  <p>Wrap content in <code>.crossed-out</code> to dim it and add a diagonal strikethrough line.</p>
+  <div class="crossed-out" style="padding:1rem;background:var(--warm-9);border:1px solid var(--border);margin:1rem 0;">
+    <p style="margin:0;">This whole section got crossed out. The content is dimmed and a line goes through it. Good for sections that got superseded or abandoned.</p>
+  </div>
+
+  <h3>Date Stamp</h3>
+  <p><code>.date-stamp</code> for handwritten dates on entries.</p>
+  <div class="date-stamp">feb 3, 2026</div>
+  <p>Used throughout the template to mark when entries were written.</p>
+
+  <h3>Sideways Note</h3>
+  <p><code>.sideways</code> rotates text -90&deg; for margin annotations. Needs absolute positioning within a relative parent.</p>
+  <div style="position:relative;min-height:60px;padding-left:3rem;" class="utility-demo">
+    <div class="sideways" style="top:3.5rem;">important!</div>
+    <p style="margin:0;">There should be sideways text in the left margin. It's rotated -90&deg; and positioned absolutely. Best used sparingly for emphasis.</p>
+  </div>
+
+  <div class="sticky-note sticky-blue" style="margin-top:2rem;">You can combine these classes! Try .coffee-ring.taped.dog-ear on a .blueprint-card for maximum chaos.</div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; blueprints &amp; diagrams</div>
+  <h2>Blueprint Card</h2>
+  <p>Same blueprint card, but rotated to 2&deg; (vs 0.2&deg; at Level 1). Heavier grid. Uses the <code>--warm-6</code> background.</p>
+  <div class="blueprint-card coffee-ring coffee-sm">
+    <div class="blueprint-title">Sketch 01 &mdash; Test Blueprint</div>
+    <h3>A Very Rough Blueprint</h3>
+    <p>This one has a coffee ring on it. Because of course it does. Also notice the rotation is much more aggressive &mdash; 2 full degrees.</p>
+    <div>
+      <span class="blueprint-measurement">36&Prime; &times; 24&Prime;</span>
+      <span class="blueprint-measurement">3/4&Prime; stock</span>
+      <span class="blueprint-measurement">Walnut</span>
+    </div>
+  </div>
+
+  <h2>SVG Diagram</h2>
+  <div class="diagram-wrap splatter">
+    <div class="diagram-label">Figure 1 &mdash; Build Process (very rough sketch)</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="170" height="80" rx="2" fill="var(--warm-1)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="105" y="42" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">ROUGH LUMBER</text>
+      <text x="105" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">pick the good stuff</text>
+      <!-- wobbly hand-drawn arrow -->
+      <path d="M192,50 C200,48 210,53 220,49 C230,45 235,52 243,50" fill="none" stroke="var(--text-faint)" stroke-width="1.5" stroke-linecap="round"/>
+      <polygon points="243,50 237,46 238,54" fill="var(--text-faint)"/>
+      <rect x="245" y="10" width="170" height="80" rx="2" fill="var(--warm-6)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="330" y="42" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">MILLING</text>
+      <text x="330" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the noisy part</text>
+      <!-- another wobbly arrow -->
+      <path d="M417,50 C425,46 435,54 445,48 C455,52 460,47 468,50" fill="none" stroke="var(--text-faint)" stroke-width="1.5" stroke-linecap="round"/>
+      <polygon points="468,50 462,46 463,54" fill="var(--text-faint)"/>
+      <rect x="470" y="10" width="210" height="80" rx="2" fill="var(--warm-9)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="575" y="42" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">ASSEMBLY &amp; FINISH</text>
+      <text x="575" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the satisfying part</text>
+      <!-- scrawled annotation -->
+      <text x="350" y="96" text-anchor="middle" fill="var(--accent)" font-family="Caveat, cursive" font-size="11" transform="rotate(-2, 350, 96)">this never goes according to plan</text>
+    </svg>
+  </div>
+
+  <h2>Dovetail Divider</h2>
+  <div class="dovetail-divider">
+    <svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,14 L50,14 L57,2 L78,2 L85,14 L135,14 L142,2 L163,2 L170,14 L220,14 L227,2 L248,2 L255,14 L305,14 L312,2 L333,2 L340,14 L390,14 L397,2 L418,2 L425,14 L500,14"
+        fill="none" stroke="#8b4520" stroke-width="2"/>
+      <path d="M0,16 L50,16 L57,28 L78,28 L85,16 L135,16 L142,28 L163,28 L170,16 L220,16 L227,28 L248,28 L255,16 L305,16 L312,28 L333,28 L340,16 L390,16 L397,28 L418,28 L425,16 L500,16"
+        fill="none" stroke="#b09878" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h2>Tool Rack</h2>
+  <div class="tool-rack">
+    <div class="rack-rail"></div>
+    <div class="rack-items">
+      <div class="rack-item"><div class="rack-icon">&#128296;</div><div class="rack-label">Chisel</div><div class="rack-value">1/2&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128207;</div><div class="rack-label">Saw</div><div class="rack-value">Dovetail</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128208;</div><div class="rack-label">Square</div><div class="rack-value">12&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128295;</div><div class="rack-label">Mallet</div><div class="rack-value">16oz</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; design principles</div>
+  <h2>What Makes Level 3 Different</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Physical Artifacts</h4><p>Coffee rings, tape strips, pushpins, paper clips, ink blots. Level 3 adds the physical evidence of a notebook that lives in a real workshop.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Caveat Everywhere</h4><p>Caveat is no longer just an accent. It's on section numbers, some headings, table headers, sticky notes, margin notes, the footer. It's becoming the voice of the document.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Genuine Crookedness</h4><p>2&ndash;4&deg; rotations on cards, 4&ndash;8&deg; on stamps, -1.5&deg; on callouts. Things look genuinely crooked, not just slightly off.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Chaotic Spacing</h4><p>Every section has different top/bottom padding. Borders alternate between solid, dashed, dotted, double, and none. The rhythm is intentionally broken.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Destructive Marks</h4><p>Sticky notes cover content. Coffee stains obscure corners. Tape holds things together. The document shows wear from use.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Still Functional</h4><p>Despite the chaos, everything is still readable. Colors have enough contrast. Components work. The grid holds. It's messy, not broken.</p></div></div>
+  </div>
+
+  <div class="sticky-note sticky-yellow" style="margin-top:1rem;">That last principle is the most important one. Messy, not broken.</div>
+</section>
+
+<section>
+  <div class="section-num">07 &mdash; combining classes</div>
+  <h2>Layered Effects</h2>
+  <p>The real power of Level 3 is combining classes. Some examples:</p>
+
+  <div class="blueprint-card taped coffee-ring dog-ear" style="margin-top:2.5rem;">
+    <div class="blueprint-title">A Truly Messy Blueprint</div>
+    <h3>Taped + Coffee Ring + Dog Ear</h3>
+    <p>This blueprint has been taped to the wall, had coffee spilled on it, and has a folded corner. It's <span class="scrawl">seen some things</span>.</p>
+    <div>
+      <span class="blueprint-measurement">24&Prime; &times; 36&Prime;</span>
+      <span class="blueprint-measurement">Rough sketch</span>
+    </div>
+  </div>
+
+  <div class="callout paper-clipped ink-blot" style="margin-top:2rem;">
+    <p><strong>Note:</strong> This callout has been paper-clipped to the page and has an ink blot on it. Layer as many effects as you need.</p>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div class="flow-card capture pushpin dog-ear" style="display:inline-block;max-width:350px;margin-top:1.5rem;transform:rotate(-2deg);">
+      <div class="card-icon">&#128296;</div>
+      <h4>Pinned Card with Dog Ear</h4>
+      <p>Pushpin holds it up, corner is folded over.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>extra-rough woodworking v0.3 &mdash; a beautiful mess &mdash; see also <a href="../rough-woodworking/index.html">level 1</a></p></div></footer>
+
+</body>
+</html>
