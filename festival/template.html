@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document Title</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Summer 2026 &middot; Live Music</div>
+  <h1>Document Title</h1>
+  <p>A brief subtitle or description of what this document covers. Keep it to one or two sentences.</p>
+  <div class="hero-version">v0.1 &middot; draft</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Section Name</div>
+  <h2>Section Heading</h2>
+  <p>Body text goes here. Use <strong>strong tags</strong> to highlight key phrases. Body text renders in the dim color by default.</p>
+
+  <h3>Subsection Heading</h3>
+  <p>Subsection content.</p>
+
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#127928;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#127911;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#127927;</div><h4>Card Title</h4><p>Card description text.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#127908;</div><h4>Card Title</h4><p>Card description text.</p></div>
+  </div>
+
+  <div class="callout"><p><strong>Setlist Update:</strong> Callouts are used for important schedule changes and announcements.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Festival Stages</div>
+  <h2>Stage Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Doors</div><div class="pipe-desc">Gates Open</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Openers</div><div class="pipe-desc">Supporting Acts</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Headliner</div><div class="pipe-desc">Main Event</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Encore</div><div class="pipe-desc">After Party</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; The Lineup</div>
+  <h2>Lineup Poster</h2>
+  <div class="lineup-poster">
+    <div class="lineup-date">August 15 &ndash; 17, 2026 &middot; Sunset Valley</div>
+    <div class="lineup-headliner">Cosmic Drift</div>
+    <div class="lineup-tier-2">Neon Horizon <span>&bull;</span> Velvet Storm <span>&bull;</span> Phantom Echo</div>
+    <div class="lineup-tier-3">Solar Circuit <span>&bull;</span> Glass Towers <span>&bull;</span> Midnight Voltage <span>&bull;</span> The Wanderers <span>&bull;</span> Ruby Waves <span>&bull;</span> Iron Bloom</div>
+    <div class="lineup-venue">Sunset Valley Amphitheater &middot; Desert Springs, CA</div>
+  </div>
+
+  <h3>Wristband Badges</h3>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin:2rem 0;">
+    <div class="wristband wb-pink">GA Weekend</div>
+    <div class="wristband wb-orange">Day Pass</div>
+    <div class="wristband wb-purple">Backstage</div>
+    <div class="wristband wb-cyan">Press</div>
+    <div class="wristband wb-vip">VIP All Access</div>
+  </div>
+</section>
+
+<div class="ticket-divider">
+  <div class="perf-dot left"></div>
+  <div class="ticket-text">Admit One</div>
+  <div class="perf-dot right"></div>
+</div>
+
+<section>
+  <div class="section-num">04 &mdash; Schedule</div>
+  <h2>Stage Cards</h2>
+  <div class="stage-card sc-pink">
+    <div class="stage-header">
+      <div class="stage-name">Main Stage</div>
+      <div class="stage-tag">Saturday</div>
+    </div>
+    <div class="stage-slots">
+      <div class="stage-slot"><div class="slot-time">17:00</div><div class="slot-artist">Iron Bloom</div><div class="slot-label">45 min</div></div>
+      <div class="stage-slot"><div class="slot-time">18:30</div><div class="slot-artist">Velvet Storm</div><div class="slot-label">60 min</div></div>
+      <div class="stage-slot active"><div class="slot-time">20:00</div><div class="slot-artist">Phantom Echo</div><div class="slot-label">now</div></div>
+      <div class="stage-slot"><div class="slot-time">22:00</div><div class="slot-artist">Cosmic Drift</div><div class="slot-label">90 min</div></div>
+    </div>
+  </div>
+
+  <div class="stage-card sc-cyan">
+    <div class="stage-header">
+      <div class="stage-name">Beach Stage</div>
+      <div class="stage-tag">Sunday</div>
+    </div>
+    <div class="stage-slots">
+      <div class="stage-slot"><div class="slot-time">14:00</div><div class="slot-artist">Ruby Waves</div><div class="slot-label">45 min</div></div>
+      <div class="stage-slot"><div class="slot-time">15:30</div><div class="slot-artist">The Wanderers</div><div class="slot-label">60 min</div></div>
+      <div class="stage-slot"><div class="slot-time">17:00</div><div class="slot-artist">Neon Horizon</div><div class="slot-label">75 min</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Information</div>
+  <h2>Festival Guide</h2>
+  <table class="info-table">
+    <thead><tr><th>Stage</th><th>Location</th><th>Capacity</th></tr></thead>
+    <tbody>
+      <tr><td>Main Stage</td><td>Central Field</td><td>25,000</td></tr>
+      <tr><td>DJ Tent</td><td>North Woods</td><td>5,000</td></tr>
+      <tr><td>Beach Stage</td><td>Lakefront</td><td>8,000</td></tr>
+    </tbody>
+  </table>
+  <p>Tags: <span class="tag t-capture">electric pink</span> <span class="tag t-refine">sunset orange</span> <span class="tag t-execute">vivid purple</span> <span class="tag t-batch">bright cyan</span></p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Diagrams</div>
+  <h2>Festival Map</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Site Overview</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="120" y="55" text-anchor="middle" fill="var(--capture)" font-size="11" font-weight="600">MAIN STAGE</text>
+      <text x="120" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Central Field</text>
+      <line x1="220" y1="60" x2="280" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="280" y="20" width="200" height="80" rx="12" fill="var(--surface)" stroke="var(--execute)" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" fill="var(--execute)" font-size="11" font-weight="600">DJ TENT</text>
+      <text x="380" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">North Woods</text>
+      <line x1="480" y1="60" x2="540" y2="60" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="540" y="20" width="140" height="80" rx="12" fill="var(--surface)" stroke="var(--batch)" stroke-width="2"/>
+      <text x="610" y="55" text-anchor="middle" fill="var(--batch)" font-size="11" font-weight="600">BEACH</text>
+      <text x="610" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">Lakefront</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">07 &mdash; Guidelines</div>
+  <h2>Festival Rules</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Stay Hydrated</h4><p>Free water refill stations are located at every stage area and food court.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Wristband Required</h4><p>Your festival wristband must be worn at all times for stage access and re-entry.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Respect the Music</h4><p>Support all artists on the lineup regardless of stage size or set time.</p></div></div>
+  </div>
+</section>
+</div>
+
+<footer><div class="container"><p>Document Title &middot; v0.1 &middot; Music Festival</p></div></footer>
+
+</body>
+</html>

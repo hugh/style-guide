@@ -252,6 +252,40 @@ Construction / Safety
   overlays. Fonts: condensed bold sans (like Oswald) for headings,
   clean sans for body, mono for measurements/codes.
 
+Horror VHS / Found Footage
+  VHS tracking lines on near-black. Camcorder timestamp overlays, static
+  noise textures, night-vision green accents, REC dot indicator, glitch
+  tear effects, degraded video scanline patterns. Distinct from Haunted
+  House (gothic) and Surveillance (modern CCTV) — this is analog video
+  horror. Fonts: monospace for everything (VCR-style), with timestamp
+  overlays and tracking artifacts.
+
+Woodworking / Workshop
+  Sawdust textures on warm wood-grain backgrounds. Rich walnut, maple
+  honey, and raw pine accents. Workshop blueprint card components, hand
+  tool silhouette dividers, dovetail joint section markers, wood shaving
+  curl ornaments, lumber grade stamp badges, workbench measurement
+  callouts. Fonts: sturdy slab serif for headings, clean sans for body,
+  mono for measurements.
+
+Neon Tokyo / Shibuya
+  Vibrant commercial neon on dark urban backgrounds. Hot pink, electric
+  blue, white fluorescent, konbini green. Kanji signage decorative
+  elements, crossing signal countdown indicators, konbini receipt card
+  components, vending machine grid panels, train station sign callouts,
+  pixel-dot matrix display dividers. Celebratory urbanism, not dystopian.
+  Fonts: condensed geometric sans for headings, clean sans for body,
+  mono for prices/times.
+
+Fairy Tale / Storybook
+  Warm illustrated parchment with gilt page edges. Rich jewel tones —
+  deep forest green, royal purple, ruby red, gold. "Once upon a time"
+  ornamental drop caps, woodland vine border frames, enchanted mirror
+  card components, magic scroll callout panels, crown/shield badge
+  elements, storybook page-turn dividers. Fonts: decorative serif
+  (like Cinzel) for headings, clean serif for body, mono for chapter
+  numbers.
+
 
 DONE
 ----
@@ -378,3 +412,15 @@ Japanese Zen / Wabi-Sabi
 
 Grunge / Zine
   → zine/
+
+Music Festival / Concert Poster
+  → festival/
+
+Origami / Paper Craft
+  → origami/
+
+Chalkboard (Dark)
+  → chalkboard/
+
+Ice / Arctic
+  → arctic/

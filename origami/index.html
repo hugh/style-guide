@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origami / Paper Craft — Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 0; border: 1px solid var(--border); overflow: hidden; box-shadow: 2px 2px 0 rgba(0,0,0,0.04); }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0; margin-bottom: 1rem; box-shadow: 2px 2px 0 rgba(0,0,0,0.04); }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Nunito', sans-serif; font-size: 2rem; color: var(--text); line-height: 1.15; font-weight: 800; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0; text-decoration: none; transition: box-shadow 0.2s; box-shadow: 2px 2px 0 rgba(0,0,0,0.04); }
+  .file-link:hover { box-shadow: 4px 4px 0 rgba(0,0,0,0.06); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0; margin: 1.5rem 0; box-shadow: 2px 2px 0 rgba(0,0,0,0.04); }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Paper <span>Craft</span></h1>
+  <p>Folded paper shadows and geometric faceted shapes &mdash; clean white backgrounds, soft pastel accents, crisp fold-line borders for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Fold note:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. No build step required. All border-radii are <span class="inline-code">0px</span> for crisp folded edges.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Clean white paper tones &mdash; layered like <strong>folded sheets</strong>, each surface a slightly deeper shadow.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#fafafa;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#fafafa</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f0f0f0;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#f0f0f0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8e8e8;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#e8e8e8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dedede;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#dedede</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0d0d0;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#d0d0d0</div></div></div>
+  </div>
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, fold instructions</div></div>
+  </div>
+  <h3>Origami Paper Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#e85070;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#e85070</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#38a060;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#38a060</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0a020;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#d0a020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e85070;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#e85070</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3878c8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3878c8</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">sage green</span> <span class="tag t-refine">gold foil</span> <span class="tag t-execute">red paper</span> <span class="tag t-batch">sky blue</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Friendly rounded sans for headings</strong>, <strong>clean sans for body</strong>, <strong>mono for instructions</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Nunito &mdash; Headings (h1, h2, h3) &middot; weight 700&ndash;800</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card titles, tables</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, fold instructions, step numbers</div><div class="font-sample-mono">01 &mdash; VALLEY FOLD &middot; STEP 3 OF 12 &middot; ROTATE 45&deg;</div></div>
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Nunito</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>800</td></tr>
+      <tr><td>Section h2</td><td>Nunito</td><td>2rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Nunito</td><td>1.15rem</td><td>700</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.78rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128207;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9635;</div><h4>Crisp Edges</h4><p>Border-radius 0px throughout &mdash; folded paper has no rounded corners.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9670;</div><h4>Paper Shadows</h4><p>Subtle offset shadows suggest layered paper sheets.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>.flow-card.capture</h4><p>Sage green top bar.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>.flow-card.refine</h4><p>Gold foil top bar.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>.flow-card.execute</h4><p>Red paper top bar.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>.flow-card.batch</h4><p>Sky blue top bar.</p></div>
+  </div>
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Crease</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Fold</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Shape</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Finish</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Folding tip:</strong> Pink left border with a faint origami-pink background wash. Use for important notes and instructions.</p></div>
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar, paper shadow</td></tr>
+      <tr><td>Folded Card</td><td>.folded-card</td><td>Folded corner triangle + accent stripe</td></tr>
+      <tr><td>Crane Marker</td><td>.crane-marker</td><td>SVG crane between rules</td></tr>
+      <tr><td>Fortune Badge</td><td>.fortune-badge</td><td>Diamond with four pastel quadrants</td></tr>
+    </tbody>
+  </table>
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Paper Craft Process</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#f0f0f0" stroke="#38a060" stroke-width="2"/>
+      <text x="110" y="45" text-anchor="middle" fill="#38a060" font-size="10" font-weight="600">SELECT PAPER</text>
+      <text x="110" y="62" text-anchor="middle" fill="#8a8a8a" font-size="9">Choose weight &amp; color</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#8a8a8a" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#f0f0f0" stroke="#d0a020" stroke-width="2"/>
+      <text x="350" y="45" text-anchor="middle" fill="#d0a020" font-size="10" font-weight="600">FOLD &amp; CREASE</text>
+      <text x="350" y="62" text-anchor="middle" fill="#8a8a8a" font-size="9">Valley &amp; mountain folds</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#8a8a8a" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#f0f0f0" stroke="#3878c8" stroke-width="2"/>
+      <text x="590" y="45" text-anchor="middle" fill="#3878c8" font-size="10" font-weight="600">SHAPE &amp; FINISH</text>
+      <text x="590" y="62" text-anchor="middle" fill="#8a8a8a" font-size="9">Final model</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+  <h2>Folded Card</h2>
+  <p>A card with a <strong>folded corner</strong> triangle in the top-right and a thin accent stripe. The fold creates a subtle shadow, evoking a turned-down page corner. Add semantic classes for color: <span class="inline-code">capture</span>, <span class="inline-code">refine</span>, <span class="inline-code">execute</span>, <span class="inline-code">batch</span>.</p>
+  <div class="folded-card">
+    <h4>Default Folded Card</h4>
+    <p>Origami pink accent stripe with the signature folded corner. Content sits cleanly beneath the fold with a subtle paper shadow offset.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0;">
+    <div class="folded-card capture">
+      <h4>Capture Variant</h4>
+      <p>Sage green stripe &mdash; use for collection and input stages.</p>
+    </div>
+    <div class="folded-card batch">
+      <h4>Batch Variant</h4>
+      <p>Sky blue stripe &mdash; use for processing and batch operations.</p>
+    </div>
+  </div>
+
+  <h2>Crane Marker</h2>
+  <p>A decorative section separator featuring a <strong>geometric origami crane</strong> SVG centered between thin horizontal rules. Place between major content sections.</p>
+  <div class="crane-marker">
+    <div class="crane-line"></div>
+    <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <!-- Geometric low-poly crane -->
+      <polygon points="24,4 8,28 24,22" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="24,4 40,28 24,22" fill="var(--surface-3)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="8,28 24,22 20,38" fill="var(--surface)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="40,28 24,22 28,38" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <!-- Tail -->
+      <polygon points="20,38 14,44 18,34" fill="var(--surface-3)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <!-- Head / beak -->
+      <polygon points="28,38 36,42 30,34" fill="var(--surface)" stroke="var(--border)" stroke-width="1" stroke-linejoin="round"/>
+      <polygon points="36,42 42,40 38,44" fill="var(--accent)" stroke="var(--accent-dim)" stroke-width="0.5" stroke-linejoin="round"/>
+    </svg>
+    <div class="crane-line"></div>
+  </div>
+  <p style="text-align:center;font-size:0.85rem;color:var(--text-faint);">The crane SVG uses faceted polygons in surface tones with an accent-colored beak.</p>
+
+  <h2>Crease Divider</h2>
+  <p>A delicate horizontal divider that looks like a <strong>paper crease</strong> &mdash; a thin line with a subtle shadow on one side, as if light is hitting a real fold. Much more refined than a standard <span class="inline-code">&lt;hr&gt;</span>.</p>
+  <div class="crease-divider"></div>
+  <p style="font-size:0.85rem;color:var(--text-faint);">The crease uses a gradient shadow below the line to simulate depth at a paper fold.</p>
+  <div class="crease-divider"></div>
+
+  <h2>Fortune Teller Badge</h2>
+  <p>An inline badge shaped like a <strong>paper fortune teller</strong> (cootie catcher) viewed from above &mdash; a diamond with four colored quadrants. Text label centered.</p>
+  <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin:2rem 0;">
+    <div class="fortune-badge">
+      <div class="fortune-diamond">
+        <div class="fq fq-tl"></div>
+        <div class="fq fq-tr"></div>
+        <div class="fq fq-bl"></div>
+        <div class="fq fq-br"></div>
+      </div>
+      <span class="fortune-label">v1.0</span>
+    </div>
+    <div class="fortune-badge">
+      <div class="fortune-diamond">
+        <div class="fq fq-tl"></div>
+        <div class="fq fq-tr"></div>
+        <div class="fq fq-bl"></div>
+        <div class="fq fq-br"></div>
+      </div>
+      <span class="fortune-label">New</span>
+    </div>
+    <div class="fortune-badge fortune-lg">
+      <div class="fortune-diamond">
+        <div class="fq fq-tl"></div>
+        <div class="fq fq-tr"></div>
+        <div class="fq fq-bl"></div>
+        <div class="fq fq-br"></div>
+      </div>
+      <span class="fortune-label">Draft</span>
+    </div>
+    <div class="fortune-badge fortune-lg">
+      <div class="fortune-diamond">
+        <div class="fq fq-tl"></div>
+        <div class="fq fq-tr"></div>
+        <div class="fq fq-bl"></div>
+        <div class="fq fq-br"></div>
+      </div>
+      <span class="fortune-label">Beta</span>
+    </div>
+    <span style="font-size:0.85rem;color:var(--text-faint);">Use <span class="inline-code">.fortune-badge</span> (56px) or <span class="inline-code">.fortune-lg</span> (72px).</span>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Clean Paper Backgrounds</h4><p>White and light grey surfaces layered like folded sheets. Each surface level is a slightly deeper fold shadow.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Origami Pink Accent</h4><p>Traditional origami paper red-pink marks key elements, accents, and the folded card stripe.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Crisp Geometric Edges</h4><p>Border-radius 0px everywhere. Folded paper creates clean geometric shapes with no rounding.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Paper Fold Shadows</h4><p>Subtle offset box-shadows suggest sheets of paper layered and folded, creating gentle depth.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Friendly Rounded Headings</h4><p>Nunito brings a soft, approachable geometric quality that contrasts with the sharp edges of the containers.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Paper Color Semantics</h4><p>Sage green, gold foil, traditional red, and sky blue map to different origami paper types, maintaining consistent visual meaning.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Origami / Paper Craft &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

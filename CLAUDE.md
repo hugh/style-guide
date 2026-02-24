@@ -56,6 +56,10 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `kodachrome/` — Film photography theme (warm cream, Kodachrome-saturated reds/greens/yellows, slide mounts, sprocket strips)
 - `zine/` — Grunge zine theme (off-white newsprint, bold black borders, tape strip cards, ransom note blocks, xerox dividers)
 - `swiss/` — International Typographic Style theme (pure white, Swiss red accent, strict grid, hairline borders, no decoration)
+- `festival/` — Music festival / concert poster theme (deep purple-black, psychedelic gradients, lineup posters, wristband badges, stage cards)
+- `chalkboard/` — Classroom chalkboard theme (dark slate green, chalk-white text, pastel chalk accents, tally counters, eraser dividers)
+- `origami/` — Paper craft theme (clean white paper, origami pink, folded corners, crane markers, crease dividers, fortune badges)
+- `arctic/` — Ice/frost theme (pale glacial blue-white, frosted glass cards, aurora badges, icicle dividers, snowflake markers)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

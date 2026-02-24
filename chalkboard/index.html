@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chalkboard (Dark) &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 4px; border: 1px dashed var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 1px dashed var(--border); border-radius: 4px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Patrick Hand', cursive; font-size: 2rem; color: var(--text); line-height: 1.2; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 1px dashed var(--border); border-radius: 4px; text-decoration: none; transition: border-color 0.15s; }
+  .file-link:hover { border-color: var(--accent); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 1px dashed var(--border); border-radius: 4px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px dashed var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>Chalk<span>board</span></h1>
+  <p>A dark classroom chalkboard design &mdash; slate-green surfaces, chalk-white text, pastel chalk accents, hand-drawn borders, and eraser smudge dividers.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Usage:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. No build step required.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Backgrounds &amp; Surfaces</h2>
+  <p>Dark slate-green tones &mdash; like a <strong>well-used classroom chalkboard</strong>, rich and deep.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#1a2a1e;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#1a2a1e</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#223428;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#223428</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2a3e30;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#2a3e30</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#324838;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#324838</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a5e50;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#4a5e50</div></div></div>
+  </div>
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis (warm chalk white)</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, faded chalk</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; ghost chalk, erased writing</div></div>
+  </div>
+  <h3>Chalk Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f0d858;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#f0d858</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#68d880;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#68d880</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f0d858;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#f0d858</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f07888;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#f07888</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#68a8e8;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#68a8e8</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">green chalk</span> <span class="tag t-refine">yellow chalk</span> <span class="tag t-execute">pink chalk</span> <span class="tag t-batch">blue chalk</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Hand-drawn chalk headings</strong>, <strong>clean sans body</strong>, <strong>monospace for labels</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Patrick Hand &mdash; Headings (h1, h2, h3) &middot; weight 400</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card titles, tables</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, section numbers, metadata</div><div class="font-sample-mono">01 &mdash; LESSON PLAN &middot; PERIOD 3 &middot; ROOM 204</div></div>
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Patrick Hand</td><td>clamp(2.8rem, 8vw, 5.5rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Patrick Hand</td><td>2rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Patrick Hand</td><td>1.35rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Inter</td><td>0.78rem</td><td>700</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128207;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9881;&#65039;</div><h4>Sections</h4><p>5rem vertical padding, dashed border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128241;</div><h4>Responsive</h4><p>Fluid type, grids collapse below 640px.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>.flow-card.capture</h4><p>Green chalk top bar.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>.flow-card.refine</h4><p>Yellow chalk top bar.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>.flow-card.execute</h4><p>Pink chalk top bar.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>.flow-card.batch</h4><p>Blue chalk top bar.</p></div>
+  </div>
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Introduce</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Explain</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Practice</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Review</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Teacher&rsquo;s Note:</strong> Yellow left border with faint chalk-yellow background. Use for important reminders.</p></div>
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic chalk-color top bar</td></tr>
+      <tr><td>Chalk Box</td><td>.chalk-box</td><td>Dashed chalk-drawn card</td></tr>
+      <tr><td>Tally Counter</td><td>.tally-counter</td><td>Tally-mark metric display</td></tr>
+      <tr><td>Lesson Card</td><td>.lesson-card</td><td>Structured lesson plan frame</td></tr>
+    </tbody>
+  </table>
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Learning Flow</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="4" fill="#223428" stroke="#68d880" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="110" y="42" text-anchor="middle" fill="#68d880" font-size="10" font-weight="600" font-family="Inter, sans-serif">INTRODUCE</text>
+      <text x="110" y="60" text-anchor="middle" fill="#687468" font-size="9" font-family="Inter, sans-serif">New concept</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#687468" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="4" fill="#223428" stroke="#f0d858" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="350" y="42" text-anchor="middle" fill="#f0d858" font-size="10" font-weight="600" font-family="Inter, sans-serif">PRACTICE</text>
+      <text x="350" y="60" text-anchor="middle" fill="#687468" font-size="9" font-family="Inter, sans-serif">Exercises</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#687468" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="4" fill="#223428" stroke="#68a8e8" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="590" y="42" text-anchor="middle" fill="#68a8e8" font-size="10" font-weight="600" font-family="Inter, sans-serif">ASSESS</text>
+      <text x="590" y="60" text-anchor="middle" fill="#687468" font-size="9" font-family="Inter, sans-serif">Quiz &amp; review</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+
+  <h2>Chalk Box</h2>
+  <p>A card drawn with chalk-style dashed borders and a chalk dust smudge at the corner. Add <span class="inline-code">cb-green</span>, <span class="inline-code">cb-yellow</span>, <span class="inline-code">cb-pink</span>, or <span class="inline-code">cb-blue</span> for colored variants.</p>
+  <div class="flow-grid">
+    <div class="chalk-box cb-green">
+      <div class="chalk-box-title">Key Vocabulary</div>
+      <div class="chalk-box-content"><p>Photosynthesis, chlorophyll, glucose, carbon dioxide, stomata.</p></div>
+    </div>
+    <div class="chalk-box cb-pink">
+      <div class="chalk-box-title">Homework Due Friday</div>
+      <div class="chalk-box-content"><p>Complete worksheet 4B. Read chapter 7, sections 1&ndash;3. Study for quiz.</p></div>
+    </div>
+  </div>
+  <div class="chalk-box cb-blue">
+    <div class="chalk-box-title">Remember</div>
+    <div class="chalk-box-content"><p>The mitochondria is the powerhouse of the cell. ATP is produced through cellular respiration in three stages: glycolysis, the Krebs cycle, and the electron transport chain.</p></div>
+  </div>
+
+  <h2>Tally Counter</h2>
+  <p>Displays counts using tally marks &mdash; groups of five with the diagonal slash. Used for stats and metrics.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin:2rem 0;">
+    <div class="tally-counter">
+      <div class="tally-label">Present</div>
+      <div class="tally-marks">
+        <div class="tally-group five"><div class="mark"></div><div class="mark"></div><div class="mark"></div><div class="mark"></div></div>
+        <div class="tally-group five"><div class="mark"></div><div class="mark"></div><div class="mark"></div><div class="mark"></div></div>
+        <div class="tally-group five"><div class="mark"></div><div class="mark"></div><div class="mark"></div><div class="mark"></div></div>
+        <div class="tally-group"><div class="mark"></div><div class="mark"></div></div>
+      </div>
+      <div class="tally-value">17</div>
+    </div>
+    <div class="tally-counter">
+      <div class="tally-label">Absent</div>
+      <div class="tally-marks">
+        <div class="tally-group"><div class="mark"></div><div class="mark"></div><div class="mark"></div></div>
+      </div>
+      <div class="tally-value">3</div>
+    </div>
+  </div>
+
+  <h2>Eraser Divider</h2>
+  <p>A horizontal divider that looks like a chalkboard eraser smudge &mdash; soft, blurred, and organic rather than a clean line.</p>
+  <div class="eraser-divider"></div>
+  <p style="margin-top:1rem;">Place <span class="inline-code">&lt;div class="eraser-divider"&gt;&lt;/div&gt;</span> between sections for a natural break.</p>
+  <div class="eraser-divider"></div>
+
+  <h2>Lesson Card</h2>
+  <p>A structured lesson plan card with header, objective, and content area &mdash; styled like a teacher&rsquo;s lesson plan format on the board.</p>
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <div class="lesson-tag">Lesson 12</div>
+      <div class="lesson-date">Mon 23 Feb 2026</div>
+    </div>
+    <div class="lesson-objective">
+      <div class="lesson-objective-label">Objective</div>
+      <p>Students will understand the process of photosynthesis and identify its key components.</p>
+    </div>
+    <div class="lesson-content">
+      <p>Today we cover the light-dependent reactions and the Calvin cycle. Key points:</p>
+      <ul>
+        <li>Light energy is absorbed by chlorophyll in the thylakoid membranes</li>
+        <li>Water molecules are split, releasing oxygen as a byproduct</li>
+        <li>ATP and NADPH are produced and used in the Calvin cycle</li>
+        <li>Carbon dioxide is fixed into glucose in the stroma</li>
+      </ul>
+      <p><strong>Activity:</strong> Diagram the light reactions on your worksheet.</p>
+    </div>
+  </div>
+
+  <div class="lesson-card">
+    <div class="lesson-header">
+      <div class="lesson-tag">Lesson 13</div>
+      <div class="lesson-date">Wed 25 Feb 2026</div>
+    </div>
+    <div class="lesson-objective">
+      <div class="lesson-objective-label">Objective</div>
+      <p>Compare and contrast photosynthesis with cellular respiration.</p>
+    </div>
+    <div class="lesson-content">
+      <p>Building on Lesson 12, we examine how the products of photosynthesis fuel cellular respiration, and vice versa. Students will create a Venn diagram comparing the two processes.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Dark Slate-Green Board</h4><p>Deep chalkboard green backgrounds with slightly warm undertones, like a well-seasoned classroom board.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Warm Chalk White</h4><p>Text is slightly warm and yellow-tinted, like real chalk on a dark board &mdash; never pure clinical white.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Pastel Chalk Semantics</h4><p>Green (introduce/go), yellow (highlight/refine), pink (alert/practice), blue (info/review) map to chalk stick colors.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Hand-Written Headings</h4><p>Patrick Hand gives headings a chalk-written, hand-drawn feel distinct from printed text.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Dashed Chalk Borders</h4><p>All borders use dashed styles to simulate hand-drawn chalk lines rather than precise rules.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Classroom Components</h4><p>Chalk boxes, tally counters, eraser dividers, and lesson cards bring the classroom experience into the design.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Chalkboard (Dark) &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>
