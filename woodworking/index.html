@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Woodworking / Workshop &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border-radius: 2px; border: 2px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--text); margin-bottom: 0.15rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 2px solid var(--border); border-radius: 2px; margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; }
+  .font-sample-heading { font-family: 'Bitter', serif; font-size: 2rem; color: var(--text); line-height: 1.2; font-weight: 700; }
+  .font-sample-body { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.9rem; color: var(--text-dim); letter-spacing: 0.06em; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 2px solid var(--border); border-radius: 2px; text-decoration: none; transition: border-color 0.15s; }
+  .file-link:hover { border-color: var(--accent); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 2px solid var(--border); border-radius: 2px; margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System Reference</div>
+  <h1>The <span>Workshop</span></h1>
+  <p>A craftsman's design system &mdash; warm wood tones, sturdy borders, honest materials, and hand-made precision for single-page HTML documents.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 2px;">view starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128196;</div><div><h4>template.html</h4><p>Starter document with every component wired up</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#128752;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; variables, reset, all components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>Workshop Tip:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. No build step required &mdash; measure twice, cut once.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>Wood Tones &amp; Surfaces</h2>
+  <p>Warm wood grain backgrounds &mdash; from <strong>raw pine</strong> to <strong>aged walnut</strong>, like layers of sanded wood.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f4ece0;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f4ece0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8dcc8;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e8dcc8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dcd0b8;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#dcd0b8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#d0c4a8;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#d0c4a8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b8a888;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#b8a888</div></div></div>
+  </div>
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary text &mdash; headings, strong emphasis</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim text &mdash; body paragraphs, descriptions</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint text &mdash; captions, metadata, measurements</div></div>
+  </div>
+  <h3>Workshop Stain Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#8b4520;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b4520</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a7a38;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#4a7a38</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c89030;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3868a0;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3868a0</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">pine</span> <span class="tag t-refine">maple</span> <span class="tag t-execute">cherry</span> <span class="tag t-batch">steel</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Sturdy slab serif for headings</strong>, <strong>clean sans for body</strong>, <strong>monospace for measurements</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Bitter &mdash; Headings (h1, h2, h3) &middot; weight 600&ndash;700</div><div class="font-sample-heading">The quick brown fox jumps over the lazy dog</div></div>
+  <div class="font-sample"><div class="sample-label">Source Sans 3 &mdash; Body text, card titles, tables</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 600.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels, tags, measurements, specifications</div><div class="font-sample-mono">01 &mdash; WORKBENCH &middot; 36&Prime; &times; 72&Prime; &middot; WALNUT &middot; #1 GRADE</div></div>
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Bitter</td><td>clamp(2.6rem, 7vw, 4.5rem)</td><td>700</td></tr>
+      <tr><td>Section h2</td><td>Bitter</td><td>1.85rem</td><td>700</td></tr>
+      <tr><td>Subsection h3</td><td>Bitter</td><td>1.15rem</td><td>600</td></tr>
+      <tr><td>Card title h4</td><td>Source Sans 3</td><td>0.8rem</td><td>600</td></tr>
+      <tr><td>Body paragraph</td><td>Source Sans 3</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>IBM Plex Mono</td><td>0.75rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#128207;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128296;</div><h4>Sections</h4><p>5rem vertical padding, 2px border-top &mdash; sturdy joinery.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#8596;&#65039;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#128241;</div><h4>Responsive</h4><p>Fluid type, grids collapse below 640px.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#127794;</div><h4>.flow-card.capture</h4><p>Pine green top bar &mdash; fresh-cut wood.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#127855;</div><h4>.flow-card.refine</h4><p>Maple honey top bar &mdash; golden amber.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#127826;</div><h4>.flow-card.execute</h4><p>Cherry red top bar &mdash; deep cherry stain.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#128295;</div><h4>.flow-card.batch</h4><p>Tool steel top bar &mdash; cold blue metal.</p></div>
+  </div>
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Select</div><div class="pipe-desc">Choose lumber</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Mill</div><div class="pipe-desc">Joint &amp; plane</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Join</div><div class="pipe-desc">Cut joinery</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Finish</div><div class="pipe-desc">Sand &amp; stain</div></div>
+  </div>
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>Shop Note:</strong> Rich walnut left border with warm wood background tint. Use for important workshop reminders.</p></div>
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar</td></tr>
+      <tr><td>Blueprint Card</td><td>.blueprint-card</td><td>Grid-lined workshop drawing</td></tr>
+      <tr><td>Dovetail Divider</td><td>.dovetail-divider</td><td>Interlocking joint SVG</td></tr>
+      <tr><td>Lumber Stamp</td><td>.lumber-stamp</td><td>Rotated grade badge</td></tr>
+      <tr><td>Tool Rack</td><td>.tool-rack</td><td>Pegboard item display</td></tr>
+    </tbody>
+  </table>
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Furniture Build Process</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="2" fill="#e8dcc8" stroke="#4a7a38" stroke-width="2"/>
+      <text x="110" y="42" text-anchor="middle" fill="#4a7a38" font-size="10" font-weight="600">ROUGH LUMBER</text>
+      <text x="110" y="58" text-anchor="middle" fill="#8a7858" font-size="9">Raw material</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#8a7858" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="2" fill="#e8dcc8" stroke="#c89030" stroke-width="2"/>
+      <text x="350" y="42" text-anchor="middle" fill="#c89030" font-size="10" font-weight="600">MILLING</text>
+      <text x="350" y="58" text-anchor="middle" fill="#8a7858" font-size="9">Joint, plane, rip</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#8a7858" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="2" fill="#e8dcc8" stroke="#8b4520" stroke-width="2"/>
+      <text x="590" y="42" text-anchor="middle" fill="#8b4520" font-size="10" font-weight="600">ASSEMBLY</text>
+      <text x="590" y="58" text-anchor="middle" fill="#8a7858" font-size="9">Glue-up &amp; finish</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Workshop Components</div>
+  <h2>Workshop Blueprint Card</h2>
+  <p>A card styled like a workshop drawing on kraft paper &mdash; thin grid lines, <strong>measurement annotations</strong> in mono, and pin corners suggesting pinned paper.</p>
+  <div class="blueprint-card">
+    <div class="blueprint-title">Drawing No. WB-001 &mdash; Workbench Top</div>
+    <h3>Split-Top Roubo Workbench</h3>
+    <p>A traditional French-style workbench with a split top for clamping, leg vise, and tail vise. Built from hard maple with walnut accents.</p>
+    <div>
+      <span class="blueprint-measurement">72&Prime; &times; 24&Prime; &times; 34&Prime;</span>
+      <span class="blueprint-measurement">Top: 4&Prime; thick</span>
+      <span class="blueprint-measurement">Material: Hard Maple</span>
+      <span class="blueprint-measurement">Weight: ~280 lbs</span>
+    </div>
+  </div>
+  <div class="blueprint-card">
+    <div class="blueprint-title">Drawing No. TC-003 &mdash; Tool Cabinet</div>
+    <h3>Hanging Tool Cabinet</h3>
+    <p>Wall-mounted cabinet with frame-and-panel doors, french cleat hanging system, and adjustable shelving for hand tools.</p>
+    <div>
+      <span class="blueprint-measurement">36&Prime; &times; 24&Prime; &times; 8&Prime;</span>
+      <span class="blueprint-measurement">Panels: 1/2&Prime;</span>
+      <span class="blueprint-measurement">Material: Cherry</span>
+    </div>
+  </div>
+
+  <h2>Dovetail Divider</h2>
+  <p>An SVG section separator with interlocking <strong>dovetail joint shapes</strong> &mdash; alternating trapezoid teeth where two boards meet.</p>
+  <div class="dovetail-divider">
+    <svg viewBox="0 0 600 30" xmlns="http://www.w3.org/2000/svg">
+      <!-- Top board (left half of dovetails) -->
+      <path d="M0,14 L60,14 L68,2 L92,2 L100,14 L160,14 L168,2 L192,2 L200,14 L260,14 L268,2 L292,2 L300,14 L360,14 L368,2 L392,2 L400,14 L460,14 L468,2 L492,2 L500,14 L600,14"
+        fill="none" stroke="#8b4520" stroke-width="2"/>
+      <!-- Bottom board (mirror) -->
+      <path d="M0,16 L60,16 L68,28 L92,28 L100,16 L160,16 L168,28 L192,28 L200,16 L260,16 L268,28 L292,28 L300,16 L360,16 L368,28 L392,28 L400,16 L460,16 L468,28 L492,28 L500,16 L600,16"
+        fill="none" stroke="#b8a888" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h2>Lumber Stamp Badge</h2>
+  <p>Inline badges styled like <strong>lumber grade stamps</strong> &mdash; rectangular, thick border, slightly rotated, like stamps on boards at the lumber yard.</p>
+  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;margin:2rem 0;">
+    <span class="lumber-stamp">Grade A</span>
+    <span class="lumber-stamp stamp-green stamp-rotate-pos">Kiln Dried</span>
+    <span class="lumber-stamp stamp-honey">Select</span>
+    <span class="lumber-stamp stamp-cherry stamp-rotate-neg">FAS</span>
+    <span class="lumber-stamp stamp-steel stamp-rotate-pos">#1 Common</span>
+    <span class="lumber-stamp stamp-rotate-neg">S4S</span>
+  </div>
+
+  <h2>Tool Rack Card</h2>
+  <p>Items displayed on a horizontal rail, like <strong>tools hanging on a workshop pegboard</strong>. Each item hangs from a peg with a label below.</p>
+  <div class="tool-rack">
+    <div class="rack-rail"></div>
+    <div class="rack-items">
+      <div class="rack-item">
+        <div class="rack-icon">&#128296;</div>
+        <div class="rack-label">Chisel</div>
+        <div class="rack-value">1/2&Prime;</div>
+      </div>
+      <div class="rack-item">
+        <div class="rack-icon">&#9881;&#65039;</div>
+        <div class="rack-label">Hand Plane</div>
+        <div class="rack-value">No. 5</div>
+      </div>
+      <div class="rack-item">
+        <div class="rack-icon">&#128207;</div>
+        <div class="rack-label">Saw</div>
+        <div class="rack-value">Dovetail</div>
+      </div>
+      <div class="rack-item">
+        <div class="rack-icon">&#128208;</div>
+        <div class="rack-label">Square</div>
+        <div class="rack-value">12&Prime;</div>
+      </div>
+      <div class="rack-item">
+        <div class="rack-icon">&#128295;</div>
+        <div class="rack-label">Mallet</div>
+        <div class="rack-value">16 oz</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:3rem;">
+    <h3 style="margin-top:0;">Another Tool Rack &mdash; Wood Species</h3>
+    <div class="tool-rack">
+      <div class="rack-rail"></div>
+      <div class="rack-items">
+        <div class="rack-item">
+          <div class="rack-icon">&#127794;</div>
+          <div class="rack-label">Walnut</div>
+          <div class="rack-value">Hardwood</div>
+        </div>
+        <div class="rack-item">
+          <div class="rack-icon">&#127809;</div>
+          <div class="rack-label">Maple</div>
+          <div class="rack-value">Hardwood</div>
+        </div>
+        <div class="rack-item">
+          <div class="rack-icon">&#127826;</div>
+          <div class="rack-label">Cherry</div>
+          <div class="rack-value">Hardwood</div>
+        </div>
+        <div class="rack-item">
+          <div class="rack-icon">&#127795;</div>
+          <div class="rack-label">Pine</div>
+          <div class="rack-value">Softwood</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Warm Wood Backgrounds</h4><p>Light wood tones from raw pine to aged walnut. Every surface feels like sanded wood, honest and warm.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Rich Walnut Accent</h4><p>The deep walnut stain marks primary interactive elements, headings, and key components throughout.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Wood Species Semantics</h4><p>Pine green (fresh/go), maple honey (warm/refine), cherry red (alert/execute), steel blue (tool/info) map to workshop materials.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Slab Serif Headings</h4><p>Bitter channels the sturdy, reliable feel of a workshop sign &mdash; built to last, easy to read at a glance.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Sturdy 2px Borders</h4><p>All borders are 2px solid with minimal radius &mdash; like sanded wood edges, suggesting honest joinery and construction.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Workshop Components</h4><p>Blueprint cards, dovetail dividers, lumber stamps, and tool racks bring the craftsman's workshop into the design system.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Woodworking / Workshop &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

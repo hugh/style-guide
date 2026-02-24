@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Art / Game Boy &mdash; Design System</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .swatch { border: 3px solid var(--border); overflow: hidden; }
+  .swatch-color { height: 56px; }
+  .swatch-info { padding: 0.6rem 0.75rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'Press Start 2P', cursive; font-size: 0.4rem; color: var(--text); margin-bottom: 0.25rem; line-height: 1.8; }
+  .swatch-info .swatch-hex { font-family: 'Press Start 2P', cursive; font-size: 0.35rem; color: var(--text-faint); line-height: 1.8; }
+  .font-sample { padding: 1.5rem; background: var(--surface); border: 3px solid var(--border); margin-bottom: 1rem; }
+  .font-sample .sample-label { font-family: 'Press Start 2P', cursive; font-size: 0.4rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.75rem; line-height: 1.8; }
+  .font-sample-heading { font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--text); line-height: 1.6; }
+  .font-sample-body { font-family: 'Inter', sans-serif; font-size: 1rem; color: var(--text-dim); font-weight: 400; line-height: 1.7; }
+  .font-sample-mono { font-family: 'Press Start 2P', cursive; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.04em; line-height: 2; }
+  .file-link { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--surface); border: 3px solid var(--border); text-decoration: none; transition: background 0.15s; }
+  .file-link:hover { background: var(--surface-2); }
+  .file-link .file-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .file-link h4 { margin-bottom: 0.2rem; }
+  .file-link p { margin: 0; font-size: 0.82rem; }
+  .text-tier-demo { padding: 1.25rem; background: var(--surface); border: 3px solid var(--border); margin: 1.5rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 1rem; padding: 0.5rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 2px solid var(--surface-2); }
+  .text-tier-demo .tier-label { font-family: 'Press Start 2P', cursive; font-size: 0.35rem; color: var(--text-faint); width: 6rem; flex-shrink: 0; text-align: right; line-height: 2.2; }
+  .gb-shade-label { font-family: 'Press Start 2P', cursive; font-size: 0.4rem; color: var(--text-faint); text-align: center; margin-top: 0.25rem; line-height: 2; }
+  .sprite-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0; justify-content: center; }
+  .hp-group { margin: 2rem 0; padding: 1.5rem; background: var(--surface); border: 3px solid var(--border); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Design System &middot; DMG-01</div>
+  <h1>PIXEL ART<span>GAME BOY</span></h1>
+  <p>A 4-color restricted palette design system inspired by the original Game Boy DMG screen. Pixel fonts, chunky borders, dithered fills, and sprite-sheet components.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color: var(--text-faint); text-decoration: underline; text-underline-offset: 3px;">VIEW STARTER TEMPLATE</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; Quick Start</div>
+  <h2>Getting Started</h2>
+  <p>Copy <span class="inline-code">template.html</span> and <span class="inline-code">tokens.css</span> into your project. No build step required.</p>
+  <div class="flow-grid">
+    <a href="template.html" class="file-link"><div class="file-icon">&#128190;</div><div><h4>template.html</h4><p>Starter document with every component</p></div></a>
+    <a href="tokens.css" class="file-link"><div class="file-icon">&#127918;</div><div><h4>tokens.css</h4><p>Drop-in stylesheet &mdash; all tokens &amp; components</p></div></a>
+  </div>
+  <div class="callout"><p><strong>HINT:</strong> Link <span class="inline-code">tokens.css</span> in your HTML head. Everything renders in 4 shades of Game Boy green-grey.</p></div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; Color Palette</div>
+  <h2>The 4 Shades</h2>
+  <p>The original Game Boy DMG-01 displayed exactly <strong>4 shades</strong> of green-grey. This palette recreates that constraint.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#c4cfa1;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#c4cfa1</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8b956d;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#8b956d</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#555f44;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#555f44</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2b331f;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#2b331f</div></div></div>
+  </div>
+  <h3>Text Hierarchy</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Primary &mdash; headings, strong emphasis</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Dim &mdash; body paragraphs, descriptions</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Faint &mdash; labels, captions, metadata</div></div>
+  </div>
+  <h3>Semantic Colors</h3>
+  <p>Since Game Boy is monochrome, semantic roles are differentiated by <strong>shade</strong> rather than hue. Dither patterns add further distinction.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#2b331f;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#2b331f</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#555f44;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#555f44</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#1a2010;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#1a2010</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#8b956d;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#8b956d</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">CAPTURE</span> <span class="tag t-refine">REFINE</span> <span class="tag t-execute">EXECUTE</span> <span class="tag t-batch">BATCH</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Typography</div>
+  <h2>Font Stack</h2>
+  <p><strong>Pixel font for headings &amp; labels</strong>, <strong>clean sans for body text</strong>.</p>
+  <div class="font-sample"><div class="sample-label">Press Start 2P &mdash; Headings (h1, h2, h3) + Labels</div><div class="font-sample-heading">THE QUICK BROWN FOX</div></div>
+  <div class="font-sample"><div class="sample-label">Inter &mdash; Body text, card descriptions</div><div class="font-sample-body">The quick brown fox jumps over the lazy dog. <strong>Strong text uses weight 700.</strong></div></div>
+  <div class="font-sample"><div class="sample-label">Press Start 2P &mdash; Tags, section numbers, metadata</div><div class="font-sample-mono">01 &mdash; WORLD 1-1 &middot; TIME 400 &middot; COINS 00</div></div>
+  <h3>Type Scale</h3>
+  <table class="info-table">
+    <thead><tr><th>Element</th><th>Family</th><th>Size</th><th>Weight</th></tr></thead>
+    <tbody>
+      <tr><td>Hero h1</td><td>Press Start 2P</td><td>clamp(1.4rem, 5vw, 2.4rem)</td><td>400</td></tr>
+      <tr><td>Section h2</td><td>Press Start 2P</td><td>1rem</td><td>400</td></tr>
+      <tr><td>Subsection h3</td><td>Press Start 2P</td><td>0.7rem</td><td>400</td></tr>
+      <tr><td>Card title h4</td><td>Press Start 2P</td><td>0.55rem</td><td>400</td></tr>
+      <tr><td>Body paragraph</td><td>Inter</td><td>0.95rem</td><td>400</td></tr>
+      <tr><td>Section label</td><td>Press Start 2P</td><td>0.55rem</td><td>400</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Layout</div>
+  <h2>Structure</h2>
+  <div class="flow-grid">
+    <div class="flow-card accent"><div class="card-icon">&#9632;</div><h4>Container</h4><p>Max-width 900px, centered, 2rem padding.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9632;</div><h4>Sections</h4><p>5rem vertical padding, 4px border-top.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9632;</div><h4>Full-Bleed</h4><p>Diagrams break to 1100px max-width.</p></div>
+    <div class="flow-card accent"><div class="card-icon">&#9632;</div><h4>Grid Unit</h4><p>8px base grid. All spacing multiples of 8.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; Components</div>
+  <h2>Flow Cards</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>.flow-card.capture</h4><p>Darkest shade top bar.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>.flow-card.refine</h4><p>Medium-dark shade top bar.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>.flow-card.execute</h4><p>Blackest shade top bar.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>.flow-card.batch</h4><p>Medium-light shade top bar.</p></div>
+  </div>
+  <h2>Pipeline</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Explore</div><div class="pipe-desc">.s-capture</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Build</div><div class="pipe-desc">.s-refine</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Battle</div><div class="pipe-desc">.s-execute</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Save</div><div class="pipe-desc">.s-batch</div></div>
+  </div>
+  <h2>Callout</h2>
+  <div class="callout"><p><strong>NOTICE:</strong> Callouts use a thick left border and surface background. Pixel-sharp corners throughout.</p></div>
+  <h2>Table</h2>
+  <table class="info-table">
+    <thead><tr><th>Component</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Flow Card</td><td>.flow-card .capture</td><td>Semantic top bar</td></tr>
+      <tr><td>Dialogue Box</td><td>.dialogue-box</td><td>Double-border RPG text box</td></tr>
+      <tr><td>Sprite Card</td><td>.sprite-card</td><td>Pixel grid sprite cell</td></tr>
+      <tr><td>Save Point</td><td>.save-point</td><td>Pixel cross section divider</td></tr>
+      <tr><td>HP Bar</td><td>.hp-bar</td><td>Game-style progress gauge</td></tr>
+    </tbody>
+  </table>
+  <h2>Diagram Container</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Game Loop</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="180" height="80" rx="0" fill="#8b956d" stroke="#2b331f" stroke-width="3"/>
+      <text x="110" y="45" text-anchor="middle" fill="#1a2010" font-size="10" font-weight="600" font-family="Inter, sans-serif">INPUT</text>
+      <text x="110" y="62" text-anchor="middle" fill="#555f44" font-size="9" font-family="Inter, sans-serif">D-Pad + A/B</text>
+      <line x1="200" y1="50" x2="260" y2="50" stroke="#2b331f" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="260" y="10" width="180" height="80" rx="0" fill="#8b956d" stroke="#2b331f" stroke-width="3"/>
+      <text x="350" y="45" text-anchor="middle" fill="#1a2010" font-size="10" font-weight="600" font-family="Inter, sans-serif">UPDATE</text>
+      <text x="350" y="62" text-anchor="middle" fill="#555f44" font-size="9" font-family="Inter, sans-serif">Game Logic</text>
+      <line x1="440" y1="50" x2="500" y2="50" stroke="#2b331f" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="500" y="10" width="180" height="80" rx="0" fill="#8b956d" stroke="#2b331f" stroke-width="3"/>
+      <text x="590" y="45" text-anchor="middle" fill="#1a2010" font-size="10" font-weight="600" font-family="Inter, sans-serif">RENDER</text>
+      <text x="590" y="62" text-anchor="middle" fill="#555f44" font-size="9" font-family="Inter, sans-serif">160x144 px</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Unique Components</div>
+
+  <h2>Dialogue Box</h2>
+  <p>An RPG-style dialogue box with double border (inner and outer), pixel font speaker name, and a blinking cursor indicator.</p>
+  <div class="dialogue-box">
+    <div class="dialogue-speaker">Professor Oak</div>
+    <div class="dialogue-text">Welcome to the world of PIXEL ART! This design system uses just 4 shades of green-grey, like the original Game Boy screen.</div>
+    <div class="dialogue-cursor">&#9660;</div>
+  </div>
+  <div class="dialogue-box">
+    <div class="dialogue-speaker">System</div>
+    <div class="dialogue-text">Your progress has been saved. Use the <strong>.dialogue-box</strong> class with a <strong>.dialogue-speaker</strong>, <strong>.dialogue-text</strong>, and optional <strong>.dialogue-cursor</strong>.</div>
+    <div class="dialogue-cursor">&#9660;</div>
+  </div>
+
+  <h2>Sprite Cards</h2>
+  <p>Card components styled like sprite sheet cells. Pixel grid background, centered sprite area, and coordinate label below.</p>
+  <div class="sprite-grid">
+    <div class="sprite-card">
+      <div class="sprite-area">&#9818;</div>
+      <div class="sprite-label">SPR 00,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#9819;</div>
+      <div class="sprite-label">SPR 01,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#9820;</div>
+      <div class="sprite-label">SPR 02,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#9821;</div>
+      <div class="sprite-label">SPR 03,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#9822;</div>
+      <div class="sprite-label">SPR 04,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#9823;</div>
+      <div class="sprite-label">SPR 05,00</div>
+    </div>
+  </div>
+
+  <h2>Save Point Marker</h2>
+  <p>A section divider with a pixel-art cross icon, flanked by dotted lines. Used to break content into logical save points.</p>
+  <div class="save-point">
+    <div class="save-icon"></div>
+    <div class="save-text">SAVE POINT</div>
+    <div class="save-icon"></div>
+  </div>
+
+  <h2>HP Bar</h2>
+  <p>Horizontal gauge styled like a video game health/status bar. Labeled with pixel font, filled portion in a darker shade.</p>
+  <div class="hp-group">
+    <div class="hp-bar">
+      <div class="hp-label">HP</div>
+      <div class="hp-track"><div class="hp-fill" style="width: 75%;"></div></div>
+      <div class="hp-value">150/200</div>
+    </div>
+    <div class="hp-bar">
+      <div class="hp-label">MP</div>
+      <div class="hp-track"><div class="hp-fill shade-dark" style="width: 45%;"></div></div>
+      <div class="hp-value">23/50</div>
+    </div>
+    <div class="hp-bar">
+      <div class="hp-label">EXP</div>
+      <div class="hp-track"><div class="hp-fill shade-medium" style="width: 90%;"></div></div>
+      <div class="hp-value">4500/5000</div>
+    </div>
+    <div class="hp-bar">
+      <div class="hp-label">LVL</div>
+      <div class="hp-track"><div class="hp-fill shade-light" style="width: 15%;"></div></div>
+      <div class="hp-value">15/99</div>
+    </div>
+  </div>
+  <p>Add <span class="inline-code">.low</span> to the fill to trigger a blinking animation when health is critical.</p>
+  <div style="max-width:400px;">
+    <div class="hp-bar">
+      <div class="hp-label">HP</div>
+      <div class="hp-track"><div class="hp-fill low" style="width: 10%;"></div></div>
+      <div class="hp-value">8/200</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; Key Patterns</div>
+  <h2>Design Principles</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>4-Color Constraint</h4><p>Everything renders in exactly 4 shades of green-grey, recreating the Game Boy DMG-01 screen. No additional colors.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Pixel-Sharp Edges</h4><p>Border-radius is always 0px. Every corner is pixel-perfect and square, matching the bitmap rendering of the hardware.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>8px Grid System</h4><p>All spacing, sizes, and alignment follow an 8px base grid &mdash; the tile size used by Game Boy hardware for sprites and backgrounds.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Pixel Font Headings</h4><p>Press Start 2P provides authentic bitmap-style typography for headings and labels. Inter handles body text readability.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Thick Pixel Borders</h4><p>2-4px solid borders give everything a chunky, hardware-rendered feel. Dashed and dotted variants mimic screen artifacts.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>Game UI Components</h4><p>Dialogue boxes, sprite cards, save points, and HP bars bring video game interface patterns into document design.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Pixel Art / Game Boy &middot; <a href="template.html">Starter Template</a> &middot; <a href="tokens.css">tokens.css</a></p></div></footer>
+
+</body>
+</html>

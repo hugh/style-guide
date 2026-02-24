@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quest Log &mdash; Pixel Art Theme</title>
+<link rel="stylesheet" href="tokens.css">
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">Adventure Guild &middot; Log Book</div>
+  <h1>QUEST<span>LOG</span></h1>
+  <p>An adventurer's guide to completing the main storyline. Track your quests, manage your party, and save your progress.</p>
+  <div class="hero-version">v1.0 &middot; CHAPTER 1</div>
+</div>
+
+<div class="container">
+<section>
+  <div class="section-num">01 &mdash; Party Status</div>
+  <h2>Current Party</h2>
+  <p>Your party consists of four members. Monitor their <strong>health and mana</strong> before entering the dungeon.</p>
+
+  <h3>Hero &mdash; Level 12 Knight</h3>
+  <div class="hp-bar">
+    <div class="hp-label">HP</div>
+    <div class="hp-track"><div class="hp-fill" style="width: 85%;"></div></div>
+    <div class="hp-value">170/200</div>
+  </div>
+  <div class="hp-bar">
+    <div class="hp-label">MP</div>
+    <div class="hp-track"><div class="hp-fill shade-dark" style="width: 60%;"></div></div>
+    <div class="hp-value">30/50</div>
+  </div>
+
+  <h3>Mage &mdash; Level 10 Wizard</h3>
+  <div class="hp-bar">
+    <div class="hp-label">HP</div>
+    <div class="hp-track"><div class="hp-fill" style="width: 40%;"></div></div>
+    <div class="hp-value">48/120</div>
+  </div>
+  <div class="hp-bar">
+    <div class="hp-label">MP</div>
+    <div class="hp-track"><div class="hp-fill shade-dark" style="width: 20%;"></div></div>
+    <div class="hp-value">18/90</div>
+  </div>
+
+  <div class="callout"><p><strong>WARNING:</strong> Mage's HP is below 50%. Consider using a potion before the next encounter.</p></div>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; Quest Board</div>
+  <h2>Active Quests</h2>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#9670;</div><h4>Retrieve the Crystal</h4><p>Find the lost crystal in the Northern Cave. Reward: 500 gold, Crystal Shield.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9733;</div><h4>Defeat the Dragon</h4><p>The elder dragon threatens the village. Prepare fire-resistant armor first.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#9650;</div><h4>Rescue the Princess</h4><p>She is held in the Dark Tower. Bring the skeleton key from the crypt.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#9679;</div><h4>Collect 10 Herbs</h4><p>Gather healing herbs from the forest. Return to the alchemist for potions.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; Dungeon Map</div>
+  <h2>Quest Progression</h2>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Town</div><div class="pipe-desc">Buy supplies</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Forest</div><div class="pipe-desc">Gather items</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Dungeon</div><div class="pipe-desc">Fight boss</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Castle</div><div class="pipe-desc">Claim reward</div></div>
+  </div>
+
+  <div class="dialogue-box">
+    <div class="dialogue-speaker">Elder</div>
+    <div class="dialogue-text">The dungeon lies beyond the Whispering Forest. Take the eastern path and look for the stone archway. Be warned &mdash; the monsters grow stronger at night.</div>
+    <div class="dialogue-cursor">&#9660;</div>
+  </div>
+</section>
+
+<div class="save-point">
+  <div class="save-icon"></div>
+  <div class="save-text">SAVE POINT</div>
+  <div class="save-icon"></div>
+</div>
+
+<section>
+  <div class="section-num">04 &mdash; Bestiary</div>
+  <h2>Monster Index</h2>
+  <p>Sprites collected during your adventure. Each entry shows the monster and its sprite sheet coordinates.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:1rem;margin:2rem 0;justify-content:center;">
+    <div class="sprite-card">
+      <div class="sprite-area">&#128122;</div>
+      <div class="sprite-label">SPR 00,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#128123;</div>
+      <div class="sprite-label">SPR 01,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#128125;</div>
+      <div class="sprite-label">SPR 02,00</div>
+    </div>
+    <div class="sprite-card">
+      <div class="sprite-area">&#129413;</div>
+      <div class="sprite-label">SPR 03,00</div>
+    </div>
+  </div>
+
+  <table class="info-table">
+    <thead><tr><th>Monster</th><th>HP</th><th>Attack</th><th>Weakness</th></tr></thead>
+    <tbody>
+      <tr><td>Slime</td><td>25</td><td>8</td><td>Fire</td></tr>
+      <tr><td>Skeleton</td><td>40</td><td>15</td><td>Light</td></tr>
+      <tr><td>Dark Knight</td><td>120</td><td>35</td><td>Ice</td></tr>
+      <tr><td>Dragon</td><td>500</td><td>80</td><td>Water</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; Inventory</div>
+  <h2>Equipment</h2>
+  <p>Tags: <span class="tag t-capture">WEAPON</span> <span class="tag t-refine">ARMOR</span> <span class="tag t-execute">QUEST</span> <span class="tag t-batch">ITEM</span></p>
+
+  <div class="dialogue-box">
+    <div class="dialogue-speaker">Shopkeeper</div>
+    <div class="dialogue-text">Welcome! I have the finest swords and shields in the kingdom. Would you like to buy or sell?</div>
+    <div class="dialogue-cursor">&#9660;</div>
+  </div>
+
+  <h3>Experience Progress</h3>
+  <div class="hp-bar">
+    <div class="hp-label">EXP</div>
+    <div class="hp-track"><div class="hp-fill shade-medium" style="width: 72%;"></div></div>
+    <div class="hp-value">3600/5000</div>
+  </div>
+  <p>1400 EXP to next level. Defeat 7 more monsters to advance.</p>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; World Map</div>
+  <h2>Region Overview</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Kingdom Map</div>
+    <svg viewBox="0 0 700 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="20" width="150" height="80" rx="0" fill="#8b956d" stroke="#2b331f" stroke-width="3"/>
+      <text x="95" y="55" text-anchor="middle" fill="#1a2010" font-size="10" font-weight="600" font-family="Inter, sans-serif">TOWN</text>
+      <text x="95" y="72" text-anchor="middle" fill="#555f44" font-size="9" font-family="Inter, sans-serif">Safe Zone</text>
+      <line x1="170" y1="60" x2="220" y2="60" stroke="#2b331f" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="220" y="20" width="150" height="80" rx="0" fill="#8b956d" stroke="#2b331f" stroke-width="3"/>
+      <text x="295" y="55" text-anchor="middle" fill="#1a2010" font-size="10" font-weight="600" font-family="Inter, sans-serif">FOREST</text>
+      <text x="295" y="72" text-anchor="middle" fill="#555f44" font-size="9" font-family="Inter, sans-serif">LV 5-10</text>
+      <line x1="370" y1="60" x2="420" y2="60" stroke="#2b331f" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="420" y="20" width="150" height="80" rx="0" fill="#555f44" stroke="#2b331f" stroke-width="3"/>
+      <text x="495" y="55" text-anchor="middle" fill="#c4cfa1" font-size="10" font-weight="600" font-family="Inter, sans-serif">DUNGEON</text>
+      <text x="495" y="72" text-anchor="middle" fill="#8b956d" font-size="9" font-family="Inter, sans-serif">LV 15+</text>
+      <line x1="570" y1="60" x2="600" y2="60" stroke="#2b331f" stroke-width="2" stroke-dasharray="4,3"/>
+      <rect x="600" y="30" width="80" height="60" rx="0" fill="#2b331f" stroke="#1a2010" stroke-width="3"/>
+      <text x="640" y="58" text-anchor="middle" fill="#c4cfa1" font-size="8" font-weight="600" font-family="Inter, sans-serif">BOSS</text>
+      <text x="640" y="72" text-anchor="middle" fill="#8b956d" font-size="7" font-family="Inter, sans-serif">LV 25</text>
+    </svg>
+  </div>
+
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Save Often</h4><p>Use save points before boss encounters. You cannot save inside dungeons.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Grind Smart</h4><p>Forest monsters give the best EXP-to-time ratio for levels 8-14.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Stock Potions</h4><p>Always carry at least 5 healing potions and 3 antidotes before entering a dungeon.</p></div></div>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>Quest Log &middot; v1.0 &middot; Pixel Art / Game Boy</p></div></footer>
+
+</body>
+</html>

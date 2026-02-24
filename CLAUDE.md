@@ -59,7 +59,11 @@ This repo is a collection of HTML/CSS style guides and template systems for crea
 - `festival/` — Music festival / concert poster theme (deep purple-black, psychedelic gradients, lineup posters, wristband badges, stage cards)
 - `chalkboard/` — Classroom chalkboard theme (dark slate green, chalk-white text, pastel chalk accents, tally counters, eraser dividers)
 - `origami/` — Paper craft theme (clean white paper, origami pink, folded corners, crane markers, crease dividers, fortune badges)
+- `woodworking/` — Workshop theme (warm wood grain, walnut accents, blueprint cards, dovetail dividers, lumber stamps, tool racks)
 - `arctic/` — Ice/frost theme (pale glacial blue-white, frosted glass cards, aurora badges, icicle dividers, snowflake markers)
+- `pixel-art/` — Game Boy DMG theme (4-color green-grey palette, pixel fonts, dialogue boxes, sprite cards, save points, HP bars)
+- `fairy-tale/` — Storybook theme (warm parchment, gilt gold, jewel tones, illuminated drop caps, enchanted mirror cards, scroll callouts)
+- `horror-vhs/` — Found footage VHS horror theme (CRT black, night-vision green, tracking glitches, REC indicators, static blocks)
 
 Each theme subdirectory contains:
 - `index.html` — Live style guide rendered in the theme's own style

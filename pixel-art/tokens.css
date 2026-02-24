@@ -1,0 +1,812 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap');
+
+/* ==============================
+   Pixel Art / Game Boy — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces (Game Boy 4-shade palette) */
+  --bg: #c4cfa1;           /* GB lightest — the "white" */
+  --surface: #8b956d;       /* GB medium-light — card backgrounds */
+  --surface-2: #555f44;     /* GB medium-dark */
+  --surface-3: #343d27;     /* Darker panel */
+  --border: #2b331f;        /* GB darkest — the "black" */
+
+  /* Text */
+  --text: #1a2010;          /* Near-black dark green */
+  --text-dim: #2b331f;      /* Dark green */
+  --text-faint: #555f44;    /* Medium green */
+
+  /* Accent (monochrome — darkest shade) */
+  --accent: #1a2010;
+  --accent-dim: #2b331f;
+
+  /* Semantic: Capture (darkest) */
+  --capture: #2b331f;
+  --capture-dim: #1a2010;
+  --capture-fill: rgba(43, 51, 31, 0.15);
+
+  /* Semantic: Refine (medium-dark) */
+  --refine: #555f44;
+  --refine-dim: #343d27;
+  --refine-fill: rgba(85, 95, 68, 0.15);
+
+  /* Semantic: Execute (blackest) */
+  --execute: #1a2010;
+  --execute-dim: #2b331f;
+  --execute-fill: rgba(26, 32, 16, 0.15);
+
+  /* Semantic: Batch (medium-light) */
+  --batch: #8b956d;
+  --batch-dim: #555f44;
+  --batch-fill: rgba(139, 149, 109, 0.15);
+
+  /* Pixel grid unit */
+  --px-grid: 8px;
+}
+
+/* ==============================
+   Dither Pattern Backgrounds
+   ============================== */
+
+/* Checkerboard dither — 2px pattern */
+.dither-light {
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='2' height='2' fill='%238b956d'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%238b956d'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+}
+
+.dither-medium {
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23555f44'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23555f44'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+}
+
+.dither-dark {
+  background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='2' height='2' fill='%232b331f'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%232b331f'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  font-size: 0.95rem;
+  overflow-x: hidden;
+  image-rendering: pixelated;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(1.4rem, 5vw, 2.4rem);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+h4 {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 4px solid var(--border);
+}
+
+/* ==============================
+   Monospace / Pixel Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'Press Start 2P', cursive;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  line-height: 1.8;
+}
+
+.hero-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  color: var(--text);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Pixel grid overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 7px,
+      rgba(139, 149, 109, 0.3) 7px,
+      rgba(139, 149, 109, 0.3) 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 7px,
+      rgba(139, 149, 109, 0.3) 7px,
+      rgba(139, 149, 109, 0.3) 8px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Thick pixel border top */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--border);
+  z-index: 1;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 span {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.45rem;
+  color: var(--text-faint);
+  letter-spacing: 0.08em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 0;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.15s;
+}
+
+.flow-card:hover {
+  background: var(--surface-2);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 3px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 0; }
+.pipe-stage:last-child  { border-radius: 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 4px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 4px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 4px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 4px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 4px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.45rem;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 0;
+  border: 3px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.2rem;
+  color: var(--text);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 6px solid var(--border);
+  background: var(--surface);
+  border-radius: 0;
+  border: 3px solid var(--border);
+  border-left: 6px solid var(--text);
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--text); }
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.45rem;
+  letter-spacing: 0.04em;
+  padding: 0.4em 0.8em;
+  border-radius: 0;
+  border: 2px solid;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--text); border-color: var(--capture); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--text); border-color: var(--refine); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--bg);  border-color: var(--execute); background: var(--execute); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--text); border-color: var(--batch); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.88rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 400;
+  font-size: 0.45rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 3px solid var(--border);
+  line-height: 1.8;
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--surface);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 3px solid var(--border);
+  border-radius: 0;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  background: var(--surface);
+  padding: 0.2em 0.5em;
+  border-radius: 0;
+  border: 2px solid var(--border);
+  color: var(--text);
+  line-height: 2;
+}
+
+/* ==============================
+   UNIQUE: Dialogue Box
+   ============================== */
+
+.dialogue-box {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background: var(--bg);
+  border: 4px solid var(--border);
+  position: relative;
+  box-shadow:
+    inset 0 0 0 2px var(--bg),
+    inset 0 0 0 4px var(--border);
+}
+
+.dialogue-box .dialogue-speaker {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.55rem;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dialogue-box .dialogue-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.dialogue-box .dialogue-cursor {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.6rem;
+  color: var(--text);
+  animation: blink 1s step-end infinite;
+}
+
+/* ==============================
+   UNIQUE: Sprite Card
+   ============================== */
+
+.sprite-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg);
+  border: 3px solid var(--border);
+  padding: 0;
+  margin: 0.5rem;
+  width: 128px;
+}
+
+.sprite-card .sprite-area {
+  width: 100%;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--text);
+  position: relative;
+  border-bottom: 3px solid var(--border);
+  /* 8px pixel grid background */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 7px,
+      rgba(43, 51, 31, 0.12) 7px,
+      rgba(43, 51, 31, 0.12) 8px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 7px,
+      rgba(43, 51, 31, 0.12) 7px,
+      rgba(43, 51, 31, 0.12) 8px
+    );
+  background-color: var(--bg);
+}
+
+.sprite-card .sprite-label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.4rem;
+  color: var(--text-faint);
+  padding: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--surface);
+  width: 100%;
+  line-height: 1.8;
+}
+
+/* ==============================
+   UNIQUE: Save Point Marker
+   ============================== */
+
+.save-point {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.save-point::before,
+.save-point::after {
+  content: '';
+  flex: 1;
+  height: 0;
+  border-top: 3px dotted var(--border);
+}
+
+.save-point .save-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  flex-shrink: 0;
+  /* Pixel art cross/star using box-shadow */
+  background: transparent;
+}
+
+.save-point .save-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: var(--text);
+  box-shadow:
+    /* Cross shape */
+    4px 0 0 var(--text),
+    8px 0 0 var(--text),
+    12px 0 0 var(--text),
+    16px 0 0 var(--text),
+    20px 0 0 var(--text),
+    0 4px 0 var(--text),
+    8px 4px 0 var(--text),
+    12px 4px 0 var(--text),
+    20px 4px 0 var(--text),
+    0 8px 0 var(--text),
+    4px 8px 0 var(--text),
+    8px 8px 0 var(--text),
+    12px 8px 0 var(--text),
+    16px 8px 0 var(--text),
+    20px 8px 0 var(--text),
+    0 12px 0 var(--text),
+    8px 12px 0 var(--text),
+    12px 12px 0 var(--text),
+    20px 12px 0 var(--text),
+    0 16px 0 var(--text),
+    4px 16px 0 var(--text),
+    8px 16px 0 var(--text),
+    12px 16px 0 var(--text),
+    16px 16px 0 var(--text),
+    20px 16px 0 var(--text),
+    0 20px 0 var(--text),
+    8px 20px 0 var(--text),
+    12px 20px 0 var(--text),
+    20px 20px 0 var(--text);
+}
+
+.save-point .save-text {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ==============================
+   UNIQUE: HP Bar
+   ============================== */
+
+.hp-bar {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hp-bar .hp-label {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.5rem;
+  color: var(--text);
+  min-width: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hp-bar .hp-track {
+  flex: 1;
+  height: 16px;
+  background: var(--bg);
+  border: 3px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hp-bar .hp-fill {
+  height: 100%;
+  background: var(--text);
+  transition: width 0.3s step-end;
+}
+
+.hp-bar .hp-fill.low {
+  animation: blink 0.5s step-end infinite;
+}
+
+.hp-bar .hp-value {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 0.45rem;
+  color: var(--text-dim);
+  min-width: 3.5rem;
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+/* Shade variants for hp-fill */
+.hp-bar .hp-fill.shade-dark {
+  background: var(--border);
+}
+
+.hp-bar .hp-fill.shade-medium {
+  background: var(--surface-2);
+}
+
+.hp-bar .hp-fill.shade-light {
+  background: var(--surface);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 4px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.45rem;
+  color: var(--text-faint);
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 0.08em;
+  line-height: 2;
+}
+
+footer a {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

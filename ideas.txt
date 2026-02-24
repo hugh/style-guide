@@ -221,13 +221,6 @@ Cottagecore / Cozy
   Gentle and pastoral. Fonts: handwritten serif (like Cormorant) for
   headings, clean serif for body, mono for dates/recipes.
 
-Pixel Art / Game Boy
-  4-color restricted palette on pale green-grey (like original DMG
-  screen). Dithered pattern fills, tile-based 8px grid system, sprite
-  sheet card components, dialogue box callout panels, save-point section
-  markers, pixel font throughout. Distinct from Retro Game (NES/arcade).
-  Fonts: pixel/bitmap font for everything (like Press Start 2P or Silkscreen).
-
 Corporate Memphis / Flat Illustration
   Cheerful SaaS style. White/near-white backgrounds with pastel blob
   shapes, rounded corners everywhere (16px+), pill-shaped buttons, soft
@@ -252,22 +245,6 @@ Construction / Safety
   overlays. Fonts: condensed bold sans (like Oswald) for headings,
   clean sans for body, mono for measurements/codes.
 
-Horror VHS / Found Footage
-  VHS tracking lines on near-black. Camcorder timestamp overlays, static
-  noise textures, night-vision green accents, REC dot indicator, glitch
-  tear effects, degraded video scanline patterns. Distinct from Haunted
-  House (gothic) and Surveillance (modern CCTV) — this is analog video
-  horror. Fonts: monospace for everything (VCR-style), with timestamp
-  overlays and tracking artifacts.
-
-Woodworking / Workshop
-  Sawdust textures on warm wood-grain backgrounds. Rich walnut, maple
-  honey, and raw pine accents. Workshop blueprint card components, hand
-  tool silhouette dividers, dovetail joint section markers, wood shaving
-  curl ornaments, lumber grade stamp badges, workbench measurement
-  callouts. Fonts: sturdy slab serif for headings, clean sans for body,
-  mono for measurements.
-
 Neon Tokyo / Shibuya
   Vibrant commercial neon on dark urban backgrounds. Hot pink, electric
   blue, white fluorescent, konbini green. Kanji signage decorative
@@ -276,15 +253,6 @@ Neon Tokyo / Shibuya
   pixel-dot matrix display dividers. Celebratory urbanism, not dystopian.
   Fonts: condensed geometric sans for headings, clean sans for body,
   mono for prices/times.
-
-Fairy Tale / Storybook
-  Warm illustrated parchment with gilt page edges. Rich jewel tones —
-  deep forest green, royal purple, ruby red, gold. "Once upon a time"
-  ornamental drop caps, woodland vine border frames, enchanted mirror
-  card components, magic scroll callout panels, crown/shield badge
-  elements, storybook page-turn dividers. Fonts: decorative serif
-  (like Cinzel) for headings, clean serif for body, mono for chapter
-  numbers.
 
 
 DONE
@@ -424,3 +392,15 @@ Chalkboard (Dark)
 
 Ice / Arctic
   → arctic/
+
+Pixel Art / Game Boy
+  → pixel-art/
+
+Fairy Tale / Storybook
+  → fairy-tale/
+
+Woodworking / Workshop
+  → woodworking/
+
+Horror VHS / Found Footage
+  → horror-vhs/

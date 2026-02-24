@@ -1,0 +1,808 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Crimson+Pro:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ==============================
+   Fairy Tale / Storybook — Design Tokens
+   ============================== */
+
+:root {
+  /* Backgrounds & Surfaces */
+  --bg: #f8f0e0;
+  --surface: #efe4d0;
+  --surface-2: #e4d8c0;
+  --surface-3: #d8cab0;
+  --border: #c0ad8e;
+
+  /* Text */
+  --text: #1e1810;
+  --text-dim: #4a3e30;
+  --text-faint: #8a7e6e;
+
+  /* Accent (Burnished Gold) */
+  --accent: #b8860b;
+  --accent-dim: #946a08;
+
+  /* Semantic: Capture (Enchanted Forest Green) */
+  --capture: #2a7a40;
+  --capture-dim: #1a5a30;
+  --capture-fill: rgba(42, 122, 64, 0.10);
+
+  /* Semantic: Refine (Treasure Gold) */
+  --refine: #b8860b;
+  --refine-dim: #946a08;
+  --refine-fill: rgba(184, 134, 11, 0.10);
+
+  /* Semantic: Execute (Poisoned Apple Red) */
+  --execute: #a82030;
+  --execute-dim: #881828;
+  --execute-fill: rgba(168, 32, 48, 0.10);
+
+  /* Semantic: Batch (Magic Purple) */
+  --batch: #5a3088;
+  --batch-dim: #482070;
+  --batch-fill: rgba(90, 48, 136, 0.10);
+}
+
+/* ==============================
+   Global Reset & Defaults
+   ============================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-dim);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.75;
+  font-size: 1rem;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   Typography Base
+   ============================== */
+
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+h2 {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  margin-top: 2.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-family: 'Crimson Pro', serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+p {
+  color: var(--text-dim);
+  margin-bottom: 1rem;
+}
+
+p strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Layout
+   ============================== */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 5rem 0;
+  border-top: 2px solid var(--border);
+  position: relative;
+}
+
+/* Ornamental vine corner on sections */
+section::before {
+  content: '\2767';
+  position: absolute;
+  top: -0.65em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 1rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+/* ==============================
+   Monospace Labels
+   ============================== */
+
+.section-num,
+.diagram-label,
+.hero-label {
+  font-family: 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+.section-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.hero-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.diagram-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+
+/* ==============================
+   Hero
+   ============================== */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+/* Ornamental gilt border top */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--accent) 15%,
+    var(--accent) 85%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+/* Parchment texture overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(184, 134, 11, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(90, 48, 136, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(168, 32, 48, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero h1 { margin-bottom: 1.5rem; position: relative; z-index: 2; }
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 560px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-version {
+  margin-top: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1, .hero p, .hero-label, .hero-version {
+  animation: fadeUp 0.8s ease-out both;
+}
+.hero-label { animation-delay: 0s; position: relative; z-index: 2; }
+.hero h1 { animation-delay: 0.15s; }
+.hero p { animation-delay: 0.3s; }
+.hero-version { animation-delay: 0.45s; }
+
+/* ==============================
+   Flow Cards (2-column grid)
+   ============================== */
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 640px) {
+  .flow-grid { grid-template-columns: 1fr; }
+}
+
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.flow-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px rgba(184, 134, 11, 0.1);
+}
+
+.flow-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+
+.flow-card.capture::before  { background: var(--capture); }
+.flow-card.refine::before   { background: var(--refine); }
+.flow-card.execute::before  { background: var(--execute); }
+.flow-card.batch::before    { background: var(--batch); }
+.flow-card.accent::before   { background: var(--accent); }
+
+.flow-card .card-icon {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.flow-card h4 { margin-bottom: 0.5rem; }
+
+.flow-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   Pipeline (horizontal stages)
+   ============================== */
+
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin: 2.5rem 0;
+  overflow-x: auto;
+}
+
+.pipe-stage {
+  flex: 1;
+  min-width: 140px;
+  padding: 1.25rem;
+  text-align: center;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.pipe-stage:first-child { border-radius: 6px 0 0 6px; }
+.pipe-stage:last-child  { border-radius: 0 6px 6px 0; }
+.pipe-stage + .pipe-stage { border-left: none; }
+
+.pipe-stage.s-capture { border-top: 3px solid var(--capture); }
+.pipe-stage.s-refine  { border-top: 3px solid var(--refine); }
+.pipe-stage.s-execute { border-top: 3px solid var(--execute); }
+.pipe-stage.s-batch   { border-top: 3px solid var(--batch); }
+.pipe-stage.s-accent  { border-top: 3px solid var(--accent); }
+
+.pipe-stage .pipe-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  margin-bottom: 0.4rem;
+}
+
+.pipe-stage .pipe-name {
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+}
+
+.pipe-stage .pipe-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* ==============================
+   Principle / Numbered List
+   ============================== */
+
+.principle-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.principle {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.principle-num {
+  font-family: 'Cinzel', serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 2.5rem;
+  text-align: center;
+  padding-top: 0.1rem;
+}
+
+.principle h4 { margin-bottom: 0.3rem; }
+
+.principle p {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ==============================
+   Callout
+   ============================== */
+
+.callout {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent);
+  background: rgba(184, 134, 11, 0.06);
+  border-radius: 0 6px 6px 0;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+.callout strong { color: var(--accent); }
+
+/* ==============================
+   Tags
+   ============================== */
+
+.tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.3em 0.8em;
+  border-radius: 4px;
+  border: 1px solid;
+  text-transform: uppercase;
+}
+
+.tag.t-capture { background: var(--capture-fill); color: var(--capture); border-color: var(--capture-dim); }
+.tag.t-refine  { background: var(--refine-fill);  color: var(--refine);  border-color: var(--refine-dim); }
+.tag.t-execute { background: var(--execute-fill);  color: var(--execute); border-color: var(--execute-dim); }
+.tag.t-batch   { background: var(--batch-fill);    color: var(--batch);   border-color: var(--batch-dim); }
+
+/* ==============================
+   Tables
+   ============================== */
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}
+
+.info-table th {
+  text-align: left;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.info-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--surface-3);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.info-table td:first-child {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ==============================
+   Diagram Containers
+   ============================== */
+
+.diagram-wrap {
+  margin: 3rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2.5rem;
+  overflow-x: auto;
+}
+
+.diagram-wrap.full-bleed {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+svg text {
+  font-family: 'Crimson Pro', serif;
+}
+
+/* ==============================
+   1. Illuminated Drop Cap
+   ============================== */
+
+.drop-cap-block {
+  position: relative;
+  margin: 2.5rem 0;
+}
+
+.drop-cap-block .drop-cap {
+  float: left;
+  font-family: 'Cinzel', serif;
+  font-weight: 800;
+  font-size: 5rem;
+  line-height: 0.85;
+  color: var(--accent);
+  margin-right: 0.75rem;
+  margin-top: 0.1rem;
+  padding: 0.15rem 0.5rem;
+  border: 3px double var(--accent);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(184, 134, 11, 0.08) 0%, rgba(184, 134, 11, 0.02) 100%);
+  position: relative;
+}
+
+.drop-cap-block .drop-cap::before {
+  content: '\2726';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  font-size: 0.65rem;
+  color: var(--accent);
+}
+
+.drop-cap-block .drop-cap::after {
+  content: '\2726';
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  font-size: 0.65rem;
+  color: var(--accent);
+}
+
+.drop-cap-block p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+  margin-bottom: 0;
+}
+
+/* ==============================
+   2. Enchanted Mirror Card
+   ============================== */
+
+.mirror-card {
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 2.5rem 2rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* Outer ornamental frame */
+.mirror-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Corner flourishes */
+.mirror-card::after {
+  content: '\2726 \2726 \2726';
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--surface);
+  padding: 0 0.75rem;
+  font-size: 0.7rem;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+.mirror-card .mirror-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+.mirror-card .mirror-body {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Ornamental corners */
+.mirror-card .corner-tl,
+.mirror-card .corner-tr,
+.mirror-card .corner-bl,
+.mirror-card .corner-br {
+  position: absolute;
+  font-size: 1rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.mirror-card .corner-tl { top: 10px;  left: 12px; }
+.mirror-card .corner-tr { top: 10px;  right: 12px; }
+.mirror-card .corner-bl { bottom: 10px; left: 12px; }
+.mirror-card .corner-br { bottom: 10px; right: 12px; }
+
+/* ==============================
+   3. Scroll Callout
+   ============================== */
+
+.scroll-callout {
+  position: relative;
+  margin: 2.5rem 0;
+  padding: 2.5rem 2rem;
+  background: var(--surface-2);
+  border-left: none;
+  border-right: none;
+}
+
+/* Top curl */
+.scroll-callout::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(180deg,
+    var(--surface-3) 0%,
+    var(--surface-2) 40%,
+    var(--surface-2) 100%
+  );
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Bottom curl */
+.scroll-callout::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(0deg,
+    var(--surface-3) 0%,
+    var(--surface-2) 40%,
+    var(--surface-2) 100%
+  );
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  border-top: 1px solid var(--border);
+}
+
+.scroll-callout .scroll-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.scroll-callout .scroll-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.scroll-callout .scroll-body {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+}
+
+/* ==============================
+   4. Crown Badge
+   ============================== */
+
+.crown-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35em 0.9em;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dim) 100%);
+  color: var(--bg);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  margin: 0.25rem 0.15rem;
+}
+
+.crown-badge .crown-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.crown-badge.cb-capture {
+  background: linear-gradient(135deg, var(--capture) 0%, var(--capture-dim) 100%);
+}
+
+.crown-badge.cb-execute {
+  background: linear-gradient(135deg, var(--execute) 0%, var(--execute-dim) 100%);
+}
+
+.crown-badge.cb-batch {
+  background: linear-gradient(135deg, var(--batch) 0%, var(--batch-dim) 100%);
+  color: #f8f0e0;
+}
+
+/* ==============================
+   Storybook Page-Turn Divider
+   ============================== */
+
+.page-turn-divider {
+  margin: 3rem auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.page-turn-divider svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==============================
+   Inline Code
+   ============================== */
+
+.inline-code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  background: var(--surface-2);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+  border-top: 2px solid var(--border);
+  padding: 3rem 0;
+  text-align: center;
+  position: relative;
+}
+
+footer::before {
+  content: '\2767';
+  position: absolute;
+  top: -0.65em;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 1rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
+footer p {
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.1em;
+}
+
+footer a {
+  color: var(--text-faint);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
