@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rough Woodworking &mdash; Style Guide</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.8rem; margin: 1.5rem 0; }
+  .swatch { border: 2px solid var(--border); overflow: hidden; }
+  .swatch:nth-child(odd) { transform: rotate(-0.3deg); }
+  .swatch:nth-child(even) { transform: rotate(0.2deg); }
+  .swatch-color { height: 50px; }
+  .swatch-info { padding: 0.5rem 0.6rem; background: var(--surface); }
+  .swatch-info .swatch-name { font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; color: var(--text); margin-bottom: 0.1rem; }
+  .swatch-info .swatch-hex { font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; color: var(--text-faint); }
+  .font-sample { padding: 1.25rem; border: 2px solid var(--border); margin-bottom: 0.8rem; }
+  .font-sample:nth-child(odd) { background: var(--warm-1); }
+  .font-sample:nth-child(even) { background: var(--warm-3); }
+  .font-sample .sample-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 0.6rem; }
+  .font-sample-heading { font-family: 'Bitter', serif; font-size: 1.8rem; color: var(--text); line-height: 1.2; font-weight: 700; }
+  .font-sample-body { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; color: var(--text-dim); line-height: 1.7; }
+  .font-sample-mono { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; color: var(--text-dim); }
+  .font-sample-scrawl { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--accent); line-height: 1.4; }
+  .text-tier-demo { padding: 1rem; background: var(--warm-1); border: 2px solid var(--border); margin: 1.25rem 0; }
+  .text-tier-demo .tier { display: flex; align-items: baseline; gap: 0.8rem; padding: 0.4rem 0; }
+  .text-tier-demo .tier + .tier { border-top: 1px solid var(--surface-3); }
+  .text-tier-demo .tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: var(--text-faint); width: 5.5rem; flex-shrink: 0; text-align: right; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">a rougher kind of style guide</div>
+  <h1>The <span>Workshop</span></h1>
+  <p>Same woodworking theme, but less polished. Things are a bit uneven &mdash; slightly different card warmths, hand-scrawled notes, imperfect spacing. Like a real workshop, not a showroom.</p>
+  <div class="hero-version">v0.1 &middot; <a href="template.html" style="color:var(--text-faint);text-decoration:underline;">starter template</a></div>
+</div>
+
+<div class="container">
+
+<section>
+  <div class="section-num">00 &mdash; what's different</div>
+  <h2>Why "Rough"?</h2>
+  <p>The original woodworking theme is clean and systematic. This version aims to feel more <strong>hand-made</strong>. Here's what changed:</p>
+  <div class="flow-grid">
+    <div class="flow-card capture"><div class="card-icon">&#128296;</div><h4>Uneven Warmth</h4><p>Cards aren't all the same color. Each one pulls from a slightly different warm tone, like different boards from the same tree.</p></div>
+    <div class="flow-card refine"><div class="card-icon">&#9999;&#65039;</div><h4>Handwritten Voice</h4><p>Margin notes in Caveat. Struck-through text. Amendments. The content reads like a person's actual notebook.</p></div>
+    <div class="flow-card execute"><div class="card-icon">&#128208;</div><h4>Slight Rotations</h4><p>Callouts, stamps, and tags rotate a degree or two. Not everything sits perfectly square on the page.</p></div>
+    <div class="flow-card batch"><div class="card-icon">&#127794;</div><h4>Rougher Textures</h4><p>Heavier wood grain, thicker borders on some elements, more visible grid on blueprints. The "grain" is coarser.</p></div>
+  </div>
+  <div class="margin-note">The goal isn't chaos &mdash; it's warmth. A human made this, not a machine.</div>
+</section>
+
+<section>
+  <div class="section-num">01 &mdash; palette</div>
+  <h2>Colors</h2>
+  <p>Same basic palette as the polished version, but the background is slightly warmer and the surfaces have more variation.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f2e8d8;"></div><div class="swatch-info"><div class="swatch-name">--bg</div><div class="swatch-hex">#f2e8d8</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e6d8c2;"></div><div class="swatch-info"><div class="swatch-name">--surface</div><div class="swatch-hex">#e6d8c2</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#dac8ae;"></div><div class="swatch-info"><div class="swatch-name">--surface-2</div><div class="swatch-hex">#dac8ae</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#cebea0;"></div><div class="swatch-info"><div class="swatch-name">--surface-3</div><div class="swatch-hex">#cebea0</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#b09878;"></div><div class="swatch-info"><div class="swatch-name">--border</div><div class="swatch-hex">#b09878</div></div></div>
+  </div>
+  <h3>The Warm Variants</h3>
+  <p>These five tones get randomly assigned to cards, so no two cards are the exact same temperature. <span class="scrawl">Like real wood.</span></p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#f0e4ce;"></div><div class="swatch-info"><div class="swatch-name">--warm-1</div><div class="swatch-hex">#f0e4ce</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#ecdcc4;"></div><div class="swatch-info"><div class="swatch-name">--warm-2</div><div class="swatch-hex">#ecdcc4</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e8d6bc;"></div><div class="swatch-info"><div class="swatch-name">--warm-3</div><div class="swatch-hex">#e8d6bc</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#e4d0b6;"></div><div class="swatch-info"><div class="swatch-name">--warm-4</div><div class="swatch-hex">#e4d0b6</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#f2e6d0;"></div><div class="swatch-info"><div class="swatch-name">--warm-5</div><div class="swatch-hex">#f2e6d0</div></div></div>
+  </div>
+  <h3>Text</h3>
+  <div class="text-tier-demo">
+    <div class="tier"><div class="tier-label">--text</div><div style="color:var(--text);font-weight:600;">Headings and bold stuff</div></div>
+    <div class="tier"><div class="tier-label">--text-dim</div><div style="color:var(--text-dim);">Body text, most paragraphs</div></div>
+    <div class="tier"><div class="tier-label">--text-faint</div><div style="color:var(--text-faint);">Labels, measurements, the quiet stuff</div></div>
+  </div>
+  <h3>Stain Colors</h3>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#8b4520;"></div><div class="swatch-info"><div class="swatch-name">--accent</div><div class="swatch-hex">#8b4520</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4a7a38;"></div><div class="swatch-info"><div class="swatch-name">--capture</div><div class="swatch-hex">#4a7a38</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#c89030;"></div><div class="swatch-info"><div class="swatch-name">--refine</div><div class="swatch-hex">#c89030</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#a83020;"></div><div class="swatch-info"><div class="swatch-name">--execute</div><div class="swatch-hex">#a83020</div></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#3868a0;"></div><div class="swatch-info"><div class="swatch-name">--batch</div><div class="swatch-hex">#3868a0</div></div></div>
+  </div>
+  <p>Tags: <span class="tag t-capture">pine</span> <span class="tag t-refine">maple</span> <span class="tag t-execute">cherry</span> <span class="tag t-batch">steel</span></p>
+</section>
+
+<section>
+  <div class="section-num">02 &mdash; type</div>
+  <h2>Fonts</h2>
+  <p>Four families now instead of three. The big addition is <strong>Caveat</strong> for handwritten annotations &mdash; the "human" layer on top of the structured type.</p>
+  <div class="font-sample"><div class="sample-label">Bitter &mdash; Headings</div><div class="font-sample-heading">Measure twice, cut once</div></div>
+  <div class="font-sample"><div class="sample-label">Source Sans 3 &mdash; Body</div><div class="font-sample-body">Good woodworking isn't about expensive tools or exotic wood. It's about patience, practice, and understanding the material you're working with.</div></div>
+  <div class="font-sample"><div class="sample-label">IBM Plex Mono &mdash; Labels &amp; measurements</div><div class="font-sample-mono">01 &mdash; WALNUT &middot; 8/4 &middot; 40 BF &middot; KD &middot; FAS</div></div>
+  <div class="font-sample"><div class="sample-label">Caveat &mdash; Handwritten notes (new!)</div><div class="font-sample-scrawl">This is the voice of the maker. Margin notes, corrections, things you'd scribble in pencil on your plans.</div></div>
+</section>
+
+<section>
+  <div class="section-num">03 &mdash; components</div>
+  <h2>Standard Components</h2>
+  <p>Same components as the polished version &mdash; flow cards, pipeline, callout, table, etc. They just feel a little less uniform now.</p>
+
+  <h3>Pipeline</h3>
+  <div class="pipeline">
+    <div class="pipe-stage s-capture"><div class="pipe-num">01</div><div class="pipe-name">Select</div><div class="pipe-desc">Pick your stock</div></div>
+    <div class="pipe-stage s-refine"><div class="pipe-num">02</div><div class="pipe-name">Mill</div><div class="pipe-desc">Joint &amp; plane</div></div>
+    <div class="pipe-stage s-execute"><div class="pipe-num">03</div><div class="pipe-name">Join</div><div class="pipe-desc">Cut joinery</div></div>
+    <div class="pipe-stage s-batch"><div class="pipe-num">04</div><div class="pipe-name">Finish</div><div class="pipe-desc">Sand &amp; oil</div></div>
+  </div>
+
+  <h3>Callout</h3>
+  <div class="callout"><p><strong>Shop tip:</strong> Notice how the callout is slightly rotated? That's on purpose. <span class="scrawl">Nothing in a real workshop is perfectly straight.</span></p></div>
+
+  <h3>Table</h3>
+  <table class="info-table">
+    <thead><tr><th>What changed</th><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td>Card backgrounds</td><td>All the same</td><td>5 warm variants</td></tr>
+      <tr><td>Section borders</td><td>All 2px</td><td>Alternating 2px/3px</td></tr>
+      <tr><td>Hero alignment</td><td>Centered</td><td>Left-aligned</td></tr>
+      <tr><td>Animations</td><td>Smooth fade-up</td><td>None &mdash; just appears</td></tr>
+      <tr><td>Stamps</td><td>Two rotation angles</td><td>Each one different</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="section-num">04 &mdash; rough components</div>
+  <h2>Blueprint Card</h2>
+  <p>Same idea, but slightly rotated and with a heavier grid. The pin is red instead of walnut. Small things.</p>
+  <div class="blueprint-card">
+    <div class="blueprint-title">Sketch 01 &mdash; Test Blueprint</div>
+    <h3>A Rougher Blueprint</h3>
+    <p>Notice the slight rotation, the coarser grid, the single red pin. It's still a blueprint card &mdash; just less pristine.</p>
+    <div>
+      <span class="blueprint-measurement">36&Prime; &times; 24&Prime;</span>
+      <span class="blueprint-measurement">3/4&Prime; stock</span>
+      <span class="blueprint-measurement">Walnut</span>
+    </div>
+  </div>
+
+  <h2>Margin Notes &amp; Annotations</h2>
+  <p>These are new to the rough version. They're the handwritten layer that makes it feel personal.</p>
+  <div class="margin-note">You can use these to add asides, corrections, or personal commentary. They're intentionally a little off-kilter.</div>
+  <p>You can also use <span class="scrawl">inline scrawl text</span> for quick handwritten annotations within a paragraph, or mark things as <span class="struck">wrong</span> <span class="amended">corrected</span>.</p>
+
+  <h2>Lumber Stamps</h2>
+  <p>Each stamp now rotates to its own angle based on position. Some can be <code>.faded</code> for a partially-worn look.</p>
+  <div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center;margin:1.5rem 0;">
+    <span class="lumber-stamp">Grade A</span>
+    <span class="lumber-stamp stamp-green">Kiln Dried</span>
+    <span class="lumber-stamp stamp-honey">Select</span>
+    <span class="lumber-stamp stamp-cherry">FAS</span>
+    <span class="lumber-stamp stamp-steel">S4S</span>
+    <span class="lumber-stamp faded">Reject</span>
+  </div>
+
+  <h2>Dovetail Divider</h2>
+  <div class="dovetail-divider">
+    <svg viewBox="0 0 500 30" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,14 L50,14 L57,2 L78,2 L85,14 L135,14 L142,2 L163,2 L170,14 L220,14 L227,2 L248,2 L255,14 L305,14 L312,2 L333,2 L340,14 L390,14 L397,2 L418,2 L425,14 L500,14"
+        fill="none" stroke="#8b4520" stroke-width="2"/>
+      <path d="M0,16 L50,16 L57,28 L78,28 L85,16 L135,16 L142,28 L163,28 L170,16 L220,16 L227,28 L248,28 L255,16 L305,16 L312,28 L333,28 L340,16 L390,16 L397,28 L418,28 L425,16 L500,16"
+        fill="none" stroke="#b09878" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <h2>Tool Rack</h2>
+  <div class="tool-rack">
+    <div class="rack-rail"></div>
+    <div class="rack-items">
+      <div class="rack-item"><div class="rack-icon">&#128296;</div><div class="rack-label">Chisel</div><div class="rack-value">1/2&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128207;</div><div class="rack-label">Saw</div><div class="rack-value">Dovetail</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128208;</div><div class="rack-label">Square</div><div class="rack-value">12&Prime;</div></div>
+      <div class="rack-item"><div class="rack-icon">&#128295;</div><div class="rack-label">Mallet</div><div class="rack-value">16oz</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">05 &mdash; principles</div>
+  <h2>What Makes It "Rough"</h2>
+  <div class="principle-list">
+    <div class="principle"><div class="principle-num">1</div><div><h4>Varied Card Warmth</h4><p>Five <code>--warm-N</code> tokens get applied via <code>nth-child</code>, so cards look like different boards from the same tree.</p></div></div>
+    <div class="principle"><div class="principle-num">2</div><div><h4>Handwritten Layer</h4><p>Caveat font for margin notes, inline scrawl, and principle numbers. This is the "pencil on the plans" layer.</p></div></div>
+    <div class="principle"><div class="principle-num">3</div><div><h4>Slight Rotations</h4><p>Callouts, stamps, tags, and swatches all rotate slightly. Nothing dramatic &mdash; 0.3&deg; to 3&deg;. Just enough to feel human.</p></div></div>
+    <div class="principle"><div class="principle-num">4</div><div><h4>Imperfect Spacing</h4><p>Section padding doesn't match top to bottom. Odd sections get thicker borders. The container is 880px instead of 900.</p></div></div>
+    <div class="principle"><div class="principle-num">5</div><div><h4>Personal Content</h4><p>The template reads like someone's actual build notes, not a generic placeholder. Opinions, mistakes, crossed-out text.</p></div></div>
+    <div class="principle"><div class="principle-num">6</div><div><h4>No Animation</h4><p>The polished version has smooth fade-ups. This one doesn't. Things just appear, like they've been there all along.</p></div></div>
+  </div>
+  <div class="margin-note">The rough version isn't trying to look bad. It's trying to look like a person made it instead of a system.</div>
+</section>
+
+<section>
+  <div class="section-num">06 &mdash; diagram</div>
+  <h2>SVG Diagram</h2>
+  <div class="diagram-wrap">
+    <div class="diagram-label">Figure 1 &mdash; Build Process (rough sketch)</div>
+    <svg viewBox="0 0 700 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <rect x="20" y="10" width="170" height="80" rx="2" fill="var(--warm-1)" stroke="var(--capture)" stroke-width="2"/>
+      <text x="105" y="42" text-anchor="middle" fill="var(--capture)" font-size="10" font-weight="600">ROUGH LUMBER</text>
+      <text x="105" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">pick the good stuff</text>
+      <line x1="190" y1="50" x2="245" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="245" y="10" width="170" height="80" rx="2" fill="var(--warm-3)" stroke="var(--refine)" stroke-width="2"/>
+      <text x="330" y="42" text-anchor="middle" fill="var(--refine)" font-size="10" font-weight="600">MILLING</text>
+      <text x="330" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the noisy part</text>
+      <line x1="415" y1="50" x2="470" y2="50" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="470" y="10" width="210" height="80" rx="2" fill="var(--warm-2)" stroke="var(--accent)" stroke-width="2"/>
+      <text x="575" y="42" text-anchor="middle" fill="var(--accent)" font-size="10" font-weight="600">ASSEMBLY &amp; FINISH</text>
+      <text x="575" y="58" text-anchor="middle" fill="var(--text-faint)" font-size="8">the satisfying part</text>
+    </svg>
+  </div>
+</section>
+
+</div>
+
+<footer><div class="container"><p>rough woodworking &middot; an experiment in imperfection</p></div></footer>
+
+</body>
+</html>
